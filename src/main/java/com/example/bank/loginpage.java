@@ -1315,8 +1315,7 @@ public class loginpage{
     }
 
     public void openAccount(ActionEvent event) {
-        HelloController controller=new HelloController();
-        controller.openNewWindow("account","openAurusecount");
+        openNewWindow("account.fxml","openAurusecount",event);
     }
 
 

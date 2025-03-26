@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -47,19 +48,19 @@ public class HelloController implements Initializable {
     public void handleComboBoxAction(ActionEvent event) {
         String selectedOption = com1.getValue();
         if ("شارژ".equals(selectedOption)) {
-            openNewWindow("charge.fxml", "شارژ");
+            openNewWindow("charge.fxml","شارژ",event);
         } else if ("خرید اینترنت".equals(selectedOption)) {
-            openNewWindow("Internet.fxml", "خرید اینترنت");
+            openNewWindow("Internet.fxml" ,"خرید اینترنت",event);
         } else if ("پرداخت قبوض".equals(selectedOption)) {
-            openNewWindow("gabz.fxml", "پرداخت قبوض");
+            openNewWindow("gabz.fxml","پرداخت اینترنتی",event);
         } else if ("انتقال به کارت".equals(selectedOption)) {
-            openNewWindow("cart.fxml", "انتقال به کارت");
+            openNewWindow("cart.fxml", "انتقال به کارت",event);
         } else if ("خرید ارز".equals(selectedOption)) {
-            openNewWindow("arz.fxml", "خرید ارز");
+            openNewWindow("arz.fxml", "خرید ارز",event);
         }
     }
 
-    public void openNewWindow(String fxmlFile, String title) {
+    public void openNewWindow(String fxmlFile, String title,ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
             Scene scene = new Scene(loader.load(), 1535, 790);
@@ -69,6 +70,8 @@ public class HelloController implements Initializable {
             stage.setScene(scene);
             stage.setTitle(title);
             stage.show();
+            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            currentStage.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
