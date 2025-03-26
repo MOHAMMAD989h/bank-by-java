@@ -20,85 +20,11 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="647.0" prefWidth="665.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="647.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bank.account">
    <children>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="container" stylesheets="@hhhh.css">
+      <AnchorPane fx:id="side_form" prefHeight="718.0" prefWidth="1000.0" styleClass="container" stylesheets="@hhhh.css">
          <children>
-            <AnchorPane fx:id="side_loginCodeEmail" prefHeight="535.0" prefWidth="300.0" styleClass="white-form" stylesheets="@hhhh.css">
-               <children>
-                  <Label layoutX="40.0" layoutY="76.0" prefHeight="36.0" prefWidth="166.0" styleClass="head-label" stylesheets="@hhhh.css" text="Verify Code" textFill="#125980">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
-                  <Button layoutX="40.0" layoutY="404.0" minWidth="26.0" mnemonicParsing="false" onAction="#backToSignup" prefHeight="30.0" prefWidth="30.0" styleClass="white-form" stylesheets="@hhhh.css">
-                     <font>
-                        <Font size="10.0" />
-                     </font>
-                     <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../Images/return-icon-png-21.jpg" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <TextField fx:id="si_emailLogin" alignment="TOP_RIGHT" layoutX="40.0" layoutY="192.0" prefHeight="30.0" prefWidth="220.0" promptText="کد" styleClass="text-field1" stylesheets="@hhhh.css" />
-                  <Button layoutX="40.0" layoutY="298.0" mnemonicParsing="false" onAction="#entercodelogin" prefHeight="30.0" prefWidth="220.0" styleClass="login-btn1" stylesheets="@hhhh.css" text="Enter Code" />
-               </children>
-            </AnchorPane>
-            <AnchorPane fx:id="side_changepass" layoutX="300.0" layoutY="-1.0" prefHeight="536.0" prefWidth="300.0" styleClass="white-form" stylesheets="@hhhh.css">
-               <children>
-                  <Label layoutX="40.0" layoutY="76.0" prefHeight="36.0" prefWidth="176.0" styleClass="head-label" stylesheets="@hhhh.css" text="Change  Password" textFill="#125980">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
-                  <Button fx:id="si_changepass" layoutX="40.0" layoutY="298.0" mnemonicParsing="false" onAction="#changepassword" prefHeight="30.0" prefWidth="220.0" styleClass="login-btn1" stylesheets="@hhhh.css" text="تغییر رمز" />
-                  <Button fx:id="si_backforgot1" layoutX="40.0" layoutY="404.0" minWidth="26.0" mnemonicParsing="false" onAction="#backforgot1" prefHeight="30.0" prefWidth="30.0" styleClass="white-form" stylesheets="@hhhh.css">
-                     <font>
-                        <Font size="10.0" />
-                     </font>
-                     <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../Images/return-icon-png-21.jpg" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <TextField fx:id="si_emailforgot1" layoutX="40.0" layoutY="210.0" prefHeight="30.0" prefWidth="220.0" promptText="Code" styleClass="text-field1" stylesheets="@hhhh.css" visible="false" />
-                  <Button fx:id="si_entercode1" layoutX="40.0" layoutY="298.0" mnemonicParsing="false" onAction="#entercode" prefHeight="30.0" prefWidth="220.0" styleClass="login-btn1" stylesheets="@hhhh.css" text="Enter Code" visible="false" />
-                  <PasswordField fx:id="si_newpassword" layoutX="40.0" layoutY="157.0" prefHeight="30.0" prefWidth="220.0" promptText="رمز جدید" styleClass="text-field1" stylesheets="@hhhh.css" />
-                  <PasswordField fx:id="si_cnewpassword" layoutX="40.0" layoutY="210.0" prefHeight="30.0" prefWidth="220.0" promptText="رمز جدید" styleClass="text-field1" stylesheets="@hhhh.css" />
-               </children>
-            </AnchorPane>
-            <AnchorPane fx:id="side_forgotemail" layoutX="300.0" layoutY="1.0" prefHeight="535.0" prefWidth="300.0" styleClass="white-form" stylesheets="@hhhh.css">
-               <children>
-                  <TextField fx:id="si_emailforgot" layoutX="40.0" layoutY="165.0" prefHeight="30.0" prefWidth="220.0" promptText="ایمیل" styleClass="text-field1" stylesheets="@hhhh.css" />
-                  <Label layoutX="40.0" layoutY="76.0" prefHeight="36.0" prefWidth="166.0" styleClass="head-label" stylesheets="@hhhh.css" text="Forgot Password" textFill="#125980">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
-                  <Button fx:id="si_sendcode" layoutX="40.0" layoutY="298.0" mnemonicParsing="false" onAction="#sendcode" prefHeight="30.0" prefWidth="220.0" styleClass="login-btn1" stylesheets="@hhhh.css" text="فرستادن کد" />
-                  <Button fx:id="si_backforgot" layoutX="40.0" layoutY="404.0" minWidth="26.0" mnemonicParsing="false" onAction="#backforgot" prefHeight="30.0" prefWidth="30.0" styleClass="white-form" stylesheets="@hhhh.css">
-                     <font>
-                        <Font size="10.0" />
-                     </font>
-                     <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../Images/return-icon-png-21.jpg" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <TextField fx:id="si_emailforgot11" layoutX="40.0" layoutY="210.0" prefHeight="30.0" prefWidth="220.0" promptText="کد" styleClass="text-field1" stylesheets="@hhhh.css" visible="false" />
-                  <Button fx:id="si_entercode" layoutX="40.0" layoutY="298.0" mnemonicParsing="false" onAction="#entercode" prefHeight="30.0" prefWidth="220.0" styleClass="login-btn1" stylesheets="@hhhh.css" text="Enter Code" visible="false" />
-               </children>
-            </AnchorPane>
-            <AnchorPane fx:id="side_login" layoutX="300.0" layoutY="-2.0" prefHeight="540.0" prefWidth="300.0" styleClass="white-form" stylesheets="@hhhh.css">
+            <AnchorPane fx:id="side_login" layoutX="527.0" layoutY="7.0" prefHeight="553.0" prefWidth="443.0" styleClass="white-form" stylesheets="@hhhh.css">
                <children>
                   <TextField fx:id="si_username" layoutX="40.0" layoutY="150.0" prefHeight="30.0" prefWidth="220.0" promptText="نام کاربری" stylesheets="@styles.css">
                      <styleClass>
@@ -117,9 +43,9 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Button fx:id="si_loginbtn" layoutX="40.0" layoutY="305.0" mnemonicParsing="false" onAction="#loginBtn" prefHeight="30.0" prefWidth="220.0" styleClass="wallet" stylesheets="@styles.css" text="ورود" />
-                  <Hyperlink fx:id="si_forgotpass" layoutX="39.0" layoutY="269.0" onAction="#forgotpass" text="فراموشی رمز" />
-                  <Button fx:id="si_helplogin" layoutX="40.0" layoutY="353.0" minWidth="26.0" mnemonicParsing="false" onAction="#helplogin" prefHeight="30.0" prefWidth="25.0" styleClass="wallet" stylesheets="@styles.css" text="?">
+                  <Button fx:id="si_loginbtn" layoutX="40.0" layoutY="305.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="220.0" styleClass="wallet" stylesheets="@styles.css" text="ورود" />
+                  <Hyperlink fx:id="si_forgotpass" layoutX="39.0" layoutY="269.0" text="فراموشی رمز" />
+                  <Button fx:id="si_helplogin" layoutX="40.0" layoutY="353.0" minWidth="26.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="25.0" styleClass="wallet" stylesheets="@styles.css" text="?">
                      <font>
                         <Font size="10.0" />
                      </font>
@@ -129,7 +55,7 @@
                         <Font size="10.0" />
                      </font>
                   </Label>
-                  <Button layoutX="40.0" layoutY="425.0" mnemonicParsing="false" onAction="#backLoginTo" styleClass="white-form" stylesheets="@hhhh.css">
+                  <Button layoutX="40.0" layoutY="425.0" mnemonicParsing="false" styleClass="white-form" stylesheets="@hhhh.css">
                      <graphic>
                         <ImageView fitHeight="41.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -140,7 +66,7 @@
                   </Button>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="side_form" layoutY="-0.8" prefHeight="540.0" prefWidth="300.0">
+            <AnchorPane fx:id="side_form" layoutY="-1.0" prefHeight="553.0" prefWidth="504.0">
                <children>
                   <Label layoutX="91.0" layoutY="334.0" prefHeight="36.0" prefWidth="143.0" text="ساختن حساب">
                      <font>
@@ -152,7 +78,7 @@
                         <Font name="Edwardian Script ITC" size="40.0" />
                      </font>
                   </Label>
-                  <Button fx:id="side_AlreadyHave" layoutX="40.0" layoutY="391.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="30.0" prefWidth="220.0" styleClass="wallet" stylesheets="@styles.css" text="قبلا ساخته شده ">
+                  <Button fx:id="side_AlreadyHave" layoutX="40.0" layoutY="391.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="220.0" styleClass="wallet" stylesheets="@styles.css" text="قبلا ساخته شده ">
                      <textFill>
                         <LinearGradient endX="0.9431818181818181" endY="1.0" startX="0.10227272907892863" startY="0.1969697258689187">
                            <stops>
@@ -170,7 +96,7 @@
                         </LinearGradient>
                      </textFill>
                   </Button>
-                  <Button fx:id="side_createBtn" layoutX="40.0" layoutY="392.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="30.0" prefWidth="220.0" styleClass="wallet" stylesheets="@styles.css" text="ساختن حساب جدید">
+                  <Button fx:id="side_createBtn" layoutX="40.0" layoutY="392.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="220.0" styleClass="wallet" stylesheets="@styles.css" text="ساختن حساب جدید">
                      <textFill>
                         <LinearGradient endX="0.9431818181818181" endY="1.0" startX="0.10227272907892863" startY="0.1969697258689187">
                            <stops>
@@ -193,7 +119,7 @@
                         <Image url="@../../../Images/photo_2025-01-03_12-39-34.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="LenovoMarket" layoutX="42.0" layoutY="225.0" mnemonicParsing="false" onAction="#mainpage" prefHeight="37.0" prefWidth="204.0" style="-fx-background-color: transparent;">
+                  <Button fx:id="LenovoMarket" layoutX="42.0" layoutY="225.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="204.0" style="-fx-background-color: transparent;">
                      <graphic>
                         <ImageView fitHeight="27.0" fitWidth="230.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -212,7 +138,7 @@
                   <String fx:value="wallet" />
                </styleClass>
             </AnchorPane>
-            <AnchorPane fx:id="side_signUp" prefHeight="468.0" prefWidth="300.0" styleClass="white-form" stylesheets="@hhhh.css" visible="false">
+            <AnchorPane fx:id="side_signUp" prefHeight="553.0" prefWidth="443.0" styleClass="white-form" stylesheets="@hhhh.css">
                <children>
                   <PasswordField fx:id="accountPassword" layoutX="23.0" layoutY="403.0" prefHeight="30.0" prefWidth="220.0" promptText="رمز کارت" stylesheets="@styles.css">
                      <styleClass>
@@ -223,14 +149,6 @@
                         <Insets />
                      </opaqueInsets>
                   </PasswordField>
-                  <Label layoutX="200.0" layoutY="14.0" prefHeight="36.0" prefWidth="151.0" styleClass="head-label" stylesheets="@hhhh.css" text="ساخت حساب" textFill="#125980">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </Label>
                   <Button fx:id="pardakht" layoutX="150.0" layoutY="514.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="220.0" styleClass="wallet" stylesheets="@styles.css" text="ساختن حساب">
                      <opaqueInsets>
                         <Insets />
@@ -307,10 +225,10 @@
                   </TextField>
                   <Button fx:id="si_viziblepass" layoutX="205.0" layoutY="354.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="10.0" styleClass="white-form" stylesheets="@hhhh.css" />
                   <ComboBox fx:id="com1" layoutX="30.0" layoutY="256.0" prefHeight="25.0" prefWidth="194.0" promptText="انتخاب نام بانک " />
-                  <MenuButton layoutX="390.0" layoutY="14.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="114.0" text="انتخاب نام بانک">
+                  <MenuButton fx:id="MenuButton" layoutX="191.0" layoutY="20.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="114.0" text="ساخت حساب">
                      <items>
-                        <MenuItem mnemonicParsing="false" text="Action 1" />
-                        <MenuItem mnemonicParsing="false" text="Action 2" />
+                        <MenuItem fx:id="ساخت" mnemonicParsing="false" onAction="#switchForm" text="ساخت حسلب" />
+                        <MenuItem fx:id="معرفی" mnemonicParsing="false" onAction="#switchForm" text="معرفی حساب" />
                      </items>
                   </MenuButton>
                   <ImageView fitHeight="22.0" fitWidth="43.0" layoutX="225.0" layoutY="418.0" pickOnBounds="true" preserveRatio="true">
