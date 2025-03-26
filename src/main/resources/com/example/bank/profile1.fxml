@@ -51,6 +51,7 @@
                               <Image url="@../../../images/1486441-نماد-کیف-پول-در-سبک-تخت-مرسوم-مد-روز-و-جدا-شده-در-پس-زمینه-خاکستری-نماد-کیف-پول-برای-طراحی-وب-سایت-آرم-برنامه-رابط-کاربر-تصویر-برداری-EPS10.png" />
                            </image>
                         </ImageView>
+                        <Button layoutX="105.0" layoutY="127.0" mnemonicParsing="false" onAction="#openAccount" text="Button" />
                      </children>
                   </AnchorPane>
                </children></AnchorPane>
