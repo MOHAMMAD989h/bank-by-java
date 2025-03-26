@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="505.0" prefWidth="516.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane fx:id="side_signUp" prefHeight="626.0" prefWidth="732.0" styleClass="white-form" stylesheets="@hhhh.css">
+         <children>
+            <PasswordField fx:id="su_password" layoutX="40.0" layoutY="349.0" prefHeight="30.0" prefWidth="220.0" promptText="رمز" stylesheets="@styles.css">
+               <styleClass>
+                  <String fx:value="text-field1" />
+                  <String fx:value="password" />
+               </styleClass>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </PasswordField>
+            <Label layoutX="40.0" layoutY="52.0" prefHeight="36.0" prefWidth="151.0" styleClass="head-label" stylesheets="@hhhh.css" text="ساخت حساب" textFill="#125980">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Label>
+            <Button fx:id="su_signupBtn" layoutX="40.0" layoutY="458.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="220.0" styleClass="wallet" stylesheets="@styles.css" text="ساختن حساب">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+            <PasswordField fx:id="su_cpassword" layoutX="40.0" layoutY="408.0" prefHeight="30.0" prefWidth="220.0" promptText="رمز" stylesheets="@styles.css">
+               <styleClass>
+                  <String fx:value="text-field1" />
+                  <String fx:value="password" />
+               </styleClass>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </PasswordField>
+            <TextField fx:id="su_number" layoutX="40.0" layoutY="198.0" prefHeight="30.0" prefWidth="220.0" promptText="شماره" stylesheets="@styles.css">
+               <styleClass>
+                  <String fx:value="text-field1" />
+                  <String fx:value="password" />
+               </styleClass>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </TextField>
+            <TextField fx:id="su_nationcode" layoutX="40.0" layoutY="242.0" prefHeight="30.0" prefWidth="220.0" promptText="کدملی" stylesheets="@styles.css">
+               <styleClass>
+                  <String fx:value="text-field1" />
+                  <String fx:value="password" />
+               </styleClass>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </TextField>
+            <TextField fx:id="su_address" layoutX="40.0" layoutY="285.0" prefHeight="58.0" prefWidth="220.0" promptText="ادرس" stylesheets="@styles.css">
+               <styleClass>
+                  <String fx:value="text-field1" />
+                  <String fx:value="password" />
+               </styleClass>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </TextField>
+            <Label layoutX="5.0" layoutY="391.0" prefHeight="15.0" prefWidth="285.0" text="حداقل باید هشت حرف داشته باشد و دارای حروف بزرگ انگلیسی باشد">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <TextField fx:id="su_hidepass" layoutX="40.0" layoutY="328.0" prefHeight="30.0" prefWidth="220.0" promptText="Password" styleClass="text-field1" stylesheets="@hhhh.css" visible="false">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </TextField>
+            <TextField fx:id="su_password2" layoutX="40.0" layoutY="379.0" prefHeight="30.0" prefWidth="220.0" promptText="Password" styleClass="text-field1" stylesheets="@hhhh.css" visible="false">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </TextField>
+            <TextField fx:id="su_emailsign1" layoutX="40.0" layoutY="152.0" prefHeight="30.0" prefWidth="220.0" promptText="ایمیل" stylesheets="@styles.css">
+               <styleClass>
+                  <String fx:value="text-field1" />
+                  <String fx:value="password" />
+               </styleClass>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </TextField>
+            <TextField fx:id="si_textpassword" layoutX="40.0" layoutY="349.0" prefHeight="30.0" prefWidth="220.0" promptText="رمز" stylesheets="@styles.css" visible="false">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <styleClass>
+                  <String fx:value="text-field1" />
+                  <String fx:value="password" />
+               </styleClass>
+            </TextField>
+            <TextField fx:id="si_textpassword1" layoutX="40.0" layoutY="408.0" prefHeight="30.0" prefWidth="220.0" promptText="رمز" stylesheets="@styles.css" visible="false">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <styleClass>
+                  <String fx:value="text-field1" />
+                  <String fx:value="password" />
+               </styleClass>
+            </TextField>
+            <Button fx:id="si_viziblepass" layoutX="205.0" layoutY="354.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="10.0" styleClass="white-form" stylesheets="@hhhh.css">
+               <graphic>
+                  <ImageView fitHeight="22.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/preview-show-interface-icon-free-vector.jpg" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <ComboBox fx:id="com1" layoutX="53.0" layoutY="98.0" prefHeight="39.0" prefWidth="194.0" promptText="انتخاب نام بانک " />
+            <MenuButton layoutX="329.0" layoutY="105.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="114.0" text="انتخاب نام بانک">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Action 1" />
+                <MenuItem mnemonicParsing="false" text="Action 2" />
+              </items>
+            </MenuButton>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

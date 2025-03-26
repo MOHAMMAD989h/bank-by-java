@@ -1314,6 +1314,11 @@ public class loginpage{
         side_loginCodeEmail.setVisible(false);
     }
 
+    public void openAccount(ActionEvent event) {
+        HelloController controller=new HelloController();
+        controller.openNewWindow("account","openAurusecount");
+    }
+
 
     public class why1 implements Initializable {
         @FXML
