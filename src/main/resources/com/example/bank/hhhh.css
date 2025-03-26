@@ -1,0 +1,95 @@
+.gradient {
+    -fx-background-color: linear-gradient(to bottom right , #0a85b9, #fff );
+}
+
+.white-form {
+    -fx-background-color: #fff;
+}
+.icon {
+    -fx-font-size: 50px;
+}
+
+.login-btn1{
+    -fx-background-color: linear-gradient(to bottom right ,#5a54a9 ,#0a85b9 );
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+    -fx-text-fill: #fff;
+    -fx-font-size: 14px;
+}
+
+.head-label_down{
+    -fx-border-color: linear-gradient(to bottom right ,#d3005f ,#000 );
+    -fx-background-color: linear-gradient(to left, #d7d4d6 1%, #ffffff 99%);
+    -fx-border-width: 0 0 1px 0;
+    -fx-padding: 0 0 1px 0;
+}
+.head-label_right{
+    -fx-border-color: linear-gradient(to bottom right ,#d3005f ,#000 );
+    -fx-background-color: linear-gradient(to left, #d7d4d6 1%, #ffffff 99%);
+    -fx-border-width: 0 5px 1px 0;
+    -fx-padding: 0 5px 1px 0;
+}
+
+.login-btn1:hover{
+    -fx-background-color: linear-gradient(to bottom right ,#000 , #d3005f );
+}
+
+.login-btn2{
+    -fx-background-color: linear-gradient(to bottom right ,#4c507b , #5a54a9 );
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+    -fx-text-fill: #fff;
+    -fx-font-size: 14px;
+}
+.login-btn3{
+    -fx-background-color: linear-gradient(to bottom right ,#d3005f , #5a54a9 );
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+    -fx-text-fill: #fff;
+    -fx-font-size: 14px;
+}
+
+.login-btn2:hover{
+    -fx-background-color: linear-gradient(to bottom right ,#d3005f , #4c507b );
+}
+
+.text-field1{
+    -fx-background-color: transparent;
+    -fx-border-color: linear-gradient(to bottom right , #4c507b, #d3005f );
+    -fx-border-width: 1px;
+}
+
+.text-field1:hover{
+    -fx-border-color: linear-gradient(to bottom right , #fff, #d3005f );
+}
+.text-field1:focused{
+    -fx-border-width: 1px;
+}
+
+.label_sugnUp{
+    -fx-text-fill:#d3005f;
+}
+.body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+}
+
+.container {
+    width: 80%;
+    max-width: 600px; /* حداکثر عرض */
+    background-color: white;
+    padding: 20px;
+}
+
+.Profile_back{
+    -fx-background-color: linear-gradient(to left, #d7d4d6 1%, #ffffff 99%);
+}
+.password {
+    -fx-border-width: 2px;
+    -fx-padding: 10px;
+    -fx-border-radius: 30px;
+    -fx-background-radius: 30px;
+}

@@ -1,0 +1,132 @@
+/* استایل نوار سبز رنگ */
+.green-bar {
+    -fx-background-color: #4CAF50; /* رنگ سبز */
+    -fx-padding: 10px; /* فاصله داخلی */
+    -fx-alignment: center; /* تراز محتوا به مرکز */
+}
+
+/* استایل متن داخل نوار سبز */
+.green-bar-text {
+    -fx-text-fill: white; /* رنگ متن سفید */
+    -fx-font-size: 20px; /* اندازه فونت */
+    -fx-font-family: "Arial";
+    -fx-font-weight: bold; /* متن پررنگ */
+}
+
+/* استایل کلی برای دکمه‌های منو */
+.menu-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: white#29bbcf; /* رنگ متن طلایی */
+    -fx-font-size: 20px;
+    -fx-font-family: "Arial";
+    -fx-cursor: hand;
+    -fx-padding: 5px 10px;
+}
+
+/* تغییر رنگ دکمه‌های منو هنگام نگه‌داشتن موس */
+.menu-button:hover {
+    -fx-background-color: white; /* رنگ پس‌زمینه طلایی */
+    -fx-text-fill: black; /* تغییر رنگ متن به سیاه هنگام hover */
+}
+
+/* استایل برای گزینه‌های نمایش داده شده */
+.options-pane {
+    -fx-background-color: rgba(244, 244, 244, 0.9);
+    -fx-border-color: #ddd;
+    -fx-border-width: 1px;
+    -fx-padding: 10px;
+    -fx-font-size: 14px;
+    -fx-font-family: "Arial";
+}
+
+/* استایل برای دکمه‌های زیرمنو */
+.sub-option-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #29bbcf; /* رنگ متن طلایی */
+    -fx-font-size: 14px;
+    -fx-font-family: "Arial";
+    -fx-cursor: hand;
+    -fx-padding: 5px 10px;
+    -fx-alignment: CENTER_LEFT;
+}
+
+/* تغییر رنگ دکمه‌های زیرمنو هنگام نگه‌داشتن موس */
+.sub-option-button:hover {
+    -fx-background-color: #29bbcf; /* رنگ پس‌زمینه طلایی */
+    -fx-text-fill: black; /* تغییر رنگ متن به سیاه هنگام hover */
+}
+
+/* استایل برای نمایش زمان */
+.time-label {
+    -fx-font-family: "Arial";
+    -fx-font-size: 16px;
+    -fx-text-fill: black;
+    -fx-padding: 0 10px;
+}
+
+/* تنظیم سایز خانه‌های GridPane */
+.grid-pane {
+    -fx-hgap: 10;
+    -fx-vgap: 10;
+    -fx-padding: 10;
+}
+
+/* استایل دکمه‌ها و لیبل‌های داخل GridPane */
+.grid-pane .button, .grid-pane .label {
+    -fx-font-size: 14px;
+    -fx-font-family: "Arial";
+    -fx-alignment: CENTER;
+    -fx-text-fill: black; /* رنگ متن سیاه */
+}
+
+/* تغییر رنگ دکمه‌های داخل GridPane هنگام hover */
+.grid-pane .button:hover {
+    -fx-background-color: #d3d3d3; /* رنگ پس‌زمینه خاکستری روشن */
+    -fx-text-fill: black; /* رنگ متن سیاه */
+}
+
+/* شفاف کردن پس‌زمینه‌ی کل ScrollPane */
+#scrollPane {
+    -fx-background-color: transparent;
+}
+
+/* شفاف کردن قسمت viewport (بخش داخلی ScrollPane) */
+#scrollPane .viewport {
+    -fx-background-color: transparent;
+}
+
+/* شفاف کردن محتوای داخلی ScrollPane */
+#scrollPane .content {
+    -fx-background-color: transparent;
+}
+.password {
+    -fx-border-width: 2px;
+    -fx-padding: 10px;
+    -fx-border-radius: 30px;
+    -fx-background-radius: 30px;
+}
+.text-field1{
+    -fx-background-color: transparent;
+    -fx-border-color: linear-gradient(to bottom right ,#FFD700, #d3005f );
+    -fx-border-width: 1px;
+}
+.login-btn1{
+    -fx-background-color: linear-gradient(to bottom right ,#FFD700, #d3005f );
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+    -fx-text-fill: #fff;
+    -fx-font-size: 14px;
+}
+.text {
+    font-family: 'Yekan', Tahoma, sans-serif;
+    font-size: 18px; /* تنظیم اندازه فونت */
+    color: red; /* تنظیم رنگ فونت */
+    font-weight: bold; /* درشت کردن فونت */
+}
+.wallet{
+    -fx-background-color: linear-gradient(to bottom right ,#FFD700, #d3005f );
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+    -fx-text-fill: #fff;
+    -fx-font-size: 14px;
+}

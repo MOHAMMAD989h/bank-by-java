@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="739.0" prefWidth="1318.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bank.Controller">
+   <children>
+      <!-- عکس پس‌زمینه -->
+      <ImageView fx:id="backgroundImage" fitHeight="629.0" fitWidth="929.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/bank.jpg" />
+         </image>
+      </ImageView>
+
+      <!-- ScrollPane شفاف -->
+      <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" prefHeight="766.0" prefWidth="826.0" style="-fx-background-color: transparent;" stylesheets="@styles.css">
+         <content>
+            <VBox fx:id="root" prefHeight="1500.0" prefWidth="826.0" spacing="10">
+               <padding>
+                  <Insets bottom="20" left="20" right="20" top="20" />
+               </padding>
+               <children>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="826.0" spacing="20">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#profile" prefHeight="37.0" prefWidth="62.0" text="Button" />
+                        <Button mnemonicParsing="false" onAction="#HomeToLoginpage" prefHeight="30.0" prefWidth="44.0" style="-fx-background-color: transparrent;">
+                           <graphic>
+                              <ImageView fitHeight="32.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../images/photo_2025-01-03_12-39-34.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <HBox alignment="CENTER_LEFT" spacing="10" />
+                        <Label fx:id="timeLabel" prefHeight="20.0" prefWidth="324.0" styleClass="time-label" text="زمان" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Button fx:id="servicesButton" onMouseEntered="#showServicesOptions" onMouseExited="#hideServicesOptions" prefHeight="30.0" prefWidth="115.0" styleClass="menu-button" text="خدمات" />
+                        <Button fx:id="loanButton" onMouseEntered="#showLoanOptions" onMouseExited="#hideLoanOptions" prefHeight="30.0" prefWidth="81.0" styleClass="menu-button" text="وام" textFill="GOLD" />
+                        <Button onMouseEntered="#hideAllOptions" prefHeight="30.0" prefWidth="162.0" styleClass="menu-button" text="باز کردن حساب" textFill="GOLD" />
+                        <Button fx:id="contactButton" onMouseEntered="#showContactOptions" onMouseExited="#hideContactOptions" prefHeight="30.0" prefWidth="125.0" styleClass="menu-button" text="ارتباط با ما" />
+                        <Button onMouseEntered="#hideAllOptions" prefHeight="30.0" prefWidth="152.0" styleClass="menu-button" text="سوالات متداول" />
+                     </children>
+                  </HBox>
+                  <StackPane fx:id="optionsStackPane" prefHeight="200.0" prefWidth="826.0">
+                     <children>
+                        <GridPane fx:id="servicesOptions" alignment="CENTER" hgap="30" onMouseEntered="#keepServicesOptionsVisible" onMouseExited="#hideServicesOptions" styleClass="options-pane" vgap="30" visible="false">
+                           <padding>
+                              <Insets bottom="10" left="10" right="10" top="10" />
+                           </padding>
+                           <columnConstraints>
+                              <ColumnConstraints />
+                              <ColumnConstraints />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints />
+                              <RowConstraints />
+                              <RowConstraints />
+                           </rowConstraints>
+                           <children>
+                              <Button onAction="#handleServiceOption1" styleClass="sub-option-button" text="انتقال وجه" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                              <Button onAction="#handleServiceOption" styleClass="sub-option-button" text="مدیریت مالی" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                              <Button onAction="#handleServiceOption" styleClass="sub-option-button" text="شارژ سیمکارت" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                              <Button onAction="#handleServiceOption" styleClass="sub-option-button" text="شارژ حساب" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Button onAction="#handleServiceOption" styleClass="sub-option-button" text="دعوت از دوستان" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                              <Button onAction="#handleServiceOption2" styleClass="sub-option-button" text="پرداخت قبوض" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                           </children>
+                        </GridPane>
+                        <GridPane fx:id="loanOptions" alignment="CENTER" hgap="30" onMouseEntered="#keepLoanOptionsVisible" onMouseExited="#hideLoanOptions" styleClass="options-pane" vgap="30" visible="false">
+                           <padding>
+                              <Insets bottom="10" left="10" right="10" top="10" />
+                           </padding>
+                           <columnConstraints>
+                              <ColumnConstraints />
+                              <ColumnConstraints />
+                              <ColumnConstraints />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints />
+                              <RowConstraints />
+                              <RowConstraints />
+                           </rowConstraints>
+                           <children>
+                              <Button onAction="#handleLoanOption" styleClass="sub-option-button" text="وام" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                              <Button onAction="#handleLoanOption" styleClass="sub-option-button" text="وام ازدواج" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                              <Button onAction="#handleLoanOption" styleClass="sub-option-button" text="وام کمیته امداد" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                           </children>
+                        </GridPane>
+                        <VBox fx:id="contactOptions" alignment="CENTER_RIGHT" spacing="15" styleClass="options-pane" visible="false">
+                           <padding>
+                              <Insets bottom="10" left="10" right="10" top="10" />
+                           </padding>
+                           <children>
+                              <Button onAction="#handleContactOption" styleClass="sub-option-button" text="پشتیبانی" />
+                              <Button onAction="#handleContactOption" styleClass="sub-option-button" text="درباره ما" />
+                              <Button onAction="#handleContactOption" styleClass="sub-option-button" text="همکاری با ما" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </StackPane>
+                  <VBox prefHeight="421.0" prefWidth="826.0">
+                     <children>
+                        <ImageView fitHeight="425.0" fitWidth="854.0" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </VBox>
+                  <VBox spacing="10">
+                     <padding>
+                        <Insets bottom="20" left="20" right="20" top="20" />
+                     </padding>
+                  </VBox>
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </children>
+</StackPane>

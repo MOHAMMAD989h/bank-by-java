@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="790.0" prefWidth="1535.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bank.loginpage">
+   <children>
+      <BorderPane prefHeight="200.0" prefWidth="200.0">
+         <top>
+            <AnchorPane prefHeight="125.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button layoutX="1170.0" layoutY="14.0" mnemonicParsing="false" onAction="#mainpage" prefHeight="51.0" prefWidth="348.0" style="-fx-background-color: #F4F4F4;" styleClass="white-form" stylesheets="@hhhh.css">
+                     <graphic>
+                        <ImageView fitHeight="43.0" fitWidth="230.0" pickOnBounds="true" preserveRatio="true" styleClass="white-form">
+                           <image>
+                              <Image url="@../../../Images/Screenshot%202025-01-04%20162459.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button layoutX="62.0" layoutY="12.0" mnemonicParsing="false" onAction="#sabadpageProfile" prefHeight="55.0" prefWidth="70.0" styleClass="white-form" stylesheets="@hhhh.css">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/photo_2025-01-03_12-39-34.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </top>
+         <right>
+            <AnchorPane prefHeight="560.0" prefWidth="594.0" BorderPane.alignment="CENTER">
+               <children>
+                  <AnchorPane fx:id="WalletProfile" layoutX="211.0" layoutY="109.0" prefHeight="200.0" prefWidth="314.0" styleClass="wallet" stylesheets="@styles.css">
+                     <children>
+                        <Label fx:id="CreditProfile" alignment="CENTER" layoutX="96.0" layoutY="86.0" prefHeight="22.0" prefWidth="143.0">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Text layoutX="252.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="اعتبار: " />
+                        <ImageView fitHeight="103.0" fitWidth="97.0" layoutX="14.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../images/1486441-نماد-کیف-پول-در-سبک-تخت-مرسوم-مد-روز-و-جدا-شده-در-پس-زمینه-خاکستری-نماد-کیف-پول-برای-طراحی-وب-سایت-آرم-برنامه-رابط-کاربر-تصویر-برداری-EPS10.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="211.0" layoutY="389.0" prefHeight="200.0" prefWidth="314.0" styleClass="wallet" stylesheets="@styles.css">
+                     <children>
+                        <Label fx:id="cardnumberProfile" alignment="CENTER" layoutX="67.0" layoutY="129.0" prefHeight="20.0" prefWidth="194.0" />
+                        <ImageView fitHeight="117.0" fitWidth="200.0" layoutX="64.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </AnchorPane>
+               </children></AnchorPane>
+         </right>
+         <left>
+            <AnchorPane prefHeight="654.0" prefWidth="181.0" BorderPane.alignment="CENTER" />
+         </left>
+         <center>
+            <AnchorPane prefHeight="600.0" prefWidth="508.0" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox fx:id="vbox_profile" layoutY="1.0" prefHeight="652.0" prefWidth="586.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="180.0" styleClass="wallet" stylesheets="@styles.css" text="نام">
+                           <VBox.margin>
+                              <Insets left="30.0" right="80.0" top="15.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="txtName" prefHeight="40.0" prefWidth="508.0" stylesheets="@styles.css">
+                           <VBox.margin>
+                              <Insets left="30.0" right="80.0" top="15.0" />
+                           </VBox.margin>
+                           <styleClass>
+                              <String fx:value="text-field1" />
+                              <String fx:value="password" />
+                           </styleClass>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="180.0" styleClass="wallet" stylesheets="@styles.css" text="نام کاربری">
+                           <VBox.margin>
+                              <Insets bottom="15.0" left="30.0" right="80.0" top="15.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="txtUsername" prefHeight="30.0" prefWidth="521.0" stylesheets="@styles.css">
+                           <VBox.margin>
+                              <Insets left="30.0" right="80.0" />
+                           </VBox.margin>
+                           <styleClass>
+                              <String fx:value="password" />
+                              <String fx:value="text-field1" />
+                           </styleClass>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="180.0" styleClass="wallet" stylesheets="@styles.css" text="ایمیل:">
+                           <VBox.margin>
+                              <Insets bottom="15.0" left="30.0" right="80.0" top="15.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="txtEmail" prefHeight="30.0" prefWidth="520.0" stylesheets="@styles.css">
+                           <VBox.margin>
+                              <Insets left="30.0" right="80.0" />
+                           </VBox.margin>
+                           <styleClass>
+                              <String fx:value="password" />
+                              <String fx:value="text-field1" />
+                           </styleClass>
+                        </Label>
+                        <Label alignment="CENTER" maxWidth="179.0" prefHeight="26.0" prefWidth="180.0" styleClass="wallet" stylesheets="@styles.css" text="پست کد :">
+                           <VBox.margin>
+                              <Insets bottom="15.0" left="30.0" right="80.0" top="15.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="txtPostcode" prefHeight="30.0" prefWidth="520.0" stylesheets="@styles.css">
+                           <VBox.margin>
+                              <Insets bottom="15.0" left="30.0" right="80.0" top="15.0" />
+                           </VBox.margin>
+                           <styleClass>
+                              <String fx:value="password" />
+                              <String fx:value="text-field1" />
+                           </styleClass>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="180.0" styleClass="wallet" stylesheets="@styles.css" text="ادرس">
+                           <VBox.margin>
+                              <Insets left="30.0" right="80.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="txtAddress" prefHeight="50.0" prefWidth="520.0" stylesheets="@styles.css">
+                           <VBox.margin>
+                              <Insets bottom="15.0" left="30.0" right="80.0" top="15.0" />
+                           </VBox.margin>
+                           <styleClass>
+                              <String fx:value="password" />
+                              <String fx:value="text-field1" />
+                           </styleClass>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="vbox_changepass" layoutX="70.0" layoutY="-12.0" prefHeight="654.0" prefWidth="531.0" visible="false">
+                     <children>
+                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <VBox.margin>
+                              <Insets bottom="20.0" left="250.0" right="250.0" top="30.0" />
+                           </VBox.margin>
+                           <image>
+                              <Image url="@../../../Images/photo_2025-01-03_12-39-34.png" />
+                           </image>
+                        </ImageView>
+                        <TextField fx:id="txt_oldpassword" prefHeight="30.0" promptText="رمز قدیمی" stylesheets="@hhhh.css">
+                           <VBox.margin>
+                              <Insets bottom="25.0" left="50.0" right="50.0" top="20.0" />
+                           </VBox.margin>
+                           <styleClass>
+                              <String fx:value="text-field1" />
+                              <String fx:value="password" />
+                           </styleClass>
+                        </TextField>
+                        <TextField fx:id="txt_coldpassword" prefHeight="30.0" promptText="رمز قدیمی" stylesheets="@hhhh.css">
+                           <VBox.margin>
+                              <Insets bottom="25.0" left="50.0" right="50.0" top="25.0" />
+                           </VBox.margin>
+                           <styleClass>
+                              <String fx:value="text-field1" />
+                              <String fx:value="password" />
+                           </styleClass>
+                        </TextField>
+                        <TextField fx:id="txt_newpassword" prefHeight="30.0" prefWidth="535.0" promptText="New Password" stylesheets="@hhhh.css" visible="false">
+                           <VBox.margin>
+                              <Insets bottom="25.0" left="50.0" right="50.0" top="25.0" />
+                           </VBox.margin>
+                           <styleClass>
+                              <String fx:value="password" />
+                              <String fx:value="text-field1" />
+                           </styleClass>
+                        </TextField>
+                        <TextField fx:id="txt_cnewpassword" promptText="New Password" stylesheets="@hhhh.css" visible="false">
+                           <VBox.margin>
+                              <Insets bottom="25.0" left="50.0" right="50.0" top="25.0" />
+                           </VBox.margin>
+                           <styleClass>
+                              <String fx:value="password" />
+                              <String fx:value="text-field1" />
+                           </styleClass>
+                        </TextField>
+                        <Button mnemonicParsing="false" onAction="#backchangeToprofile" prefHeight="31.0" prefWidth="53.0" styleClass="white-form" stylesheets="@hhhh.css">
+                           <VBox.margin>
+                              <Insets bottom="25.0" left="50.0" right="50.0" top="25.0" />
+                           </VBox.margin>
+                           <graphic>
+                              <ImageView fitHeight="29.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../Images/return-icon-png-21.jpg" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Label fx:id="label_resilt_change" alignment="CENTER" prefHeight="30.0" prefWidth="475.0">
+                           <VBox.margin>
+                              <Insets left="50.0" right="50.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Button mnemonicParsing="false" onAction="#Changepass3" prefHeight="40.0" prefWidth="153.0" styleClass="login-btn2" stylesheets="@hhhh.css" text="تغییر رمز">
+                           <VBox.margin>
+                              <Insets bottom="25.0" left="200.0" right="200.0" top="35.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="vbox_changeuser1" layoutX="80.0" layoutY="-2.0" prefHeight="654.0" prefWidth="531.0" visible="false">
+                     <children>
+                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <VBox.margin>
+                              <Insets bottom="20.0" left="250.0" right="250.0" top="30.0" />
+                           </VBox.margin>
+                           <image>
+                              <Image url="@../../../Images/photo_2025-01-03_12-39-34.png" />
+                           </image>
+                        </ImageView>
+                        <TextField fx:id="txt_oldusername1" prefHeight="30.0" promptText="نام کاربری قدیمی" stylesheets="@hhhh.css">
+                           <VBox.margin>
+                              <Insets bottom="25.0" left="50.0" right="50.0" top="20.0" />
+                           </VBox.margin>
+                           <styleClass>
+                              <String fx:value="text-field1" />
+                              <String fx:value="password" />
+                           </styleClass>
+                        </TextField>
+                        <TextField fx:id="txt_newusername1" prefHeight="30.0" prefWidth="535.0" promptText="نام کاربری جدید" stylesheets="@hhhh.css" visible="false">
+                           <VBox.margin>
+                              <Insets bottom="25.0" left="50.0" right="50.0" top="25.0" />
+                           </VBox.margin>
+                           <styleClass>
+                              <String fx:value="password" />
+                              <String fx:value="text-field1" />
+                           </styleClass>
+                        </TextField>
+                        <Button mnemonicParsing="false" onAction="#backchangeToprofile" prefHeight="31.0" prefWidth="53.0" styleClass="white-form" stylesheets="@hhhh.css">
+                           <VBox.margin>
+                              <Insets bottom="25.0" left="50.0" right="50.0" top="25.0" />
+                           </VBox.margin>
+                           <graphic>
+                              <ImageView fitHeight="29.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../Images/return-icon-png-21.jpg" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Label fx:id="label_resilt_change1" alignment="CENTER" prefHeight="30.0" prefWidth="475.0">
+                           <VBox.margin>
+                              <Insets left="50.0" right="50.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Button fx:id="buttonChange" mnemonicParsing="false" onAction="#Changeuser1" prefHeight="40.0" prefWidth="153.0" styleClass="login-btn2" stylesheets="@hhhh.css" text="تغییر نام کاربری">
+                           <VBox.margin>
+                              <Insets bottom="25.0" left="200.0" right="200.0" top="35.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                  </VBox>
+                  <VBox layoutX="631.0" layoutY="51.0" prefHeight="480.0" prefWidth="140.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#Changepass2" prefHeight="30.0" prefWidth="160.0" styleClass="wallet" stylesheets="@styles.css" text="تغییر رمز">
+                           <VBox.margin>
+                              <Insets bottom="15.0" top="15.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button layoutX="10.0" layoutY="30.0" mnemonicParsing="false" onAction="#changeName1" prefHeight="30.0" prefWidth="160.0" styleClass="wallet" stylesheets="@styles.css" text="تغییر نام">
+                           <VBox.margin>
+                              <Insets bottom="15.0" top="15.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button layoutX="10.0" layoutY="100.0" mnemonicParsing="false" onAction="#changeUser1" prefHeight="30.0" prefWidth="160.0" styleClass="wallet" stylesheets="@styles.css" text="تغییر نام کاربری">
+                           <VBox.margin>
+                              <Insets bottom="15.0" top="15.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button layoutX="10.0" layoutY="240.0" mnemonicParsing="false" onAction="#changePostcode1" prefHeight="30.0" prefWidth="160.0" styleClass="wallet" stylesheets="@styles.css" text="تغییر نام پست کد">
+                           <VBox.margin>
+                              <Insets bottom="15.0" top="15.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button layoutX="10.0" layoutY="265.0" mnemonicParsing="false" onAction="#changeEmail1" prefHeight="30.0" prefWidth="160.0" styleClass="wallet" stylesheets="@styles.css" text="تغییر ایمیل">
+                           <VBox.margin>
+                              <Insets bottom="15.0" top="15.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button layoutX="10.0" layoutY="325.0" mnemonicParsing="false" onAction="#changeAddress1" prefHeight="30.0" prefWidth="160.0" styleClass="wallet" stylesheets="@styles.css" text="تغییر ادرس ">
+                           <VBox.margin>
+                              <Insets bottom="15.0" top="15.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button layoutX="10.0" layoutY="385.0" mnemonicParsing="false" onAction="#logOutProfile" prefHeight="30.0" prefWidth="160.0" styleClass="wallet" stylesheets="@styles.css" text="خروج">
+                           <VBox.margin>
+                              <Insets bottom="15.0" top="15.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                  </VBox>
+               </children></AnchorPane>
+         </center>
+      </BorderPane>
+   </children>
+</StackPane>
