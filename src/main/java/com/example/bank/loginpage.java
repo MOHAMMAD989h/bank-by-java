@@ -750,7 +750,7 @@ public class loginpage{
                         "VALUES(?,?,?,?,?,?,?,?,?,?)";
                 connect = DataBase1.connectDB();
 
-                LocalDate now = LocalDate.now(ZoneId.of("Asia/Tehran"));
+                /*LocalDate now = LocalDate.now(ZoneId.of("Asia/Tehran"));
                 int year = now.getYear();
                 int month = now.getMonthValue();
                 int day = now.getDayOfMonth();
@@ -782,7 +782,7 @@ public class loginpage{
 
                 String BigNumberString = "504412" + randomBigInt.toString() ;
 
-                int cvv2 = random.nextInt(100,1000);
+                int cvv2 = random.nextInt(100,1000);*/
 
                 assert connect != null;
                 prepare = connect.prepareStatement(regData);
@@ -792,10 +792,6 @@ public class loginpage{
                 prepare.setString(4, su_nationcode.getText());
                 prepare.setString(5, su_address.getText());
                 prepare.setString(6, su_emailsign1.getText());
-                prepare.setString(7,BigNumberString.trim());
-                prepare.setString(8, "0");
-                prepare.setString(9, String.valueOf(cvv2));
-                prepare.setString(10, yyMM);
                 int rowsAffected = prepare.executeUpdate();
                 System.out.println("Rows inserted: " + rowsAffected);
 

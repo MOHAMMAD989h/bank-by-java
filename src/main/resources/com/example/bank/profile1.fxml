@@ -75,7 +75,21 @@
                <children>
                   <VBox fx:id="vbox_profile" layoutY="1.0" prefHeight="652.0" prefWidth="586.0">
                      <children>
-                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="180.0" styleClass="wallet" stylesheets="@styles.css" text="نام">
+                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="180.0" styleClass="wallet" stylesheets="@styles.css" text="نام کاربری">
+                           <VBox.margin>
+                              <Insets left="30.0" top="15.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="txtUsername" prefHeight="30.0" prefWidth="521.0" stylesheets="@styles.css">
+                           <styleClass>
+                              <String fx:value="password" />
+                              <String fx:value="text-field1" />
+                           </styleClass>
+                           <VBox.margin>
+                              <Insets left="30.0" right="80.0" top="15.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="180.0" styleClass="wallet" stylesheets="@styles.css" text="شماره:">
                            <VBox.margin>
                               <Insets left="30.0" right="80.0" top="15.0" />
                            </VBox.margin>
@@ -87,20 +101,6 @@
                            <styleClass>
                               <String fx:value="text-field1" />
                               <String fx:value="password" />
-                           </styleClass>
-                        </Label>
-                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="180.0" styleClass="wallet" stylesheets="@styles.css" text="نام کاربری">
-                           <VBox.margin>
-                              <Insets bottom="15.0" left="30.0" right="80.0" top="15.0" />
-                           </VBox.margin>
-                        </Label>
-                        <Label fx:id="txtUsername" prefHeight="30.0" prefWidth="521.0" stylesheets="@styles.css">
-                           <VBox.margin>
-                              <Insets left="30.0" right="80.0" />
-                           </VBox.margin>
-                           <styleClass>
-                              <String fx:value="password" />
-                              <String fx:value="text-field1" />
                            </styleClass>
                         </Label>
                         <Label alignment="CENTER" prefHeight="30.0" prefWidth="180.0" styleClass="wallet" stylesheets="@styles.css" text="ایمیل:">
@@ -117,7 +117,7 @@
                               <String fx:value="text-field1" />
                            </styleClass>
                         </Label>
-                        <Label alignment="CENTER" maxWidth="179.0" prefHeight="26.0" prefWidth="180.0" styleClass="wallet" stylesheets="@styles.css" text="پست کد :">
+                        <Label alignment="CENTER" maxWidth="179.0" prefHeight="26.0" prefWidth="180.0" styleClass="wallet" stylesheets="@styles.css" text="کد ملی :">
                            <VBox.margin>
                               <Insets bottom="15.0" left="30.0" right="80.0" top="15.0" />
                            </VBox.margin>
