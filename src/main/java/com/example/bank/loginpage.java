@@ -746,8 +746,8 @@ public class loginpage{
         else {
             try {
 
-                regData = "INSERT INTO employee (name ,username ,password ,postcode ,address ,email,IDcard,credit,cvv2,engeza) " +
-                        "VALUES(?,?,?,?,?,?,?,?,?,?)";
+                regData = "INSERT INTO employee (name ,username ,password ,postcode ,address ,email) " +
+                        "VALUES(?,?,?,?,?,?,?)";
                 connect = DataBase1.connectDB();
 
                 /*LocalDate now = LocalDate.now(ZoneId.of("Asia/Tehran"));
