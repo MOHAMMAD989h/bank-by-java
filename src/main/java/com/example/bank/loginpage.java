@@ -154,6 +154,8 @@ public class loginpage{
     @FXML
     public ResultSet result;
 
+    @FXML
+    private AnchorPane openAccountProfile;
 
     @FXML
     private AnchorPane side_forgotemail;
@@ -211,7 +213,9 @@ public class loginpage{
 
     @FXML
     public void initialize() {
-        System.out.println("FXML components initialized.");
+        openAccountProfile.setOnMouseClicked(event -> {
+
+        });
     }
     @FXML
     public ComboBox<String> com1;
@@ -1314,17 +1318,18 @@ public class loginpage{
     public class why1 implements Initializable {
         @FXML
         public ComboBox<String> com1;
-        ObservableList<String> list = FXCollections.observableArrayList("لپ تاپ ها","تبلت ها", "لوازم جانبی");
+        ObservableList<String> list = FXCollections.observableArrayList("لپ تاپ ها", "تبلت ها", "لوازم جانبی");
 
         @Override
         public void initialize(URL location, ResourceBundle resources) {
             com1.setItems(list);
             com1.setOnAction(this::handleComboBoxAction);
         }
+
         public void handleComboBoxAction(ActionEvent event) {
             String selectedOption = com1.getValue();
-            if("لپ تاپ ها".equals(selectedOption)){
-                openNewWindow("lap.fxml","لپتاپ ها",event);
+            if ("لپ تاپ ها".equals(selectedOption)) {
+                openNewWindow("lap.fxml", "لپتاپ ها", event);
             }
             if ("لوازم جانبی".equals(selectedOption)) {
                 openNewWindow("janebi.fxml", "لوازم جانبی", event);
@@ -1333,6 +1338,7 @@ public class loginpage{
                 openNewWindow("tablet.fxml", "تبلت ها و لوازم جانبی", event);
             }
         }
+
         public void openNewWindow(String fxmlFile, String title, ActionEvent event) {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
@@ -1352,12 +1358,7 @@ public class loginpage{
                 e.printStackTrace();
             }
         }
-        
-
-
 
 
     }
-
-
 }
