@@ -29,24 +29,31 @@ public class gabz {
 
     @FXML
     private Label moneyGabz;
+    int payment = random.nextInt(10000,1000000);
 
     @FXML
     void gabzPayment(ActionEvent event) throws SQLException {
-        int payment = random.nextInt(100);
-        String pay = String.valueOf(payment)+"0000";
-        payment = Integer.parseInt(pay);
-        login.updateCredit(IDCard,-payment);
+        gabzTextfield.setVisible(false);
+        gabznumber.setVisible(false);
+        moneyGabz.setVisible(false);
+        gabznumber.setVisible(false);
+        int result =login.updateCredit(String.valueOf(IDCard),-payment);
+        if (result == -1) {
+            System.out.println("Not enough credit!");
+        } else {
+            System.out.println("Payment successful! New balance: " + result);
+        }
     }
 
     @FXML
     void gabznumber(ActionEvent event) {
         if(loginID){
-            if(gabzTextfield.getText().length() > 8){
-                gabzTextfield.setVisible(false);
-                gabznumber.setVisible(false);
-                moneyGabz.setVisible(true);
-                gabznumber.setVisible(true);
+            if(gabzTextfield.getText().matches("[0-9]{10}")){
+                moneyGabz.setText(String.valueOf(payment));
             }
+        }
+        else{
+            moneyGabz.setText("first open account");
         }
     }
 }

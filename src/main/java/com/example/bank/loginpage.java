@@ -30,6 +30,8 @@ import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.StringTokenizer;
 import javafx.scene.control.Label;
+import org.w3c.dom.events.MouseEvent;
+
 import java.util.Properties;
 import javax.mail.*;
 import javax.mail.internet.*;
@@ -209,13 +211,10 @@ public class loginpage{
 
     Random random = new Random();
 
-    public static Integer IDCard;
+    public static BigInteger IDCard;
 
     @FXML
     public void initialize() {
-        openAccountProfile.setOnMouseClicked(event -> {
-
-        });
     }
     @FXML
     public ComboBox<String> com1;
@@ -562,18 +561,16 @@ public class loginpage{
                     controller.txtEmail.setText(result.getString("email"));
                     controller.txtPostcode.setText(result.getString("postcode"));
                     controller.txtAddress.setText(result.getString("address"));
-                    cardnumberProfile.setText(String.valueOf(cardNumber));
-                    CreditProfile.setText(String.valueOf(cardNumber));
-                    IDCard= Integer.valueOf(result.getString("IDCard"));
+                    IDCard= BigInteger.valueOf(Long.parseLong(result.getString("IDCard")));
                     username=result.getString("username");resi_name=result.getString("name");
                     resi_email=result.getString("email");resi_postcode=result.getString("postcode");resi_address=result.getString("address");
 
 
 
-                    FXMLLoader loader1 = new FXMLLoader(getClass().getResource("/com/example/site/sabad.fxml"));
+                    /*FXMLLoader loader1 = new FXMLLoader(getClass().getResource("/com/example/site/sabad.fxml"));
                     URL url = getClass().getResource("/com/example/site/sabad.fxml");
                     System.out.println("FXML URL: " + url);
-                    Parent root = loader1.load();
+                    Parent root = loader1.load();*/
                     /*sabad sabadController = loader1.getController();
                     System.out.println(sabadController);
                     System.out.println(loader1);
@@ -593,7 +590,7 @@ public class loginpage{
                 e.printStackTrace();
                 System.out.println("Error: " + e.getMessage());
             }
-            File Sefareshat=new File("Sefareshat.txt");
+            /*File Sefareshat=new File("Sefareshat.txt");
             String username1 = username; // مقدار مورد مقایسه
             String username2 = "."+username;
             File buyer = new File("buyer.txt");
@@ -681,7 +678,7 @@ public class loginpage{
 
             } catch (IOException e) {
                 e.printStackTrace();
-            }
+            }*/
         }
     }
     String regData;
@@ -750,11 +747,11 @@ public class loginpage{
         else {
             try {
 
-                regData = "INSERT INTO employee (name ,username ,password ,postcode ,address ,email) " +
-                        "VALUES(?,?,?,?,?,?,?)";
+                regData = "INSERT INTO employee (name ,username ,password ,postcode ,address ,email,IDCard,credit,cvv2,engeza) " +
+                        "VALUES(?,?,?,?,?,?,?,?,?,?)";
                 connect = DataBase1.connectDB();
 
-                /*LocalDate now = LocalDate.now(ZoneId.of("Asia/Tehran"));
+                LocalDate now = LocalDate.now(ZoneId.of("Asia/Tehran"));
                 int year = now.getYear();
                 int month = now.getMonthValue();
                 int day = now.getDayOfMonth();
@@ -786,7 +783,7 @@ public class loginpage{
 
                 String BigNumberString = "504412" + randomBigInt.toString() ;
 
-                int cvv2 = random.nextInt(100,1000);*/
+                int cvv2 = random.nextInt(100,1000);
 
                 assert connect != null;
                 prepare = connect.prepareStatement(regData);
@@ -796,6 +793,10 @@ public class loginpage{
                 prepare.setString(4, su_nationcode.getText());
                 prepare.setString(5, su_address.getText());
                 prepare.setString(6, su_emailsign1.getText());
+                prepare.setString(7,BigNumberString);
+                prepare.setString(8, "0");
+                prepare.setString(9, String.valueOf(cvv2));
+                prepare.setString(10, yyMM);
                 int rowsAffected = prepare.executeUpdate();
                 System.out.println("Rows inserted: " + rowsAffected);
 
@@ -830,7 +831,8 @@ public class loginpage{
         }
     }
     //اگر منفی باشد کم می کند و اگر + باشد اضافه می کند
-    public int updateCredit(int IDCard, int budget) throws SQLException {
+    public int updateCredit(String IDCard,int budget) throws SQLException {
+        System.out.println("open update credit");
         String selectCredit = "SELECT credit FROM employee WHERE IDCard = ?";
         String updateCredit = "UPDATE employee SET credit = credit + ? WHERE IDCard = ?";
         String updateCreditDeduct = "UPDATE employee SET credit = credit - ? WHERE IDCard = ?";  // برای کم کردن اعتبار
@@ -847,20 +849,18 @@ public class loginpage{
 
             if (budget < 0) {
                 if (Math.abs(budget) > currentCredit) {
-                    return -1;
+                    return -1;  // اگر موجودی کافی نباشد
                 }
                 prepare = connect.prepareStatement(updateCreditDeduct);
-            }
-            else {
+            } else {
                 prepare = connect.prepareStatement(updateCredit);
             }
 
-            prepare = connect.prepareStatement(updateCredit);
-            prepare.setString(1, String.valueOf(budget));
-            prepare.setString(2, String.valueOf(IDCard));
+            prepare.setInt(1, Math.abs(budget));
+            prepare.setString(2, IDCard);
             prepare.executeUpdate();
 
-            return currentCredit - budget;
+            return currentCredit-budget;
         }
 
         return -1;

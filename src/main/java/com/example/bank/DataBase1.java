@@ -9,9 +9,9 @@ public class DataBase1 {
     public static Connection connectDB() {
         Connection connect = null;
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             System.out.println("Driver Loaded Successfully!");
-            connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/bank", "root", "");
+            connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/bank?serverTimezone=UTC", "root", "");
             return connect;
 
         } catch (SQLException e) {
