@@ -130,3 +130,13 @@
     -fx-text-fill: #fff;
     -fx-font-size: 14px;
 }
+.parallelogram {
+    -fx-background-color: #9a9997;  /* رنگ زمینه */
+    -fx-shape: "M 0 0 L 100 0 L 100 50 L 3.5 50 Z";  /* متوازی‌الاضلاع با شیب بسیار کم */
+}
+.parallelogram2 {
+    -fx-background-color: linear-gradient(to bottom right , #4d4d4d, #808080 ,#b3b3b3 , #c0c0c0   );
+    -fx-shape: "M 0 0 L 100 6 L 100 100 L 0 100 Z"; /* متوازی‌الأضلاع با شیب بالا در هر دو ضلع */
+}
+
+
