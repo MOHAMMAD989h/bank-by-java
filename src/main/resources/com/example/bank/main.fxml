@@ -71,8 +71,8 @@
                            <children>
                               <Button onAction="#handleServiceOption1" styleClass="sub-option-button" text="انتقال وجه" GridPane.columnIndex="0" GridPane.rowIndex="0" />
                               <Button onAction="#handleServiceOption" styleClass="sub-option-button" text="مدیریت مالی" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-                              <Button onAction="#handleServiceOption3" styleClass="sub-option-button" text="شارژ سیمکارت" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                              <Button styleClass="sub-option-button" text="شارژ حساب" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Button onAction="#handleServiceOption" styleClass="sub-option-button" text="شارژ سیمکارت" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                              <Button onAction="#handleServiceOption" styleClass="sub-option-button" text="شارژ حساب" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                               <Button onAction="#handleServiceOption" styleClass="sub-option-button" text="دعوت از دوستان" GridPane.columnIndex="0" GridPane.rowIndex="2" />
                               <Button onAction="#handleServiceOption2" styleClass="sub-option-button" text="پرداخت قبوض" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                            </children>

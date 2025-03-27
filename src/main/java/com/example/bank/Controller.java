@@ -55,15 +55,15 @@ public class Controller {
         timer.start();
 
         // استفاده از Platform.runLater برای اطمینان از تنظیم Scene
-        Platform.runLater(() -> {
+        /*Platform.runLater(() -> {
             bindImageSizeToWindow();
-        });
+        });*/
 
         // تنظیم رویدادهای موس برای گرید پین‌ها
         setupGridPaneHoverBehavior();
     }
 
-    private void bindImageSizeToWindow() {
+    /*private void bindImageSizeToWindow() {
         // بررسی null نبودن Scene و Window
         if (backgroundImage.getScene() != null && backgroundImage.getScene().getWindow() != null) {
             Stage stage = (Stage) backgroundImage.getScene().getWindow();
@@ -75,7 +75,7 @@ public class Controller {
         } else {
             System.err.println("Scene یا Window هنوز تنظیم نشده است.");
         }
-    }
+    }*/
 
     private void updateTime() {
         LocalDateTime now = LocalDateTime.now();

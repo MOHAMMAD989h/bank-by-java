@@ -88,7 +88,7 @@
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets></PasswordField>
-            <Label layoutX="40.0" layoutY="52.0" prefHeight="36.0" prefWidth="151.0" styleClass="head-label" stylesheets="@hhhh.css" text="ساخت حساب" textFill="#125980">
+            <Label layoutX="40.0" layoutY="52.0" prefHeight="36.0" prefWidth="151.0" styleClass="head-label" stylesheets="@hhhh.css" text="ثبت نام" textFill="#125980">
               <font>
                 <Font size="20.0" />
               </font>
@@ -96,7 +96,7 @@
                         <Insets />
                      </opaqueInsets>
             </Label>
-            <Button fx:id="su_signupBtn" layoutX="40.0" layoutY="458.0" mnemonicParsing="false" onAction="#SignupBtn" prefHeight="30.0" prefWidth="220.0" styleClass="wallet" stylesheets="@styles.css" text="ساختن حساب">
+            <Button fx:id="su_signupBtn" layoutX="40.0" layoutY="458.0" mnemonicParsing="false" onAction="#SignupBtn" prefHeight="30.0" prefWidth="220.0" styleClass="wallet" stylesheets="@styles.css" text="ثبت نام">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets></Button>
@@ -246,7 +246,7 @@
                   </Button>
           </children>
             </AnchorPane>
-        <AnchorPane fx:id="side_form" layoutY="-0.8" prefHeight="540.0" prefWidth="300.0">
+        <AnchorPane fx:id="side_form" layoutY="-0.8" prefHeight="540.0" prefWidth="300.0" visible="false">
           <children>
             <Label layoutX="91.0" layoutY="334.0" prefHeight="36.0" prefWidth="143.0" text="ساختن حساب">
               <font>
