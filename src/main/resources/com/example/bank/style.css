@@ -8,6 +8,10 @@
 .icon {
     -fx-font-size: 50px;
 }
+.panee {
+    -fx-background-color: #4d4d4d;
+    -fx-shape: "M 0 0 Q 25 150 0 290 Q 25 315 50 290 Q 25 150 50 0 Z";
+}
 
 .head-label{
     -fx-border-color:#d3005f ;
@@ -164,7 +168,10 @@
 
 /* تغییر رنگ متن تب‌های غیرفعال */
 .tab-pane .tab-label {
-    -fx-text-fill: #000000; /* رنگ متن تب‌های غیرفعال */
+-fx-background-color: #4d4d4d;
+-fx-shape: "M 0 15 Q 10 0 20 15 L 20 318 Q 10 333 0 318 Z                                       M 50 15 Q 40 0 30 15 L 30 318 Q 40 333 50 318 Z";
+-fx-padding: 15;
+    /*-fx-text-fill: #000000;  رنگ متن تب‌های غیرفعال */
 }
 .scroll-bar2 > .viewport{
     -fx-background-color: transparent;
