@@ -177,7 +177,7 @@
                            </image>
                         </ImageView>
                      </graphic></Button>
-                  <Button fx:id="uploadButton" layoutX="100.0" layoutY="440.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="95.0" styleClass="wallet" stylesheets="@styles.css" text="ارسال عکس">
+                  <Button fx:id="uploadButton" layoutX="100.0" layoutY="440.0" mnemonicParsing="false" onAction="#uploadButton" prefHeight="24.0" prefWidth="95.0" styleClass="wallet" stylesheets="@styles.css" text="ارسال عکس">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>

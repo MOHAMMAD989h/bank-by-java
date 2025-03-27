@@ -225,33 +225,7 @@ public class loginpage{
     Image imageuser;
 
     @FXML
-    public void initialize() {
-        uploadButton.setOnAction(event -> {
-            FileChooser fileChooser = new FileChooser();
-            fileChooser.setTitle("انتخاب یک عکس");
-            fileChooser.getExtensionFilters().addAll(
-                    new FileChooser.ExtensionFilter("تصاویر", "*.png", "*.jpg", "*.jpeg", "*.gif"));
-
-            Stage stage = (Stage) uploadButton.getScene().getWindow();
-            selectedImageFile = fileChooser.showOpenDialog(stage);
-
-            if (selectedImageFile != null) {
-                issendphoto = false;
-                try {
-                    FileInputStream fis = new FileInputStream(selectedImageFile);
-                    imageuser = new Image(fis);
-                    fis.close();
-                    System.out.println("عکس انتخاب شده: " + selectedImageFile.getAbsolutePath());
-                } catch (FileNotFoundException e) {
-                    System.err.println("فایل پیدا نشد: " + e.getMessage());
-                } catch (IOException e) {
-                    System.err.println("خطا در خواندن فایل: " + e.getMessage());
-                }
-            } else {
-                System.out.println("کاربر هیچ عکسی انتخاب نکرد.");
-            }
-        });
-    }
+    public void initialize() {}
     @FXML
     public ComboBox<String> com1;
     ObservableList<String> list = FXCollections.observableArrayList("لپ تاپ ها","تبلت ها و لوازم جانبی", "لوازم جانبی");
@@ -597,8 +571,8 @@ public class loginpage{
                     controller.txtEmail.setText(result.getString("email"));
                     controller.txtPostcode.setText(result.getString("nationcode"));
                     controller.txtAddress.setText(result.getString("address"));
-                    //Image image = new Image(result.getString("imageData"));
-                    //profileImage.setImage(image);
+                    Image image = new Image(result.getString("imageData"));
+                    profileImage.setImage(image);
                     username=result.getString("username");resi_name=result.getString("name");
                     resi_email=result.getString("email");resi_postcode=result.getString("postcode");resi_address=result.getString("address");
 
@@ -799,7 +773,6 @@ public class loginpage{
                 prepare.setString(5, su_nationcode.getText());
                 prepare.setString(6, su_address.getText());
                 prepare.setString(7, Arrays.toString(imageData));
-                profileImage.setImage(imageuser);
                 int rowsAffected = prepare.executeUpdate();
 
                 alert = new Alert(Alert.AlertType.INFORMATION);
@@ -1319,6 +1292,32 @@ public class loginpage{
 
     public void openAccount(ActionEvent event) {
         openNewWindow("account.fxml","openAurusecount",event);
+    }
+
+    public void uploadButton(ActionEvent actionEvent) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("انتخاب یک عکس");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("تصاویر", "*.png", "*.jpg", "*.jpeg", "*.gif"));
+
+        Stage stage = (Stage) uploadButton.getScene().getWindow();
+        selectedImageFile = fileChooser.showOpenDialog(stage);
+
+        if (selectedImageFile != null) {
+            issendphoto = false;
+            try {
+                FileInputStream fis = new FileInputStream(selectedImageFile);
+                imageuser = new Image(fis);
+                fis.close();
+                System.out.println("عکس انتخاب شده: " + selectedImageFile.getAbsolutePath());
+            } catch (FileNotFoundException e) {
+                System.err.println("فایل پیدا نشد: " + e.getMessage());
+            } catch (IOException e) {
+                System.err.println("خطا در خواندن فایل: " + e.getMessage());
+            }
+        } else {
+            System.out.println("کاربر هیچ عکسی انتخاب نکرد.");
+        }
     }
 
 
