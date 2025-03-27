@@ -566,12 +566,15 @@ public class loginpage{
                     loginID = true;
 
                     loginpage controller = loader.getController();
-                    controller.txtName.setText(result.getString("username"));
-                    controller.txtUsername.setText(result.getString("numberphone"));
+                    controller.txtName.setText(result.getString("numberphone"));
+                    controller.txtUsername.setText(result.getString("username"));
                     controller.txtEmail.setText(result.getString("email"));
                     controller.txtPostcode.setText(result.getString("nationcode"));
                     controller.txtAddress.setText(result.getString("address"));
-                    Image image = new Image(result.getString("imageData"));
+                    Blob imageblob = result.getBlob("imageData");
+                    System.out.println(imageblob);
+                    InputStream binaryStream = imageblob.getBinaryStream();
+                    Image image = new Image(binaryStream);
                     profileImage.setImage(image);
                     username=result.getString("username");resi_name=result.getString("name");
                     resi_email=result.getString("email");resi_postcode=result.getString("postcode");resi_address=result.getString("address");
@@ -806,7 +809,7 @@ public class loginpage{
         }
     }
     //اگر منفی باشد کم می کند و اگر + باشد اضافه می کند
-    public int updateCredit(String IDCard,int budget) throws SQLException {
+    /*public int updateCredit(String IDCard,int budget) throws SQLException {
         System.out.println("open update credit");
         String selectCredit = "SELECT credit FROM employee WHERE IDCard = ?";
         String updateCredit = "UPDATE employee SET credit = credit + ? WHERE IDCard = ?";
@@ -839,7 +842,7 @@ public class loginpage{
         }
 
         return -1;
-    }
+    }*/
 
 
     public void mainpage(ActionEvent event) {
@@ -1298,7 +1301,7 @@ public class loginpage{
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("انتخاب یک عکس");
         fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("تصاویر", "*.png", "*.jpg", "*.jpeg", "*.gif"));
+                new FileChooser.ExtensionFilter("تصاویر", "*.png", "*.jpeg", "*.gif"));
 
         Stage stage = (Stage) uploadButton.getScene().getWindow();
         selectedImageFile = fileChooser.showOpenDialog(stage);

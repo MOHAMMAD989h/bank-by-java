@@ -70,7 +70,7 @@ public class gabz {
 
     @FXML
     void gabzPayment(ActionEvent event) throws SQLException, IOException {
-        gabzTextfield.setVisible(false);
+        /*gabzTextfield.setVisible(false);
         gabznumber.setVisible(false);
         moneyGabz.setVisible(false);
         gabznumber.setVisible(false);
@@ -78,7 +78,7 @@ public class gabz {
         login.openNewWindow("main.fxml", "Home", event);
         if (result == -1) {System.out.println("Not enough credit!");}
         else {System.out.println("Payment successful! New balance: " + result);}
-
+*/
 
     }
 

@@ -83,7 +83,7 @@ public class Internet {
 
         pane.getChildren().addAll(PriceLbl,Chargebtn);
 
-        Chargebtn.setOnAction((ActionEvent e) -> {
+        /*Chargebtn.setOnAction((ActionEvent e) -> {
             int result = 0;
             try {
                 result = login.updateCredit(String.valueOf(IDCard), -Integer.parseInt(productcharge.getPrice()));
@@ -93,7 +93,7 @@ public class Internet {
             login.openNewWindow("main.fxml", "Home", e);
             if (result == -1) {System.out.println("Not enough credit!");}
             else {System.out.println("Payment successful! New balance: " + result);}
-        });
+        });*/
 
         return pane;
     }
