@@ -16,22 +16,28 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class account implements Initializable {
+
     @FXML
-    private MenuItem sakht;
+    private AnchorPane changer;
     @FXML
-    private MenuItem Introduce;
+    private AnchorPane maker;
     @FXML
-    private AnchorPane side_form;
-    @FXML
-    private  MenuButton MenuButton;
+    private AnchorPane introducer;
     @FXML
     public ComboBox<String> com1;
     @FXML
     private ScrollPane myScrollPane;
     ObservableList<String> list = FXCollections.observableArrayList("بانک تجارت ","بانک رفاه", "بانک ملی","بانک دی");
+    @FXML
+    public ComboBox<String> com2;
+    @FXML
+    private ScrollPane myScrollPane1;
+    ObservableList<String> list1 = FXCollections.observableArrayList("ساخت حساب","معرفی حساب");
 
     public void initialize(URL location, ResourceBundle resources) {
         com1.setItems(list);
+        com2.setItems(list1);
+        com2.setOnAction(this::switchForm);
         /*myScrollPane.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
             if (event.getCode() == KeyCode.UP || event.getCode() == KeyCode.DOWN) {
                 event.consume();
@@ -47,23 +53,26 @@ public class account implements Initializable {
 
     public void switchForm(ActionEvent event) {
         TranslateTransition slider = new TranslateTransition();
-        if (event.getSource() == sakht) {
-            slider.setNode(side_form);
-            slider.setToX(300);
+        String selectedOption = com2.getValue();
+        System.out.println("وارد متد شد");
+        if ("معرفی حساب".equals(selectedOption)) {System.out.println("معرفی حساب".equals(selectedOption));
+            slider.setNode(changer);
+            slider.setToX(580);
             slider.setDuration(Duration.seconds(.5));
-
             slider.setOnFinished((event1) -> {
-                MenuButton.setVisible(true);
+                maker.setVisible(false);
+                introducer.setVisible(true);
             });
 
             slider.play();
-        } else if (event.getSource() == Introduce) {
-            slider.setNode(side_form);
+        } else if ("ساخت حساب".equals(selectedOption)) {
+            slider.setNode(changer);
             slider.setToX(0);
             slider.setDuration(Duration.seconds(.5));
 
+
             slider.setOnFinished((event1) -> {
-                MenuButton.setVisible(true);
+                maker.setVisible(true);
             });
             slider.play();
         }
