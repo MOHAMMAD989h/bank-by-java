@@ -179,6 +179,7 @@ public class loginpage{
     private Label label_resilt_change;
     @FXML
     private VBox vbox_changepass;
+
     @FXML
     private Button uploadButton;
 
@@ -596,8 +597,8 @@ public class loginpage{
                     controller.txtEmail.setText(result.getString("email"));
                     controller.txtPostcode.setText(result.getString("nationcode"));
                     controller.txtAddress.setText(result.getString("address"));
-                    Image image = new Image(result.getString("imageData"));
-                    profileImage.setImage(image);
+                    //Image image = new Image(result.getString("imageData"));
+                    //profileImage.setImage(image);
                     username=result.getString("username");resi_name=result.getString("name");
                     resi_email=result.getString("email");resi_postcode=result.getString("postcode");resi_address=result.getString("address");
 
