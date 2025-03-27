@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="740.0" prefWidth="1535.0" style="-fx-background-color: #B5B5B3;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bank.Hesab">
+<children>
+    <AnchorPane prefHeight="877.0" prefWidth="1537.0">
+        <children>
+            <Pane layoutX="3.0" layoutY="2.0" prefHeight="42.0" prefWidth="1533.0" styleClass="parallelogram">
+                <stylesheets>
+                    <URL value="@motavazi.css" />
+                    <URL value="@styles.css" />
+                </stylesheets>
+               <children>
+                  <Label fx:id="messagelabel" alignment="CENTER" layoutX="614.0" layoutY="7.0" prefHeight="21.0" prefWidth="289.0" style="-fx-background-radius: 5; -fx-background-color: #1fa784;" styleClass="Button" stylesheets="@styles.css" text="اطلاعات با موفقیت کپی شد" textFill="WHITE" visible="false">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="1.0" layoutY="-1.0" prefHeight="741.0" prefWidth="59.0" styleClass="parallelogram2">
+                <stylesheets>
+                    <URL value="@motavazi.css" />
+                    <URL value="@styles.css" />
+                </stylesheets>
+            </Pane>
+            <HBox layoutX="60.0" layoutY="42.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="59.0" prefWidth="1476.0" style="-fx-background-color: #4d4d4d;" stylesheets="@styles.css">
+               <children>
+                  <Label fx:id="userlabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="RIGHT_TO_LEFT" prefHeight="36.0" prefWidth="491.0" style="-fx-background-color: #1fa784; -fx-background-radius: 15;" textFill="WHITE">
+                     <graphic>
+                        <Button contentDisplay="RIGHT" mnemonicParsing="false" onAction="#copyuser" prefHeight="37.0" prefWidth="129.0" styleClass="Button" stylesheets="@styles.css" text=": نام کاربری" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../images/Background.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="B Nazanin" size="18.0" />
+                     </font>
+                  </Label>
+                  <Pane prefHeight="59.0" prefWidth="25.0" />
+                  <Label fx:id="codelabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="RIGHT_TO_LEFT" prefHeight="36.0" prefWidth="491.0" style="-fx-background-color: #1fa784; -fx-background-radius: 15;" textFill="WHITE">
+                     <graphic>
+                        <Button contentDisplay="RIGHT" mnemonicParsing="false" onAction="#copycode" styleClass="Button" stylesheets="@styles.css" text=": کد ملی" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../images/Background.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="B Nazanin" size="18.0" />
+                     </font>
+                  </Label>
+                  <Pane prefHeight="59.0" prefWidth="25.0" />
+                  <Label fx:id="numlabel" alignment="CENTER_RIGHT" prefHeight="36.0" prefWidth="491.0" style="-fx-background-color: #1fa784; -fx-background-radius: 15;">
+                     <graphic>
+                        <Button contentDisplay="RIGHT" mnemonicParsing="false" onAction="#copynum" styleClass="Button" stylesheets="@styles.css" text="  : شماره موبایل" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../images/Background.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="44.0" style="-fx-background-color: transparrent;">
+                     <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../images/photo_2025-01-03_12-39-34.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+        </children>
+    </AnchorPane>
+</children>
+</StackPane>

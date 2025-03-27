@@ -138,5 +138,13 @@
     -fx-background-color: linear-gradient(to bottom right , #4d4d4d, #808080 ,#b3b3b3 , #c0c0c0   );
     -fx-shape: "M 0 0 L 100 6 L 100 100 L 0 100 Z"; /* متوازی‌الأضلاع با شیب بالا در هر دو ضلع */
 }
+.Button{
+    -fx-font-family: "B Nazanin";
+    -fx-font-size: 18;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-background-color: #c0c0c0;
+    -fx-background-radius: 15px;
+}
 
 
