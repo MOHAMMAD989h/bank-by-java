@@ -13,28 +13,28 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import java.io.*;
 import java.math.BigInteger;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.nio.file.Files;
+import java.sql.*;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.Random;
-import java.util.ResourceBundle;
-import java.util.StringTokenizer;
+import java.util.*;
+
 import javafx.scene.control.Label;
 import org.w3c.dom.events.MouseEvent;
 
-import java.util.Properties;
 import javax.mail.*;
 import javax.mail.internet.*;
+import javax.swing.*;
 
 
 public class loginpage{
@@ -179,6 +179,8 @@ public class loginpage{
     private Label label_resilt_change;
     @FXML
     private VBox vbox_changepass;
+    @FXML
+    private Button uploadButton;
 
     @FXML
     private VBox vbox_profile;
@@ -213,8 +215,41 @@ public class loginpage{
 
     public static BigInteger IDCard;
 
+    private File selectedImageFile;
+
+    private boolean issendphoto = true;
+
+    @FXML
+    private ImageView profileImage;
+    Image imageuser;
+
     @FXML
     public void initialize() {
+        uploadButton.setOnAction(event -> {
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("انتخاب یک عکس");
+            fileChooser.getExtensionFilters().addAll(
+                    new FileChooser.ExtensionFilter("تصاویر", "*.png", "*.jpg", "*.jpeg", "*.gif"));
+
+            Stage stage = (Stage) uploadButton.getScene().getWindow();
+            selectedImageFile = fileChooser.showOpenDialog(stage);
+
+            if (selectedImageFile != null) {
+                issendphoto = false;
+                try {
+                    FileInputStream fis = new FileInputStream(selectedImageFile);
+                    imageuser = new Image(fis);
+                    fis.close();
+                    System.out.println("عکس انتخاب شده: " + selectedImageFile.getAbsolutePath());
+                } catch (FileNotFoundException e) {
+                    System.err.println("فایل پیدا نشد: " + e.getMessage());
+                } catch (IOException e) {
+                    System.err.println("خطا در خواندن فایل: " + e.getMessage());
+                }
+            } else {
+                System.out.println("کاربر هیچ عکسی انتخاب نکرد.");
+            }
+        });
     }
     @FXML
     public ComboBox<String> com1;
@@ -556,12 +591,13 @@ public class loginpage{
                     loginID = true;
 
                     loginpage controller = loader.getController();
-                    controller.txtName.setText(result.getString("name"));
-                    controller.txtUsername.setText(result.getString("username"));
+                    controller.txtName.setText(result.getString("username"));
+                    controller.txtUsername.setText(result.getString("numberphone"));
                     controller.txtEmail.setText(result.getString("email"));
-                    controller.txtPostcode.setText(result.getString("postcode"));
+                    controller.txtPostcode.setText(result.getString("nationcode"));
                     controller.txtAddress.setText(result.getString("address"));
-                    IDCard= BigInteger.valueOf(Long.parseLong(result.getString("IDCard")));
+                    Image image = new Image(result.getString("imageData"));
+                    profileImage.setImage(image);
                     username=result.getString("username");resi_name=result.getString("name");
                     resi_email=result.getString("email");resi_postcode=result.getString("postcode");resi_address=result.getString("address");
 
@@ -686,8 +722,8 @@ public class loginpage{
 
     @FXML
     public void SignupBtn(ActionEvent event) {
-        if (su_address.getText().length() < 3 || su_number.getText().length() < 3 || su_username.getText().length() < 3  || su_password.getText().length() < 8
-                || !(su_password.getText().equals(su_cpassword.getText()))  ) {
+        if (su_address.getText().length() < 3 || su_number.getText().length() < 3 || su_username.getText().length() < 3  || su_password.getText().length() < 8 || su_nationcode.getText().length() < 3
+                || !(su_password.getText().equals(su_cpassword.getText())) || issendphoto ) {
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
@@ -747,58 +783,23 @@ public class loginpage{
         else {
             try {
 
-                regData = "INSERT INTO employee (name ,username ,password ,postcode ,address ,email,IDCard,credit,cvv2,engeza) " +
-                        "VALUES(?,?,?,?,?,?,?,?,?,?)";
+                regData = "INSERT INTO employee (username ,password,email,numberphone,nationcode,address,imageData) " +
+                        "VALUES(?,?,?,?,?,?,?)";
                 connect = DataBase1.connectDB();
 
-                LocalDate now = LocalDate.now(ZoneId.of("Asia/Tehran"));
-                int year = now.getYear();
-                int month = now.getMonthValue();
-                int day = now.getDayOfMonth();
-
-                // تبدیل میلادی به شمسی (تخمینی)
-                int persianYear = year - ((month < 3) || (month == 3 && day < 21) ? 622 : 621);
-
-                int persianMonth;
-                if ((month == 3 && day >= 21) || month == 4 || (month == 5 && day <= 21)) persianMonth = 1;  // فروردین
-                else if ((month == 5 && day >= 22) || month == 6 || (month == 7 && day <= 22)) persianMonth = 2;  // اردیبهشت
-                else if ((month == 7 && day >= 23) || month == 8 || (month == 9 && day <= 22)) persianMonth = 3;  // خرداد
-                else if ((month == 9 && day >= 23) || month == 10 || (month == 11 && day <= 22)) persianMonth = 4;  // تیر
-                else if ((month == 11 && day >= 23) || month == 12 || (month == 1 && day <= 19)) persianMonth = 5;  // مرداد
-                else if ((month == 1 && day >= 20) || month == 2 || (month == 3 && day <= 20)) persianMonth = 6;  // شهریور
-                else if ((month == 3 && day >= 21) || month == 4 || (month == 5 && day <= 21)) persianMonth = 7;  // مهر
-                else if ((month == 5 && day >= 22) || month == 6 || (month == 7 && day <= 22)) persianMonth = 8;  // آبان
-                else if ((month == 7 && day >= 23) || month == 8 || (month == 9 && day <= 22)) persianMonth = 9;  // آذر
-                else if ((month == 9 && day >= 23) || month == 10 || (month == 11 && day <= 22)) persianMonth = 10; // دی
-                else if ((month == 11 && day >= 23) || month == 12 || (month == 1 && day <= 19)) persianMonth = 11; // بهمن
-                else persianMonth = 12; // اسفند
-
-                String yearPer = String.format("%02d", persianYear % 100);
-
-                String monthPer = String.format("%02d", persianMonth);
-
-                String yyMM = String.valueOf(yearPer + monthPer);
-
-                BigInteger randomBigInt = new BigInteger(33, random).add(new BigInteger("1000000000"));
-
-                String BigNumberString = "504412" + randomBigInt.toString() ;
-
-                int cvv2 = random.nextInt(100,1000);
+                byte[] imageData = Files.readAllBytes(selectedImageFile.toPath());
 
                 assert connect != null;
                 prepare = connect.prepareStatement(regData);
-                prepare.setString(1, su_number.getText());
-                prepare.setString(2, su_username.getText());
-                prepare.setString(3, su_password.getText());
-                prepare.setString(4, su_nationcode.getText());
-                prepare.setString(5, su_address.getText());
-                prepare.setString(6, su_emailsign1.getText());
-                prepare.setString(7,BigNumberString);
-                prepare.setString(8, "0");
-                prepare.setString(9, String.valueOf(cvv2));
-                prepare.setString(10, yyMM);
+                prepare.setString(1, su_username.getText());
+                prepare.setString(2, su_password.getText());
+                prepare.setString(3, su_emailsign1.getText());
+                prepare.setString(4, su_number.getText());
+                prepare.setString(5, su_nationcode.getText());
+                prepare.setString(6, su_address.getText());
+                prepare.setString(7, Arrays.toString(imageData));
+                profileImage.setImage(imageuser);
                 int rowsAffected = prepare.executeUpdate();
-                System.out.println("Rows inserted: " + rowsAffected);
 
                 alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Information");
@@ -1314,6 +1315,7 @@ public class loginpage{
         side_loginCodeEmail.setVisible(false);
     }
 
+
     public void openAccount(ActionEvent event) {
         openNewWindow("account.fxml","openAurusecount",event);
     }
@@ -1342,7 +1344,6 @@ public class loginpage{
                 openNewWindow("tablet.fxml", "تبلت ها و لوازم جانبی", event);
             }
         }
-
         public void openNewWindow(String fxmlFile, String title, ActionEvent event) {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
