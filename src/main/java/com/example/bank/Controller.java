@@ -232,4 +232,7 @@ public class Controller {
     }
 
     public void handleServiceOption2(ActionEvent actionEvent) {openNewWindow("gabz.fxml","gabz",actionEvent);}
+
+    public void handleServiceOption3(ActionEvent actionEvent) {openNewWindow("charge.fxml","charge",actionEvent);
+    }
 }
