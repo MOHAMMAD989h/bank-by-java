@@ -39,6 +39,8 @@ import org.w3c.dom.ls.LSOutput;
 import javax.mail.*;
 import javax.mail.internet.*;
 
+import static com.example.bank.loginpage.username;
+
 public class profile {
 
 
@@ -116,9 +118,10 @@ public class profile {
     public void initialize() {
         try {
             connect = DataBase1.connectDB();
-            String data = "SELECT bank FROM cards WHERE username = ?";
+            String data = "SELECT * FROM cards WHERE username = ?";
 
             prepare = connect.prepareStatement(data);
+            prepare.setString(1,username);
             result = prepare.executeQuery();
             while (result.next()) {
                 String number = result.getString("numbercard");
@@ -343,7 +346,7 @@ public class profile {
                 label_resilt_change.setText( name11+" must be at least 3 characters");
             }
             else{
-                loginpage.username =name11;
+                username =name11;
                 String selectdata = "SELECT * FROM employee WHERE "+name11+"= ?";
 
                 connect = DataBase1.connectDB();
@@ -420,24 +423,24 @@ public class profile {
         AnchorPane pane = null;
 
         pane = new AnchorPane();
-        pane.setPrefHeight(200);
+        pane.setPrefHeight(100);
         pane.setStyle("-fx-background-color: #f0f0f0; -fx-border-color: #ccc; -fx-padding: 10px;");
         vboxshowcard.setStyle("-fx-max-height: Infinity;-fx-pref-height: USE_COMPUTED_SIZE;");
 
         //numbercard
-        Label nameLabel = new Label( product.getName());
+        Label nameLabel = new Label( "شماره کارت : "+product.getName());
         nameLabel.setLayoutX(50);
         nameLabel.setLayoutY(20);
 
         //cvv2
-        Label soodLabel = new Label( product.getSood());
-        soodLabel.setLayoutX(150);
+        Label soodLabel = new Label( " cvv2 :"+product.getSood());
+        soodLabel.setLayoutX(250);
         soodLabel.setLayoutY(20);
 
         //time
-        Label timeLabel = new Label( product.getTime());
-        timeLabel.setLayoutX(250);
-        timeLabel.setLayoutY(20);
+        Label timeLabel = new Label( "انقضا : "+product.getTime());
+        timeLabel.setLayoutX(50);
+        timeLabel.setLayoutY(50);
 
         pane.getChildren().addAll(nameLabel,soodLabel,timeLabel);
 
