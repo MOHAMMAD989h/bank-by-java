@@ -1,16 +1,18 @@
 package com.example.bank;
 
+import javafx.animation.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.animation.AnimationTimer;
-import javafx.animation.PauseTransition;
+import javafx.scene.text.Text;
 import javafx.util.Duration;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -22,6 +24,32 @@ import javafx.application.Platform;
 import javafx.scene.input.MouseEvent;
 
 public class Controller {
+    @FXML
+    private AnchorPane ancktext;
+    @FXML
+    private Text bank1;
+    @FXML
+    private Text bank2;
+    @FXML
+    private Text bank3;
+    @FXML
+    private Text bank4;
+    @FXML
+    private Text bank5;
+    @FXML
+    private Text bank6;
+    @FXML
+    private Text bank7;
+    @FXML
+    private Text bank8;
+    @FXML
+    private Text bank9;
+    @FXML
+    private Text bank10;
+    @FXML
+    private Text bank11;
+    @FXML
+    private Text bank12;
 
     @FXML
     private GridPane servicesOptions;
@@ -37,6 +65,9 @@ public class Controller {
 
     @FXML
     private Label timeLabel;
+
+    @FXML
+    private GridPane bank;
 
     @FXML
     private ImageView backgroundImage;
@@ -113,6 +144,27 @@ public class Controller {
         contactOptions.setOnMouseExited(event -> {
             startPauseTransition(() -> contactOptions.setVisible(false));
         });
+        bank.setOnMouseEntered(event -> {
+            bank.setVisible(true);
+            cancelPauseTransition();
+        });
+
+        bank.setOnMouseExited(event -> {
+            startPauseTransition(() -> bank.setVisible(false));
+            startPauseTransition(() -> ancktext.setVisible(false));
+            startPauseTransition(() -> bank1.setVisible(false));
+            startPauseTransition(() -> bank2.setVisible(false));
+            startPauseTransition(() -> bank3.setVisible(false));
+            startPauseTransition(() -> bank4.setVisible(false));
+            startPauseTransition(() -> bank5.setVisible(false));
+            startPauseTransition(() -> bank6.setVisible(false));
+            startPauseTransition(() -> bank7.setVisible(false));
+            startPauseTransition(() -> bank8.setVisible(false));
+            startPauseTransition(() -> bank9.setVisible(false));
+            startPauseTransition(() -> bank10.setVisible(false));
+            startPauseTransition(() -> bank11.setVisible(false));
+            startPauseTransition(() -> bank12.setVisible(false));
+        });
     }
 
     private void startPauseTransition(Runnable action) {
@@ -128,10 +180,19 @@ public class Controller {
     }
 
     @FXML
+    public void showbankoption (){
+        bank.setVisible(true);
+        servicesOptions.setVisible(false);
+        loanOptions.setVisible(false);
+        contactOptions.setVisible(false);
+    }
+
+    @FXML
     public void showServicesOptions() {
         servicesOptions.setVisible(true);
         loanOptions.setVisible(false);
         contactOptions.setVisible(false);
+        bank.setVisible(false);
     }
 
     @FXML
@@ -144,6 +205,7 @@ public class Controller {
         loanOptions.setVisible(true);
         servicesOptions.setVisible(false);
         contactOptions.setVisible(false);
+        bank.setVisible(false);
     }
 
     @FXML
@@ -156,6 +218,7 @@ public class Controller {
         contactOptions.setVisible(true);
         servicesOptions.setVisible(false);
         loanOptions.setVisible(false);
+        bank.setVisible(false);
     }
 
     @FXML
@@ -163,8 +226,15 @@ public class Controller {
         startPauseTransition(() -> contactOptions.setVisible(false));
     }
 
+
+    @FXML
+    public void hidebankoption(){
+        startPauseTransition(() -> bank.setVisible(false));
+    }
+
     @FXML
     public void hideAllOptions() {
+        bank.setVisible(false);
         servicesOptions.setVisible(false);
         loanOptions.setVisible(false);
         contactOptions.setVisible(false);
@@ -192,6 +262,11 @@ public class Controller {
     }
 
     @FXML
+    public void keepbankoption(){
+        bank.setVisible(true);
+    }
+
+    @FXML
     public void keepLoanOptionsVisible() {
         loanOptions.setVisible(true);
     }
@@ -199,6 +274,198 @@ public class Controller {
     @FXML
     public void keepContactOptionsVisible() {
         contactOptions.setVisible(true);
+    }
+    @FXML
+    private void bank1(){
+        ancktext.setVisible(true);
+        bank1.setVisible(true);
+        bank11.setVisible(false);
+        bank2.setVisible(false);
+        bank3.setVisible(false);
+        bank4.setVisible(false);
+        bank5.setVisible(false);
+        bank6.setVisible(false);
+        bank7.setVisible(false);
+        bank8.setVisible(false);
+        bank9.setVisible(false);
+        bank10.setVisible(false);
+        bank12.setVisible(false);
+    }
+    @FXML
+    private void bank2(){
+        ancktext.setVisible(true);
+        bank2.setVisible(true);
+        bank1.setVisible(false);
+        bank11.setVisible(false);
+        bank3.setVisible(false);
+        bank4.setVisible(false);
+        bank5.setVisible(false);
+        bank6.setVisible(false);
+        bank7.setVisible(false);
+        bank8.setVisible(false);
+        bank9.setVisible(false);
+        bank10.setVisible(false);
+        bank12.setVisible(false);
+    }
+    @FXML
+    private void bank3(){
+        ancktext.setVisible(true);
+        bank3.setVisible(true);
+        bank1.setVisible(false);
+        bank2.setVisible(false);
+        bank11.setVisible(false);
+        bank4.setVisible(false);
+        bank5.setVisible(false);
+        bank6.setVisible(false);
+        bank7.setVisible(false);
+        bank8.setVisible(false);
+        bank9.setVisible(false);
+        bank10.setVisible(false);
+        bank12.setVisible(false);
+    }
+    @FXML
+    private void bank4(){
+        ancktext.setVisible(true);
+        bank4.setVisible(true);
+        bank1.setVisible(false);
+        bank2.setVisible(false);
+        bank3.setVisible(false);
+        bank11.setVisible(false);
+        bank5.setVisible(false);
+        bank6.setVisible(false);
+        bank7.setVisible(false);
+        bank8.setVisible(false);
+        bank9.setVisible(false);
+        bank10.setVisible(false);
+        bank12.setVisible(false);
+    }
+    @FXML
+    private void bank5(){
+        ancktext.setVisible(true);
+        bank5.setVisible(true);
+        bank1.setVisible(false);
+        bank2.setVisible(false);
+        bank3.setVisible(false);
+        bank4.setVisible(false);
+        bank11.setVisible(false);
+        bank6.setVisible(false);
+        bank7.setVisible(false);
+        bank8.setVisible(false);
+        bank9.setVisible(false);
+        bank10.setVisible(false);
+        bank12.setVisible(false);
+    }
+    @FXML
+    private void bank6(){
+        ancktext.setVisible(true);
+        bank6.setVisible(true);
+        bank1.setVisible(false);
+        bank2.setVisible(false);
+        bank3.setVisible(false);
+        bank4.setVisible(false);
+        bank5.setVisible(false);
+        bank11.setVisible(false);
+        bank7.setVisible(false);
+        bank8.setVisible(false);
+        bank9.setVisible(false);
+        bank10.setVisible(false);
+        bank12.setVisible(false);
+    }
+    @FXML
+    private void bank7(){
+        ancktext.setVisible(true);
+        bank7.setVisible(true);
+        bank1.setVisible(false);
+        bank2.setVisible(false);
+        bank3.setVisible(false);
+        bank4.setVisible(false);
+        bank5.setVisible(false);
+        bank6.setVisible(false);
+        bank11.setVisible(false);
+        bank8.setVisible(false);
+        bank9.setVisible(false);
+        bank10.setVisible(false);
+        bank12.setVisible(false);
+    }
+    @FXML
+    private void bank8(){
+        ancktext.setVisible(true);
+        bank8.setVisible(true);
+        bank1.setVisible(false);
+        bank2.setVisible(false);
+        bank3.setVisible(false);
+        bank4.setVisible(false);
+        bank5.setVisible(false);
+        bank6.setVisible(false);
+        bank7.setVisible(false);
+        bank11.setVisible(false);
+        bank9.setVisible(false);
+        bank10.setVisible(false);
+        bank12.setVisible(false);
+    }
+    @FXML
+    private void bank9(){
+        ancktext.setVisible(true);
+        bank9.setVisible(true);
+        bank1.setVisible(false);
+        bank2.setVisible(false);
+        bank3.setVisible(false);
+        bank4.setVisible(false);
+        bank5.setVisible(false);
+        bank6.setVisible(false);
+        bank7.setVisible(false);
+        bank8.setVisible(false);
+        bank11.setVisible(false);
+        bank10.setVisible(false);
+        bank12.setVisible(false);
+    }
+    @FXML
+    private void bank10(){
+        ancktext.setVisible(true);
+        bank10.setVisible(true);
+        bank1.setVisible(false);
+        bank2.setVisible(false);
+        bank3.setVisible(false);
+        bank4.setVisible(false);
+        bank5.setVisible(false);
+        bank6.setVisible(false);
+        bank7.setVisible(false);
+        bank8.setVisible(false);
+        bank9.setVisible(false);
+        bank11.setVisible(false);
+        bank12.setVisible(false);
+    }
+    @FXML
+    private void bank11(){
+        ancktext.setVisible(true);
+        bank11.setVisible(true);
+        bank1.setVisible(false);
+        bank2.setVisible(false);
+        bank3.setVisible(false);
+        bank4.setVisible(false);
+        bank5.setVisible(false);
+        bank6.setVisible(false);
+        bank7.setVisible(false);
+        bank8.setVisible(false);
+        bank9.setVisible(false);
+        bank10.setVisible(false);
+        bank12.setVisible(false);
+    }
+    @FXML
+    private void bank12(){
+        ancktext.setVisible(true);
+        bank12.setVisible(true);
+        bank1.setVisible(false);
+        bank2.setVisible(false);
+        bank3.setVisible(false);
+        bank4.setVisible(false);
+        bank5.setVisible(false);
+        bank6.setVisible(false);
+        bank7.setVisible(false);
+        bank8.setVisible(false);
+        bank9.setVisible(false);
+        bank10.setVisible(false);
+        bank11.setVisible(false);
     }
     public void openNewWindow(String fxmlFile, String title, ActionEvent event) {
         try {

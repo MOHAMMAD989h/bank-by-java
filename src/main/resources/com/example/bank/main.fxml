@@ -16,10 +16,12 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="739.0" prefWidth="1535.0" style="-fx-background-color: #B5B5B3;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bank.Controller">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="790.0" prefWidth="1535.0" style="-fx-background-color: #B5B5B3;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bank.Controller">
    <children>
-      <AnchorPane prefHeight="46.0" prefWidth="1312.0">
+      <AnchorPane prefHeight="790.0" prefWidth="1535.0">
          <children>
             <Pane layoutX="3.0" layoutY="2.0" prefHeight="42.0" prefWidth="1533.0" styleClass="parallelogram">
                <stylesheets>
@@ -27,7 +29,7 @@
                   <URL value="@styles.css" />
                </stylesheets>
             </Pane>
-            <Pane layoutX="1.0" layoutY="-1.0" prefHeight="739.0" prefWidth="59.0" styleClass="parallelogram2">
+            <Pane layoutX="1.0" layoutY="-1.0" prefHeight="790.0" prefWidth="59.0" styleClass="parallelogram2">
                <stylesheets>
                   <URL value="@motavazi.css" />
                   <URL value="@styles.css" />
@@ -50,7 +52,7 @@
                   <Region HBox.hgrow="ALWAYS" />
                   <Button fx:id="servicesButton" onMouseEntered="#showServicesOptions" onMouseExited="#hideServicesOptions" prefHeight="30.0" prefWidth="115.0" styleClass="menu-button" text="خدمات" />
                   <Button fx:id="loanButton" onMouseEntered="#showLoanOptions" onMouseExited="#hideLoanOptions" prefHeight="30.0" prefWidth="81.0" styleClass="menu-button" text="وام" textFill="GOLD" />
-                  <Button onMouseEntered="#hideAllOptions" prefHeight="30.0" prefWidth="162.0" styleClass="menu-button" text="باز کردن حساب" textFill="GOLD" />
+                  <Button onMouseEntered="#showbankoption" onMouseExited="#hidebankoption" prefHeight="30.0" prefWidth="162.0" styleClass="menu-button" text="معرفی بانک ها" textFill="GOLD" />
                   <Button fx:id="contactButton" onMouseEntered="#showContactOptions" onMouseExited="#hideContactOptions" prefHeight="30.0" prefWidth="125.0" styleClass="menu-button" text="ارتباط با ما" />
                   <Button onMouseEntered="#hideAllOptions" prefHeight="30.0" prefWidth="152.0" styleClass="menu-button" text="سوالات متداول" />
                   <ImageView fitHeight="59.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
@@ -60,15 +62,15 @@
                   </ImageView>
                </children>
             </HBox>
-            <ScrollPane layoutX="60.0" layoutY="102.0" prefHeight="634.0" prefWidth="1474.0">
+            <ScrollPane layoutX="60.0" layoutY="102.0" prefHeight="689.0" prefWidth="1474.0">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="631.0" prefWidth="1454.0">
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="687.0" prefWidth="1454.0">
                      <children>
                         <VBox prefHeight="357.0" prefWidth="1470.0">
                            <children>
                               <StackPane fx:id="optionsStackPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="356.0" prefWidth="1471.0" stylesheets="@styles.css">
                                  <children>
-                                    <GridPane fx:id="servicesOptions" alignment="CENTER" hgap="30" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#keepServicesOptionsVisible" onMouseExited="#hideServicesOptions" prefHeight="356.0" prefWidth="226.0" styleClass="options-pane" vgap="30" StackPane.alignment="CENTER_RIGHT">
+                                    <GridPane fx:id="servicesOptions" alignment="CENTER" hgap="30" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#keepServicesOptionsVisible" onMouseExited="#hideServicesOptions" prefHeight="356.0" prefWidth="226.0" styleClass="options-pane" vgap="30" visible="false" StackPane.alignment="CENTER_RIGHT">
                                        <padding>
                                           <Insets bottom="10" left="10" right="10" top="10" />
                                        </padding>
@@ -90,7 +92,7 @@
                                           <Button onAction="#handleServiceOption2" styleClass="sub-option-button" text="پرداخت قبوض" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                        </children>
                                     </GridPane>
-                                    <GridPane fx:id="loanOptions" alignment="CENTER" hgap="30" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#keepLoanOptionsVisible" onMouseExited="#hideLoanOptions" prefHeight="355.0" prefWidth="229.0" styleClass="options-pane" vgap="30" StackPane.alignment="CENTER_RIGHT">
+                                    <GridPane fx:id="loanOptions" alignment="CENTER" hgap="30" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#keepLoanOptionsVisible" onMouseExited="#hideLoanOptions" prefHeight="355.0" prefWidth="229.0" styleClass="options-pane" vgap="30" visible="false" StackPane.alignment="CENTER_RIGHT">
                                        <padding>
                                           <Insets bottom="10" left="10" right="10" top="10" />
                                        </padding>
@@ -110,7 +112,7 @@
                                           <Button onAction="#handleLoanOption" styleClass="sub-option-button" text="وام کمیته امداد" GridPane.columnIndex="2" GridPane.rowIndex="0" />
                                        </children>
                                     </GridPane>
-                                    <VBox fx:id="contactOptions" alignment="CENTER_RIGHT" spacing="15" styleClass="options-pane">
+                                    <VBox fx:id="contactOptions" alignment="CENTER_RIGHT" spacing="15" styleClass="options-pane" visible="false">
                                        <padding>
                                           <Insets bottom="10" left="10" right="10" top="10" />
                                        </padding>
@@ -123,12 +125,234 @@
                                  </children>
                               </StackPane>
                            </children></VBox>
-                        <Pane layoutX="-14.0" layoutY="356.0" prefHeight="22.0" prefWidth="1483.0" style="-fx-background-color: black;" />
-                        <VBox layoutY="378.0" prefHeight="255.0" prefWidth="1470.0" />
+                        <Pane layoutX="-14.0" layoutY="356.0" prefHeight="3.0" prefWidth="1483.0" style="-fx-background-color: black;" />
+                        <AnchorPane fx:id="ancktext" layoutX="6.0" layoutY="377.0" prefHeight="146.0" prefWidth="1454.0" styleClass="button4" stylesheets="@styles.css" visible="false">
+                           <children>
+                              <Text fx:id="bank1" fill="WHITE" layoutX="13.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="button5" text="بانک تجارت یکی از بانک‌های پیشرو در ارائه خدمات مالی و بانکی است که با رویکردی نوآورانه، راهکارهای متنوعی را برای مشتریان حقیقی و حقوقی فراهم می‌کند. این بانک با شبکه گسترده‌ای از شعب و خدمات دیجیتال، تجربه‌ای ایمن و کارآمد را در حوزه بانکداری ارائه می‌دهد. همکاری بانک تجارت با Aureous Bank زمینه‌ای برای توسعه راهکارهای مالی هوشمند و گسترش فرصت‌های اقتصادی برای مشتریان هر دو مجموعه فراهم کرده است." textAlignment="RIGHT" visible="false" wrappingWidth="1418.705062866211">
+                                 <font>
+                                    <Font name="B Nazanin Bold" size="36.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="bank2" fill="WHITE" layoutX="13.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="button5" text="بانک شهر یکی از بانک‌های معتبر و پیشرو در ارائه خدمات نوین بانکی است که با تمرکز بر توسعه شهری و حمایت از پروژه‌های زیربنایی، نقش مهمی در رشد اقتصادی ایفا می‌کند. این بانک با ارائه خدمات متنوع مالی، از بانکداری دیجیتال گرفته تا تسهیلات ویژه کسب‌وکارها، به مشتریان خود کمک می‌کند تا نیازهای مالی خود را به بهترین شکل مدیریت کنند. همکاری بانک شهر با Aureous Bank گامی موثر در جهت توسعه خدمات مالی پیشرفته و تسهیل تراکنش‌های بین‌بانکی برای مشتریان هر دو مجموعه است." textAlignment="RIGHT" visible="false" wrappingWidth="1418.705062866211">
+                                 <font>
+                                    <Font name="B Nazanin Bold" size="36.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="bank3" fill="WHITE" layoutX="13.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="button5" text="بانک سپه به‌عنوان نخستین بانک ایرانی، با سابقه‌ای بیش از 100 سال، یکی از معتبرترین و قدرتمندترین بانک‌های کشور به شمار می‌رود. این بانک با ارائه خدمات متنوع بانکی، از جمله تسهیلات، بانکداری دیجیتال و خدمات ارزی، نقش کلیدی در توسعه اقتصادی و حمایت از صنایع و کسب‌وکارها ایفا می‌کند. همکاری بانک سپه با Aureous Bank به مشتریان امکان بهره‌مندی از خدمات مالی گسترده‌تر و تسهیل تراکنش‌های بین‌بانکی را فراهم می‌آورد." textAlignment="RIGHT" visible="false" wrappingWidth="1418.705062866211">
+                                 <font>
+                                    <Font name="B Nazanin Bold" size="36.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="bank4" fill="WHITE" layoutX="13.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="button5" text="بانک سامان یکی از بانک‌های خصوصی معتبر ایران است که با بهره‌گیری از فناوری‌های نوین و ارائه خدمات بانکی متنوع، به مشتریان خود تجربه‌ای آسان و امن از بانکداری دیجیتال ارائه می‌دهد. این بانک با تمرکز بر نوآوری و رشد اقتصادی کشور، خدماتی همچون تسهیلات خرد و کلان، حساب‌های پس‌انداز و جاری، و خدمات ارزی را به مشتریان خود ارائه می‌کند. همکاری بانک سامان با Aureous Bank به مشتریان این امکان را می‌دهد تا از امکانات بیشتر و خدمات مالی راحت‌تر در سطح بین‌بانکی بهره‌مند شوند." textAlignment="RIGHT" visible="false" wrappingWidth="1418.705062866211">
+                                 <font>
+                                    <Font name="B Nazanin Bold" size="36.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="bank5" fill="WHITE" layoutX="13.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="button5" text="بانک رفاه کارگران یکی از بانک‌های معتبر دولتی ایران است که با هدف ارائه خدمات مالی به کارگران و اقشار مختلف جامعه تأسیس شده است. این بانک با ارائه خدمات متنوع شامل حساب‌های جاری و پس‌انداز، تسهیلات و وام‌های مختلف، خدمات الکترونیکی و بانکداری اینترنتی، نقش مهمی در تأمین نیازهای مالی افراد و کسب‌وکارهای کوچک و متوسط ایفا می‌کند. همکاری بانک رفاه کارگران با Aureous Bank فرصتی عالی برای مشتریان به وجود می‌آورد تا از خدمات و امکانات مالی جدید، سریع و امن در تعامل با این دو بانک بهره‌مند شوند." textAlignment="RIGHT" visible="false" wrappingWidth="1418.705062866211">
+                                 <font>
+                                    <Font name="B Nazanin Bold" size="36.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="bank6" fill="WHITE" layoutX="13.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="button5" text="بانک قرض‌الحسنه مهر ایران به‌عنوان نخستین بانک تخصصی قرض‌الحسنه در ایران، با هدف ارائه تسهیلات مالی بدون بهره و حمایت از اقشار مختلف جامعه فعالیت می‌کند. این بانک با بهره‌گیری از فناوری‌های نوین بانکی و ارائه خدمات دیجیتال، نقش مهمی در تسهیل دسترسی مشتریان به خدمات مالی ایفا می‌کند. همکاری بانک مهر ایران با Aureous Bank فرصتی بی‌نظیر برای ارائه راهکارهای مالی نوین و بهبود تجربه بانکی مشتریان فراهم می‌آورد." textAlignment="RIGHT" visible="false" wrappingWidth="1418.705062866211">
+                                 <font>
+                                    <Font name="B Nazanin Bold" size="36.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="bank7" fill="WHITE" layoutX="13.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="button5" text="بانک ملت یکی از بزرگ‌ترین و معتبرترین بانک‌های ایران است که با ارائه خدمات متنوع مالی و بانکی به مشتریان حقیقی و حقوقی، نقشی کلیدی در اقتصاد کشور ایفا می‌کند. این بانک با بهره‌گیری از فناوری‌های پیشرفته، خدمات دیجیتال بانکی و تسهیلات متنوع، رضایت مشتریان خود را در اولویت قرار داده است. همکاری بانک ملت با Aureous Bank زمینه‌ای برای توسعه راهکارهای نوین مالی و ارائه خدمات بین‌المللی بهتر به مشتریان فراهم می‌آورد." textAlignment="RIGHT" visible="false" wrappingWidth="1418.705062866211">
+                                 <font>
+                                    <Font name="B Nazanin Bold" size="36.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="bank8" fill="WHITE" layoutX="13.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="button5" text="بانک مسکن به عنوان یکی از بانک‌های تخصصی در حوزه تأمین مالی بخش مسکن و ساخت‌وساز، نقش مهمی در توسعه شهری و حمایت از پروژه‌های مسکونی ایفا می‌کند. این بانک با ارائه تسهیلات متنوع، از جمله وام‌های خرید و ساخت مسکن، به مشتریان خود کمک می‌کند تا راحت‌تر به خانه‌دار شدن دست یابند. همکاری بانک مسکن با Aureous Bank فرصت‌های جدیدی را در زمینه تأمین مالی و سرمایه‌گذاری در پروژه‌های مسکونی و عمرانی فراهم می‌کند." textAlignment="RIGHT" visible="false" wrappingWidth="1418.705062866211">
+                                 <font>
+                                    <Font name="B Nazanin Bold" size="36.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="bank9" fill="WHITE" layoutX="13.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="button5" text="بانک کشاورزی یکی از بانک‌های پیشرو در حمایت از بخش کشاورزی و توسعه روستایی است. این بانک با ارائه تسهیلات ویژه به کشاورزان، دامداران و فعالان حوزه صنایع غذایی، نقش کلیدی در رشد و پایداری اقتصادی این بخش دارد. همکاری بانک کشاورزی با Aureous Bank امکان ارائه خدمات مالی گسترده‌تر و ایجاد فرصت‌های سرمایه‌گذاری در پروژه‌های کشاورزی و توسعه پایدار را فراهم می‌آورد." textAlignment="RIGHT" visible="false" wrappingWidth="1418.705062866211">
+                                 <font>
+                                    <Font name="B Nazanin Bold" size="36.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="bank10" fill="WHITE" layoutX="13.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="button5" text="بانک دی یکی از بانک‌های خصوصی ایران است که با ارائه خدمات مالی نوین و متنوع به مشتریان حقیقی و حقوقی، نقش مهمی در توسعه اقتصادی کشور ایفا می‌کند. این بانک با تمرکز بر بانکداری دیجیتال، تسهیلات اعتباری، و سرمایه‌گذاری‌های کلان، توانسته است اعتماد مشتریان خود را جلب کند. همکاری بانک دی با Aureous Bank امکان تبادل تجربه‌های نوین بانکی و ارائه خدمات گسترده‌تر به مشتریان را فراهم می‌سازد." textAlignment="RIGHT" visible="false" wrappingWidth="1418.705062866211">
+                                 <font>
+                                    <Font name="B Nazanin Bold" size="36.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="bank11" fill="WHITE" layoutX="13.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="button5" text="بانک ملی ایران به‌عنوان یکی از بزرگ‌ترین و قدیمی‌ترین بانک‌های کشور، نقش کلیدی در نظام بانکی و اقتصادی ایران دارد. این بانک با ارائه طیف گسترده‌ای از خدمات مالی، از جمله بانکداری شرکتی، تسهیلات اعتباری، بانکداری دیجیتال و خدمات بین‌المللی، همواره در مسیر نوآوری و توسعه قرار دارد. همکاری بانک ملی ایران با Aureous Bank زمینه را برای ارائه خدمات مالی گسترده‌تر و بهره‌گیری از فناوری‌های نوین در صنعت بانکداری فراهم می‌کند." textAlignment="RIGHT" visible="false" wrappingWidth="1418.705062866211">
+                                 <font>
+                                    <Font name="B Nazanin Bold" size="36.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="bank12" fill="WHITE" layoutX="13.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="button5" text="بانک آینده یکی از بانک‌های پیشرو در ارائه خدمات نوین مالی و بانکی در ایران است. این بانک با تمرکز بر بانکداری دیجیتال، ارائه تسهیلات متنوع، سرمایه‌گذاری و مدیریت دارایی، توانسته جایگاه ویژه‌ای در نظام بانکی کشور کسب کند. همکاری بانک آینده با Aureous Bank به گسترش خدمات مالی، تسهیل مبادلات بین‌المللی و افزایش رفاه مشتریان از طریق راهکارهای نوآورانه کمک خواهد کرد." textAlignment="RIGHT" visible="false" wrappingWidth="1418.705062866211">
+                                 <font>
+                                    <Font name="B Nazanin Bold" size="36.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </AnchorPane>
                      </children>
                   </AnchorPane>
                </content>
             </ScrollPane>
+            <GridPane fx:id="bank" alignment="CENTER" layoutX="798.0" layoutY="102.0" onMouseEntered="#keepbankoption" onMouseExited="#hidebankoption" prefHeight="358.0" prefWidth="738.0" visible="false">
+              <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button mnemonicParsing="false" onMouseClicked="#bank1" prefHeight="84.0" prefWidth="46.0" styleClass="button3" stylesheets="@styles.css">
+                     <graphic>
+                        <ImageView fitHeight="71.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../images/tejarat.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <GridPane.margin>
+                        <Insets left="75.0" />
+                     </GridPane.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onMouseClicked="#bank2" prefHeight="82.0" prefWidth="21.0" styleClass="button3" stylesheets="@styles.css" GridPane.columnIndex="1">
+                     <graphic>
+                        <ImageView fitHeight="75.0" fitWidth="73.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../images/shahr.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <GridPane.margin>
+                        <Insets left="75.0" />
+                     </GridPane.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onMouseClicked="#bank3" prefHeight="82.0" prefWidth="67.0" styleClass="button3" stylesheets="@styles.css" GridPane.columnIndex="2">
+                     <graphic>
+                        <ImageView fitHeight="88.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../images/sepah.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <GridPane.margin>
+                        <Insets left="75.0" />
+                     </GridPane.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onMouseClicked="#bank4" prefHeight="84.0" prefWidth="70.0" styleClass="button3" stylesheets="@styles.css" GridPane.rowIndex="1">
+                     <graphic>
+                        <ImageView fitHeight="76.0" fitWidth="79.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../images/saman.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <GridPane.margin>
+                        <Insets left="75.0" />
+                     </GridPane.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onMouseClicked="#bank5" prefHeight="96.0" prefWidth="10.0" styleClass="button3" stylesheets="@styles.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <graphic>
+                        <ImageView fitHeight="89.0" fitWidth="88.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../images/refah.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <GridPane.margin>
+                        <Insets left="75.0" />
+                     </GridPane.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onMouseClicked="#bank6" prefHeight="90.0" prefWidth="21.0" styleClass="button3" stylesheets="@styles.css" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                     <graphic>
+                        <ImageView fitHeight="78.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../images/mehr.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <GridPane.margin>
+                        <Insets left="75.0" />
+                     </GridPane.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onMouseClicked="#bank7" prefHeight="86.0" prefWidth="43.0" styleClass="button3" stylesheets="@styles.css" GridPane.rowIndex="2">
+                     <graphic>
+                        <ImageView fitHeight="78.0" fitWidth="101.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../images/mellat.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <GridPane.margin>
+                        <Insets left="75.0" />
+                     </GridPane.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onMouseClicked="#bank8" prefHeight="86.0" prefWidth="56.0" styleClass="button3" stylesheets="@styles.css" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <graphic>
+                        <ImageView fitHeight="78.0" fitWidth="92.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../images/maskan.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <GridPane.margin>
+                        <Insets left="75.0" />
+                     </GridPane.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onMouseClicked="#bank9" prefHeight="83.0" prefWidth="37.0" styleClass="button3" stylesheets="@styles.css" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                     <graphic>
+                        <ImageView fitHeight="82.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../images/kesh.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <GridPane.margin>
+                        <Insets left="75.0" />
+                     </GridPane.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onMouseClicked="#bank10" prefHeight="90.0" prefWidth="29.0" styleClass="button3" stylesheets="@styles.css" GridPane.rowIndex="3">
+                     <graphic>
+                        <ImageView fitHeight="89.0" fitWidth="82.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../images/Day.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <GridPane.margin>
+                        <Insets left="75.0" />
+                     </GridPane.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onMouseClicked="#bank11" prefHeight="86.0" prefWidth="62.0" styleClass="button3" stylesheets="@styles.css" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <graphic>
+                        <ImageView fitHeight="78.0" fitWidth="86.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../images/melli.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <GridPane.margin>
+                        <Insets left="75.0" />
+                     </GridPane.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onMouseClicked="#bank12" prefHeight="83.0" prefWidth="5.0" styleClass="button3" stylesheets="@styles.css" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                     <graphic>
+                        <ImageView fitHeight="75.0" fitWidth="83.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../images/Ayande.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <GridPane.margin>
+                        <Insets left="75.0" />
+                     </GridPane.margin>
+                  </Button>
+               </children>
+            </GridPane>
          </children>
       </AnchorPane>
       <!-- عکس پس‌زمینه -->
