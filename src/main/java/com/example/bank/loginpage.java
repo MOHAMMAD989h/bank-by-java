@@ -31,6 +31,7 @@ import java.util.*;
 
 import javafx.scene.control.Label;
 import org.w3c.dom.events.MouseEvent;
+import org.w3c.dom.ls.LSOutput;
 
 import javax.mail.*;
 import javax.mail.internet.*;
@@ -222,6 +223,8 @@ public class loginpage{
 
     @FXML
     private ImageView profileImage;
+
+
     Image imageuser;
 
     @FXML
@@ -574,7 +577,9 @@ public class loginpage{
                     Blob imageblob = result.getBlob("imageData");
                     System.out.println(imageblob);
                     InputStream binaryStream = imageblob.getBinaryStream();
+                    System.out.println(binaryStream);
                     Image image = new Image(binaryStream);
+                    System.out.println(image);
                     profileImage.setImage(image);
                     username=result.getString("username");resi_name=result.getString("name");
                     resi_email=result.getString("email");resi_postcode=result.getString("postcode");resi_address=result.getString("address");
@@ -700,8 +705,8 @@ public class loginpage{
 
     @FXML
     public void SignupBtn(ActionEvent event) {
-        if (su_address.getText().length() < 3 || su_number.getText().length() < 3 || su_username.getText().length() < 3  || su_password.getText().length() < 8 || su_nationcode.getText().length() < 3
-                || !(su_password.getText().equals(su_cpassword.getText())) || issendphoto ) {
+        if (su_address.getText().length() < 3 || !su_number.getText().matches("[0-9]{11}") || su_username.getText().length() < 3  || su_password.getText().length() < 8 || !su_nationcode.getText().matches("[0-9]{10}")
+            || !su_emailsign1.getText().matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")    || !(su_password.getText().equals(su_cpassword.getText())) || issendphoto ) {
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);

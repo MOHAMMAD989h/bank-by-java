@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="634.0" prefWidth="858.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bank.account">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="790.0" prefWidth="1535.0" style="-fx-background-color: #1b1937;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bank.account">
    <children>
       <AnchorPane fx:id="side_form" prefHeight="634.0" prefWidth="962.0" styleClass="container" stylesheets="@hhhh.css">
          <children>
@@ -22,10 +22,22 @@
                <children>
                   <Button fx:id="si_loginbtn" layoutX="130.0" layoutY="531.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="220.0" styleClass="wallet" stylesheets="@styles.css" text="استعلام کارت " />
                   <Button layoutX="40.0" layoutY="425.0" mnemonicParsing="false" styleClass="white-form" stylesheets="@hhhh.css" />
-                  <Label fx:id="showName1" layoutX="40.0" layoutY="27.0" prefHeight="41.0" prefWidth="220.0" text="نام کاربر به صورت غیر قابل تغییر" />
-                  <Label fx:id="showPhoneNumber1" layoutX="40.0" layoutY="99.0" prefHeight="30.0" prefWidth="220.0" text="شماره غیرقابل تغییر" />
-                  <Label fx:id="showID1" layoutX="40.0" layoutY="68.0" prefHeight="30.0" prefWidth="220.0" text="کدملی غیرقابل تغییر" />
-                  <PasswordField fx:id="accountPassword1" layoutX="40.0" layoutY="394.0" prefHeight="39.0" prefWidth="156.0" promptText="رمز کارت" stylesheets="@styles.css">
+                  <Label fx:id="showName1" alignment="CENTER" layoutX="39.0" layoutY="65.0" prefHeight="42.0" prefWidth="250.0" stylesheets="@styles.css" text="نام کاربر به صورت غیر قابل تغییر">
+                     <styleClass>
+                        <String fx:value="password" />
+                        <String fx:value="text-field1" />
+                     </styleClass></Label>
+                  <Label fx:id="showPhoneNumber1" alignment="CENTER" layoutX="40.0" layoutY="170.0" prefHeight="40.0" prefWidth="250.0" stylesheets="@styles.css" text="شماره غیرقابل تغییر">
+                     <styleClass>
+                        <String fx:value="password" />
+                        <String fx:value="text-field1" />
+                     </styleClass></Label>
+                  <Label fx:id="showID1" alignment="CENTER" layoutX="40.0" layoutY="120.0" prefHeight="40.0" prefWidth="250.0" stylesheets="@styles.css" text="کدملی غیرقابل تغییر">
+                     <styleClass>
+                        <String fx:value="password" />
+                        <String fx:value="text-field1" />
+                     </styleClass></Label>
+                  <PasswordField fx:id="accountPassword1" layoutX="40.0" layoutY="394.0" prefHeight="39.0" prefWidth="156.0" promptText="رمز اول کارت" stylesheets="@styles.css">
                      <styleClass>
                         <String fx:value="text-field1" />
                         <String fx:value="password" />
@@ -34,7 +46,7 @@
                         <Insets />
                      </opaqueInsets>
                   </PasswordField>
-                  <TextField fx:id="imagePathGetter1" layoutX="40.0" layoutY="143.0" prefHeight="39.0" prefWidth="249.0" promptText="مسیر عکس لوگو اتوماتیک اینجا بیاد در صورت انتخاب " stylesheets="@styles.css">
+                  <TextField fx:id="imagePathGetter1" layoutX="40.0" layoutY="219.0" prefHeight="39.0" prefWidth="249.0" promptText="مسیر عکس لوگو اتوماتیک اینجا بیاد در صورت انتخاب " stylesheets="@styles.css">
                      <styleClass>
                         <String fx:value="text-field1" />
                         <String fx:value="password" />
@@ -43,8 +55,7 @@
                         <Insets />
                      </opaqueInsets>
                   </TextField>
-                  <ComboBox fx:id="com11" layoutX="40.0" layoutY="195.0" prefHeight="25.0" prefWidth="194.0" promptText="انتخاب نام بانک " />
-                  <TextField fx:id="cartNumGetter" alignment="CENTER" layoutX="40.0" layoutY="232.0" prefHeight="36.0" prefWidth="249.0" promptText="____  ____  ____  ____" stylesheets="@styles.css">
+                  <TextField fx:id="cartNumGetter" alignment="CENTER" layoutX="40.0" layoutY="321.0" prefHeight="36.0" prefWidth="249.0" promptText="____  ____  ____  ____" stylesheets="@styles.css">
                      <styleClass>
                         <String fx:value="text-field1" />
                         <String fx:value="password" />
@@ -55,24 +66,6 @@
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
-                  </TextField>
-                  <TextField fx:id="accountNumGetter" layoutX="40.0" layoutY="293.0" prefHeight="39.0" prefWidth="249.0" promptText="شماره حساب" stylesheets="@styles.css">
-                     <styleClass>
-                        <String fx:value="text-field1" />
-                        <String fx:value="password" />
-                     </styleClass>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </TextField>
-                  <TextField fx:id="shbaNUmGetter" layoutX="40.0" layoutY="344.0" prefHeight="39.0" prefWidth="249.0" promptText="شماره شبا" stylesheets="@styles.css">
-                     <styleClass>
-                        <String fx:value="text-field1" />
-                        <String fx:value="password" />
-                     </styleClass>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
                   </TextField>
                   <ImageView fx:id="logoShow1" fitHeight="142.0" fitWidth="144.0" layoutX="321.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true" />
                   <PasswordField fx:id="Cvv2Getter" layoutX="228.0" layoutY="394.0" prefHeight="39.0" prefWidth="113.0" promptText="Cvv2" stylesheets="@styles.css">
@@ -103,11 +96,12 @@
                      </opaqueInsets>
                   </PasswordField>
                   <Label layoutX="42.0" layoutY="438.0" prefHeight="25.0" prefWidth="58.0" text="انقضاء" />
+                  <ComboBox fx:id="com1" layoutX="67.0" layoutY="281.0" prefHeight="25.0" prefWidth="194.0" promptText="انتخاب نام بانک " />
                </children>
             </AnchorPane>
             <AnchorPane fx:id="maker" layoutX="308.0" prefHeight="613.0" prefWidth="495.0" styleClass="white-form" stylesheets="@hhhh.css">
                <children>
-                  <PasswordField fx:id="accountPassword" layoutX="23.0" layoutY="403.0" prefHeight="30.0" prefWidth="220.0" promptText="رمز کارت" stylesheets="@styles.css">
+                  <PasswordField fx:id="accountPassword" layoutX="23.0" layoutY="338.0" prefHeight="30.0" prefWidth="220.0" promptText="رمز کارت" stylesheets="@styles.css">
                      <styleClass>
                         <String fx:value="text-field1" />
                         <String fx:value="password" />
@@ -116,12 +110,12 @@
                         <Insets />
                      </opaqueInsets>
                   </PasswordField>
-                  <Button fx:id="pardakht" layoutX="150.0" layoutY="514.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="220.0" styleClass="wallet" stylesheets="@styles.css" text="ساختن حساب">
+                  <Button layoutX="150.0" layoutY="514.0" mnemonicParsing="false" onAction="#createbankaccount" prefHeight="39.0" prefWidth="220.0" styleClass="wallet" stylesheets="@styles.css" text="ساختن حساب">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
                   </Button>
-                  <PasswordField fx:id="tekrarRamz" layoutX="23.0" layoutY="453.0" prefHeight="30.0" prefWidth="220.0" promptText="تکرار رمز" stylesheets="@styles.css">
+                  <PasswordField fx:id="tekrarRamz" layoutX="23.0" layoutY="400.0" prefHeight="30.0" prefWidth="220.0" promptText="تکرار رمز" stylesheets="@styles.css">
                      <styleClass>
                         <String fx:value="text-field1" />
                         <String fx:value="password" />
@@ -130,16 +124,7 @@
                         <Insets />
                      </opaqueInsets>
                   </PasswordField>
-                  <TextField fx:id="homeNumberGet" layoutX="23.0" layoutY="205.0" prefHeight="39.0" prefWidth="213.0" promptText="تلفن ثابت" stylesheets="@styles.css">
-                     <styleClass>
-                        <String fx:value="text-field1" />
-                        <String fx:value="password" />
-                     </styleClass>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </TextField>
-                  <TextField fx:id="address" layoutX="23.0" layoutY="343.0" prefHeight="50.0" prefWidth="300.0" promptText="ادرس" stylesheets="@styles.css">
+                  <TextField fx:id="homeNumberGet" layoutX="26.0" layoutY="283.0" prefHeight="39.0" prefWidth="213.0" promptText="تلفن ثابت" stylesheets="@styles.css">
                      <styleClass>
                         <String fx:value="text-field1" />
                         <String fx:value="password" />
@@ -158,7 +143,7 @@
                         <Insets />
                      </opaqueInsets>
                   </TextField>
-                  <TextField fx:id="imagePathGetter" layoutX="23.0" layoutY="293.0" prefHeight="39.0" prefWidth="249.0" promptText="مسیر عکس لوگو اتوماتیک اینجا بیاد در صورت انتخاب " stylesheets="@styles.css">
+                  <TextField fx:id="imagePathGetter" layoutX="25.0" layoutY="228.0" prefHeight="39.0" prefWidth="249.0" promptText="مسیر عکس لوگو اتوماتیک اینجا بیاد در صورت انتخاب " stylesheets="@styles.css">
                      <styleClass>
                         <String fx:value="text-field1" />
                         <String fx:value="password" />
@@ -185,13 +170,36 @@
                         <String fx:value="password" />
                      </styleClass>
                   </TextField>
-                  <Button fx:id="si_viziblepass" layoutX="205.0" layoutY="354.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="10.0" styleClass="white-form" stylesheets="@hhhh.css" />
-                  <ComboBox fx:id="com1" layoutX="30.0" layoutY="256.0" prefHeight="25.0" prefWidth="194.0" promptText="انتخاب نام بانک " />
-                  <Label fx:id="showName" layoutX="30.0" layoutY="56.0" prefHeight="36.0" prefWidth="220.0" text="نام کاربر به صورت غیر قابل تغییر" />
-                  <Label fx:id="showPhoneNumber" layoutX="30.0" layoutY="104.0" prefHeight="38.0" prefWidth="220.0" text="شمارهغیرقابل تغییر" />
-                  <Label fx:id="showID" layoutX="30.0" layoutY="154.0" prefHeight="38.0" prefWidth="220.0" text="کدملی غیرقابل تغییر" />
-                  <ImageView fx:id="logoShow" fitHeight="172.0" fitWidth="183.0" layoutX="307.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true" />
-                  <Label layoutX="344.0" layoutY="456.0" prefHeight="36.0" prefWidth="151.0" text="هزینه ایجاد حساب" />
+                  <Button fx:id="si_viziblepass" layoutX="216.0" layoutY="345.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="10.0" styleClass="white-form" stylesheets="@hhhh.css" />
+                  <Label fx:id="showName" layoutX="23.0" layoutY="74.0" prefHeight="36.0" prefWidth="220.0" stylesheets="@styles.css" text="نام کاربر به صورت غیر قابل تغییر">
+                     <styleClass>
+                        <String fx:value="password" />
+                        <String fx:value="text-field1" />
+                     </styleClass>
+                  </Label>
+                  <Label fx:id="showPhoneNumber" layoutX="23.0" layoutY="130.0" prefHeight="38.0" prefWidth="220.0" stylesheets="@styles.css" text="شمارهغیرقابل تغییر">
+                     <styleClass>
+                        <String fx:value="text-field1" />
+                        <String fx:value="password" />
+                     </styleClass>
+                  </Label>
+                  <Label fx:id="showID" layoutX="23.0" layoutY="178.0" prefHeight="38.0" prefWidth="220.0" stylesheets="@styles.css" text="کدملی غیرقابل تغییر">
+                     <styleClass>
+                        <String fx:value="text-field1" />
+                        <String fx:value="password" />
+                     </styleClass>
+                  </Label>
+                  <ImageView fx:id="logoShow" fitHeight="172.0" fitWidth="183.0" layoutX="305.0" layoutY="123.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button fx:id="sendnationcardphoto" layoutX="54.0" layoutY="448.0" mnemonicParsing="false" onAction="#sendnationcardphoto" prefHeight="30.0" prefWidth="170.0" styleClass="wallet" stylesheets="@styles.css" text="ارسال عکس کارت ملی">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </Button>
+                  <Label layoutX="155.0" layoutY="381.0" text="باید چهار رقم باشد ">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
             <AnchorPane fx:id="changer" layoutX="152.0" layoutY="-1.0" prefHeight="613.0" prefWidth="156.0">
@@ -234,6 +242,9 @@
                </styleClass>
             </AnchorPane>
          </children>
+         <StackPane.margin>
+            <Insets bottom="150.0" left="280.0" right="280.0" top="150.0" />
+         </StackPane.margin>
       </AnchorPane>
    </children>
 </StackPane>

@@ -7,13 +7,29 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.math.BigInteger;
 import java.net.URL;
 
+import java.nio.file.Files;
+import java.sql.*;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Random;
 import java.util.ResourceBundle;
+
+import static com.example.bank.loginpage.username;
 
 public class account implements Initializable {
 
@@ -33,6 +49,28 @@ public class account implements Initializable {
     @FXML
     private ScrollPane myScrollPane1;
     ObservableList<String> list1 = FXCollections.observableArrayList("ساخت حساب","معرفی حساب");
+
+    File selectedImageFile = null;
+    private  boolean issendphoto =true;
+
+    @FXML
+    private Button sendnationcardphoto;
+    Image imageuser;
+
+    @FXML
+    private TextField homeNumberGet;
+    @FXML
+    private TextField accountPassword;
+    @FXML
+    private TextField tekrarRamz;
+    String regdata;
+
+    private Connection connect;
+    private PreparedStatement prepare;
+
+    Random random = new Random();
+    Alert alert;
+    loginpage login = new loginpage();
 
     public void initialize(URL location, ResourceBundle resources) {
         com1.setItems(list);
@@ -75,6 +113,112 @@ public class account implements Initializable {
                 maker.setVisible(true);
             });
             slider.play();
+        }
+    }
+
+    public void createbankaccount(ActionEvent actionEvent) throws IOException, SQLException {
+        if(homeNumberGet.getText().length() < 3|| !accountPassword.getText().matches("[0-9]{4}") ||
+        !tekrarRamz.getText().equals(accountPassword.getText()) || issendphoto ) {
+            System.out.println( !tekrarRamz.getText().equals(accountPassword.getText()));
+            System.out.println(!homeNumberGet.getText().matches("[0-9]"));
+            System.out.println(!accountPassword.getText().matches("[0-9]{4}"));
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("please fill blanks");
+            alert.showAndWait();
+
+        }
+        else {
+             regdata = "INSERT INTO cards (username,numbercard,cvv2,engeza,bankname,phonenumberhome,password,imagecard) " +
+                     "VALUES(?,?,?,?,?,?,?,?)";
+
+             connect = DataBase1.connectDB();
+            assert connect != null;
+            byte[] imageData = Files.readAllBytes(selectedImageFile.toPath());
+
+            LocalDate now = LocalDate.now(ZoneId.of("Asia/Tehran"));
+            int year = now.getYear();
+            int month = now.getMonthValue();
+            int day = now.getDayOfMonth();
+
+            // تبدیل میلادی به شمسی (تخمینی)
+            int persianYear = year - ((month < 3) || (month == 3 && day < 21) ? 622 : 621) + 10;
+
+            int persianMonth;
+            if ((month == 3 && day >= 21) || month == 4 || (month == 5 && day <= 21)) persianMonth = 1;  // فروردین
+            else if ((month == 5 && day >= 22) || month == 6 || (month == 7 && day <= 22)) persianMonth = 2;  // اردیبهشت
+            else if ((month == 7 && day >= 23) || month == 8 || (month == 9 && day <= 22)) persianMonth = 3;  // خرداد
+            else if ((month == 9 && day >= 23) || month == 10 || (month == 11 && day <= 22)) persianMonth = 4;  // تیر
+            else if ((month == 11 && day >= 23) || month == 12 || (month == 1 && day <= 19)) persianMonth = 5;  // مرداد
+            else if ((month == 1 && day >= 20) || month == 2 || (month == 3 && day <= 20)) persianMonth = 6;  // شهریور
+            else if ((month == 3 && day >= 21) || month == 4 || (month == 5 && day <= 21)) persianMonth = 7;  // مهر
+            else if ((month == 5 && day >= 22) || month == 6 || (month == 7 && day <= 22)) persianMonth = 8;  // آبان
+            else if ((month == 7 && day >= 23) || month == 8 || (month == 9 && day <= 22)) persianMonth = 9;  // آذر
+            else if ((month == 9 && day >= 23) || month == 10 || (month == 11 && day <= 22)) persianMonth = 10; // دی
+            else if ((month == 11 && day >= 23) || month == 12 || (month == 1 && day <= 19)) persianMonth = 11; // بهمن
+            else persianMonth = 12; // اسفند
+
+            String yearPer = String.format("%02d", persianYear % 100);
+
+            String monthPer = String.format("%02d", persianMonth);
+
+            String yyMM = String.valueOf(yearPer + monthPer);
+
+            BigInteger randomBigInt = new BigInteger(33, random).add(new BigInteger("1000000000"));
+
+            String BigNumberString = "504412" + randomBigInt.toString() ;
+
+            int cvv2 = random.nextInt(100,1000);
+
+            prepare = connect.prepareStatement(regdata);
+            prepare.setString(1,username);
+            prepare.setString(2,BigNumberString);
+            prepare.setString(3, String.valueOf(cvv2));
+            prepare.setString(4, yyMM);
+            prepare.setString(5, "Aureous Bank");
+            prepare.setString(6, homeNumberGet.getText());
+            prepare.setString(7, accountPassword.getText());
+            prepare.setString(8, Arrays.toString(imageData));
+            int rowsAffected = prepare.executeUpdate();
+
+            alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information");
+            alert.setHeaderText(null);
+            alert.setContentText("Seccessfully");
+            alert.showAndWait();
+
+            homeNumberGet.clear();
+            accountPassword.clear();
+            tekrarRamz.clear();
+
+            login.openNewWindow("profile1.fxml","Profile",actionEvent);
+        }
+    }
+
+    public void sendnationcardphoto(ActionEvent actionEvent) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("انتخاب یک عکس");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("تصاویر", "*.png", "*.jpeg", "*.gif"));
+
+        Stage stage = (Stage) sendnationcardphoto.getScene().getWindow();
+        selectedImageFile = fileChooser.showOpenDialog(stage);
+
+        if (selectedImageFile != null) {
+            issendphoto = false;
+            try {
+                FileInputStream fis = new FileInputStream(selectedImageFile);
+                imageuser = new Image(fis);
+                fis.close();
+                System.out.println("عکس انتخاب شده: " + selectedImageFile.getAbsolutePath());
+            } catch (FileNotFoundException e) {
+                System.err.println("فایل پیدا نشد: " + e.getMessage());
+            } catch (IOException e) {
+                System.err.println("خطا در خواندن فایل: " + e.getMessage());
+            }
+        } else {
+            System.out.println("کاربر هیچ عکسی انتخاب نکرد.");
         }
     }
 }
