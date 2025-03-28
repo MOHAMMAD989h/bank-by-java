@@ -270,7 +270,7 @@ public class loginpage{
         alert.setTitle("Information");
         alert.setHeaderText(null);
         alert.setContentText("if you see any errors, please email us " +
-                " |@ElectroShop.gamil.com|");
+                " |@AuruseBank.gamil.com|");
         alert.showAndWait();
     }
 

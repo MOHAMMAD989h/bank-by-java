@@ -108,6 +108,14 @@ public class account implements Initializable {
         });*/
 
     }
+    public void helplogin(ActionEvent actionEvent) {
+        alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information");
+        alert.setHeaderText(null);
+        alert.setContentText("if you see any errors, please email us " +
+                " |@AuruseBank.gamil.com|");
+        alert.showAndWait();
+    }
 
     public void switchForm(ActionEvent event) {
         TranslateTransition slider = new TranslateTransition();
@@ -329,5 +337,17 @@ public class account implements Initializable {
         } else {
             System.out.println("کاربر هیچ عکسی انتخاب نکرد.");
         }
+    }
+
+    public void toIntroduceMeno(ActionEvent event) {
+        login.openNewWindow("main.fxml","Banking App",event);
+    }
+
+    public void toAccounts(ActionEvent event) {
+        login.openNewWindow("hesab.fxml","حساب های شما",event);
+    }
+
+    public void toProfile(ActionEvent event) {
+        login.openNewWindow("profile1.fxml","profile",event);
     }
 }
