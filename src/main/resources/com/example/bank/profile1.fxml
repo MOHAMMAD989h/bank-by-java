@@ -45,12 +45,14 @@
                   <AnchorPane fx:id="openAccountProfile" layoutX="140.0" layoutY="14.0" prefHeight="200.0" prefWidth="314.0" styleClass="wallet" stylesheets="@styles.css">
                      <children>
                         <Text layoutX="167.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="باز کردن حساب" />
-                        <ImageView fitHeight="103.0" fitWidth="97.0" layoutX="48.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../images/1486441-نماد-کیف-پول-در-سبک-تخت-مرسوم-مد-روز-و-جدا-شده-در-پس-زمینه-خاکستری-نماد-کیف-پول-برای-طراحی-وب-سایت-آرم-برنامه-رابط-کاربر-تصویر-برداری-EPS10.png" />
-                           </image>
-                        </ImageView>
-                        <Button layoutX="105.0" layoutY="127.0" mnemonicParsing="false" onAction="#openAccount" text="Button" />
+                        <Button layoutX="40.0" layoutY="52.0" mnemonicParsing="false" onAction="#openAccount" styleClass="wallet" stylesheets="@styles.css">
+                           <graphic>
+                              <ImageView fitHeight="103.0" fitWidth="97.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../images/1486441-نماد-کیف-پول-در-سبک-تخت-مرسوم-مد-روز-و-جدا-شده-در-پس-زمینه-خاکستری-نماد-کیف-پول-برای-طراحی-وب-سایت-آرم-برنامه-رابط-کاربر-تصویر-برداری-EPS10.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
                      </children>
                   </AnchorPane>
                </children></AnchorPane>
