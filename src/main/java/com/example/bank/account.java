@@ -156,8 +156,8 @@ public class account implements Initializable {
             result = prepare.executeQuery();
             if (result.next()) {
 
-                regdata = "INSERT INTO cards (username,numbercard,cvv2,engeza,bankname,phonenumberhome,password,imagecard) " +
-                        "VALUES(?,?,?,?,?,?,?,?)";
+                regdata = "INSERT INTO cards (username,money,credit,numbercard,cvv2,engeza,bankname,phonenumberhome,password,imagecard) " +
+                        "VALUES(?,?,?,?,?,?,?,?,?,?)";
 
 
                 assert connect != null;
@@ -206,13 +206,15 @@ public class account implements Initializable {
 
                 prepare = connect.prepareStatement(regdata);
                 prepare.setString(1, username);
-                prepare.setString(2, BigNumberString);
-                prepare.setString(3, String.valueOf(cvv2));
-                prepare.setString(4, yyMM);
-                prepare.setString(5, "Aureous Bank");
-                prepare.setString(6, homeNumberGet.getText());
-                prepare.setString(7, accountPassword.getText());
-                prepare.setString(8, Arrays.toString(imageData));
+                prepare.setString(2,"0");
+                prepare.setString(3,"0");
+                prepare.setString(4, BigNumberString);
+                prepare.setString(5, String.valueOf(cvv2));
+                prepare.setString(6, yyMM);
+                prepare.setString(7, "Aureous Bank");
+                prepare.setString(8, homeNumberGet.getText());
+                prepare.setString(9, accountPassword.getText());
+                prepare.setString(10, Arrays.toString(imageData));
                 int rowsAffected = prepare.executeUpdate();
 
                 alert = new Alert(Alert.AlertType.INFORMATION);
@@ -256,8 +258,8 @@ public class account implements Initializable {
             result = prepare.executeQuery();
             if (result.next()) {
 
-                regdata = "INSERT INTO cards (username,numbercard,cvv2,engeza,bankname,phonenumberhome,password,imagecard) " +
-                        "VALUES(?,?,?,?,?,?,?,?)";
+                regdata = "INSERT INTO cards (username,money,credit,numbercard,cvv2,engeza,bankname,phonenumberhome,password,imagecard) " +
+                        "VALUES(?,?,?,?,?,?,?,?,?,?)";
 
                 assert connect != null;
 
@@ -266,13 +268,15 @@ public class account implements Initializable {
 
                 prepare = connect.prepareStatement(regdata);
                 prepare.setString(1, username);
-                prepare.setString(2, cartNumGetter.getText());
-                prepare.setString(3, Cvv2Getter.getText());
-                prepare.setString(4, yyMM);
-                prepare.setString(5, com1.getValue());
-                prepare.setString(6, phonehome.getText());
-                prepare.setString(7, accountPassword1.getText());
-                prepare.setString(8, Arrays.toString(imageData));
+                prepare.setString(2,"0");
+                prepare.setString(3,"0");
+                prepare.setString(4, cartNumGetter.getText());
+                prepare.setString(5, Cvv2Getter.getText());
+                prepare.setString(6, yyMM);
+                prepare.setString(7, com1.getValue());
+                prepare.setString(8, phonehome.getText());
+                prepare.setString(9, accountPassword1.getText());
+                prepare.setString(10, Arrays.toString(imageData));
                 int rowsAffected = prepare.executeUpdate();
 
 
