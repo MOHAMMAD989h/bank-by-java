@@ -6,38 +6,16 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.animation.TranslateTransition;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.util.Duration;
-import java.io.*;
-import java.math.BigInteger;
-import java.net.URL;
-import java.nio.file.Files;
 import java.sql.*;
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.*;
-import javafx.scene.control.Label;
-import org.w3c.dom.events.MouseEvent;
-import org.w3c.dom.ls.LSOutput;
-import javax.mail.*;
-import javax.mail.internet.*;
+
 
 import static com.example.bank.loginpage.username;
 
@@ -127,7 +105,7 @@ public class profile {
                 String number = result.getString("numbercard");
                 String time = result.getString("engeza");
                 String cvv2 = result.getString("cvv2");
-                products.add(new productVam(number, "", cvv2, time, "", ""));
+                products.add(new productVam(number, "", cvv2, time, "",""));
 
             }
             for (productVam product1 : products) {
@@ -442,7 +420,12 @@ public class profile {
         timeLabel.setLayoutX(50);
         timeLabel.setLayoutY(50);
 
-        pane.getChildren().addAll(nameLabel,soodLabel,timeLabel);
+        //name
+        Label nameLbl = new Label( "انقضا : "+product.getDiscription());
+        timeLabel.setLayoutX(150);
+        timeLabel.setLayoutY(50);
+
+        pane.getChildren().addAll(nameLabel,soodLabel,timeLabel,nameLbl,timeLabel);
 
         return pane;
 
