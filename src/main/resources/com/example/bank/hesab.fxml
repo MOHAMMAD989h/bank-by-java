@@ -86,7 +86,7 @@
                      </font>
                   </Label>
                   <Pane prefHeight="59.0" prefWidth="25.0" />
-                  <Label fx:id="numlabel" alignment="CENTER_RIGHT" prefHeight="39.0" prefWidth="453.0" style="-fx-background-color: #1fa784; -fx-background-radius: 15;">
+                  <Label fx:id="numlabel" alignment="CENTER_RIGHT" prefHeight="39.0" prefWidth="453.0" style="-fx-background-radius: 15; -fx-background-color: #1fa784;">
                      <graphic>
                         <Button contentDisplay="RIGHT" mnemonicParsing="false" onAction="#copynum" prefHeight="39.0" prefWidth="164.0" styleClass="Button" stylesheets="@styles.css" text="  : شماره موبایل" textFill="WHITE">
                            <graphic>
@@ -147,13 +147,14 @@
                               <RowConstraints maxHeight="260.0" minHeight="10.0" prefHeight="260.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <HBox alignment="CENTER_LEFT" prefHeight="122.0" prefWidth="42.0" spacing="10" GridPane.columnIndex="1" />
-                              <VBox prefHeight="200.0" prefWidth="100.0" />
-                              <HBox alignment="CENTER_LEFT" prefHeight="122.0" prefWidth="42.0" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <HBox alignment="CENTER_LEFT" prefHeight="122.0" prefWidth="42.0" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                              <HBox alignment="CENTER_LEFT" prefHeight="122.0" prefWidth="42.0" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                              <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2" />
-                              <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1" />
+                              <HBox fx:id="H1H0" alignment="CENTER_LEFT" prefHeight="122.0" prefWidth="42.0" spacing="10" GridPane.columnIndex="1" />
+                              <VBox fx:id="V0V0" prefHeight="200.0" prefWidth="100.0" />
+                              <HBox fx:id="H1H1" alignment="CENTER_LEFT" prefHeight="122.0" prefWidth="42.0" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <HBox fx:id="H1H2" alignment="CENTER_LEFT" prefHeight="122.0" prefWidth="42.0" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <HBox fx:id="H1H3" alignment="CENTER_LEFT" prefHeight="122.0" prefWidth="42.0" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <VBox fx:id="V0V2" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2" />
+                              <VBox fx:id="V0V1" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1" />
+                              <VBox fx:id="V0V3" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="3" />
                            </children>
                         </GridPane>
                      </children>

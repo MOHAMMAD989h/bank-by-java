@@ -1,5 +1,5 @@
 #parallelogram {
-    -fx-background-color: #9a9997;  /* رنگ زمینه */
+    -fx-background-color:  #c0bea5;  /* رنگ زمینه */
     -fx-shape: "M 0 0 L 100 0 L 100 50 L 5 50 Z";  /* متوازی‌الاضلاع با شیب بسیار کم */
 }
 .parallelogram2 {

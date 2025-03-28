@@ -4,6 +4,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -11,11 +12,12 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <StackPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bank.hessabView">
     <children>
-        <AnchorPane prefHeight="877.0" prefWidth="1537.0">
+        <AnchorPane prefHeight="877.0" prefWidth="1537.0" style="-fx-background-color: #c0bea5;">
             <children>
                 <Pane layoutX="3.0" layoutY="2.0" prefHeight="42.0" prefWidth="1533.0" styleClass="parallelogram">
                     <stylesheets>
@@ -38,7 +40,7 @@
                 </Pane>
                 <HBox layoutX="60.0" layoutY="111.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="59.0" prefWidth="1476.0" style="-fx-background-color: #4d4d4d;" stylesheets="@styles.css">
                     <children>
-                        <Label fx:id="userlabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="RIGHT_TO_LEFT" prefHeight="36.0" prefWidth="491.0" style="-fx-background-color: #1fa784; -fx-background-radius: 15;" textFill="WHITE">
+                        <Label fx:id="userlabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="RIGHT_TO_LEFT" prefHeight="36.0" prefWidth="491.0" style="-fx-background-radius: 15;" styleClass="background-gradientt" stylesheets="@style.css" textFill="WHITE">
                             <graphic>
                                 <Button contentDisplay="RIGHT" mnemonicParsing="false" onAction="#copyuser" prefHeight="37.0" prefWidth="129.0" styleClass="Button" stylesheets="@styles.css" text=": نام کاربری" textFill="WHITE">
                                     <graphic>
@@ -61,7 +63,7 @@
                             </font>
                         </Label>
                         <Pane prefHeight="59.0" prefWidth="25.0" />
-                        <Label fx:id="codelabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="RIGHT_TO_LEFT" prefHeight="36.0" prefWidth="491.0" style="-fx-background-color: #1fa784; -fx-background-radius: 15;" textFill="WHITE">
+                        <Label fx:id="codelabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="RIGHT_TO_LEFT" prefHeight="36.0" prefWidth="491.0" style="-fx-background-radius: 15;" styleClass="background-gradientt" stylesheets="@style.css" textFill="WHITE">
                             <graphic>
                                 <Button contentDisplay="RIGHT" mnemonicParsing="false" onAction="#copycode" styleClass="Button" stylesheets="@styles.css" text=": کد ملی" textFill="WHITE">
                                     <graphic>
@@ -81,7 +83,7 @@
                             </font>
                         </Label>
                         <Pane prefHeight="59.0" prefWidth="25.0" />
-                        <Label fx:id="numlabel" alignment="CENTER_RIGHT" prefHeight="39.0" prefWidth="453.0" style="-fx-background-color: #1fa784; -fx-background-radius: 15;">
+                        <Label fx:id="numlabel" alignment="CENTER_RIGHT" prefHeight="39.0" prefWidth="453.0" style="-fx-background-radius: 15;" styleClass="background-gradientt" stylesheets="@style.css">
                             <graphic>
                                 <Button contentDisplay="RIGHT" mnemonicParsing="false" onAction="#copynum" prefHeight="39.0" prefWidth="164.0" styleClass="Button" stylesheets="@styles.css" text="  : شماره موبایل" textFill="WHITE">
                                     <graphic>
@@ -124,19 +126,51 @@
                         </ImageView>
                     </children>
                 </HBox>
-            <AnchorPane layoutX="282.0" layoutY="168.0" prefHeight="570.0" prefWidth="1090.0">
+            <AnchorPane layoutX="68.0" layoutY="170.0" prefHeight="725.0" prefWidth="832.0" style="-fx-background-color: #c0bea5;">
                <children>
-                  <AnchorPane layoutX="309.0" layoutY="16.0" prefHeight="217.0" prefWidth="485.0" style="-fx-background-color: #4d4d4d; -fx-background-radius: 15;">
+                  <AnchorPane layoutX="150.0" layoutY="16.0" prefHeight="217.0" prefWidth="485.0" style="-fx-background-color: #4d4d4d; -fx-background-radius: 15;">
                      <children>
                         <ImageView fitHeight="193.0" fitWidth="442.0" layoutX="25.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
                      </children></AnchorPane>
-                   <Pane layoutX="526.0" layoutY="229.0" prefHeight="333.0" prefWidth="50.0" styleClass="panee" stylesheets="style.css">
+                   <Pane layoutX="367.0" layoutY="229.0" prefHeight="438.0" prefWidth="50.0" styleClass="panee" stylesheets="style.css">
                        <stylesheets>
                            <URL value="@style.css" />
                        </stylesheets>
                    </Pane>
+                  <Button layoutX="150.0" layoutY="302.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="121.0" styleClass="background-gradientt" stylesheets="@style.css" text="پرداخت قبض" />
+                  <Button layoutX="150.0" layoutY="385.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="135.0" style="-fx-background-color: #70A0E0;" text="خرید شارژ" />
+                  <Button layoutX="150.0" layoutY="471.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="135.0" text="سوابق تراکنش" />
+                  <Button layoutX="150.0" layoutY="556.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="121.0" styleClass="background-gradientt" stylesheets="@style.css" text="موبایلی" />
+                  <Button layoutX="514.0" layoutY="302.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="121.0" styleClass="background-gradientt" stylesheets="@style.css" text="کارت به کارت" />
+                  <Button layoutX="500.0" layoutY="385.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="135.0" style="-fx-background-color: #90B0C8;" text="خرید بسته" />
+                  <Button layoutX="514.0" layoutY="556.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="121.0" styleClass="background-gradientt" stylesheets="@style.css" text="داخلی" />
+                  <Button layoutX="500.0" layoutY="471.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="135.0" text="گردش حساب" />
                </children>
             </AnchorPane>
+            <VBox alignment="TOP_RIGHT" layoutX="956.0" layoutY="195.0" prefHeight="674.0" prefWidth="558.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="41.0" prefWidth="166.0" text="قبض های پرداخت قابل شما" />
+                  <ScrollPane prefHeight="251.0" prefWidth="558.0">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="206.0" prefWidth="546.0">
+                           <children>
+                              <VBox layoutX="-3.0" prefHeight="268.0" prefWidth="542.0" />
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </ScrollPane>
+                  <Label alignment="CENTER_RIGHT" prefHeight="37.0" prefWidth="162.0" text="بسته های اینترنتی پیشنهادی" />
+                  <ScrollPane prefHeight="325.0" prefWidth="558.0">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="206.0" prefWidth="546.0">
+                           <children>
+                              <VBox layoutX="-3.0" prefHeight="180.0" prefWidth="542.0" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </VBox>
             </children>
         </AnchorPane>
     </children>
