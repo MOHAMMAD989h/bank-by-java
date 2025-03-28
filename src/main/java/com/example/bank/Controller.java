@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -74,6 +75,10 @@ public class Controller {
 
     private AnimationTimer timer;
     private PauseTransition pauseTransition;
+
+    Alert alert;
+
+    loginpage login = new loginpage();
 
     @FXML
     public void initialize() {
@@ -495,7 +500,17 @@ public class Controller {
     }
 
     public void profile(ActionEvent actionEvent) {
-        openNewWindow("profile1.fxml","profile",actionEvent);
+        if(loginpage.loginID) {
+            openNewWindow("profile1.fxml", "profile", actionEvent);
+        }
+        else {
+            alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("INFORMATION");
+            alert.setHeaderText(null);
+            alert.setContentText("please first login");
+            alert.showAndWait();
+            openNewWindow("loginpage.fxml", "loginpage", actionEvent);
+        }
     }
 
     public void handleServiceOption2(ActionEvent actionEvent) {openNewWindow("gabz.fxml","gabz",actionEvent);}
