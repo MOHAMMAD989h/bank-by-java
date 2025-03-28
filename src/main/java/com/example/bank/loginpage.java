@@ -199,8 +199,6 @@ public class loginpage{
     private TextField txt_changenewuser1;
 
     @FXML
-    private VBox vbox_change1;
-    @FXML
     private TextField txt_change1;
 
     public Integer Credit = 0 ;
@@ -223,12 +221,32 @@ public class loginpage{
 
     @FXML
     private ImageView profileImage;
+    @FXML
+    private VBox vboxshowcard;
 
 
     Image imageuser;
+    private List<productVam> products = new ArrayList<>();
+
 
     @FXML
-    public void initialize() {}
+    public void initialize() throws SQLException {
+        /*connect = DataBase1.connectDB();
+        String data = "SELECT bank FROM cards WHERE username = ?";
+
+        prepare = connect.prepareStatement(data);
+        result = prepare.executeQuery();
+        while (result.next()) {
+            String number = result.getString("numbercard");
+            String time = result.getString("engeza");
+            String cvv2 = result.getString("cvv2");
+            products.add(new productVam(number,"",cvv2,time,"",""));
+
+        }
+        for (productVam product1 : products) {
+            vboxshowcard.getChildren().add(createProductPane(product1));
+        }*/
+    }
     @FXML
     public ComboBox<String> com1;
     ObservableList<String> list = FXCollections.observableArrayList("لپ تاپ ها","تبلت ها و لوازم جانبی", "لوازم جانبی");
@@ -869,46 +887,7 @@ public class loginpage{
             e.printStackTrace();
         }
     }
-    public void shopcartprofile(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("shopcart.fxml"));
-            Scene scene = new Scene(loader.load(), 1535, 790);
-
-            // ایجاد و نمایش صفحه جدید
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.setTitle("لنوو مارکت");
-            stage.show();
-
-            // بستن صفحه فعلی
-            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            currentStage.close();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void why(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/site/why.fxml"));
-            Scene scene = new Scene(loader.load(), 1535, 790);
-
-            // ایجاد و نمایش صفحه جدید
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.setTitle("چرا لنوو");
-            stage.show();
-
-            // بستن صفحه فعلی
-            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            currentStage.close();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
+    /*
     public void Changepass2(ActionEvent event) {
         TranslateTransition slider = new TranslateTransition();
 
@@ -1000,7 +979,7 @@ public class loginpage{
                 }
             }
         }
-    }
+    }*/
     public void openNewWindow(String fxmlFile, String title, ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
@@ -1027,6 +1006,7 @@ public class loginpage{
     @FXML
     private Button buttonChange;
 
+    /*
     public void changeUser1(ActionEvent actionEvent) {
         TranslateTransition slider = new TranslateTransition();
 
@@ -1121,7 +1101,6 @@ public class loginpage{
         buttonChange.setText("ادرس کاربری");
 
     }
-
     public void backchangeToprofile(ActionEvent actionEvent) {openNewWindow("profile1.fxml","Profile",actionEvent);}
 
     @FXML
@@ -1133,6 +1112,7 @@ public class loginpage{
     public void Changeuser1(ActionEvent actionEvent) {
         ChangeuserCls(infor ,txt_oldusername1 ,txt_newusername1 ,actionEvent);
     }
+
 
     public void ChangeuserCls(String name11,TextField old1 , TextField new1,ActionEvent actionEvent) {
         if(old1.isVisible()){
@@ -1212,10 +1192,6 @@ public class loginpage{
 
     }
 
-    public void sabadpageProfile(ActionEvent actionEvent) {
-        openNewWindow("main.fxml","Cart",actionEvent);
-    }
-
     public void logOutProfile(ActionEvent actionEvent) {
         openNewWindow("loginpage.fxml","Loginpage",actionEvent);
         loginID = false;
@@ -1290,16 +1266,11 @@ public class loginpage{
         }else{
             System.out.println("Failed to delete the File");
         }
-    }
+    }*/
 
     public void backToSignup(ActionEvent actionEvent) {
         side_signUp.setVisible(true);
         side_loginCodeEmail.setVisible(false);
-    }
-
-
-    public void openAccount(ActionEvent event) {
-        openNewWindow("account.fxml","openAurusecount",event);
     }
 
     public void uploadButton(ActionEvent actionEvent) {
@@ -1328,7 +1299,6 @@ public class loginpage{
         }
     }
 
-
     public class why1 implements Initializable {
         @FXML
         public ComboBox<String> com1;
@@ -1352,6 +1322,7 @@ public class loginpage{
                 openNewWindow("tablet.fxml", "تبلت ها و لوازم جانبی", event);
             }
         }
+
         public void openNewWindow(String fxmlFile, String title, ActionEvent event) {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
