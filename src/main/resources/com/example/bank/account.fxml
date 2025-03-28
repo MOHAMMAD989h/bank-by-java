@@ -223,27 +223,43 @@
                         <Font name="Edwardian Script ITC" size="40.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="84.0" fitWidth="150.0" layoutX="38.0" layoutY="89.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../Images/photo_2025-01-03_12-39-34.png" />
-                     </image>
-                  </ImageView>
-                  <Button fx:id="LenovoMarket" layoutX="-3.0" layoutY="225.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="159.0" style="-fx-background-color: transparent;" />
-                  <ImageView fitHeight="39.0" fitWidth="132.0" layoutX="10.0" layoutY="225.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../images/Aureous%20Bank%20Logo.png" />
-                     </image>
-                  </ImageView>
+                  <Button fx:id="menoBtn" layoutX="-3.0" layoutY="225.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="159.0" style="-fx-background-color: transparent;">
+                     <stylesheets>
+                        <URL value="@style.css" />
+                     </stylesheets>
+                  </Button>
                   <ComboBox fx:id="com2" layoutX="12.0" layoutY="309.0" prefHeight="36.0" prefWidth="132.0" promptText="حسلب بانکی " />
-                  <ImageView fitHeight="41.0" fitWidth="49.0" layoutX="60.0" layoutY="384.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../Images/return-icon-png-21.jpg" />
-                     </image>
-                  </ImageView>
-                  <Button fx:id="si_helplogin" layoutX="63.0" layoutY="464.0" minWidth="26.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="25.0" styleClass="wallet" stylesheets="@styles.css" text="?">
+                  <Button fx:id="si_helplogin" layoutX="63.0" layoutY="464.0" minWidth="26.0" mnemonicParsing="false" onAction="#helplogin" prefHeight="30.0" prefWidth="25.0" styleClass="wallet" stylesheets="@styles.css" text="?">
                      <font>
                         <Font size="10.0" />
                      </font>
+                  </Button>
+                  <Button fx:id="toProfileBtn" layoutX="30.0" layoutY="79.0" mnemonicParsing="false" onAction="#toProfile" prefHeight="71.0" prefWidth="66.0">
+                     <graphic>
+                        <ImageView fitHeight="84.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/photo_2025-01-03_12-39-34.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button layoutX="50.0" layoutY="392.0" mnemonicParsing="false" onAction="#toAccounts">
+                     <graphic>
+                        <ImageView fitHeight="41.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/return-icon-png-21.jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button layoutX="3.0" layoutY="226.0" mnemonicParsing="false" onAction="#toIntroduceMeno" prefHeight="33.0" prefWidth="132.0">
+                     <graphic>
+                        <ImageView fitHeight="39.0" fitWidth="132.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../images/Aureous%20Bank%20Logo.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Button>
                </children>
                <stylesheets>
