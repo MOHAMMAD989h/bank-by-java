@@ -10,7 +10,7 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="gabzTextfield" layoutX="263.0" layoutY="42.0" prefHeight="26.0" prefWidth="250.0" />
+            <TextField fx:id="gabzTextfield" layoutX="263.0" layoutY="42.0" prefHeight="26.0" prefWidth="250.0" promptText="شناسه قبض" />
             <Button fx:id="gabznumber" layoutX="363.0" layoutY="141.0" mnemonicParsing="false" onAction="#gabznumber" prefHeight="26.0" prefWidth="54.0" text="بعدی" />
             <Label fx:id="moneyGabz" alignment="CENTER" layoutX="261.0" layoutY="87.0" prefHeight="18.0" prefWidth="251.0" />
             <Button fx:id="gabzPayment" layoutX="364.0" layoutY="182.0" mnemonicParsing="false" onAction="#gabzPayment" text="پرداخت" />
@@ -20,7 +20,8 @@
             <Label fx:id="gabz3" layoutX="114.0" layoutY="186.0" />
             <Label fx:id="gabz4" layoutX="114.0" layoutY="229.0" />
             <Label fx:id="gabz5" layoutX="114.0" layoutY="281.0" />
-            <Button layoutX="88.0" layoutY="170.0" mnemonicParsing="false" onAction="#backtomainFromGabz" text="back" />
+            <Button layoutX="370.0" layoutY="247.0" mnemonicParsing="false" onAction="#backtomainFromGabz" text="back" />
+            <Label fx:id="organGabz" alignment="CENTER" layoutX="264.0" layoutY="115.0" prefHeight="18.0" prefWidth="251.0" />
          </children>
       </AnchorPane>
    </center>

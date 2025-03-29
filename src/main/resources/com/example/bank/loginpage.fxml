@@ -314,15 +314,11 @@
                 <Image url="@../../../Images/photo_2025-01-03_12-39-34.png" />
               </image>
             </ImageView>
-              <Button fx:id="LenovoMarket" layoutX="42.0" layoutY="225.0" mnemonicParsing="false" onAction="#mainpage" prefHeight="37.0" prefWidth="204.0" style="-fx-background-color: transparent;">
-                  <graphic>
-                      <ImageView fitHeight="27.0" fitWidth="230.0" pickOnBounds="true" preserveRatio="true">
-                          <image>
-                              <Image url="@../../../images/Aureous%20Bank%20Logo.png" />
-                          </image>
-                      </ImageView>
-                  </graphic>
-              </Button>
+                <ImageView fitHeight="27.0" fitWidth="230.0" layoutX="71.0" layoutY="243.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../images/Aureous%20Bank%20Logo.png" />
+                    </image>
+                </ImageView>
           </children>
                <stylesheets>
                   <URL value="@styles.css" />

@@ -162,6 +162,7 @@ public class loginpage{
 
     Image imageuser;
 
+
     @FXML
     public void initialize() throws SQLException {}
 
@@ -484,19 +485,10 @@ public class loginpage{
                 result = prepare.executeQuery();
                 if(result.next()){
                     loginpage.mm = true;
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bank/profile1.fxml"));
-                    Scene scene = new Scene(loader.load(), 1535, 790);
-
-                    // ایجاد و نمایش صفحه جدید
-                    Stage stage = new Stage();
-                    stage.setScene(scene);
-                    stage.setTitle("profile");
-                    stage.show();
-
-                    // بستن صفحه فعلی
-                    Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                    currentStage.close();
-
+                    openNewWindow("profile1.fxml","profile",event);
+                    profile.lastScene = "loginpage.fxml";
+                    profile.lastScenetitle = "profile";
+                    username = si_username.getText();
                     loginID = true;
 
                 }
@@ -526,8 +518,7 @@ public class loginpage{
             alert.setHeaderText(null);
             alert.setContentText("Name and username and Address and email must be at least 3 characters and password must be at least 8 characters");
             alert.showAndWait();
-        } else { username=su_username.getText();resi_name=su_number.getText();
-            resi_email=su_emailsign1.getText();resi_postcode=su_nationcode.getText();resi_address=su_address.getText();
+        } else {
             connect = DataBase1.connectDB();
             if(connect==null){
                 System.out.println("Connect Error");
@@ -628,25 +619,6 @@ public class loginpage{
             }
         }
     }
-    public void mainpage(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("hello-view.fxml"));
-            Scene scene = new Scene(loader.load(), 1535, 790);
-
-            // ایجاد و نمایش صفحه جدید
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.setTitle("لنوو مارکت");
-            stage.show();
-
-            // بستن صفحه فعلی
-            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            currentStage.close();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
     public void openNewWindow(String fxmlFile, String title, ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
@@ -667,7 +639,7 @@ public class loginpage{
         }
     }
 
-    public void backLoginTo(ActionEvent actionEvent) {openNewWindow("main.fxml","lenoShop",actionEvent);}
+    public void backLoginTo(ActionEvent actionEvent) {openNewWindow("main.fxml","Home",actionEvent);}
 
     public void backToSignup(ActionEvent actionEvent) {
         side_signUp.setVisible(true);

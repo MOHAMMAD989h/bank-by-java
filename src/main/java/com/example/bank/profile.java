@@ -92,6 +92,9 @@ public class profile {
 
     String infor = null;
 
+    public static String lastScene = "main.fxml";
+    public static String lastScenetitle = "Home";
+
     loginpage login = new loginpage();
 
     private List<productVam> products = new ArrayList<>();
@@ -137,9 +140,14 @@ public class profile {
     }
 
 
-    public void mainpage(ActionEvent actionEvent) {openNewWindow("main.fxml","Home",actionEvent);}
-    public void sabadpageProfile(ActionEvent actionEvent) {openNewWindow("main.fxml","Home",actionEvent);}
-    public void openAccount(ActionEvent actionEvent) {openNewWindow("account.fxml","openAurusecount",actionEvent);}
+    public void mainpage(ActionEvent actionEvent) {
+        openNewWindow("main.fxml","Home",actionEvent);
+    }
+    public void openAccount(ActionEvent actionEvent) {
+        openNewWindow("account.fxml","openAurusecount",actionEvent);
+        lastScene = "profile1.fxml";
+        lastScenetitle = "profile";
+    }
 
     public void logOutProfile(ActionEvent actionEvent) {
         openNewWindow("loginpage.fxml","Loginpage",actionEvent);
@@ -416,6 +424,39 @@ public class profile {
             }
         }
 
+    }
+    public int updateCredit(String Username,int budget) throws SQLException {
+        String selectCredit = "SELECT money FROM cards WHERE username  = ?";
+        String updateCredit = "UPDATE cards SET money = money + ? WHERE username  = ?";
+        String updateCreditDeduct = "UPDATE cards SET money = money - ? WHERE username  = ?";
+
+
+        connect = DataBase1.connectDB();
+
+        prepare = connect.prepareStatement(selectCredit);
+        prepare.setString(1, String.valueOf(Username));
+        result = prepare.executeQuery();
+
+        if (result.next()) {
+            int currentCredit = result.getInt("credit");
+
+            if (budget < 0) {
+                if (Math.abs(budget) > currentCredit) {
+                    return -1;
+                }
+                prepare = connect.prepareStatement(updateCreditDeduct);
+            } else {
+                prepare = connect.prepareStatement(updateCredit);
+            }
+
+            prepare.setInt(1, Math.abs(budget));
+            prepare.setString(2, Username);
+            prepare.executeUpdate();
+
+            return currentCredit-budget;
+        }
+
+        return -1;
     }
 
     private AnchorPane createProductPane(productVam product) {

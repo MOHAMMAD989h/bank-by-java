@@ -13,8 +13,7 @@ import java.sql.SQLException;
 import java.util.Random;
 import java.util.Scanner;
 
-import static com.example.bank.loginpage.IDCard;
-import static com.example.bank.loginpage.loginID;
+import static com.example.bank.loginpage.*;
 
 
 public class gabz {
@@ -53,6 +52,12 @@ public class gabz {
     int payment;
     @FXML
     private Label moneyGabz;
+
+    profile pro = new profile();
+
+    @FXML
+    private Label organGabz;
+
     public void initialize() throws IOException {
         filegabz();
         input = Files.readString(file.toPath());
@@ -70,15 +75,17 @@ public class gabz {
 
     @FXML
     void gabzPayment(ActionEvent event) throws SQLException, IOException {
-        /*gabzTextfield.setVisible(false);
-        gabznumber.setVisible(false);
-        moneyGabz.setVisible(false);
-        gabznumber.setVisible(false);
-        int result = login.updateCredit(String.valueOf(IDCard), -payment);
-        login.openNewWindow("main.fxml", "Home", event);
-        if (result == -1) {System.out.println("Not enough credit!");}
-        else {System.out.println("Payment successful! New balance: " + result);}
-*/
+        int result = pro.updateCredit(username, -payment);
+        if (result == -1) {
+            organGabz.setText("پرداخت نشد");
+            gabznumber.setText("");
+            gabzTextfield.setText("");
+            moneyGabz.setText("");
+        }
+        else {
+            login.openNewWindow("main.fxml", "Home", event);
+        }
+
 
     }
 
@@ -89,6 +96,26 @@ public class gabz {
                 if (gabzTextfield.getText().equals(inputs[i])) {
                     payment = Integer.parseInt(inputs[i+1]);
                     moneyGabz.setText("" + payment);
+                    if(String.valueOf(inputs[i]).trim().charAt(0) == '1'){
+                        organGabz.setText(" اداره اب و فاضلاب");
+                    } else if (String.valueOf(inputs[i]).trim().charAt(0) == '2') {
+                        organGabz.setText("اداره برق");
+                    } else if (String.valueOf(inputs[i]).trim().charAt(0) == '3') {
+                        organGabz.setText("اداره گاز");
+                    } else if (String.valueOf(inputs[i]).trim().charAt(0) == '4') {
+                        organGabz.setText("خدمات تلفن ثابت");
+                    } else if (String.valueOf(inputs[i]).trim().charAt(0) == '5') {
+                        organGabz.setText("خدمات تلفن همراه");
+                    }else if (String.valueOf(inputs[i]).trim().charAt(0) == '6') {
+                        organGabz.setText("عوارض شهرداری");
+                    } else if (String.valueOf(inputs[i]).trim().charAt(0) == '7') {
+                        organGabz.setText("سازمان مالیات");
+                    } else if (String.valueOf(inputs[i]).trim().charAt(0) == '8') {
+                        organGabz.setText("جرایم رانندگی");
+                    } else{
+                        organGabz.setText("");
+                    }
+
                 }
             }
         }
@@ -98,10 +125,10 @@ public class gabz {
     }
     private void filegabz() throws IOException {
         FileWriter fw = new FileWriter(file);
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < 20000; i++) {
             int pricegabz = random.nextInt(20000, 2000000);
             long numbergabz = random.nextLong(10000000, 999999999);
-            int pishnum = random.nextInt(1, 3);
+            int pishnum = random.nextInt(1, 9);
             long number = Long.parseLong(String.valueOf(pishnum) + String.valueOf(numbergabz));
             fw.write(String.valueOf(number) + ',' + pricegabz + ',');
         }

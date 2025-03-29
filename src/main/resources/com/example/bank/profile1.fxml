@@ -29,7 +29,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button layoutX="62.0" layoutY="12.0" mnemonicParsing="false" onAction="#sabadpageProfile" prefHeight="55.0" prefWidth="70.0" styleClass="white-form" stylesheets="@hhhh.css">
+                  <Button layoutX="62.0" layoutY="12.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="70.0" styleClass="white-form" stylesheets="@hhhh.css">
                      <graphic>
                         <ImageView fx:id="profileImage" fitHeight="40.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                            <image>
