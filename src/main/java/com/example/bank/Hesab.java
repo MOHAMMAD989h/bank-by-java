@@ -57,4 +57,10 @@ public class Hesab {
         clipboard.setContent(content);
     }
 
+    public void HomeToLoginpage(ActionEvent actionEvent) {
+    }
+
+    public void profile(ActionEvent actionEvent) {
+
+    }
 }

@@ -425,20 +425,21 @@ public class profile {
         }
 
     }
-    public int updateCredit(String Username,int budget) throws SQLException {
-        String selectCredit = "SELECT money FROM cards WHERE username  = ?";
-        String updateCredit = "UPDATE cards SET money = money + ? WHERE username  = ?";
-        String updateCreditDeduct = "UPDATE cards SET money = money - ? WHERE username  = ?";
+    public int updateCredit(String Numbercard, int budget) throws SQLException {
+        String selectCredit = "SELECT * FROM cards WHERE numbercard  = ?";
+        String updateCredit = "UPDATE cards SET money = money + ? WHERE numbercard  = ?";
+        String updateCreditDeduct = "UPDATE cards SET money = money - ? WHERE numbercard  = ?";
 
 
         connect = DataBase1.connectDB();
 
+        assert connect != null;
         prepare = connect.prepareStatement(selectCredit);
-        prepare.setString(1, String.valueOf(Username));
+        prepare.setString(1, Numbercard);
         result = prepare.executeQuery();
 
         if (result.next()) {
-            int currentCredit = result.getInt("credit");
+            int currentCredit = Integer.parseInt(result.getString("money"));
 
             if (budget < 0) {
                 if (Math.abs(budget) > currentCredit) {
@@ -450,7 +451,7 @@ public class profile {
             }
 
             prepare.setInt(1, Math.abs(budget));
-            prepare.setString(2, Username);
+            prepare.setString(2, Numbercard);
             prepare.executeUpdate();
 
             return currentCredit-budget;
@@ -515,5 +516,8 @@ public class profile {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void openmyaccount(ActionEvent actionEvent) {openNewWindow("hesab.fxml","myaccount",actionEvent);
     }
 }

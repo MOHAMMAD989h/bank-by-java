@@ -50,6 +50,20 @@
                            </graphic></Button>
                      </children>
                   </AnchorPane>
+                  <AnchorPane fx:id="openAccountProfile1" layoutX="722.0" layoutY="17.0" prefHeight="90.0" prefWidth="207.0" styleClass="wallet" stylesheets="@styles.css">
+                     <children>
+                        <Text layoutX="112.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" حساب" />
+                        <Button layoutX="14.0" layoutY="5.0" mnemonicParsing="false" onAction="#openmyaccount" prefHeight="67.0" prefWidth="98.0" styleClass="wallet" stylesheets="@styles.css">
+                           <graphic>
+                              <ImageView fitHeight="71.0" fitWidth="79.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../images/1486441-نماد-کیف-پول-در-سبک-تخت-مرسوم-مد-روز-و-جدا-شده-در-پس-زمینه-خاکستری-نماد-کیف-پول-برای-طراحی-وب-سایت-آرم-برنامه-رابط-کاربر-تصویر-برداری-EPS10.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </AnchorPane>
                </children>
             </AnchorPane>
          </top>

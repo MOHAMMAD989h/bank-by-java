@@ -22,6 +22,7 @@
             <Label fx:id="gabz5" layoutX="114.0" layoutY="281.0" />
             <Button layoutX="370.0" layoutY="247.0" mnemonicParsing="false" onAction="#backtomainFromGabz" text="back" />
             <Label fx:id="organGabz" alignment="CENTER" layoutX="264.0" layoutY="115.0" prefHeight="18.0" prefWidth="251.0" />
+            <TextField fx:id="numbercardGetter" layoutX="312.0" layoutY="8.0" promptText="شماره کارت" />
          </children>
       </AnchorPane>
    </center>

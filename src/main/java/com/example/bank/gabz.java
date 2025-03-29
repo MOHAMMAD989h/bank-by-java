@@ -2,13 +2,12 @@ package com.example.bank;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.io.*;
 import java.nio.file.Files;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Random;
 import java.util.Scanner;
@@ -55,10 +54,18 @@ public class gabz {
 
     profile pro = new profile();
 
+    Alert alert ;
+
     @FXML
     private Label organGabz;
 
-    public void initialize() throws IOException {
+    @FXML
+    private TextField numbercardGetter;
+
+    Connection connect = null;
+    PreparedStatement prepare = null;
+
+    public void initialize() throws IOException, SQLException {
         filegabz();
         input = Files.readString(file.toPath());
         inputs = input.split(",");
@@ -75,14 +82,17 @@ public class gabz {
 
     @FXML
     void gabzPayment(ActionEvent event) throws SQLException, IOException {
-        int result = pro.updateCredit(username, -payment);
+        int result = pro.updateCredit(numbercardGetter.getText(), -payment);
         if (result == -1) {
             organGabz.setText("پرداخت نشد");
-            gabznumber.setText("");
             gabzTextfield.setText("");
             moneyGabz.setText("");
         }
         else {
+            alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("successfully");
+            alert.setTitle("INFORMATION");
+            alert.showAndWait();
             login.openNewWindow("main.fxml", "Home", event);
         }
 
@@ -123,8 +133,12 @@ public class gabz {
             moneyGabz.setText("first open account");
         }
     }
-    private void filegabz() throws IOException {
+    private void filegabz() throws IOException, SQLException {
         FileWriter fw = new FileWriter(file);
+        connect = DataBase1.connectDB();
+        String regdata = "";
+        assert connect != null;
+        prepare = connect.prepareStatement(regdata);
         for (int i = 0; i < 20000; i++) {
             int pricegabz = random.nextInt(20000, 2000000);
             long numbergabz = random.nextLong(10000000, 999999999);
