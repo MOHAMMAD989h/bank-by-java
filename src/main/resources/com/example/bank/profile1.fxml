@@ -24,7 +24,7 @@
                      <graphic>
                         <ImageView fitHeight="43.0" fitWidth="230.0" pickOnBounds="true" preserveRatio="true" styleClass="white-form">
                            <image>
-                              <Image url="@../../../Images/Screenshot%202025-01-04%20162459.png" />
+                              <Image url="@../../../images/Aureous%20Bank%20Logo.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -37,18 +37,12 @@
                            </image></ImageView>
                      </graphic>
                   </Button>
-               </children>
-            </AnchorPane>
-         </top>
-         <right>
-            <AnchorPane prefHeight="560.0" prefWidth="594.0" BorderPane.alignment="CENTER">
-               <children>
-                  <AnchorPane fx:id="openAccountProfile" layoutX="140.0" prefHeight="200.0" prefWidth="300.0" styleClass="wallet" stylesheets="@styles.css">
+                  <AnchorPane fx:id="openAccountProfile" layoutX="962.0" layoutY="12.0" prefHeight="90.0" prefWidth="207.0" styleClass="wallet" stylesheets="@styles.css">
                      <children>
-                        <Text layoutX="167.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="باز کردن حساب" />
-                        <Button layoutX="40.0" layoutY="52.0" mnemonicParsing="false" onAction="#openAccount" styleClass="wallet" stylesheets="@styles.css">
+                        <Text layoutX="112.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="باز کردن حساب" />
+                        <Button layoutX="14.0" layoutY="5.0" mnemonicParsing="false" onAction="#openAccount" prefHeight="67.0" prefWidth="98.0" styleClass="wallet" stylesheets="@styles.css">
                            <graphic>
-                              <ImageView fitHeight="103.0" fitWidth="97.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="71.0" fitWidth="79.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../../images/1486441-نماد-کیف-پول-در-سبک-تخت-مرسوم-مد-روز-و-جدا-شده-در-پس-زمینه-خاکستری-نماد-کیف-پول-برای-طراحی-وب-سایت-آرم-برنامه-رابط-کاربر-تصویر-برداری-EPS10.png" />
                                  </image>
@@ -56,9 +50,15 @@
                            </graphic></Button>
                      </children>
                   </AnchorPane>
-                  <ScrollPane layoutX="109.0" layoutY="200.0" prefHeight="466.0" prefWidth="400.0">
+               </children>
+            </AnchorPane>
+         </top>
+         <right>
+            <AnchorPane prefHeight="560.0" prefWidth="594.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ScrollPane layoutX="109.0" layoutY="-1.0" prefHeight="667.0" prefWidth="400.0">
                      <content>
-                        <VBox fx:id="vboxshowcard" prefHeight="465.0" prefWidth="398.0" />
+                        <VBox fx:id="vboxshowcard" prefHeight="668.0" prefWidth="398.0" />
                      </content>
                   </ScrollPane>
                </children></AnchorPane>
@@ -71,23 +71,9 @@
                <children>
                   <VBox fx:id="vbox_profile" layoutY="1.0" prefHeight="652.0" prefWidth="586.0">
                      <children>
-                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="180.0" styleClass="wallet" stylesheets="@styles.css" text="نام کاربری">
+                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="180.0" styleClass="wallet" stylesheets="@styles.css" text="نام">
                            <VBox.margin>
                               <Insets left="30.0" top="15.0" />
-                           </VBox.margin>
-                        </Label>
-                        <Label fx:id="txtUsername" prefHeight="30.0" prefWidth="521.0" stylesheets="@styles.css">
-                           <styleClass>
-                              <String fx:value="password" />
-                              <String fx:value="text-field1" />
-                           </styleClass>
-                           <VBox.margin>
-                              <Insets left="30.0" right="80.0" top="15.0" />
-                           </VBox.margin>
-                        </Label>
-                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="180.0" styleClass="wallet" stylesheets="@styles.css" text="شماره:">
-                           <VBox.margin>
-                              <Insets left="30.0" right="80.0" top="15.0" />
                            </VBox.margin>
                         </Label>
                         <Label fx:id="txtName" prefHeight="40.0" prefWidth="508.0" stylesheets="@styles.css">
@@ -98,6 +84,20 @@
                               <String fx:value="text-field1" />
                               <String fx:value="password" />
                            </styleClass>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="180.0" styleClass="wallet" stylesheets="@styles.css" text="نام کاربری:">
+                           <VBox.margin>
+                              <Insets left="30.0" right="80.0" top="15.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="txtUsername" prefHeight="30.0" prefWidth="521.0" stylesheets="@styles.css">
+                           <styleClass>
+                              <String fx:value="password" />
+                              <String fx:value="text-field1" />
+                           </styleClass>
+                           <VBox.margin>
+                              <Insets left="30.0" right="80.0" top="15.0" />
+                           </VBox.margin>
                         </Label>
                         <Label alignment="CENTER" prefHeight="30.0" prefWidth="180.0" styleClass="wallet" stylesheets="@styles.css" text="ایمیل:">
                            <VBox.margin>
@@ -113,12 +113,12 @@
                               <String fx:value="text-field1" />
                            </styleClass>
                         </Label>
-                        <Label alignment="CENTER" maxWidth="179.0" prefHeight="26.0" prefWidth="180.0" styleClass="wallet" stylesheets="@styles.css" text="کد ملی :">
+                        <Label alignment="CENTER" layoutX="40.0" layoutY="227.0" prefHeight="30.0" prefWidth="180.0" styleClass="wallet" stylesheets="@styles.css" text="شماره:">
                            <VBox.margin>
-                              <Insets bottom="15.0" left="30.0" right="80.0" top="15.0" />
+                              <Insets bottom="15.0" left="30.0" top="15.0" />
                            </VBox.margin>
                         </Label>
-                        <Label fx:id="txtPostcode" prefHeight="30.0" prefWidth="520.0" stylesheets="@styles.css">
+                        <Label fx:id="txtNumberphone" prefHeight="30.0" prefWidth="520.0" stylesheets="@styles.css">
                            <VBox.margin>
                               <Insets bottom="15.0" left="30.0" right="80.0" top="15.0" />
                            </VBox.margin>
@@ -126,6 +126,20 @@
                               <String fx:value="password" />
                               <String fx:value="text-field1" />
                            </styleClass>
+                        </Label>
+                        <Label alignment="CENTER" maxWidth="179.0" prefHeight="26.0" prefWidth="180.0" styleClass="wallet" stylesheets="@styles.css" text="کد ملی :">
+                           <VBox.margin>
+                              <Insets bottom="15.0" left="30.0" right="80.0" top="15.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="txtNationcode" layoutX="40.0" layoutY="272.0" prefHeight="30.0" prefWidth="520.0" stylesheets="@styles.css">
+                           <styleClass>
+                              <String fx:value="password" />
+                              <String fx:value="text-field1" />
+                           </styleClass>
+                           <VBox.margin>
+                              <Insets bottom="15.0" left="30.0" right="80.0" top="15.0" />
+                           </VBox.margin>
                         </Label>
                         <Label alignment="CENTER" prefHeight="30.0" prefWidth="180.0" styleClass="wallet" stylesheets="@styles.css" text="ادرس">
                            <VBox.margin>
@@ -282,7 +296,7 @@
                               <Insets bottom="15.0" top="15.0" />
                            </VBox.margin>
                         </Button>
-                        <Button layoutX="10.0" layoutY="240.0" mnemonicParsing="false" onAction="#changePostcode1" prefHeight="30.0" prefWidth="160.0" styleClass="wallet" stylesheets="@styles.css" text="تغییر نام پست کد">
+                        <Button layoutX="10.0" layoutY="240.0" mnemonicParsing="false" onAction="#changePostcode1" prefHeight="30.0" prefWidth="160.0" styleClass="wallet" stylesheets="@styles.css" text="تغییر شماره">
                            <VBox.margin>
                               <Insets bottom="15.0" top="15.0" />
                            </VBox.margin>

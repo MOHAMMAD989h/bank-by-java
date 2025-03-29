@@ -12,7 +12,6 @@ public class DataBase1 {
             Class.forName("com.mysql.cj.jdbc.Driver");
             System.out.println("Driver Loaded Successfully!");
             connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/bank?serverTimezone=UTC", "root", "");
-            return connect;
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -21,6 +20,7 @@ public class DataBase1 {
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
+        return connect;
 
     }
 

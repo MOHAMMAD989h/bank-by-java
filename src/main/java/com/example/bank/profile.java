@@ -15,9 +15,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import java.sql.*;
 import java.util.*;
-
-
 import static com.example.bank.loginpage.username;
+
 
 public class profile {
 
@@ -47,7 +46,7 @@ public class profile {
     private Label txtName;
 
     @FXML
-    private Label txtPostcode;
+    private Label txtNationcode;
 
     @FXML
     private Label txtUsername;
@@ -83,10 +82,13 @@ public class profile {
     private VBox vboxshowcard;
     @FXML
     private VBox vbox_change1;
+    @FXML
+    private Label txtNumberphone;
 
     Connection connect;
     PreparedStatement prepare;
     ResultSet result;
+    ResultSet rs;
 
     String infor = null;
 
@@ -98,9 +100,25 @@ public class profile {
             connect = DataBase1.connectDB();
             String data = "SELECT * FROM cards WHERE username = ?";
 
+            String selectdata = "SELECT * FROM employee";
+
+            prepare = connect.prepareStatement(selectdata);
+
+            rs = prepare.executeQuery(selectdata);
+
+            while (rs.next()) {
+                txtName.setText(rs.getString("name"));
+                txtEmail.setText(rs.getString("email"));
+                txtAddress.setText(rs.getString("address"));
+                txtUsername.setText(rs.getString("username"));
+                txtNationcode.setText(rs.getString("nationcode"));
+                txtNumberphone.setText(rs.getString("numberphone"));
+            }
+
             prepare = connect.prepareStatement(data);
             prepare.setString(1,username);
             result = prepare.executeQuery();
+            products.clear();
             while (result.next()) {
                 String number = result.getString("numbercard");
                 String time = result.getString("engeza");
@@ -173,7 +191,7 @@ public class profile {
             vbox_change1.setVisible(false);
         });
         slider.play();
-        infor = "postcode";
+        infor = "numberphone";
         txt_oldusername1.setPromptText("پست کد قبلی");
         txt_newusername1.setPromptText("پست کد جدید");
         buttonChange.setText("تغییر پست کد ");
@@ -425,7 +443,7 @@ public class profile {
         timeLabel.setLayoutX(150);
         timeLabel.setLayoutY(50);
 
-        pane.getChildren().addAll(nameLabel,soodLabel,timeLabel,nameLbl,timeLabel);
+        pane.getChildren().addAll(nameLabel,soodLabel,timeLabel,nameLbl);
 
         return pane;
 

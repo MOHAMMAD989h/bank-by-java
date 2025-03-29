@@ -499,34 +499,6 @@ public class loginpage{
 
                     loginID = true;
 
-                    loginpage controller = loader.getController();
-                    controller.txtName.setText(result.getString("numberphone"));
-                    controller.txtUsername.setText(result.getString("username"));
-                    controller.txtEmail.setText(result.getString("email"));
-                    controller.txtPostcode.setText(result.getString("nationcode"));
-                    controller.txtAddress.setText(result.getString("address"));
-                    Blob imageblob = result.getBlob("imageData");
-                    System.out.println(imageblob);
-                    InputStream binaryStream = imageblob.getBinaryStream();
-                    System.out.println(binaryStream);
-                    Image image = new Image(binaryStream);
-                    System.out.println(image);
-                    profileImage.setImage(image);
-                    username=result.getString("username");resi_name=result.getString("name");
-                    resi_email=result.getString("email");resi_postcode=result.getString("postcode");resi_address=result.getString("address");
-
-
-
-                    /*FXMLLoader loader1 = new FXMLLoader(getClass().getResource("/com/example/site/sabad.fxml"));
-                    URL url = getClass().getResource("/com/example/site/sabad.fxml");
-                    System.out.println("FXML URL: " + url);
-                    Parent root = loader1.load();*/
-                    /*sabad sabadController = loader1.getController();
-                    System.out.println(sabadController);
-                    System.out.println(loader1);
-                    System.out.println(result.getString("name"));
-                    sabadController.setLableNameCart(result.getString("name"));*/
-
                 }
                 else{
                     alert = new Alert(Alert.AlertType.ERROR);
