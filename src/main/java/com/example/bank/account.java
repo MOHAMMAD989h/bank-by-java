@@ -153,97 +153,84 @@ public class account implements Initializable {
             alert.setContentText("please fill blanks");
             alert.showAndWait();
 
-        }
-        else {
-            String selectdata = "SELECT bank FROM cards WHERE numbercard=? ";
-
+        }else {
             connect = DataBase1.connectDB();
 
-            prepare = connect.prepareStatement(selectdata);
-            prepare.setString(1, cartNumGetter.getText());
-            result = prepare.executeQuery();
-            if (result.next()) {
-
-                regdata = "INSERT INTO cards (username,money,credit,numbercard,cvv2,engeza,bankname,phonenumberhome,password,imagecard) " +
-                        "VALUES(?,?,?,?,?,?,?,?,?,?)";
+            regdata = "INSERT INTO cards (username,money,credit,numbercard,cvv2,engeza,bankname,phonenumberhome,password,imagecard) " +
+                    "VALUES(?,?,?,?,?,?,?,?,?,?)";
 
 
-                assert connect != null;
-                byte[] imageData = Files.readAllBytes(selectedImageFile.toPath());
+            assert connect != null;
+            byte[] imageData = Files.readAllBytes(selectedImageFile.toPath());
 
-                LocalDate now = LocalDate.now(ZoneId.of("Asia/Tehran"));
-                int year = now.getYear();
-                int month = now.getMonthValue();
-                int day = now.getDayOfMonth();
+            LocalDate now = LocalDate.now(ZoneId.of("Asia/Tehran"));
+            int year = now.getYear();
+            int month = now.getMonthValue();
+            int day = now.getDayOfMonth();
 
-                // تبدیل میلادی به شمسی (تخمینی)
-                persianYear = year - ((month < 3) || (month == 3 && day < 21) ? 622 : 621) + 10;
+            BigInteger randomBigInt = new BigInteger(33, random).add(new BigInteger("1000000000"));
 
-                if ((month == 3 && day >= 21) || month == 4 || (month == 5 && day <= 21)) persianMonth = 1;  // فروردین
-                else if ((month == 5 && day >= 22) || month == 6 || (month == 7 && day <= 22))
-                    persianMonth = 2;  // اردیبهشت
-                else if ((month == 7 && day >= 23) || month == 8 || (month == 9 && day <= 22))
-                    persianMonth = 3;  // خرداد
-                else if ((month == 9 && day >= 23) || month == 10 || (month == 11 && day <= 22))
-                    persianMonth = 4;  // تیر
-                else if ((month == 11 && day >= 23) || month == 12 || (month == 1 && day <= 19))
-                    persianMonth = 5;  // مرداد
-                else if ((month == 1 && day >= 20) || month == 2 || (month == 3 && day <= 20))
-                    persianMonth = 6;  // شهریور
-                else if ((month == 3 && day >= 21) || month == 4 || (month == 5 && day <= 21)) persianMonth = 7;  // مهر
-                else if ((month == 5 && day >= 22) || month == 6 || (month == 7 && day <= 22))
-                    persianMonth = 8;  // آبان
-                else if ((month == 7 && day >= 23) || month == 8 || (month == 9 && day <= 22)) persianMonth = 9;  // آذر
-                else if ((month == 9 && day >= 23) || month == 10 || (month == 11 && day <= 22))
-                    persianMonth = 10; // دی
-                else if ((month == 11 && day >= 23) || month == 12 || (month == 1 && day <= 19))
-                    persianMonth = 11; // بهمن
-                else persianMonth = 12; // اسفند
+            String BigNumberString = "504412" + randomBigInt.toString();
 
-                String yearPer = String.format("%02d", persianYear % 100);
+            // تبدیل میلادی به شمسی (تخمینی)
+            persianYear = year - ((month < 3) || (month == 3 && day < 21) ? 622 : 621) + 10;
 
-                String monthPer = String.format("%02d", persianMonth);
+            if ((month == 3 && day >= 21) || month == 4 || (month == 5 && day <= 21)) persianMonth = 1;  // فروردین
+            else if ((month == 5 && day >= 22) || month == 6 || (month == 7 && day <= 22))
+                persianMonth = 2;  // اردیبهشت
+            else if ((month == 7 && day >= 23) || month == 8 || (month == 9 && day <= 22))
+                persianMonth = 3;  // خرداد
+            else if ((month == 9 && day >= 23) || month == 10 || (month == 11 && day <= 22))
+                persianMonth = 4;  // تیر
+            else if ((month == 11 && day >= 23) || month == 12 || (month == 1 && day <= 19))
+                persianMonth = 5;  // مرداد
+            else if ((month == 1 && day >= 20) || month == 2 || (month == 3 && day <= 20))
+                persianMonth = 6;  // شهریور
+            else if ((month == 3 && day >= 21) || month == 4 || (month == 5 && day <= 21)) persianMonth = 7;  // مهر
+            else if ((month == 5 && day >= 22) || month == 6 || (month == 7 && day <= 22))
+                persianMonth = 8;  // آبان
+            else if ((month == 7 && day >= 23) || month == 8 || (month == 9 && day <= 22)) persianMonth = 9;  // آذر
+            else if ((month == 9 && day >= 23) || month == 10 || (month == 11 && day <= 22))
+                persianMonth = 10; // دی
+            else if ((month == 11 && day >= 23) || month == 12 || (month == 1 && day <= 19))
+                persianMonth = 11; // بهمن
+            else persianMonth = 12; // اسفند
 
-                String yyMM = String.valueOf(yearPer + monthPer);
+            String yearPer = String.format("%02d", persianYear % 100);
 
-                BigInteger randomBigInt = new BigInteger(33, random).add(new BigInteger("1000000000"));
+            String monthPer = String.format("%02d", persianMonth);
 
-                String BigNumberString = "504412" + randomBigInt.toString();
+            String yyMM = String.valueOf(yearPer + monthPer);
 
-                int cvv2 = random.nextInt(100, 1000);
 
-                prepare = connect.prepareStatement(regdata);
-                prepare.setString(1, username);
-                prepare.setString(2,"0");
-                prepare.setString(3,"0");
-                prepare.setString(4, BigNumberString);
-                prepare.setString(5, String.valueOf(cvv2));
-                prepare.setString(6, yyMM);
-                prepare.setString(7, "Aureous Bank");
-                prepare.setString(8, homeNumberGet.getText());
-                prepare.setString(9, accountPassword.getText());
-                prepare.setString(10, Arrays.toString(imageData));
-                int rowsAffected = prepare.executeUpdate();
+            int cvv2 = random.nextInt(100, 1000);
 
-                alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Information");
-                alert.setHeaderText(null);
-                alert.setContentText("Seccessfully");
-                alert.showAndWait();
+            prepare = connect.prepareStatement(regdata);
+            prepare.setString(1, username);
+            prepare.setString(2, "0");
+            prepare.setString(3, "0");
+            prepare.setString(4, BigNumberString);
+            prepare.setString(5, String.valueOf(cvv2));
+            prepare.setString(6, yyMM);
+            prepare.setString(7, "Aureous Bank");
+            prepare.setString(8, homeNumberGet.getText());
+            prepare.setString(9, accountPassword.getText());
+            prepare.setString(10, Arrays.toString(imageData));
+            int rowsAffected = prepare.executeUpdate();
 
-                homeNumberGet.clear();
-                accountPassword.clear();
-                tekrarRamz.clear();
+            alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information");
+            alert.setHeaderText(null);
+            alert.setContentText("Seccessfully");
+            alert.showAndWait();
 
-                login.openNewWindow("profile1.fxml", "Profile", actionEvent);
-            }
-            else {
-                alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error");
-                alert.setHeaderText(null);
-                alert.setContentText("You are already logged in");
-                alert.showAndWait();}
+            homeNumberGet.clear();
+            accountPassword.clear();
+            tekrarRamz.clear();
+
+            login.openNewWindow("profile1.fxml", "Profile", actionEvent);
         }
+
     }
     public void estelamBank(ActionEvent actionEvent) throws IOException, SQLException {
         if(!cartNumGetter.getText().matches("[0-9]{16}")  ||  !accountPassword1.getText().matches("[0-9]{4}")

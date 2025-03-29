@@ -178,7 +178,7 @@
                         <Font size="10.0" />
                      </font>
                   </Button>
-                  <TextField fx:id="su_name" layoutX="40.0" layoutY="50.0" prefHeight="30.0" prefWidth="220.0" promptText="نام کاربری" stylesheets="@styles.css">
+                  <TextField fx:id="su_name" layoutX="40.0" layoutY="50.0" prefHeight="30.0" prefWidth="220.0" promptText="نام " stylesheets="@styles.css">
                      <styleClass>
                         <String fx:value="text-field1" />
                         <String fx:value="password" />
