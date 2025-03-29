@@ -197,7 +197,7 @@
                                           <Font name="System Bold" size="18.0" />
                                        </font>
                                     </Label>
-                                    <TextField fx:id="year" alignment="CENTER" layoutX="16.0" layoutY="40.0" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="47.0" prefWidth="202.0" promptText="--" stylesheets="@styles.css">
+                                    <TextField fx:id="year" alignment="CENTER" layoutX="10.0" layoutY="37.0" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="47.0" prefWidth="202.0" promptText="--" stylesheets="@styles.css">
                                        <styleClass>
                                           <String fx:value="text-field1" />
                                           <String fx:value="password" />
@@ -230,7 +230,7 @@
                                        </font>
                                     </TextField>
                                     <Label layoutX="28.0" layoutY="109.0" prefHeight="71.0" prefWidth="176.0" />
-                                    <Button layoutX="43.0" layoutY="124.0" mnemonicParsing="false" onAction="#Dargah" prefHeight="50.0" prefWidth="137.0" text="انجام عملیات" textFill="WHITE">
+                                    <Button fx:id="Dargah" layoutX="43.0" layoutY="124.0" mnemonicParsing="false" onAction="#Dargah" prefHeight="50.0" prefWidth="137.0" text="انجام عملیات" textFill="WHITE" visible="false">
                                        <styleClass>
                                           <String fx:value="password" />
                                           <String fx:value="text-field1" />
@@ -242,6 +242,13 @@
                                           <Font name="System Bold" size="14.0" />
                                        </font>
                                     </Label>
+                                    <Button fx:id="sendPoyaPassword" layoutX="42.0" layoutY="124.0" mnemonicParsing="false" onAction="#sendPoyaPassword" prefHeight="50.0" prefWidth="137.0" text="ارسال رمز پویا" textFill="WHITE">
+                                       <styleClass>
+                                          <String fx:value="password" />
+                                          <String fx:value="text-field1" />
+                                          <String fx:value="wallet" />
+                                       </styleClass>
+                                    </Button>
                                  </children>
                               </AnchorPane>
                            </children>

@@ -24,6 +24,8 @@ import javafx.stage.Stage;
 import javafx.application.Platform;
 import javafx.scene.input.MouseEvent;
 
+import static com.example.bank.loginpage.loginID;
+
 public class Controller {
     @FXML
     private AnchorPane ancktext;
@@ -491,16 +493,14 @@ public class Controller {
             e.printStackTrace();
         }
     }
-    public void handleServiceOption1(ActionEvent event) {
-        openNewWindow("entegal.fxml","انتقال وجه",event);
-    }
+    public void handleServiceOption1(ActionEvent event) {openNewWindow("entegal.fxml", "انتقال وجه", event);}
 
     public void HomeToLoginpage(ActionEvent actionEvent) {
         openNewWindow("loginpage.fxml","loginpage",actionEvent);
     }
 
     public void profile(ActionEvent actionEvent) {
-        if(loginpage.loginID) {
+        if(loginID) {
             openNewWindow("profile1.fxml", "profile", actionEvent);
         }
         else {

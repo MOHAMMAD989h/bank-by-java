@@ -106,7 +106,6 @@ public class profile {
             String selectdata = "SELECT * FROM employee";
 
             prepare = connect.prepareStatement(selectdata);
-
             rs = prepare.executeQuery(selectdata);
             String numberq = "";
 

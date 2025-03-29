@@ -3,6 +3,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -17,6 +18,9 @@ import javafx.util.Duration;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -28,6 +32,8 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.application.Platform;
 import javafx.scene.input.MouseEvent;
+
+import static com.example.bank.loginpage.*;
 
 public class entegal {
     @FXML
@@ -88,6 +94,20 @@ public class entegal {
     private Button profile;
 
     profile pro = new profile();
+
+    Connection connect = null;
+
+    PreparedStatement prepare = null;
+
+    ResultSet result = null;
+    ResultSet rs = null;
+
+    Alert alert;
+
+    @FXML
+    private Button sendPoyaPassword;
+    @FXML
+    private Button Dargah;
 
 
 
@@ -494,16 +514,78 @@ public class entegal {
     }
 
     public void Dargah (ActionEvent event) throws SQLException {
-        int resulttransfer = pro.transferMoney(text1.getText(),text3.getText(), Integer.parseInt(pool.getText()));
-        if(resulttransfer < 0){
-            System.out.println("no");
-        }else{
-            System.out.println("yes");
+        if(verifyCode1.equals(PasswordPoya.getText())) {
+            int resulttransfer = pro.transferMoney(text1.getText(), text3.getText(), Integer.parseInt(pool.getText()));
+            if (resulttransfer < 0) {
+                alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Information");
+                alert.setHeaderText(null);
+                alert.setContentText("موجودی کم است");
+                alert.showAndWait();
+            } else {
+                alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Information");
+                alert.setHeaderText(null);
+                alert.setContentText("موفقیت امیز بود");
+                alert.showAndWait();
+                openNewWindow("main.fxml", "Home", event);
+                }
         }
-
     }
+    String email;
 
     public void backToHomeFromEntegal(ActionEvent actionEvent) {
         openNewWindow("main.fxml","home",actionEvent);
+    }
+
+    public void sendPoyaPassword(ActionEvent actionEvent) throws SQLException {
+        text1.setEditable(false);
+        text3.setEditable(false);
+        cvv.setEditable(false);
+        year.setEditable(false);
+        month.setEditable(false);
+        connect = DataBase1.connectDB();
+        String selectEmailByCardNumber = "SELECT e.email, c.engeza, c.cvv2, c.numbercard FROM employee e JOIN cards c ON e.username = c.username WHERE c.numbercard = ?";
+
+        String time = "", cvv2 = "", numbercard = "", email = "";
+
+        assert connect != null;
+
+        PreparedStatement prepare = connect.prepareStatement(selectEmailByCardNumber);
+        prepare.setString(1, text1.getText().trim());
+        rs = prepare.executeQuery();
+        if (rs.next()) {
+            email = rs.getString("email");
+            time = rs.getString("engeza");
+            cvv2 = rs.getString("cvv2");
+            numbercard = rs.getString("numbercard");
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("اطلاعات کارت وارد شده معتبر نیست.");
+            alert.showAndWait();
+            return;
+        }
+
+        if (text3.getText().isEmpty() || !numbercard.equals(text1.getText().trim()) || !cvv2.equals(cvv.getText().trim())
+                || Integer.parseInt(time) != Integer.parseInt(String.valueOf(year.getText()).trim() + String.valueOf(month.getText()).trim())) {
+            System.out.println(String.valueOf(year.getText()).trim() + String.valueOf(month.getText()).trim());
+            System.out.println(time);
+            System.out.println(cvv.getText().trim());
+            System.out.println(cvv2);
+            System.out.println(numbercard);
+            System.out.println(text1.getText().trim());
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("اطلاعات همخوانی ندارد");
+            alert.showAndWait();
+        } else {
+            verifyCode1 = String.valueOf((int) (Math.random() * 900000) + 100000);
+            sendEmail(email, verifyCode1);
+            Dargah.setVisible(true);
+            sendPoyaPassword.setVisible(false);
+        }
     }
 }
