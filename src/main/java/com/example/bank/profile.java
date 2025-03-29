@@ -105,9 +105,11 @@ public class profile {
             prepare = connect.prepareStatement(selectdata);
 
             rs = prepare.executeQuery(selectdata);
+            String numberq = "";
 
             while (rs.next()) {
-                txtName.setText(rs.getString("name"));
+                numberq = rs.getString("name");
+                txtName.setText(numberq);
                 txtEmail.setText(rs.getString("email"));
                 txtAddress.setText(rs.getString("address"));
                 txtUsername.setText(rs.getString("username"));
@@ -123,7 +125,8 @@ public class profile {
                 String number = result.getString("numbercard");
                 String time = result.getString("engeza");
                 String cvv2 = result.getString("cvv2");
-                products.add(new productVam(number, "", cvv2, time, "",""));
+                String bankname = result.getString("bankname");
+                products.add(new productVam(number,bankname , cvv2, time, "",numberq));
 
             }
             for (productVam product1 : products) {
@@ -439,11 +442,16 @@ public class profile {
         timeLabel.setLayoutY(50);
 
         //name
-        Label nameLbl = new Label( "انقضا : "+product.getDiscription());
-        timeLabel.setLayoutX(150);
-        timeLabel.setLayoutY(50);
+        Label nameLbl = new Label( "نام : "+product.getDiscription());
+        nameLbl.setLayoutX(200);
+        nameLbl.setLayoutY(50);
 
-        pane.getChildren().addAll(nameLabel,soodLabel,timeLabel,nameLbl);
+        //name
+        Label banknameLbl = new Label( "  نام بانک : "+product.getPrice());
+        banknameLbl.setLayoutX(100);
+        banknameLbl.setLayoutY(70);
+
+        pane.getChildren().addAll(nameLabel,soodLabel,timeLabel,nameLbl,banknameLbl);
 
         return pane;
 
