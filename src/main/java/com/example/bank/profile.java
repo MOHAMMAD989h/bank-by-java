@@ -459,6 +459,52 @@ public class profile {
 
         return -1;
     }
+    public int transferMoney(String Numbercardfrom,String Numbercardto, int budget) throws SQLException {
+        String selectCredit = "SELECT money FROM cards WHERE numbercard = ?";
+        String updateCreditAdd = "UPDATE cards SET money = money + ? WHERE numbercard = ?";
+        String updateCreditDeduct = "UPDATE cards SET money = money - ? WHERE numbercard = ?";
+
+        connect = DataBase1.connectDB();
+
+        assert connect != null;
+
+        prepare = connect.prepareStatement(selectCredit);
+        prepare.setString(1, Numbercardto);
+        result = prepare.executeQuery();
+
+        if (!result.next()) {
+            System.out.println("شماره کارت مقصد نامعتبر است."); // شماره کارت مقصد نامعتبر است
+            return -3;
+        }
+
+        prepare = connect.prepareStatement(selectCredit);
+        prepare.setString(1, Numbercardfrom);
+        result = prepare.executeQuery();
+
+        if (!result.next()) {
+            System.out.println("شماره کارت مبدا نامعتبر است."); // شماره کارت مبدا نامعتبر است
+            return -1;
+        }
+
+        int currentCredit = result.getInt("money");
+
+        if (Math.abs(budget) > currentCredit) {
+            System.out.println("موجودی کارت مبدا کافی نیست."); // موجودی کارت مبدا کافی نیست
+            return -2;
+        }
+
+        prepare = connect.prepareStatement(updateCreditDeduct);
+        prepare.setInt(1, Math.abs(budget));
+        prepare.setString(2, Numbercardfrom);
+        prepare.executeUpdate();
+
+        prepare = connect.prepareStatement(updateCreditAdd);
+        prepare.setInt(1, Math.abs(budget));
+        prepare.setString(2, Numbercardto);
+        prepare.executeUpdate();
+
+        return currentCredit - Math.abs(budget);
+    }
 
     private AnchorPane createProductPane(productVam product) {
         AnchorPane pane = null;

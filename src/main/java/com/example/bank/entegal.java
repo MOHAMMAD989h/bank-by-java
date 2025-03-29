@@ -16,6 +16,8 @@ import javafx.animation.PauseTransition;
 import javafx.util.Duration;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Random;
@@ -85,6 +87,7 @@ public class entegal {
     @FXML
     private Button profile;
 
+    profile pro = new profile();
 
 
 
@@ -490,17 +493,12 @@ public class entegal {
         timer.schedule(task, 10000);
     }
 
-    public void Dargah (ActionEvent event) {
-        try {
-                if (text1.getText().isEmpty() && text3.getText().isEmpty() && pool.getText().isEmpty() && cvv.getText().isEmpty() && month.getText().isEmpty() && year.getText().isEmpty() ) {
-                    message.setText("لطفا فیلد هارا به درستی وارد کنید");
-                }
-            if (PasswordPoya.getText().equals(String.valueOf(randomnumber)) && message.getText().isEmpty()) {
-                openNewWindow("main.fxml", "Home", event);
-            }
-        }
-        catch (Exception e) {
-            System.out.println("eror");
+    public void Dargah (ActionEvent event) throws SQLException {
+        int resulttransfer = pro.transferMoney(text1.getText(),text3.getText(), Integer.parseInt(pool.getText()));
+        if(resulttransfer < 0){
+            System.out.println("no");
+        }else{
+            System.out.println("yes");
         }
 
     }
