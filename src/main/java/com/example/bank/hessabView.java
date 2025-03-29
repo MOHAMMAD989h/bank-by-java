@@ -3,6 +3,7 @@ package com.example.bank;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -253,4 +254,18 @@ public class hessabView {
             change.setVisible(true);
         }
     }
+    @FXML
+    private void handleServiceOption1(ActionEvent event) {
+        Controller manager = new Controller();
+        manager.openNewWindow("entegal.fxml","انتقال وجه",event);
+    }
+    @FXML
+    private void handleServiceOption3(ActionEvent actionEvent) {
+        Controller manager = new Controller();
+        manager.openNewWindow("charge.fxml","charge",actionEvent);
+    }
+    @FXML
+    private void handleServiceOption2(ActionEvent actionEvent) {
+        Controller manager = new Controller();
+        manager.openNewWindow("gabz.fxml","gabz",actionEvent);}
 }

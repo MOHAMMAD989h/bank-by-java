@@ -9,6 +9,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
@@ -19,6 +20,9 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
+
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.application.Platform;
@@ -53,13 +57,7 @@ public class Controller {
     private Text bank12;
 
     @FXML
-    private GridPane servicesOptions;
-
-    @FXML
     private GridPane loanOptions;
-
-    @FXML
-    private VBox contactOptions;
 
     @FXML
     private StackPane optionsStackPane;
@@ -75,8 +73,8 @@ public class Controller {
 
     private AnimationTimer timer;
     private PauseTransition pauseTransition;
-
     Alert alert;
+
 
     loginpage login = new loginpage();
 
@@ -89,6 +87,12 @@ public class Controller {
             }
         };
         timer.start();
+
+        imagePaths = new ArrayList<>();
+        imagePaths.add(getClass().getResource("/images/Untitled-1.png").toExternalForm());
+        imagePaths.add(getClass().getResource("/images/hjmhjmhjm.png").toExternalForm());
+        imagePaths.add(getClass().getResource("/images/123.png").toExternalForm());
+        startSlideshow();
 
         // استفاده از Platform.runLater برای اطمینان از تنظیم Scene
         /*Platform.runLater(() -> {
@@ -112,6 +116,48 @@ public class Controller {
             System.err.println("Scene یا Window هنوز تنظیم نشده است.");
         }
     }*/
+    @FXML
+    private ImageView imgg;
+    private List<String> imagePaths;
+    private int currentIndex = 0;
+    private Timeline imageSlideshow;
+    @FXML
+    private void handleLeftClick () {
+        if (!imagePaths.isEmpty()) {
+
+            currentIndex = (currentIndex - 1 + imagePaths.size()) % imagePaths.size();
+            showImage();
+            resetSlideshow();
+        }
+    }
+
+    @FXML
+    private void handleRightClick() {
+        if (!imagePaths.isEmpty()) {
+
+            currentIndex = (currentIndex + 1) % imagePaths.size();
+            showImage();
+            resetSlideshow();
+        }
+    }
+    private void startSlideshow() {
+        imageSlideshow = new Timeline(new KeyFrame(Duration.seconds(5), event -> handleRightClick()));
+        imageSlideshow.setCycleCount(Animation.INDEFINITE);
+        imageSlideshow.play();
+    }
+
+    private void resetSlideshow() {
+        if (imageSlideshow != null) {
+            imageSlideshow.stop();
+            startSlideshow();
+        }
+    }
+
+    private void showImage() {
+
+        Image image = new Image(imagePaths.get(currentIndex));
+        imgg.setImage(image);
+    }
 
     private void updateTime() {
         LocalDateTime now = LocalDateTime.now();
@@ -120,16 +166,6 @@ public class Controller {
     }
 
     private void setupGridPaneHoverBehavior() {
-        // تنظیم رویدادهای موس برای servicesOptions
-        servicesOptions.setOnMouseEntered(event -> {
-            servicesOptions.setVisible(true);
-            cancelPauseTransition();
-        });
-
-        servicesOptions.setOnMouseExited(event -> {
-            startPauseTransition(() -> servicesOptions.setVisible(false));
-        });
-
         // تنظیم رویدادهای موس برای loanOptions
         loanOptions.setOnMouseEntered(event -> {
             loanOptions.setVisible(true);
@@ -140,15 +176,6 @@ public class Controller {
             startPauseTransition(() -> loanOptions.setVisible(false));
         });
 
-        // تنظیم رویدادهای موس برای contactOptions
-        contactOptions.setOnMouseEntered(event -> {
-            contactOptions.setVisible(true);
-            cancelPauseTransition();
-        });
-
-        contactOptions.setOnMouseExited(event -> {
-            startPauseTransition(() -> contactOptions.setVisible(false));
-        });
         bank.setOnMouseEntered(event -> {
             bank.setVisible(true);
             cancelPauseTransition();
@@ -187,48 +214,25 @@ public class Controller {
     @FXML
     public void showbankoption (){
         bank.setVisible(true);
-        servicesOptions.setVisible(false);
         loanOptions.setVisible(false);
-        contactOptions.setVisible(false);
     }
 
-    @FXML
+    /*@FXML
     public void showServicesOptions() {
-        servicesOptions.setVisible(true);
         loanOptions.setVisible(false);
         contactOptions.setVisible(false);
         bank.setVisible(false);
-    }
-
-    @FXML
-    public void hideServicesOptions() {
-        startPauseTransition(() -> servicesOptions.setVisible(false));
-    }
+    }*/
 
     @FXML
     public void showLoanOptions() {
         loanOptions.setVisible(true);
-        servicesOptions.setVisible(false);
-        contactOptions.setVisible(false);
         bank.setVisible(false);
     }
 
     @FXML
     public void hideLoanOptions() {
         startPauseTransition(() -> loanOptions.setVisible(false));
-    }
-
-    @FXML
-    public void showContactOptions() {
-        contactOptions.setVisible(true);
-        servicesOptions.setVisible(false);
-        loanOptions.setVisible(false);
-        bank.setVisible(false);
-    }
-
-    @FXML
-    public void hideContactOptions() {
-        startPauseTransition(() -> contactOptions.setVisible(false));
     }
 
 
@@ -240,30 +244,14 @@ public class Controller {
     @FXML
     public void hideAllOptions() {
         bank.setVisible(false);
-        servicesOptions.setVisible(false);
         loanOptions.setVisible(false);
-        contactOptions.setVisible(false);
     }
 
-    @FXML
-    public void handleServiceOption() {
-        System.out.println("Service option clicked!");
-    }
 
 
     @FXML
     public void handleLoanOption() {
         System.out.println("Loan option clicked!");
-    }
-
-    @FXML
-    public void handleContactOption() {
-        System.out.println("Contact option clicked!");
-    }
-
-    @FXML
-    public void keepServicesOptionsVisible() {
-        servicesOptions.setVisible(true);
     }
 
     @FXML
@@ -276,10 +264,6 @@ public class Controller {
         loanOptions.setVisible(true);
     }
 
-    @FXML
-    public void keepContactOptionsVisible() {
-        contactOptions.setVisible(true);
-    }
     @FXML
     private void bank1(){
         ancktext.setVisible(true);
@@ -491,9 +475,6 @@ public class Controller {
             e.printStackTrace();
         }
     }
-    public void handleServiceOption1(ActionEvent event) {
-        openNewWindow("entegal.fxml","انتقال وجه",event);
-    }
 
     public void HomeToLoginpage(ActionEvent actionEvent) {
         openNewWindow("loginpage.fxml","loginpage",actionEvent);
@@ -511,10 +492,5 @@ public class Controller {
             alert.showAndWait();
             openNewWindow("loginpage.fxml", "loginpage", actionEvent);
         }
-    }
-
-    public void handleServiceOption2(ActionEvent actionEvent) {openNewWindow("gabz.fxml","gabz",actionEvent);}
-
-    public void handleServiceOption3(ActionEvent actionEvent) {openNewWindow("charge.fxml","charge",actionEvent);
     }
 }

@@ -16,7 +16,6 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -24,7 +23,7 @@
    <children>
       <AnchorPane prefHeight="790.0" prefWidth="1535.0">
          <children>
-            <Pane layoutX="3.0" layoutY="2.0" prefHeight="42.0" prefWidth="1533.0" styleClass="parallelogram">
+            <Pane layoutX="3.0" layoutY="2.0" prefHeight="50.0" prefWidth="1534.0" styleClass="parallelogram">
                <stylesheets>
                   <URL value="@motavazi.css" />
                   <URL value="@styles.css" />
@@ -36,25 +35,15 @@
                   <URL value="@styles.css" />
                </stylesheets>
             </Pane>
-            <HBox alignment="CENTER_RIGHT" layoutX="60.0" layoutY="44.0" prefHeight="59.0" prefWidth="1476.0" style="-fx-background-color: #4d4d4d;" stylesheets="@styles.css">
+            <HBox alignment="CENTER_RIGHT" layoutX="60.0" layoutY="47.0" prefHeight="56.0" prefWidth="1476.0" style="-fx-background-color: #4d4d4d;" stylesheets="@styles.css">
                <children>
                   <Button mnemonicParsing="false" onAction="#profile" prefHeight="37.0" prefWidth="62.0" text="Button" />
-                  <Button mnemonicParsing="false" onAction="#HomeToLoginpage" prefHeight="30.0" prefWidth="44.0" style="-fx-background-color: transparrent;">
-                     <graphic>
-                        <ImageView fitHeight="32.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../images/photo_2025-01-03_12-39-34.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
                   <HBox alignment="CENTER_LEFT" prefHeight="122.0" prefWidth="42.0" spacing="10" />
                   <Label fx:id="timeLabel" prefHeight="20.0" prefWidth="324.0" styleClass="time-label" text="زمان" />
                   <Region HBox.hgrow="ALWAYS" />
-                  <Button fx:id="servicesButton" onMouseEntered="#showServicesOptions" onMouseExited="#hideServicesOptions" prefHeight="30.0" prefWidth="115.0" styleClass="menu-button" text="خدمات" />
+                  <Button onAction="#HomeToLoginpage" prefHeight="33.0" prefWidth="158.0" styleClass="menu-button" text="ورود / احراز هویت" />
                   <Button fx:id="loanButton" onMouseEntered="#showLoanOptions" onMouseExited="#hideLoanOptions" prefHeight="30.0" prefWidth="81.0" styleClass="menu-button" text="وام" textFill="GOLD" />
                   <Button onMouseEntered="#showbankoption" onMouseExited="#hidebankoption" prefHeight="30.0" prefWidth="162.0" styleClass="menu-button" text="معرفی بانک ها" textFill="GOLD" />
-                  <Button fx:id="contactButton" onMouseEntered="#showContactOptions" onMouseExited="#hideContactOptions" prefHeight="30.0" prefWidth="125.0" styleClass="menu-button" text="ارتباط با ما" />
                   <Button onMouseEntered="#hideAllOptions" prefHeight="30.0" prefWidth="152.0" styleClass="menu-button" text="سوالات متداول" />
                   <ImageView fitHeight="59.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -67,67 +56,7 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="687.0" prefWidth="1454.0">
                      <children>
-                        <VBox prefHeight="357.0" prefWidth="1470.0">
-                           <children>
-                              <StackPane fx:id="optionsStackPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="356.0" prefWidth="1471.0" stylesheets="@styles.css">
-                                 <children>
-                                    <GridPane fx:id="servicesOptions" alignment="CENTER" hgap="30" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#keepServicesOptionsVisible" onMouseExited="#hideServicesOptions" prefHeight="356.0" prefWidth="226.0" styleClass="options-pane" vgap="30" visible="false" StackPane.alignment="CENTER_RIGHT">
-                                       <padding>
-                                          <Insets bottom="10" left="10" right="10" top="10" />
-                                       </padding>
-                                       <columnConstraints>
-                                          <ColumnConstraints />
-                                          <ColumnConstraints />
-                                       </columnConstraints>
-                                       <rowConstraints>
-                                          <RowConstraints />
-                                          <RowConstraints />
-                                          <RowConstraints />
-                                       </rowConstraints>
-                                       <children>
-                                          <Button onAction="#handleServiceOption1" styleClass="sub-option-button" text="انتقال وجه" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                                          <Button onAction="#handleServiceOption" styleClass="sub-option-button" text="مدیریت مالی" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-                                          <Button onAction="#handleServiceOption3" styleClass="sub-option-button" text="شارژ سیمکارت" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                                          <Button onAction="#handleServiceOption" styleClass="sub-option-button" text="شارژ حساب" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                          <Button onAction="#handleServiceOption" styleClass="sub-option-button" text="دعوت از دوستان" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-                                          <Button onAction="#handleServiceOption2" styleClass="sub-option-button" text="پرداخت قبوض" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                       </children>
-                                    </GridPane>
-                                    <GridPane fx:id="loanOptions" alignment="CENTER" hgap="30" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#keepLoanOptionsVisible" onMouseExited="#hideLoanOptions" prefHeight="355.0" prefWidth="229.0" styleClass="options-pane" vgap="30" visible="false" StackPane.alignment="CENTER_RIGHT">
-                                       <padding>
-                                          <Insets bottom="10" left="10" right="10" top="10" />
-                                       </padding>
-                                       <columnConstraints>
-                                          <ColumnConstraints />
-                                          <ColumnConstraints />
-                                          <ColumnConstraints />
-                                       </columnConstraints>
-                                       <rowConstraints>
-                                          <RowConstraints />
-                                          <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
-                                          <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
-                                       </rowConstraints>
-                                       <children>
-                                          <Button onAction="#handleLoanOption" styleClass="sub-option-button" text="وام" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                                          <Button onAction="#handleLoanOption" styleClass="sub-option-button" text="وام ازدواج" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-                                          <Button onAction="#handleLoanOption" styleClass="sub-option-button" text="وام کمیته امداد" GridPane.columnIndex="2" GridPane.rowIndex="0" />
-                                       </children>
-                                    </GridPane>
-                                    <VBox fx:id="contactOptions" alignment="CENTER_RIGHT" spacing="15" styleClass="options-pane" visible="false">
-                                       <padding>
-                                          <Insets bottom="10" left="10" right="10" top="10" />
-                                       </padding>
-                                       <children>
-                                          <Button onAction="#handleContactOption" styleClass="sub-option-button" text="پشتیبانی" />
-                                          <Button onAction="#handleContactOption" styleClass="sub-option-button" text="درباره ما" />
-                                          <Button onAction="#handleContactOption" styleClass="sub-option-button" text="همکاری با ما" />
-                                       </children>
-                                    </VBox>
-                                 </children>
-                              </StackPane>
-                           </children></VBox>
-                        <Pane layoutX="-14.0" layoutY="356.0" prefHeight="3.0" prefWidth="1483.0" style="-fx-background-color: black;" />
-                        <AnchorPane fx:id="ancktext" layoutX="6.0" layoutY="377.0" prefHeight="146.0" prefWidth="1454.0" styleClass="button4" stylesheets="@styles.css" visible="false">
+                        <AnchorPane fx:id="ancktext" layoutX="629.0" layoutY="377.0" prefHeight="214.0" prefWidth="1170.0" styleClass="button4" stylesheets="@styles.css" visible="false">
                            <children>
                               <Text fx:id="bank1" fill="WHITE" layoutX="13.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="button5" text="بانک تجارت یکی از بانک‌های پیشرو در ارائه خدمات مالی و بانکی است که با رویکردی نوآورانه، راهکارهای متنوعی را برای مشتریان حقیقی و حقوقی فراهم می‌کند. این بانک با شبکه گسترده‌ای از شعب و خدمات دیجیتال، تجربه‌ای ایمن و کارآمد را در حوزه بانکداری ارائه می‌دهد. همکاری بانک تجارت با Aureous Bank زمینه‌ای برای توسعه راهکارهای مالی هوشمند و گسترش فرصت‌های اقتصادی برای مشتریان هر دو مجموعه فراهم کرده است." textAlignment="RIGHT" visible="false" wrappingWidth="1418.705062866211">
                                  <font>
@@ -191,6 +120,57 @@
                               </Text>
                            </children>
                         </AnchorPane>
+                        <StackPane fx:id="optionsStackPane" layoutX="756.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="362.0" prefWidth="715.0" stylesheets="@styles.css">
+                           <children>
+                              <GridPane fx:id="loanOptions" alignment="CENTER" hgap="30" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#keepLoanOptionsVisible" onMouseExited="#hideLoanOptions" prefHeight="355.0" prefWidth="229.0" styleClass="options-pane" vgap="30" visible="false" StackPane.alignment="CENTER_RIGHT">
+                                 <padding>
+                                    <Insets bottom="10" left="10" right="10" top="10" />
+                                 </padding>
+                                 <columnConstraints>
+                                    <ColumnConstraints />
+                                    <ColumnConstraints />
+                                    <ColumnConstraints />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints />
+                                    <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+                                    <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+                                 </rowConstraints>
+                                 <children>
+                                    <Button onAction="#handleLoanOption" styleClass="sub-option-button" text="وام" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                                    <Button onAction="#handleLoanOption" styleClass="sub-option-button" text="وام ازدواج" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                                    <Button onAction="#handleLoanOption" styleClass="sub-option-button" text="وام کمیته امداد" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </StackPane>
+                        <HBox prefHeight="688.0" prefWidth="458.0">
+                           <children>
+                              <ImageView fx:id="imgg" fitHeight="688.0" fitWidth="458.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../images/hjmhjmhjm.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                        <Button layoutX="10.0" layoutY="650.0" mnemonicParsing="false" onAction="#handleLeftClick" prefHeight="30.0" prefWidth="31.0" style="-fx-background-color: transparent;">
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../images/circle-left-arrow.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button layoutX="390.0" layoutY="650.0" mnemonicParsing="false" onAction="#handleRightClick" prefHeight="21.0" prefWidth="46.0" style="-fx-background-color: transparent;">
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../images/circle-right-arrow.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
                      </children>
                   </AnchorPane>
                </content>
