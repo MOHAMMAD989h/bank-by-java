@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
@@ -194,7 +195,7 @@
                   </AnchorPane>
                </content>
             </ScrollPane>
-            <GridPane fx:id="bank" alignment="CENTER" layoutX="798.0" layoutY="102.0" onMouseEntered="#keepbankoption" onMouseExited="#hidebankoption" prefHeight="358.0" prefWidth="738.0" visible="false">
+            <GridPane fx:id="bank" alignment="CENTER" layoutX="798.0" layoutY="102.0" onMouseEntered="#keepbankoption" onMouseExited="#hidebankoption" prefHeight="358.0" prefWidth="738.0" style="-fx-background-color: #c0bea5;" visible="false">
               <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -207,7 +208,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button mnemonicParsing="false" onMouseClicked="#bank1" prefHeight="84.0" prefWidth="46.0" styleClass="button3" stylesheets="@styles.css">
+                  <Button mnemonicParsing="false" onMouseClicked="#bank1" prefHeight="84.0" prefWidth="155.0" stylesheets="@styles.css" text="بانک تجارت">
                      <graphic>
                         <ImageView fitHeight="71.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -218,8 +219,12 @@
                      <GridPane.margin>
                         <Insets left="75.0" />
                      </GridPane.margin>
+                     <styleClass>
+                        <String fx:value="button3" />
+                        <String fx:value="button6" />
+                     </styleClass>
                   </Button>
-                  <Button mnemonicParsing="false" onMouseClicked="#bank2" prefHeight="82.0" prefWidth="21.0" styleClass="button3" stylesheets="@styles.css" GridPane.columnIndex="1">
+                  <Button mnemonicParsing="false" onMouseClicked="#bank2" prefHeight="84.0" prefWidth="155.0" stylesheets="@styles.css" text="بانک شهر" GridPane.columnIndex="1">
                      <graphic>
                         <ImageView fitHeight="75.0" fitWidth="73.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -230,8 +235,12 @@
                      <GridPane.margin>
                         <Insets left="75.0" />
                      </GridPane.margin>
+                     <styleClass>
+                        <String fx:value="button3" />
+                        <String fx:value="button6" />
+                     </styleClass>
                   </Button>
-                  <Button mnemonicParsing="false" onMouseClicked="#bank3" prefHeight="82.0" prefWidth="67.0" styleClass="button3" stylesheets="@styles.css" GridPane.columnIndex="2">
+                  <Button mnemonicParsing="false" onMouseClicked="#bank3" prefHeight="84.0" prefWidth="155.0" stylesheets="@styles.css" text="بانک سپه" GridPane.columnIndex="2">
                      <graphic>
                         <ImageView fitHeight="88.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -242,8 +251,12 @@
                      <GridPane.margin>
                         <Insets left="75.0" />
                      </GridPane.margin>
+                     <styleClass>
+                        <String fx:value="button3" />
+                        <String fx:value="button6" />
+                     </styleClass>
                   </Button>
-                  <Button mnemonicParsing="false" onMouseClicked="#bank4" prefHeight="84.0" prefWidth="70.0" styleClass="button3" stylesheets="@styles.css" GridPane.rowIndex="1">
+                  <Button mnemonicParsing="false" onMouseClicked="#bank4" prefHeight="84.0" prefWidth="155.0" stylesheets="@styles.css" text="بانک سامان" GridPane.rowIndex="1">
                      <graphic>
                         <ImageView fitHeight="76.0" fitWidth="79.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -254,8 +267,12 @@
                      <GridPane.margin>
                         <Insets left="75.0" />
                      </GridPane.margin>
+                     <styleClass>
+                        <String fx:value="button3" />
+                        <String fx:value="button6" />
+                     </styleClass>
                   </Button>
-                  <Button mnemonicParsing="false" onMouseClicked="#bank5" prefHeight="96.0" prefWidth="10.0" styleClass="button3" stylesheets="@styles.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <Button mnemonicParsing="false" onMouseClicked="#bank5" prefHeight="84.0" prefWidth="155.0" stylesheets="@styles.css" text="بانک رفاه" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <graphic>
                         <ImageView fitHeight="89.0" fitWidth="88.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -266,8 +283,12 @@
                      <GridPane.margin>
                         <Insets left="75.0" />
                      </GridPane.margin>
+                     <styleClass>
+                        <String fx:value="button3" />
+                        <String fx:value="button6" />
+                     </styleClass>
                   </Button>
-                  <Button mnemonicParsing="false" onMouseClicked="#bank6" prefHeight="90.0" prefWidth="21.0" styleClass="button3" stylesheets="@styles.css" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                  <Button mnemonicParsing="false" onMouseClicked="#bank6" prefHeight="84.0" prefWidth="155.0" stylesheets="@styles.css" text="بانک مهر" GridPane.columnIndex="2" GridPane.rowIndex="1">
                      <graphic>
                         <ImageView fitHeight="78.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -278,8 +299,12 @@
                      <GridPane.margin>
                         <Insets left="75.0" />
                      </GridPane.margin>
+                     <styleClass>
+                        <String fx:value="button3" />
+                        <String fx:value="button6" />
+                     </styleClass>
                   </Button>
-                  <Button mnemonicParsing="false" onMouseClicked="#bank7" prefHeight="86.0" prefWidth="43.0" styleClass="button3" stylesheets="@styles.css" GridPane.rowIndex="2">
+                  <Button mnemonicParsing="false" onMouseClicked="#bank7" prefHeight="84.0" prefWidth="155.0" stylesheets="@styles.css" text="بانک ملت" GridPane.rowIndex="2">
                      <graphic>
                         <ImageView fitHeight="78.0" fitWidth="101.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -290,8 +315,12 @@
                      <GridPane.margin>
                         <Insets left="75.0" />
                      </GridPane.margin>
+                     <styleClass>
+                        <String fx:value="button3" />
+                        <String fx:value="button6" />
+                     </styleClass>
                   </Button>
-                  <Button mnemonicParsing="false" onMouseClicked="#bank8" prefHeight="86.0" prefWidth="56.0" styleClass="button3" stylesheets="@styles.css" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <Button mnemonicParsing="false" onMouseClicked="#bank8" prefHeight="86.0" prefWidth="162.0" stylesheets="@styles.css" text="بانک مسکن" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <graphic>
                         <ImageView fitHeight="78.0" fitWidth="92.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -302,8 +331,12 @@
                      <GridPane.margin>
                         <Insets left="75.0" />
                      </GridPane.margin>
+                     <styleClass>
+                        <String fx:value="button3" />
+                        <String fx:value="button6" />
+                     </styleClass>
                   </Button>
-                  <Button mnemonicParsing="false" onMouseClicked="#bank9" prefHeight="83.0" prefWidth="37.0" styleClass="button3" stylesheets="@styles.css" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                  <Button mnemonicParsing="false" onMouseClicked="#bank9" prefHeight="84.0" prefWidth="166.0" stylesheets="@styles.css" text="بانک کشاورزی" GridPane.columnIndex="2" GridPane.rowIndex="2">
                      <graphic>
                         <ImageView fitHeight="82.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -314,8 +347,12 @@
                      <GridPane.margin>
                         <Insets left="75.0" />
                      </GridPane.margin>
+                     <styleClass>
+                        <String fx:value="button3" />
+                        <String fx:value="button6" />
+                     </styleClass>
                   </Button>
-                  <Button mnemonicParsing="false" onMouseClicked="#bank10" prefHeight="90.0" prefWidth="29.0" styleClass="button3" stylesheets="@styles.css" GridPane.rowIndex="3">
+                  <Button mnemonicParsing="false" onMouseClicked="#bank10" prefHeight="84.0" prefWidth="155.0" stylesheets="@styles.css" text="بانک دی" GridPane.rowIndex="3">
                      <graphic>
                         <ImageView fitHeight="89.0" fitWidth="82.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -326,8 +363,12 @@
                      <GridPane.margin>
                         <Insets left="75.0" />
                      </GridPane.margin>
+                     <styleClass>
+                        <String fx:value="button3" />
+                        <String fx:value="button6" />
+                     </styleClass>
                   </Button>
-                  <Button mnemonicParsing="false" onMouseClicked="#bank11" prefHeight="86.0" prefWidth="62.0" styleClass="button3" stylesheets="@styles.css" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                  <Button mnemonicParsing="false" onMouseClicked="#bank11" prefHeight="84.0" prefWidth="155.0" stylesheets="@styles.css" text="بانک ملی" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <graphic>
                         <ImageView fitHeight="78.0" fitWidth="86.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -338,8 +379,12 @@
                      <GridPane.margin>
                         <Insets left="75.0" />
                      </GridPane.margin>
+                     <styleClass>
+                        <String fx:value="button3" />
+                        <String fx:value="button6" />
+                     </styleClass>
                   </Button>
-                  <Button mnemonicParsing="false" onMouseClicked="#bank12" prefHeight="83.0" prefWidth="5.0" styleClass="button3" stylesheets="@styles.css" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                  <Button mnemonicParsing="false" onMouseClicked="#bank12" prefHeight="84.0" prefWidth="155.0" stylesheets="@styles.css" text="بانک آینده" GridPane.columnIndex="2" GridPane.rowIndex="3">
                      <graphic>
                         <ImageView fitHeight="75.0" fitWidth="83.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -350,13 +395,17 @@
                      <GridPane.margin>
                         <Insets left="75.0" />
                      </GridPane.margin>
+                     <styleClass>
+                        <String fx:value="button3" />
+                        <String fx:value="button6" />
+                     </styleClass>
                   </Button>
                </children>
             </GridPane>
          </children>
       </AnchorPane>
       <!-- عکس پس‌زمینه -->
-      <ImageView fx:id="backgroundImage" fitHeight="629.0" fitWidth="929.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fx:id="backgroundImage" fitHeight="463.0" fitWidth="945.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../../../images/bank.jpg" />
          </image>

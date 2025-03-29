@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
@@ -13,6 +14,7 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
 <StackPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bank.hessabView">
@@ -40,9 +42,9 @@
                 </Pane>
                 <HBox layoutX="60.0" layoutY="111.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="59.0" prefWidth="1476.0" style="-fx-background-color: #4d4d4d;" stylesheets="@styles.css">
                     <children>
-                        <Label fx:id="userlabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="RIGHT_TO_LEFT" prefHeight="36.0" prefWidth="491.0" style="-fx-background-radius: 15;" styleClass="background-gradientt" stylesheets="@style.css" textFill="WHITE">
+                        <Label fx:id="userlabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="RIGHT_TO_LEFT" prefHeight="36.0" prefWidth="491.0" style="-fx-background-radius: 15;" styleClass="background-gradientt2" stylesheets="@styles.css" textFill="WHITE">
                             <graphic>
-                                <Button contentDisplay="RIGHT" mnemonicParsing="false" onAction="#copyuser" prefHeight="37.0" prefWidth="129.0" styleClass="Button" stylesheets="@styles.css" text=": نام کاربری" textFill="WHITE">
+                                <Button contentDisplay="RIGHT" mnemonicParsing="false" prefHeight="37.0" prefWidth="129.0" styleClass="Button" stylesheets="@styles.css" text=": نام کاربری" textFill="WHITE">
                                     <graphic>
                                         <ImageView fitHeight="20.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
@@ -63,9 +65,9 @@
                             </font>
                         </Label>
                         <Pane prefHeight="59.0" prefWidth="25.0" />
-                        <Label fx:id="codelabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="RIGHT_TO_LEFT" prefHeight="36.0" prefWidth="491.0" style="-fx-background-radius: 15;" styleClass="background-gradientt" stylesheets="@style.css" textFill="WHITE">
+                        <Label fx:id="codelabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="RIGHT_TO_LEFT" prefHeight="36.0" prefWidth="491.0" style="-fx-background-radius: 15;" styleClass="background-gradientt2" stylesheets="@styles.css" textFill="WHITE">
                             <graphic>
-                                <Button contentDisplay="RIGHT" mnemonicParsing="false" onAction="#copycode" styleClass="Button" stylesheets="@styles.css" text=": کد ملی" textFill="WHITE">
+                                <Button contentDisplay="RIGHT" mnemonicParsing="false" styleClass="Button" stylesheets="@styles.css" text=": کد ملی" textFill="WHITE">
                                     <graphic>
                                         <ImageView fitHeight="20.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
@@ -83,9 +85,9 @@
                             </font>
                         </Label>
                         <Pane prefHeight="59.0" prefWidth="25.0" />
-                        <Label fx:id="numlabel" alignment="CENTER_RIGHT" prefHeight="39.0" prefWidth="453.0" style="-fx-background-radius: 15;" styleClass="background-gradientt" stylesheets="@style.css">
+                        <Label fx:id="numlabel" alignment="CENTER_RIGHT" prefHeight="39.0" prefWidth="453.0" style="-fx-background-radius: 15;" styleClass="background-gradientt2" stylesheets="@styles.css">
                             <graphic>
-                                <Button contentDisplay="RIGHT" mnemonicParsing="false" onAction="#copynum" prefHeight="39.0" prefWidth="164.0" styleClass="Button" stylesheets="@styles.css" text="  : شماره موبایل" textFill="WHITE">
+                                <Button contentDisplay="RIGHT" mnemonicParsing="false" prefHeight="39.0" prefWidth="164.0" styleClass="Button" stylesheets="@styles.css" text="  : شماره موبایل" textFill="WHITE">
                                     <graphic>
                                         <ImageView fitHeight="20.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
@@ -104,20 +106,29 @@
                         </Label>
                     </children>
                 </HBox>
-                <HBox alignment="CENTER_RIGHT" layoutX="59.0" layoutY="44.0" prefHeight="67.0" prefWidth="1476.0" style="-fx-background-color: #4d4d4d;" stylesheets="@styles.css">
+                <HBox alignment="CENTER_RIGHT" layoutX="59.0" layoutY="44.0" prefHeight="67.0" prefWidth="1478.0" style="-fx-background-color: #4d4d4d;" stylesheets="@styles.css">
                     <children>
-                        <Button mnemonicParsing="false" onAction="#profile" prefHeight="37.0" prefWidth="69.0" text="Button" />
-                        <Button mnemonicParsing="false" onAction="#HomeToLoginpage" prefHeight="30.0" prefWidth="44.0" style="-fx-background-color: transparrent;">
+                        <Button mnemonicParsing="false" prefHeight="37.0" prefWidth="69.0" text="Button" />
+                        <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="44.0" style="-fx-background-color: transparrent;">
                             <graphic>
-                                <ImageView fitHeight="32.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                                <ImageView fitHeight="32.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../../../images/photo_2025-01-03_12-39-34.png" />
+                                        <Image url="@../../../images/user_1077063.png" />
                                     </image>
                                 </ImageView>
                             </graphic>
                         </Button>
+                  <Button mnemonicParsing="false" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../images/email_561127.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
                         <HBox alignment="CENTER_LEFT" prefHeight="122.0" prefWidth="42.0" spacing="10" />
-                        <Label fx:id="timeLabel" prefHeight="20.0" prefWidth="324.0" styleClass="time-label" text="زمان" />
+                        <Label prefHeight="20.0" prefWidth="324.0" styleClass="time-label" text="زمان" />
                         <Region HBox.hgrow="ALWAYS" />
                         <ImageView fitHeight="59.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -128,46 +139,137 @@
                 </HBox>
             <AnchorPane layoutX="68.0" layoutY="170.0" prefHeight="725.0" prefWidth="832.0" style="-fx-background-color: #c0bea5;">
                <children>
-                  <AnchorPane layoutX="150.0" layoutY="16.0" prefHeight="217.0" prefWidth="485.0" style="-fx-background-color: #4d4d4d; -fx-background-radius: 15;">
+                  <AnchorPane layoutX="149.0" layoutY="16.0" prefHeight="216.0" prefWidth="487.0" style="-fx-background-color: #4d4d4d; -fx-background-radius: 15;">
                      <children>
-                        <ImageView fitHeight="193.0" fitWidth="442.0" layoutX="25.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="imge" fitHeight="207.0" fitWidth="324.0" layoutX="82.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" />
+                        <Button fx:id="change" layoutX="416.0" layoutY="154.0" mnemonicParsing="false" onAction="#changee" prefHeight="48.0" prefWidth="59.0" style="-fx-background-color: transparent;" styleClass="button3" stylesheets="@styles.css" visible="false">
+                           <graphic>
+                              <ImageView fx:id="imge2" fitHeight="40.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../images/freepik__a-doublesided-arrow-icon-neon-blue-and-pink-glowin__67478.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Label fx:id="mojodilabel" layoutX="249.0" layoutY="183.0" prefHeight="23.0" prefWidth="56.0" text="موجودی :" textFill="WHITE" visible="false">
+                           <font>
+                              <Font name="Arial Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="mojodi" layoutX="198.0" layoutY="183.0" prefHeight="23.0" prefWidth="42.0" text=".............." textFill="WHITE" visible="false" />
+                        <Label fx:id="name" layoutX="282.0" layoutY="77.0" prefHeight="23.0" prefWidth="110.0" text="نام و نام خانوادگی" textFill="WHITE" visible="false">
+                           <font>
+                              <Font name="Arial Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="cvv" layoutX="235.0" layoutY="171.0" prefHeight="23.0" prefWidth="28.0" text="cvv" textFill="WHITE" visible="false">
+                           <font>
+                              <Font name="Arial Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="engeza" layoutX="219.0" layoutY="142.0" prefHeight="23.0" prefWidth="59.0" text="تاریخ انقضا" textFill="WHITE" visible="false">
+                           <font>
+                              <Font name="Arial Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="cart" layoutX="219.0" layoutY="111.0" prefHeight="23.0" prefWidth="59.0" text="شماره کارت" textFill="WHITE" visible="false">
+                           <font>
+                              <Font name="Arial Bold" size="14.0" />
+                           </font>
+                        </Label>
                      </children></AnchorPane>
-                   <Pane layoutX="367.0" layoutY="229.0" prefHeight="438.0" prefWidth="50.0" styleClass="panee" stylesheets="style.css">
-                       <stylesheets>
-                           <URL value="@style.css" />
-                       </stylesheets>
-                   </Pane>
-                  <Button layoutX="150.0" layoutY="302.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="121.0" styleClass="background-gradientt" stylesheets="@style.css" text="پرداخت قبض" />
-                  <Button layoutX="150.0" layoutY="385.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="135.0" style="-fx-background-color: #70A0E0;" text="خرید شارژ" />
-                  <Button layoutX="150.0" layoutY="471.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="135.0" text="سوابق تراکنش" />
-                  <Button layoutX="150.0" layoutY="556.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="121.0" styleClass="background-gradientt" stylesheets="@style.css" text="موبایلی" />
-                  <Button layoutX="514.0" layoutY="302.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="121.0" styleClass="background-gradientt" stylesheets="@style.css" text="کارت به کارت" />
-                  <Button layoutX="500.0" layoutY="385.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="135.0" style="-fx-background-color: #90B0C8;" text="خرید بسته" />
-                  <Button layoutX="514.0" layoutY="556.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="121.0" styleClass="background-gradientt" stylesheets="@style.css" text="داخلی" />
-                  <Button layoutX="500.0" layoutY="471.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="135.0" text="گردش حساب" />
+                   <Pane layoutX="367.0" layoutY="227.0" prefHeight="440.0" prefWidth="50.0" styleClass="panee" stylesheets="@styles.css" />
+                  <Button fx:id="btn1" layoutX="150.0" layoutY="302.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="144.0" stylesheets="@styles.css" text="پرداخت قبض">
+                     <styleClass>
+                        <String fx:value="background-gradientt" />
+                        <String fx:value="Button" />
+                     </styleClass></Button>
+                  <Button fx:id="btn3" layoutX="150.0" layoutY="385.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="144.0" stylesheets="@styles.css" text="خرید شارژ">
+                     <styleClass>
+                        <String fx:value="background-gradientt" />
+                        <String fx:value="Button" />
+                     </styleClass></Button>
+                  <Button fx:id="btn5" layoutX="150.0" layoutY="471.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="144.0" stylesheets="@styles.css" text="سوابق تراکنش">
+                     <styleClass>
+                        <String fx:value="background-gradientt" />
+                        <String fx:value="Button" />
+                     </styleClass></Button>
+                  <Button fx:id="btn7" layoutX="150.0" layoutY="556.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="144.0" stylesheets="@styles.css" text="موبایلی">
+                     <styleClass>
+                        <String fx:value="background-gradientt" />
+                        <String fx:value="Button" />
+                     </styleClass></Button>
+                  <Button fx:id="btn2" layoutX="514.0" layoutY="302.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="144.0" stylesheets="@styles.css" text="کارت به کارت">
+                     <styleClass>
+                        <String fx:value="background-gradientt" />
+                        <String fx:value="Button" />
+                     </styleClass></Button>
+                  <Button fx:id="btn4" layoutX="514.0" layoutY="385.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="144.0" stylesheets="@styles.css" text="خرید بسته">
+                     <styleClass>
+                        <String fx:value="background-gradientt" />
+                        <String fx:value="Button" />
+                     </styleClass></Button>
+                  <Button fx:id="btn8" layoutX="514.0" layoutY="556.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="144.0" stylesheets="@styles.css" text="داخلی">
+                     <styleClass>
+                        <String fx:value="background-gradientt" />
+                        <String fx:value="Button" />
+                     </styleClass></Button>
+                  <Button fx:id="btn6" layoutX="514.0" layoutY="471.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="144.0" stylesheets="@styles.css" text="گردش حساب">
+                     <styleClass>
+                        <String fx:value="background-gradientt" />
+                        <String fx:value="Button" />
+                     </styleClass></Button>
+                  <VBox alignment="TOP_CENTER" layoutX="635.0" layoutY="26.0" prefHeight="216.0" prefWidth="72.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#yellow" style="-fx-background-color: transparent;" styleClass="button3" stylesheets="@styles.css">
+                           <graphic>
+                              <Circle fill="#deb050" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                           </graphic>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#pink" style="-fx-background-color: transparent;" styleClass="button3" stylesheets="@styles.css">
+                           <graphic>
+                              <Circle fill="#cf6381" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                           </graphic>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#green" style="-fx-background-color: transparent;" styleClass="button3" stylesheets="@styles.css">
+                           <graphic>
+                              <Circle fill="#135b58" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                           </graphic>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#gray" style="-fx-background-color: transparent;" styleClass="button3" stylesheets="@styles.css">
+                           <graphic>
+                              <Circle fill="#313433" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                           </graphic>
+                        </Button>
+                     </children>
+                  </VBox>
                </children>
             </AnchorPane>
-            <VBox alignment="TOP_RIGHT" layoutX="956.0" layoutY="195.0" prefHeight="674.0" prefWidth="558.0">
+            <VBox alignment="CENTER" layoutX="956.0" layoutY="195.0" prefHeight="636.0" prefWidth="558.0">
                <children>
-                  <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="41.0" prefWidth="166.0" text="قبض های پرداخت قابل شما" />
-                  <ScrollPane prefHeight="251.0" prefWidth="558.0">
+                  <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="42.0" prefWidth="232.0" styleClass="Button" stylesheets="@styles.css" text="قبض های پرداخت قابل شما" />
+                  <ScrollPane prefHeight="246.0" prefWidth="558.0" styleClass="scrol" stylesheets="@styles.css">
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="206.0" prefWidth="546.0">
                            <children>
-                              <VBox layoutX="-3.0" prefHeight="268.0" prefWidth="542.0" />
+                              <VBox layoutX="-3.0" prefHeight="207.0" prefWidth="542.0" />
                            </children>
                         </AnchorPane>
                     </content>
                   </ScrollPane>
-                  <Label alignment="CENTER_RIGHT" prefHeight="37.0" prefWidth="162.0" text="بسته های اینترنتی پیشنهادی" />
-                  <ScrollPane prefHeight="325.0" prefWidth="558.0">
+                  <Label alignment="CENTER_RIGHT" prefHeight="38.0" prefWidth="225.0" styleClass="Button" stylesheets="@styles.css" text="بسته های اینترنتی پیشنهادی" />
+                  <ScrollPane prefHeight="289.0" prefWidth="558.0" stylesheets="@styles.css">
                      <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="206.0" prefWidth="546.0">
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="236.0" prefWidth="489.0">
                            <children>
-                              <VBox layoutX="-3.0" prefHeight="180.0" prefWidth="542.0" />
+                              <VBox layoutX="-3.0" prefHeight="219.0" prefWidth="486.0" />
                            </children>
                         </AnchorPane>
                      </content>
+                     <styleClass>
+                        <String fx:value="scrol" />
+                        <String fx:value="viewport" />
+                     </styleClass>
                   </ScrollPane>
                </children>
             </VBox>

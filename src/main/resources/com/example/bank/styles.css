@@ -143,7 +143,7 @@
     -fx-font-size: 18;
     -fx-font-weight: bold;
     -fx-text-fill: white;
-    -fx-background-color: #c0c0c0;
+    -fx-background-color: transparrent;
     -fx-background-radius: 15px;
 }
 .button3 {
@@ -151,7 +151,7 @@
 }
 
 .button3:hover {
-    -fx-border-color: #13705b;  /* فقط رنگ خط دور */
+    -fx-border-color: #70A0E0;  /* فقط رنگ خط دور */
     -fx-border-radius: 50px;
 }
 .button4{
@@ -164,6 +164,52 @@
     -fx-font-weight: bold;
     -fx-text-size: 36px;
 }
+.button6{
+    -fx-text-fill: #1E8E73;
+    -fx-font-family: "Arial";
+    -fx-font-weight: bold;
+    -fx-text-size: 25px;
+}
+.button6:hover{
+    -fx-text-fill: #1fa784;
+    -fx-font-family: "Arial";
+    -fx-font-weight: bold;
+    -fx-text-size: 25px;
+}
+.background-gradientt {
+    -fx-background-color: linear-gradient(to bottom right, #1E8E73,  #1fa784);
+    /*-fx-transition: all 1s ease-in-out;*/
+}
+.background-gradientt:hover {
+    -fx-text-fill:  #4d4d4d;
+    -fx-background-color: linear-gradient(to bottom right,#4A80D0 ,#70A0E0,  #90B0C8);
+    -fx-translate-y: -3px;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+.background-gradientt:pressed{
+    -fx-text-fill:  #fff;
+    -fx-background-color: linear-gradient(to bottom right,#4A80D0 ,#70A0E0,  #90B0C8);
+    -fx-translate-y: -3px;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+.scrol{
+    -fx-border-radius: 15px;
+    -fx-border-color:  #fff;
+    -fx-background-color: transparent;
+}
+.viewport {
+    -fx-background-color: transparent;
+}
+.panee {
+    -fx-background-color: #4d4d4d;
+    -fx-shape: "M 0 0 Q 25 150 0 290 Q 25 315 50 290 Q 25 150 50 0 Z";
+}
+.background-gradientt2 {
+    -fx-background-color: linear-gradient(to bottom right, #1E8E73,  #1fa784);
+}
+
 
 
 

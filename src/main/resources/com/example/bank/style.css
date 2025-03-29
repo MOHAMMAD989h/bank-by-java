@@ -10,11 +10,6 @@
 .icon {
     -fx-font-size: 50px;
 }
-.panee {
-    -fx-background-color: #4d4d4d;
-    -fx-shape: "M 0 0 Q 25 150 0 290 Q 25 315 50 290 Q 25 150 50 0 Z";
-}
-
 .head-label{
     -fx-border-color:#d3005f ;
     -fx-border-width: 0 0 0 5px;
