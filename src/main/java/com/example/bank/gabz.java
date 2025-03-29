@@ -135,10 +135,6 @@ public class gabz {
     }
     private void filegabz() throws IOException, SQLException {
         FileWriter fw = new FileWriter(file);
-        connect = DataBase1.connectDB();
-        String regdata = "";
-        assert connect != null;
-        prepare = connect.prepareStatement(regdata);
         for (int i = 0; i < 20000; i++) {
             int pricegabz = random.nextInt(20000, 2000000);
             long numbergabz = random.nextLong(10000000, 999999999);
