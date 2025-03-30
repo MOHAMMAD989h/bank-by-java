@@ -585,11 +585,7 @@ public class profile {
             e.printStackTrace();
         }
     }
-<<<<<<< Updated upstream
 
     public void openmyaccount(ActionEvent actionEvent) {openNewWindow("hesab.fxml","myaccount",actionEvent);
     }
-=======
-    public void openHesab(ActionEvent actionEvent) {openNewWindow("hesab.fxml","hesab",actionEvent);}
->>>>>>> Stashed changes
 }
