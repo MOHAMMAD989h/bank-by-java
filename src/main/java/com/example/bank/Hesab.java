@@ -91,15 +91,15 @@ public class Hesab {
 
             rs = prepare.executeQuery(selectdata);
             String numberq = "";
-
-            while (rs.next()) {/*
+            String nationcode="";
+            String numberphone="";
+            while (rs.next()) {
                 numberq = rs.getString("name");
-                txtName.setText(numberq);
-                txtEmail.setText(rs.getString("email"));
-                txtAddress.setText(rs.getString("address"));
-                txtUsername.setText(rs.getString("username"));
-                txtNationcode.setText(rs.getString("nationcode"));
-                txtNumberphone.setText(rs.getString("numberphone"));*/
+                userlabel.setText(numberq);
+                codelabel.setText(rs.getString("nationcode"));
+                numlabel.setText(rs.getString("numberphone"));
+                nationcode=rs.getString("nationcode");
+                numberphone=rs.getString("numberphone");
             }
 
             prepare = connect.prepareStatement(data);
@@ -124,7 +124,8 @@ public class Hesab {
                 String time = result.getString("engeza");
                 String cvv2 = result.getString("cvv2");
                 String bankname = result.getString("bankname");
-                products.add(new productVam(number,bankname , cvv2, time, "",numberq));
+                String money = result.getString("money");
+                products.add(new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone));
                 if(bankname.trim().equals("بانک مسکن")){
                     if(!bankMaskan){
                         for (productVam product1 : products) {
@@ -141,31 +142,24 @@ public class Hesab {
                         System.out.println("HBox پیدا نشد!");
                     }
                 }
-                if(bankname.trim().equals("Auruse Bank")){int tedadHesab=0;
+                if(bankname.trim().equals("Aureous Bank")){int tedadHesab=0;
                     if(!bankAureous){
                         for (productVam product1 : products) {
                             bigV.getChildren().add(createHBox("Aur",product1));
                         }bankAureous=true;
                     }
                     HBox foundHBox = (HBox) bigV.lookup("#hbox_Aur");
-                    Label foundlabel = (Label) foundHBox.lookup("#hbox_Aur");
                     if (foundHBox != null) {
                         for (productVam product1 : products) {tedadHesab++;
                             foundHBox.getChildren().add(createVBoxWithPane(product1));
-                        }foundlabel.setText(""+tedadHesab);
+                        }Label foundlabel = (Label) foundHBox.lookup("#hbox_Aur");
+                        foundlabel.setText(""+tedadHesab);
                         // اضافه کردن نود جدید
                     } else {
                         System.out.println("HBox پیدا نشد!");
                     }
                 }
             }
-
-
-
-
-
-
-
         }
         catch (Exception e) {e.printStackTrace();
         }
@@ -239,7 +233,7 @@ public class Hesab {
         labelAccountNumber.setPrefHeight(20.0);
         labelAccountNumber.setPrefWidth(148.0);
 
-        Label labelPersonName = new Label(product.getDiscription());
+        Label labelPersonName = new Label(product.getPagePath());
         labelPersonName.setAlignment(Pos.CENTER_RIGHT);
         labelPersonName.setLayoutX(98.0);
         labelPersonName.setLayoutY(96.0);

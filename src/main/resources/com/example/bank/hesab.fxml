@@ -8,12 +8,9 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.Region?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -86,7 +83,7 @@
                      </font>
                   </Label>
                   <Pane prefHeight="59.0" prefWidth="25.0" />
-                  <Label fx:id="numlabel" alignment="CENTER_RIGHT" prefHeight="39.0" prefWidth="453.0" style="-fx-background-radius: 15; -fx-background-color: #1fa784;">
+                  <Label fx:id="numlabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="RIGHT_TO_LEFT" prefHeight="39.0" prefWidth="453.0" style="-fx-background-radius: 15; -fx-background-color: #1fa784;" textFill="WHITE">
                      <graphic>
                         <Button contentDisplay="RIGHT" mnemonicParsing="false" onAction="#copynum" prefHeight="39.0" prefWidth="164.0" styleClass="Button" stylesheets="@styles.css" text="  : شماره موبایل" textFill="WHITE">
                            <graphic>
@@ -129,34 +126,11 @@
                   </ImageView>
                </children>
             </HBox>
-            <ScrollPane layoutX="61.0" layoutY="168.0" prefHeight="563.0" prefWidth="1469.0" visible="false">
+            <ScrollPane layoutX="61.0" layoutY="168.0" prefHeight="563.0" prefWidth="1469.0">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1474.0" prefWidth="1468.0">
                      <children>
-                        <GridPane prefHeight="1512.0" prefWidth="1458.0" visible="false">
-                           <columnConstraints>
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="652.0" minWidth="10.0" prefWidth="117.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="1353.0" minWidth="0.0" prefWidth="1353.0" />
-                           </columnConstraints>
-                           <rowConstraints>
-                              <RowConstraints maxHeight="260.0" minHeight="10.0" prefHeight="260.0" vgrow="SOMETIMES" />
-                              <RowConstraints maxHeight="260.0" minHeight="10.0" prefHeight="260.0" vgrow="SOMETIMES" />
-                              <RowConstraints maxHeight="260.0" minHeight="10.0" prefHeight="260.0" vgrow="SOMETIMES" />
-                              <RowConstraints maxHeight="260.0" minHeight="10.0" prefHeight="260.0" vgrow="SOMETIMES" />
-                              <RowConstraints maxHeight="260.0" minHeight="10.0" prefHeight="260.0" vgrow="SOMETIMES" />
-                              <RowConstraints maxHeight="260.0" minHeight="10.0" prefHeight="260.0" vgrow="SOMETIMES" />
-                           </rowConstraints>
-                           <children>
-                              <HBox fx:id="H1H0" alignment="CENTER_LEFT" prefHeight="122.0" prefWidth="42.0" spacing="10" GridPane.columnIndex="1" />
-                              <VBox fx:id="V0V0" prefHeight="200.0" prefWidth="100.0" />
-                              <HBox fx:id="H1H1" alignment="CENTER_LEFT" prefHeight="122.0" prefWidth="42.0" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <HBox fx:id="H1H2" alignment="CENTER_LEFT" prefHeight="122.0" prefWidth="42.0" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                              <HBox fx:id="H1H3" alignment="CENTER_LEFT" prefHeight="122.0" prefWidth="42.0" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                              <VBox fx:id="V0V2" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2" />
-                              <VBox fx:id="V0V1" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1" />
-                              <VBox fx:id="V0V3" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="3" />
-                           </children>
-                        </GridPane>
+                        <VBox fx:id="bigV" layoutX="44.0" layoutY="52.0" prefHeight="517.0" prefWidth="1382.0" />
                      </children>
                   </AnchorPane>
               </content>
