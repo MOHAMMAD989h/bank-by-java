@@ -8,12 +8,9 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.Region?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -129,34 +126,53 @@
                   </ImageView>
                </children>
             </HBox>
-            <ScrollPane layoutX="61.0" layoutY="168.0" prefHeight="563.0" prefWidth="1469.0" visible="false">
+            <ScrollPane layoutX="61.0" layoutY="168.0" prefHeight="563.0" prefWidth="1469.0">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1474.0" prefWidth="1468.0">
                      <children>
-                        <GridPane prefHeight="1512.0" prefWidth="1458.0" visible="false">
-                           <columnConstraints>
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="652.0" minWidth="10.0" prefWidth="117.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="1353.0" minWidth="0.0" prefWidth="1353.0" />
-                           </columnConstraints>
-                           <rowConstraints>
-                              <RowConstraints maxHeight="260.0" minHeight="10.0" prefHeight="260.0" vgrow="SOMETIMES" />
-                              <RowConstraints maxHeight="260.0" minHeight="10.0" prefHeight="260.0" vgrow="SOMETIMES" />
-                              <RowConstraints maxHeight="260.0" minHeight="10.0" prefHeight="260.0" vgrow="SOMETIMES" />
-                              <RowConstraints maxHeight="260.0" minHeight="10.0" prefHeight="260.0" vgrow="SOMETIMES" />
-                              <RowConstraints maxHeight="260.0" minHeight="10.0" prefHeight="260.0" vgrow="SOMETIMES" />
-                              <RowConstraints maxHeight="260.0" minHeight="10.0" prefHeight="260.0" vgrow="SOMETIMES" />
-                           </rowConstraints>
+                        <VBox fx:id="bigV" layoutX="44.0" layoutY="52.0" prefHeight="517.0" prefWidth="1382.0">
                            <children>
-                              <HBox fx:id="H1H0" alignment="CENTER_LEFT" prefHeight="122.0" prefWidth="42.0" spacing="10" GridPane.columnIndex="1" />
-                              <VBox fx:id="V0V0" prefHeight="200.0" prefWidth="100.0" />
-                              <HBox fx:id="H1H1" alignment="CENTER_LEFT" prefHeight="122.0" prefWidth="42.0" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <HBox fx:id="H1H2" alignment="CENTER_LEFT" prefHeight="122.0" prefWidth="42.0" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                              <HBox fx:id="H1H3" alignment="CENTER_LEFT" prefHeight="122.0" prefWidth="42.0" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                              <VBox fx:id="V0V2" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2" />
-                              <VBox fx:id="V0V1" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1" />
-                              <VBox fx:id="V0V3" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="3" />
-                           </children>
-                        </GridPane>
+                              <HBox prefHeight="251.0" prefWidth="1382.0">
+                                 <children>
+                                    <VBox prefHeight="251.0" prefWidth="125.0">
+                                       <children>
+                                          <Label prefHeight="37.0" prefWidth="128.0" text="Label" />
+                                          <ImageView fitHeight="98.0" fitWidth="124.0" pickOnBounds="true" preserveRatio="true" />
+                                          <Label prefHeight="48.0" prefWidth="133.0" text="Label" />
+                                       </children>
+                                    </VBox>
+                                    <VBox prefHeight="251.0" prefWidth="256.0">
+                                       <children>
+                                          <Pane prefHeight="254.0" prefWidth="256.0">
+                                             <children>
+                                                <Label layoutX="23.0" layoutY="41.0" prefHeight="28.0" prefWidth="188.0" text="شماره کارت" />
+                                                <Label layoutX="24.0" layoutY="73.0" prefHeight="20.0" prefWidth="148.0" text="شماره حساب" />
+                                                <Label alignment="CENTER_RIGHT" layoutX="98.0" layoutY="96.0" prefHeight="28.0" prefWidth="121.0" text="نام شخص" />
+                                                <Label alignment="CENTER_RIGHT" layoutX="28.0" layoutY="168.0" prefHeight="28.0" prefWidth="95.0" text="موجودی: " />
+                                                <Label layoutX="33.0" layoutY="148.0" prefHeight="20.0" prefWidth="69.0" text="Cvv2:" />
+                                                <Button layoutX="202.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="34.0">
+                                                   <graphic>
+                                                      <ImageView fitHeight="17.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true" />
+                                                   </graphic>
+                                                </Button>
+                                                <Button layoutX="183.0" layoutY="43.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="34.0">
+                                                   <graphic>
+                                                      <ImageView fitHeight="17.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true" />
+                                                   </graphic>
+                                                </Button>
+                                                <Button layoutX="160.0" layoutY="70.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="34.0">
+                                                   <graphic>
+                                                      <ImageView fitHeight="17.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true" />
+                                                   </graphic>
+                                                </Button>
+                                                <Label alignment="CENTER_RIGHT" layoutX="38.0" layoutY="199.0" prefHeight="28.0" prefWidth="127.0" text="تاریخ انقضاء:" />
+                                             </children>
+                                          </Pane>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                           </children></VBox>
                      </children>
                   </AnchorPane>
               </content>
