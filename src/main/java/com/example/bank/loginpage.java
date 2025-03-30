@@ -163,9 +163,6 @@ public class loginpage{
     private ImageView profileImage;
 
     Image imageuser;
-    @FXML
-    private ProgressIndicator progressbar;
-
 
     @FXML
     public void initialize() throws SQLException {}
@@ -548,7 +545,6 @@ public class loginpage{
                 }
                 else {
                     su_signupBtn.setDisable(true);
-                    progressbar.setProgress(0);
 
                     Task<Void> task = new Task<Void>() {
                         @Override
@@ -572,8 +568,6 @@ public class loginpage{
                             getException().printStackTrace();
                         }
                     };
-
-                    progressbar.progressProperty().bind(task.progressProperty());
 
                     Thread thread = new Thread(task);
                     thread.setDaemon(true);

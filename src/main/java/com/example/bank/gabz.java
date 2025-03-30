@@ -3,24 +3,20 @@ package com.example.bank;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-
 import java.io.*;
 import java.nio.file.Files;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 import static com.example.bank.loginpage.*;
-
 
 public class gabz {
 
     loginpage login = new loginpage();
-
     Random random = new Random();
-    File file = new File("gabz.txt");
+    File file = new File("gabz.dat");  // فایل باینری
 
     @FXML
     private Button gabzPayment;
@@ -70,7 +66,7 @@ public class gabz {
         input = Files.readString(file.toPath());
         inputs = input.split(",");
         int  k = random.nextInt(inputs.length);
-        if((k&2) != 0){
+        if(gabzTextfield.getText().length() < 10) {
             k++;
         }
         gabz1.setText(inputs[k]);
@@ -81,22 +77,27 @@ public class gabz {
     }
 
     @FXML
-    void gabzPayment(ActionEvent event) throws SQLException, IOException {
+    void gabzPayment(ActionEvent event) throws SQLException, IOException, ClassNotFoundException {
         int result = pro.updateCredit(numbercardGetter.getText(), -payment);
         if (result == -1) {
             organGabz.setText("پرداخت نشد");
             gabzTextfield.setText("");
             moneyGabz.setText("");
-        }
-        else {
+        } else {
             alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setContentText("successfully");
             alert.setTitle("INFORMATION");
             alert.showAndWait();
+
+            // به‌روزرسانی مقدار در فایل باینری
+            updateGabzFile(gabzTextfield.getText());
+
+            // مقدار پرداخت را صفر کن
+            payment = 0;
+            moneyGabz.setText("0");
+
             login.openNewWindow("main.fxml", "Home", event);
         }
-
-
     }
 
     @FXML
@@ -125,7 +126,6 @@ public class gabz {
                     } else{
                         organGabz.setText("");
                     }
-
                 }
             }
         }
@@ -133,17 +133,51 @@ public class gabz {
             moneyGabz.setText("first open account");
         }
     }
+
     private void filegabz() throws IOException, SQLException {
-        FileWriter fw = new FileWriter(file);
+        FileOutputStream fos = new FileOutputStream(file);
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+
         for (int i = 0; i < 20000; i++) {
             int pricegabz = random.nextInt(20000, 2000000);
             long numbergabz = random.nextLong(10000000, 999999999);
             int pishnum = random.nextInt(1, 9);
             long number = Long.parseLong(String.valueOf(pishnum) + String.valueOf(numbergabz));
-            fw.write(String.valueOf(number) + ',' + pricegabz + ',');
+            oos.writeObject(number + "," + pricegabz);  // نوشتن داده‌ها به صورت باینری
         }
 
+        oos.close();
+    }
 
+    private void updateGabzFile(String gabzNumber) throws IOException, ClassNotFoundException {
+        // خواندن فایل به صورت باینری
+        FileInputStream fis = new FileInputStream(file);
+        ObjectInputStream ois = new ObjectInputStream(fis);
+
+        List<String> updatedContent = new ArrayList<>();
+        String line;
+
+        while (fis.available() > 0) {
+            line = (String) ois.readObject();
+            String[] data = line.split(",");
+            if (data[0].equals(gabzNumber)) {
+                data[1] = "0";  // مقدار را صفر کن
+            }
+            updatedContent.add(String.join(",", data));
+        }
+
+        ois.close();
+        fis.close();
+
+        // نوشتن مجدد فایل باینری
+        FileOutputStream fos = new FileOutputStream(file);
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+
+        for (String updatedLine : updatedContent) {
+            oos.writeObject(updatedLine);
+        }
+
+        oos.close();
     }
 
     public void backtomainFromGabz(ActionEvent actionEvent) {
