@@ -106,8 +106,8 @@
             </HBox>
             <HBox alignment="CENTER_RIGHT" layoutX="59.0" layoutY="44.0" prefHeight="67.0" prefWidth="1476.0" style="-fx-background-color: #4d4d4d;" stylesheets="@styles.css">
                <children>
-                  <Button mnemonicParsing="false" onAction="#profile" prefHeight="37.0" prefWidth="69.0" text="Button" />
-                  <Button mnemonicParsing="false" onAction="#HomeToLoginpage" prefHeight="30.0" prefWidth="44.0" style="-fx-background-color: transparrent;">
+                  <Button mnemonicParsing="false" prefHeight="37.0" prefWidth="69.0" text="Button" />
+                  <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="44.0" style="-fx-background-color: transparrent;">
                      <graphic>
                         <ImageView fitHeight="32.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -126,6 +126,7 @@
                   </ImageView>
                </children>
             </HBox>
+<<<<<<< Updated upstream
             <ScrollPane layoutX="61.0" layoutY="168.0" prefHeight="563.0" prefWidth="1469.0">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1474.0" prefWidth="1468.0">
@@ -176,6 +177,12 @@
                      </children>
                   </AnchorPane>
               </content>
+=======
+            <ScrollPane layoutX="61.0" layoutY="168.0" prefHeight="563.0" prefWidth="1469.0" visible="false">
+               <content>
+                  <VBox fx:id="bigV" prefHeight="557.0" prefWidth="1467.0" />
+               </content>
+>>>>>>> Stashed changes
             </ScrollPane>
         </children>
     </AnchorPane>
