@@ -59,7 +59,7 @@ public class hessabView {
         applyHoverEffect(btn8);
     }
 
-    public void applyHoverEffect(Button button) {
+    private void applyHoverEffect(Button button) {
         Timeline hoverIn = new Timeline(
                 new KeyFrame(Duration.millis(200),
                         new KeyValue(button.translateYProperty(), -5),

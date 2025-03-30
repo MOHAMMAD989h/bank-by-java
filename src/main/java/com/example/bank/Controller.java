@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -18,10 +18,6 @@ import javafx.scene.text.Text;
 import javafx.util.Duration;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-
-import java.awt.*;
-import javafx.scene.control.ScrollPane;
-import java.net.URI;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -75,82 +71,6 @@ public class Controller {
     @FXML
     private ImageView backgroundImage;
 
-    @FXML
-    private Button bank1btn;
-
-    @FXML
-    private Button bank2btn;
-
-    @FXML
-    private Button bank3btn;
-
-    @FXML
-    private Button bank4btn;
-
-    @FXML
-    private Button bank5btn;
-
-    @FXML
-    private Button bank6btn;
-
-    @FXML
-    private Button bank7btn;
-
-    @FXML
-    private Button bank8btn;
-
-    @FXML
-    private Button bank9btn;
-
-    @FXML
-    private Button bank10btn;
-
-    @FXML
-    private Button bank11btn;
-
-    @FXML
-    private Button bank12btn;
-
-    @FXML
-    private Button soal1;
-
-    @FXML
-    private Button soal2;
-
-    @FXML
-    private Button soal3;
-
-    @FXML
-    private Button soal4;
-
-    @FXML
-    private Button soal5;
-
-    @FXML
-    private Button soal6;
-
-    @FXML
-    private Accordion acc1;
-
-    @FXML
-    private Accordion acc2;
-
-    @FXML
-    private Accordion acc3;
-
-    @FXML
-    private Accordion acc4;
-
-    @FXML
-    private Accordion acc5;
-
-    @FXML
-    private Accordion acc6;
-
-    @FXML
-    private ScrollPane scrol;
-
-
     private AnimationTimer timer;
     private PauseTransition pauseTransition;
     Alert alert;
@@ -174,26 +94,6 @@ public class Controller {
         imagePaths.add(getClass().getResource("/images/123.png").toExternalForm());
         startSlideshow();
 
-        hessabView obj = new hessabView();
-        obj.applyHoverEffect(bank1btn);
-        obj.applyHoverEffect(bank2btn);
-        obj.applyHoverEffect(bank3btn);
-        obj.applyHoverEffect(bank4btn);
-        obj.applyHoverEffect(bank5btn);
-        obj.applyHoverEffect(bank6btn);
-        obj.applyHoverEffect(bank7btn);
-        obj.applyHoverEffect(bank8btn);
-        obj.applyHoverEffect(bank9btn);
-        obj.applyHoverEffect(bank10btn);
-        obj.applyHoverEffect(bank11btn);
-        obj.applyHoverEffect(bank12btn);
-        obj.applyHoverEffect(soal1);
-        obj.applyHoverEffect(soal2);
-        obj.applyHoverEffect(soal3);
-        obj.applyHoverEffect(soal4);
-        obj.applyHoverEffect(soal5);
-        obj.applyHoverEffect(soal6);
-
         // استفاده از Platform.runLater برای اطمینان از تنظیم Scene
         /*Platform.runLater(() -> {
             bindImageSizeToWindow();
@@ -202,8 +102,6 @@ public class Controller {
         // تنظیم رویدادهای موس برای گرید پین‌ها
         setupGridPaneHoverBehavior();
     }
-
-
 
     /*private void bindImageSizeToWindow() {
         // بررسی null نبودن Scene و Window
@@ -595,71 +493,4 @@ public class Controller {
             openNewWindow("loginpage.fxml", "loginpage", actionEvent);
         }
     }
-    public void tel (){
-        String url = "https://t.me/AureousBank";
-        try{Desktop.getDesktop().browse(new URI(url));}
-        catch (Exception e){
-            System.out.println(e);
-        }
-    }
-    @FXML
-    private void btn1(){
-        acc1.setVisible(true);
-        acc2.setVisible(false);
-        acc3.setVisible(false);
-        acc4.setVisible(false);
-        acc5.setVisible(false);
-        acc6.setVisible(false);
-    }
-    @FXML
-    private void btn2(){
-        acc1.setVisible(false);
-        acc2.setVisible(true);
-        acc3.setVisible(false);
-        acc4.setVisible(false);
-        acc5.setVisible(false);
-        acc6.setVisible(false);
-    }
-    @FXML
-    private void btn3(){
-        acc1.setVisible(false);
-        acc2.setVisible(false);
-        acc3.setVisible(true);
-        acc4.setVisible(false);
-        acc5.setVisible(false);
-        acc6.setVisible(false);
-    }
-    @FXML
-    private void btn4(){
-        acc1.setVisible(false);
-        acc2.setVisible(false);
-        acc3.setVisible(false);
-        acc4.setVisible(true);
-        acc5.setVisible(false);
-        acc6.setVisible(false);
-    }
-    @FXML
-    private void btn5(){
-        acc1.setVisible(false);
-        acc2.setVisible(false);
-        acc3.setVisible(false);
-        acc4.setVisible(false);
-        acc5.setVisible(true);
-        acc6.setVisible(false);
-    }
-    @FXML
-    private void btn6(){
-        acc1.setVisible(false);
-        acc2.setVisible(false);
-        acc3.setVisible(false);
-        acc4.setVisible(false);
-        acc5.setVisible(false);
-        acc6.setVisible(true);
-    }
-    @FXML
-    private void FAQ(){
-        double position = 5.0/6.0;
-        scrol.setVvalue(position);
-    }
-
 }
