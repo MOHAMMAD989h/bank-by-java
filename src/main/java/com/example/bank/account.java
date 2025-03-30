@@ -361,14 +361,15 @@ public class account implements Initializable {
         }
         else {
 
-            String selectdata = "SELECT bank FROM cards WHERE numbercard =?";
+            String selectdata = "SELECT * FROM cards WHERE numbercard =?";
 
             connect = DataBase1.connectDB();
 
+            assert connect != null;
             prepare = connect.prepareStatement(selectdata);
-            prepare.setString(1, phonehome.getText());
+            prepare.setString(1, cartNumGetter.getText());
             result = prepare.executeQuery();
-            if (result.next()) {
+            if (!result.next()) {
                 if(comaccountcreate.getValue().equals("حساب جاری")) {
 
                     regdata = "INSERT INTO cards (username,money,credit,numbercard,cvv2,engeza,bankname,phonenumberhome,password,imagecard) " +
@@ -376,15 +377,15 @@ public class account implements Initializable {
 
                     assert connect != null;
 
-                    long money = random.nextLong(1000000,1000000);
+                    BigInteger randomBigInt = new BigInteger(33, random).add(new BigInteger("1000000"));
 
                     byte[] imageData = Files.readAllBytes(selectedImageFile.toPath());
                     String yyMM = String.valueOf(yearofExpire.getText()) + String.valueOf(monthofExpire.getText());
 
                     prepare = connect.prepareStatement(regdata);
                     prepare.setString(1, username);
-                    prepare.setString(2, String.valueOf(money));
-                    prepare.setString(3, String.valueOf(money));
+                    prepare.setString(2, String.valueOf(randomBigInt));
+                    prepare.setString(3, String.valueOf(randomBigInt));
                     prepare.setString(4, cartNumGetter.getText());
                     prepare.setString(5, Cvv2Getter.getText());
                     prepare.setString(6, yyMM);

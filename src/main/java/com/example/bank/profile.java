@@ -111,7 +111,7 @@ public class profile {
 
             prepare = connect.prepareStatement(selectdata);
             prepare.setString(1, username);
-            rs = prepare.executeQuery(selectdata);
+            rs = prepare.executeQuery();
             String numberq = "";
 
             while (rs.next()) {
