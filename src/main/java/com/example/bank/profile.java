@@ -107,10 +107,10 @@ public class profile {
             connect = DataBase1.connectDB();
             String data = "SELECT * FROM cards WHERE username = ?";
             String data1 = "SELECT * FROM blockedcard WHERE username = ?";
-            String selectdata = "SELECT * FROM employee";
+            String selectdata = "SELECT * FROM employee WHERE username = ?";
 
             prepare = connect.prepareStatement(selectdata);
-
+            prepare.setString(1, username);
             rs = prepare.executeQuery(selectdata);
             String numberq = "";
 
