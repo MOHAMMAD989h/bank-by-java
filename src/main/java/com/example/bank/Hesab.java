@@ -152,8 +152,8 @@ public class Hesab {
                     if (foundHBox != null) {
                         for (productVam product1 : products) {tedadHesab++;
                             foundHBox.getChildren().add(createVBoxWithPane(product1));
-                        }Label foundlabel = (Label) foundHBox.lookup("#hbox_Aur");
-                        foundlabel.setText(""+tedadHesab);
+                        }Label foundlabel = (Label) foundHBox.lookup("#hbox_Aurlab");
+                        foundlabel.setText("تعداد حساب ها:"+tedadHesab);
                         // اضافه کردن نود جدید
                     } else {
                         System.out.println("HBox پیدا نشد!");
@@ -184,7 +184,7 @@ public class Hesab {
         vBox.setPrefWidth(125.0);
 
         // ایجاد Label اول
-        Label label1 = new Label("  نام بانک : "+product.getPrice());
+        Label label1 = new Label(product.getPrice());
         label1.setPrefHeight(37.0);
         label1.setPrefWidth(128.0);
 
@@ -196,10 +196,10 @@ public class Hesab {
         imageView.setPreserveRatio(true);
 
         // ایجاد Label دوم
-        Label label2 = new Label(" cvv2 :"+product.getSood());
+        Label label2 = new Label();
         label2.setPrefHeight(48.0);
         label2.setPrefWidth(133.0);
-        label2.setId(uniqueId);
+        label2.setId(uniqueId+"lab");
 
         // افزودن اجزا به VBox
         vBox.getChildren().addAll(label1, imageView, label2);
