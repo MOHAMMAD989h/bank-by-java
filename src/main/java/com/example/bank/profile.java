@@ -437,8 +437,8 @@ public class profile {
     }
     public int updateCredit(String Numbercard, int budget) throws SQLException {
         String selectCredit = "SELECT * FROM cards WHERE numbercard  = ?";
-        String updateCredit = "UPDATE cards SET money = money + ? WHERE numbercard  = ?";
-        String updateCreditDeduct = "UPDATE cards SET money = money - ? WHERE numbercard  = ?";
+        String updateCredit = "UPDATE cards SET money = money + ?,credit = credit + ? WHERE numbercard  = ?";
+        String updateCreditDeduct = "UPDATE cards SET money = money - ?,credit = credit + ? WHERE numbercard  = ?";
 
 
         connect = DataBase1.connectDB();
@@ -461,7 +461,8 @@ public class profile {
             }
 
             prepare.setInt(1, Math.abs(budget));
-            prepare.setString(2, Numbercard);
+            prepare.setInt(2, Math.abs(budget));
+            prepare.setString(3, Numbercard);
             prepare.executeUpdate();
 
             return currentCredit-budget;
@@ -471,8 +472,8 @@ public class profile {
     }
     public int transferMoney(String Numbercardfrom,String Numbercardto, int budget) throws SQLException {
         String selectCredit = "SELECT money FROM cards WHERE numbercard = ?";
-        String updateCreditAdd = "UPDATE cards SET money = money + ? WHERE numbercard = ?";
-        String updateCreditDeduct = "UPDATE cards SET money = money - ? WHERE numbercard = ?";
+        String updateCreditAdd = "UPDATE cards SET money = money + ?, credit = credit + ? WHERE numbercard = ?";
+        String updateCreditDeduct = "UPDATE cards SET money = money - ?,credit = credit + ? WHERE numbercard = ?";
 
         connect = DataBase1.connectDB();
 
@@ -505,12 +506,14 @@ public class profile {
 
         prepare = connect.prepareStatement(updateCreditDeduct);
         prepare.setInt(1, Math.abs(budget));
-        prepare.setString(2, Numbercardfrom);
+        prepare.setInt(2, Math.abs(budget));
+        prepare.setString(3, Numbercardfrom);
         prepare.executeUpdate();
 
         prepare = connect.prepareStatement(updateCreditAdd);
         prepare.setInt(1, Math.abs(budget));
-        prepare.setString(2, Numbercardto);
+        prepare.setInt(2, Math.abs(budget));
+        prepare.setString(3, Numbercardto);
         prepare.executeUpdate();
 
         return currentCredit - Math.abs(budget);
