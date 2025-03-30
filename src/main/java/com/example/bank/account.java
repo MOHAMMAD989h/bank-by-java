@@ -8,15 +8,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.math.BigInteger;
 import java.net.URL;
 
@@ -47,9 +45,15 @@ public class account implements Initializable {
     @FXML
     public ComboBox<String> com2;
     @FXML
+    private ComboBox<String> comaccount;
+    @FXML
+    private ComboBox<String> comaccountcreate;
+    @FXML
     private ScrollPane myScrollPane1;
     ObservableList<String> list1 = FXCollections.observableArrayList("ساخت حساب","معرفی حساب");
 
+    ObservableList<String> listaccount = FXCollections.observableArrayList("حساب جاری","حساب سپرده ");
+    ObservableList<String> listaccountcreate = FXCollections.observableArrayList("حساب جاری","حساب سپرده");
     File selectedImageFile = null;
     private  boolean issendphoto =true;
 
@@ -87,15 +91,51 @@ public class account implements Initializable {
     @FXML
     private TextField phonehome;
 
+    @FXML
+    private Label showName;
+    @FXML
+    private Label showName1;
+    @FXML
+    private Label showPhoneNumber;
+    @FXML
+    private Label showPhoneNumber1;
+    @FXML
+    private Label showNationcode;
+    @FXML
+    private Label showNationcode1;
+    @FXML
+    private ImageView logoShow1;
+
     int persianMonth;
     int persianYear;
     private ResultSet result;
+    private ResultSet rs;
 
 
     public void initialize(URL location, ResourceBundle resources) {
         com1.setItems(list);
         com2.setItems(list1);
         com2.setOnAction(this::switchForm);
+        comaccount.setItems(listaccount);
+        comaccountcreate.setItems(listaccountcreate);
+        try {
+            connect = DataBase1.connectDB();
+            String selectdata = "SELECT * FROM employee";
+            assert connect != null;
+            prepare = connect.prepareStatement(selectdata);
+            rs = prepare.executeQuery(selectdata);
+
+            while (rs.next()) {
+                showName.setText(rs.getString("name"));
+                showName1.setText(rs.getString("name"));
+                showPhoneNumber.setText(rs.getString("numberphone"));
+                showPhoneNumber1.setText(rs.getString("numberphone"));
+                showNationcode.setText(rs.getString("nationcode"));
+                showNationcode1.setText(rs.getString("nationcode"));
+            }
+        }
+        catch (Exception e){e.printStackTrace();}
+
         /*myScrollPane.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
             if (event.getCode() == KeyCode.UP || event.getCode() == KeyCode.DOWN) {
                 event.consume();
