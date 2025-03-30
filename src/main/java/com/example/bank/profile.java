@@ -137,7 +137,7 @@ public class profile {
                 String time = result.getString("engeza");
                 String cvv2 = result.getString("cvv2");
                 String bankname = result.getString("bankname");
-                products.add(new productVam(number,bankname , cvv2, time, "",numberq));
+                products.add(new productVam(number,bankname , cvv2, time, "",numberq,""));
 
             }
             prepare = connect.prepareStatement(data1);
@@ -148,7 +148,7 @@ public class profile {
                 String time = rs1.getString("engeza");
                 String cvv2 = rs1.getString("cvv2");
                 String bankname = rs1.getString("bankname");
-                products.add(new productVam(number,bankname , cvv2, time, "",numberq));
+                products.add(new productVam(number,bankname , cvv2, time, "",numberq,""));
 
             }
             for (productVam product1 : products) {

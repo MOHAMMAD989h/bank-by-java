@@ -38,8 +38,8 @@ public class Vam {
     private List<productVam> products = new ArrayList<>();
 
     public void initialize() {
-        products.add(new productVam("وام یک","100000000","14","30","disVam.fxml","ffffhhhh"));
-        products.add(new productVam("وام یک","100000000","14","30","disVam.fxml","ffff"));
+        products.add(new productVam("وام یک","100000000","14","30","disVam.fxml","ffffhhhh",""));
+        products.add(new productVam("وام یک","100000000","14","30","disVam.fxml","ffff",""));
 
         for (productVam product1 : products) {
             vboxVam.getChildren().add(createProductPane(product1));
