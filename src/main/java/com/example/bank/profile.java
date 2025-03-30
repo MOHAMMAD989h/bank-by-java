@@ -92,7 +92,6 @@ public class profile {
     PreparedStatement prepare;
     ResultSet result;
     ResultSet rs;
-    ResultSet rs1;
 
     String infor = null;
 
@@ -106,7 +105,7 @@ public class profile {
         try {
             connect = DataBase1.connectDB();
             String data = "SELECT * FROM cards WHERE username = ?";
-            String data1 = "SELECT * FROM blockedcard WHERE username = ?";
+
             String selectdata = "SELECT * FROM employee";
 
             prepare = connect.prepareStatement(selectdata);
@@ -137,17 +136,6 @@ public class profile {
                 String time = result.getString("engeza");
                 String cvv2 = result.getString("cvv2");
                 String bankname = result.getString("bankname");
-                products.add(new productVam(number,bankname , cvv2, time, "",numberq));
-
-            }
-            prepare = connect.prepareStatement(data1);
-            prepare.setString(1,username);
-            rs1 = prepare.executeQuery();
-            while (rs1.next()) {
-                String number = rs1.getString("numbercard");
-                String time = rs1.getString("engeza");
-                String cvv2 = rs1.getString("cvv2");
-                String bankname = rs1.getString("bankname");
                 products.add(new productVam(number,bankname , cvv2, time, "",numberq));
 
             }

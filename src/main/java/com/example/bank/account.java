@@ -51,7 +51,7 @@ public class account implements Initializable {
     private ScrollPane myScrollPane1;
     ObservableList<String> list1 = FXCollections.observableArrayList("ساخت حساب","معرفی حساب");
 
-    ObservableList<String> listaccount = FXCollections.observableArrayList("حساب جاری","حساب سپرده");
+    ObservableList<String> listaccount = FXCollections.observableArrayList("حساب جاری","حساب سپرده ");
     ObservableList<String> listaccountcreate = FXCollections.observableArrayList("حساب جاری","حساب سپرده");
     File selectedImageFile = null;
     private  boolean issendphoto =true;
@@ -240,7 +240,7 @@ public class account implements Initializable {
 
     public void createbankaccount(ActionEvent actionEvent) throws IOException, SQLException {
         if(homeNumberGet.getText().length() < 3|| !accountPassword.getText().matches("[0-9]{4}") ||
-        !tekrarRamz.getText().equals(accountPassword.getText()) || issendphoto  || comaccount.getValue().equals("")) {
+        !tekrarRamz.getText().equals(accountPassword.getText()) || issendphoto ) {
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
@@ -248,6 +248,13 @@ public class account implements Initializable {
             alert.showAndWait();
 
         }else {
+            connect = DataBase1.connectDB();
+
+            regdata = "INSERT INTO cards (username,money,credit,numbercard,cvv2,engeza,bankname,phonenumberhome,password,imagecard) " +
+                    "VALUES(?,?,?,?,?,?,?,?,?,?)";
+
+
+            assert connect != null;
             byte[] imageData = Files.readAllBytes(selectedImageFile.toPath());
 
             LocalDate now = LocalDate.now(ZoneId.of("Asia/Tehran"));
@@ -292,48 +299,18 @@ public class account implements Initializable {
 
             int cvv2 = random.nextInt(100, 1000);
 
-            connect = DataBase1.connectDB();
-            if(comaccount.getValue().equals("حساب جاری")) {
-
-                regdata = "INSERT INTO cards (username,money,credit,numbercard,cvv2,engeza,bankname,phonenumberhome,password,imagecard) " +
-                        "VALUES(?,?,?,?,?,?,?,?,?,?)";
-
-
-                assert connect != null;
-
-                prepare = connect.prepareStatement(regdata);
-                prepare.setString(1, username);
-                prepare.setString(2, "0");
-                prepare.setString(3, "0");
-                prepare.setString(4, BigNumberString);
-                prepare.setString(5, String.valueOf(cvv2));
-                prepare.setString(6, yyMM);
-                prepare.setString(7, "Aureous Bank");
-                prepare.setString(8, homeNumberGet.getText());
-                prepare.setString(9, accountPassword.getText());
-                prepare.setString(10, Arrays.toString(imageData));
-                int rowsAffected = prepare.executeUpdate();
-            } else if (comaccount.getValue().equals("حساب سپرده")) {
-
-                regdata = "INSERT INTO blockedcard (username,money,credit,numbercard,cvv2,engeza,bankname,phonenumberhome,password,imagecard) " +
-                        "VALUES(?,?,?,?,?,?,?,?,?,?)";
-
-
-                assert connect != null;
-
-                prepare = connect.prepareStatement(regdata);
-                prepare.setString(1, username);
-                prepare.setString(2, "0");
-                prepare.setString(3, "0");
-                prepare.setString(4, BigNumberString);
-                prepare.setString(5, String.valueOf(cvv2));
-                prepare.setString(6, yyMM);
-                prepare.setString(7, "Aureous Bank");
-                prepare.setString(8, homeNumberGet.getText());
-                prepare.setString(9, accountPassword.getText());
-                prepare.setString(10, Arrays.toString(imageData));
-                int rowsAffected = prepare.executeUpdate();
-            }
+            prepare = connect.prepareStatement(regdata);
+            prepare.setString(1, username);
+            prepare.setString(2, "0");
+            prepare.setString(3, "0");
+            prepare.setString(4, BigNumberString);
+            prepare.setString(5, String.valueOf(cvv2));
+            prepare.setString(6, yyMM);
+            prepare.setString(7, "Aureous Bank");
+            prepare.setString(8, homeNumberGet.getText());
+            prepare.setString(9, accountPassword.getText());
+            prepare.setString(10, Arrays.toString(imageData));
+            int rowsAffected = prepare.executeUpdate();
 
             alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information");
@@ -352,7 +329,7 @@ public class account implements Initializable {
     public void estelamBank(ActionEvent actionEvent) throws IOException, SQLException {
         if(!cartNumGetter.getText().matches("[0-9]{16}")  ||  !accountPassword1.getText().matches("[0-9]{4}")
         ||  Cvv2Getter.getText().length() < 3 || !yearofExpire.getText().matches("[0-9]{2}")  || !monthofExpire.getText().matches("[0-9]{2}")
-        || phonehome.getText().length() < 4 || issendphoto || com1.getValue() == null || persianMonth > 12 || Integer.parseInt(yearofExpire.getText()) < persianYear  || comaccountcreate.getValue().equals("")){
+        || phonehome.getText().length() < 4 || issendphoto || com1.getValue() == null || persianMonth > 12 || Integer.parseInt(yearofExpire.getText()) < persianYear ){
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
@@ -369,51 +346,27 @@ public class account implements Initializable {
             prepare.setString(1, phonehome.getText());
             result = prepare.executeQuery();
             if (result.next()) {
-                if(comaccountcreate.getValue().equals("حساب جاری")) {
 
-                    regdata = "INSERT INTO cards (username,money,credit,numbercard,cvv2,engeza,bankname,phonenumberhome,password,imagecard) " +
-                            "VALUES(?,?,?,?,?,?,?,?,?,?)";
+                regdata = "INSERT INTO cards (username,money,credit,numbercard,cvv2,engeza,bankname,phonenumberhome,password,imagecard) " +
+                        "VALUES(?,?,?,?,?,?,?,?,?,?)";
 
-                    assert connect != null;
+                assert connect != null;
 
-                    byte[] imageData = Files.readAllBytes(selectedImageFile.toPath());
-                    String yyMM = String.valueOf(yearofExpire.getText()) + String.valueOf(monthofExpire.getText());
+                byte[] imageData = Files.readAllBytes(selectedImageFile.toPath());
+                String yyMM = String.valueOf(yearofExpire.getText()) + String.valueOf(monthofExpire.getText());
 
-                    prepare = connect.prepareStatement(regdata);
-                    prepare.setString(1, username);
-                    prepare.setString(2, "0");
-                    prepare.setString(3, "0");
-                    prepare.setString(4, cartNumGetter.getText());
-                    prepare.setString(5, Cvv2Getter.getText());
-                    prepare.setString(6, yyMM);
-                    prepare.setString(7, com1.getValue());
-                    prepare.setString(8, phonehome.getText());
-                    prepare.setString(9, accountPassword1.getText());
-                    prepare.setString(10, Arrays.toString(imageData));
-                    int rowsAffected = prepare.executeUpdate();
-                }
-                else if(comaccountcreate.getValue().equals("حساب سپرده")){
-                    regdata = "INSERT INTO blockedcard (username,money,credit,numbercard,cvv2,engeza,bankname,phonenumberhome,password,imagecard) " +
-                            "VALUES(?,?,?,?,?,?,?,?,?,?)";
-
-                    assert connect != null;
-
-                    byte[] imageData = Files.readAllBytes(selectedImageFile.toPath());
-                    String yyMM = String.valueOf(yearofExpire.getText()) + String.valueOf(monthofExpire.getText());
-
-                    prepare = connect.prepareStatement(regdata);
-                    prepare.setString(1, username);
-                    prepare.setString(2, "0");
-                    prepare.setString(3, "0");
-                    prepare.setString(4, cartNumGetter.getText());
-                    prepare.setString(5, Cvv2Getter.getText());
-                    prepare.setString(6, yyMM);
-                    prepare.setString(7, com1.getValue());
-                    prepare.setString(8, phonehome.getText());
-                    prepare.setString(9, accountPassword1.getText());
-                    prepare.setString(10, Arrays.toString(imageData));
-                    int rowsAffected = prepare.executeUpdate();
-                }
+                prepare = connect.prepareStatement(regdata);
+                prepare.setString(1, username);
+                prepare.setString(2,"0");
+                prepare.setString(3,"0");
+                prepare.setString(4, cartNumGetter.getText());
+                prepare.setString(5, Cvv2Getter.getText());
+                prepare.setString(6, yyMM);
+                prepare.setString(7, com1.getValue());
+                prepare.setString(8, phonehome.getText());
+                prepare.setString(9, accountPassword1.getText());
+                prepare.setString(10, Arrays.toString(imageData));
+                int rowsAffected = prepare.executeUpdate();
 
 
                 alert = new Alert(Alert.AlertType.INFORMATION);
