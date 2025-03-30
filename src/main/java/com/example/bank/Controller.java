@@ -726,7 +726,7 @@ public class Controller {
     }
     @FXML
     private void FAQ(){
-        double position = 5.0/6.0;
+        double position = 9.5/10.0;
         scrol.setVvalue(position);
     }
     @FXML
