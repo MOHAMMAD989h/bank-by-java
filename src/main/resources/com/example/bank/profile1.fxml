@@ -31,8 +31,8 @@
                   </Button>
                   <AnchorPane fx:id="openAccountProfile" layoutX="962.0" layoutY="12.0" prefHeight="90.0" prefWidth="207.0" styleClass="wallet" stylesheets="@styles.css">
                      <children>
-                        <Text layoutX="112.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="حساب ها" />
-                        <Button layoutX="14.0" layoutY="5.0" mnemonicParsing="false" onAction="#openHesab" prefHeight="67.0" prefWidth="98.0" styleClass="wallet" stylesheets="@styles.css">
+                        <Text layoutX="112.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="باز کردن حساب" />
+                        <Button layoutX="14.0" layoutY="5.0" mnemonicParsing="false" onAction="#openAccount" prefHeight="67.0" prefWidth="98.0" styleClass="wallet" stylesheets="@styles.css">
                            <graphic>
                               <ImageView fitHeight="71.0" fitWidth="79.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
