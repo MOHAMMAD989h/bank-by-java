@@ -479,7 +479,7 @@ public class profile {
 
         return -1;
     }
-    public int transferMoney(String Numbercardfrom,String Numbercardto, int budget) throws SQLException {
+    public long transferMoney(String Numbercardfrom,String Numbercardto, long budget) throws SQLException {
         String selectCredit = "SELECT money FROM cards WHERE numbercard = ?";
         String updateCreditAdd = "UPDATE cards SET money = money + ?, credit = credit + ? WHERE numbercard = ?";
         String updateCreditDeduct = "UPDATE cards SET money = money - ?,credit = credit + ? WHERE numbercard = ?";
@@ -506,7 +506,7 @@ public class profile {
             return -1;
         }
 
-        int currentCredit = result.getInt("money");
+        long currentCredit = Integer.parseInt(result.getString("money"));
 
         if (Math.abs(budget) > currentCredit) {
             System.out.println("موجودی کارت مبدا کافی نیست."); // موجودی کارت مبدا کافی نیست
@@ -514,18 +514,18 @@ public class profile {
         }
 
         prepare = connect.prepareStatement(updateCreditDeduct);
-        prepare.setInt(1, Math.abs(budget));
-        prepare.setInt(2, Math.abs(budget));
+        prepare.setString(1, String.valueOf(Math.abs(budget)));
+        prepare.setString(2, String.valueOf(Math.abs(budget)));
         prepare.setString(3, Numbercardfrom);
         prepare.executeUpdate();
 
         prepare = connect.prepareStatement(updateCreditAdd);
-        prepare.setInt(1, Math.abs(budget));
-        prepare.setInt(2, Math.abs(budget));
+        prepare.setString(1, String.valueOf(Math.abs(budget)));
+        prepare.setString(2, String.valueOf(Math.abs(budget)));
         prepare.setString(3, Numbercardto);
         prepare.executeUpdate();
 
-        return currentCredit - Math.abs(budget);
+        return  (currentCredit - Math.abs(budget));
     }
 
     private AnchorPane createProductPane(productVam product) {

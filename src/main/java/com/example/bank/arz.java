@@ -1,5 +1,3 @@
 package com.example.bank;
 
-public class arz {
-    //gggg
-}
+public class arz {}

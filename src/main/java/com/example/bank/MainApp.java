@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 public class MainApp extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("entegal.fxml"));
         primaryStage.setTitle("Banking App");
         primaryStage.setScene(new Scene(root, 1535, 790));
         primaryStage.show();

@@ -515,7 +515,7 @@ public class entegal {
 
     public void Dargah (ActionEvent event) throws SQLException {
         if(verifyCode1.equals(PasswordPoya.getText())) {
-            int resulttransfer = pro.transferMoney(text1.getText(), text3.getText(), Integer.parseInt(pool.getText()));
+            long resulttransfer = pro.transferMoney(text1.getText(), text3.getText(), Integer.parseInt(pool.getText()));
             if (resulttransfer < 0) {
                 alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Information");
