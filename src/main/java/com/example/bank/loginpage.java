@@ -586,7 +586,7 @@ public class loginpage{
                 prepare.setString(5, su_number.getText());
                 prepare.setString(6, su_nationcode.getText());
                 prepare.setString(7, su_address.getText());
-                prepare.setString(8, Arrays.toString(imageData));
+                prepare.setBytes(8, imageData);
                 int rowsAffected = prepare.executeUpdate();
 
                 alert = new Alert(Alert.AlertType.INFORMATION);

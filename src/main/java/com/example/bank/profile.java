@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +14,8 @@ import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+
+import java.io.ByteArrayInputStream;
 import java.sql.*;
 import java.util.*;
 import static com.example.bank.loginpage.username;
@@ -118,6 +121,13 @@ public class profile {
                 txtUsername.setText(rs.getString("username"));
                 txtNationcode.setText(rs.getString("nationcode"));
                 txtNumberphone.setText(rs.getString("numberphone"));
+                byte[] imagedata = rs.getBytes("imageData");
+                System.out.println(Arrays.toString(imagedata));
+                ByteArrayInputStream inputStream = new ByteArrayInputStream(imagedata);
+                System.out.println(inputStream);
+                Image image = new Image(inputStream);
+                System.out.println(image);
+                profileImage.setImage(image);
             }
 
             prepare = connect.prepareStatement(data);
