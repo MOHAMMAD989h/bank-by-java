@@ -85,11 +85,11 @@ public class Hesab {
             connect = DataBase1.connectDB();
             String data = "SELECT * FROM cards WHERE username = ?";
 
-            String selectdata = "SELECT * FROM employee";
+            String selectdata = "SELECT * FROM employee WHERE username = ?";
 
             prepare = connect.prepareStatement(selectdata);
-
-            rs = prepare.executeQuery(selectdata);
+            prepare.setString(1, username);
+            rs = prepare.executeQuery();
             String numberq = "";
             String nationcode="";
             String numberphone="";
