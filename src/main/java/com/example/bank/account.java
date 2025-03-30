@@ -41,7 +41,6 @@ public class account implements Initializable {
     public ComboBox<String> com1;
     @FXML
     private ScrollPane myScrollPane;
-    ObservableList<String> list = FXCollections.observableArrayList("بانک تجارت ","بانک رفاه", "بانک ملی","بانک دی");
     @FXML
     public ComboBox<String> com2;
     @FXML
@@ -105,6 +104,8 @@ public class account implements Initializable {
     private Label showNationcode1;
     @FXML
     private ImageView logoShow1;
+    ObservableList<String> list = FXCollections.observableArrayList("بانک تجارت","بانک رفاه", "بانک ملی","بانک ملت","بانک شهر","بانک مسکن","بانک مهر","بانک سامان","بانک کشاورزی","بانک اینده","بانک سپه","بانک دی");
+
 
     int persianMonth;
     int persianYear;
@@ -135,6 +136,59 @@ public class account implements Initializable {
             }
         }
         catch (Exception e){e.printStackTrace();}
+        com1.valueProperty().addListener((observable, oldValue, newValue) -> {
+            if(com1.getValue().equals("بانک تجارت")){
+                Image image = new Image("../images/tejarat.png");
+                logoShow1.setImage(image);
+            } else if (com1.getValue().equals("بانک رفاه")) {
+                Image image = new Image("../images/refah.png");
+                logoShow1.setImage(image);
+            } else if (com1.getValue().equals("بانک ملی")) {
+                Image image = new Image("../images/melli.png");
+                logoShow1.setImage(image);
+            }
+            else if (com1.getValue().equals("بانک ملت")) {
+                Image image = new Image("../images/mellat.png");
+                logoShow1.setImage(image);
+            }
+            else if (com1.getValue().equals("بانک شهر")) {
+                Image image = new Image("../images/shahr.png");
+                logoShow1.setImage(image);
+            }
+            else if (com1.getValue().equals("بانک شهر")) {
+                Image image = new Image("../images/shahr.png");
+                logoShow1.setImage(image);
+            }
+            else if (com1.getValue().equals("بانک مسکن")) {
+                Image image = new Image("../images/maskan.png");
+                logoShow1.setImage(image);
+            }
+            else if (com1.getValue().equals("بانک مهر")) {
+                Image image = new Image("../images/maskan.png");
+                logoShow1.setImage(image);
+            }
+            else if (com1.getValue().equals("بانک سامان")) {
+                Image image = new Image("../images/maskan.png");
+                logoShow1.setImage(image);
+            }
+            else if (com1.getValue().equals("بانک کشاورزی")) {
+                Image image = new Image("../images/maskan.png");
+                logoShow1.setImage(image);
+            }
+            else if (com1.getValue().equals("بانک اینده")) {
+                Image image = new Image("../images/maskan.png");
+                logoShow1.setImage(image);
+            }
+            else if (com1.getValue().equals("بانک سپه")) {
+                Image image = new Image("../images/maskan.png");
+                logoShow1.setImage(image);
+            }
+            else if (com1.getValue().equals("بانک دی")) {
+                Image image = new Image("../images/maskan.png");
+                logoShow1.setImage(image);
+            }
+        });
+
 
         /*myScrollPane.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
             if (event.getCode() == KeyCode.UP || event.getCode() == KeyCode.DOWN) {

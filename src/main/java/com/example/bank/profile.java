@@ -122,11 +122,8 @@ public class profile {
                 txtNationcode.setText(rs.getString("nationcode"));
                 txtNumberphone.setText(rs.getString("numberphone"));
                 byte[] imagedata = rs.getBytes("imageData");
-                System.out.println(Arrays.toString(imagedata));
                 ByteArrayInputStream inputStream = new ByteArrayInputStream(imagedata);
-                System.out.println(inputStream);
                 Image image = new Image(inputStream);
-                System.out.println(image);
                 profileImage.setImage(image);
             }
 

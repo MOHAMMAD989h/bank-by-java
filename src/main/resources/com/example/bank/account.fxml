@@ -22,17 +22,17 @@
                <children>
                   <Button layoutX="133.0" layoutY="569.0" mnemonicParsing="false" onAction="#estelamBank" prefHeight="30.0" prefWidth="220.0" styleClass="wallet" stylesheets="@styles.css" text="استعلام کارت " />
                   <Button layoutX="40.0" layoutY="425.0" mnemonicParsing="false" styleClass="white-form" stylesheets="@hhhh.css" />
-                  <Label fx:id="showName1" alignment="CENTER" layoutX="41.0" layoutY="14.0" prefHeight="42.0" prefWidth="250.0" stylesheets="@styles.css">
+                  <Label fx:id="showName1" alignment="CENTER" layoutX="41.0" layoutY="33.0" prefHeight="42.0" prefWidth="250.0" stylesheets="@styles.css">
                      <styleClass>
                         <String fx:value="password" />
                         <String fx:value="text-field1" />
                      </styleClass></Label>
-                  <Label fx:id="showPhoneNumber1" alignment="CENTER" layoutX="41.0" layoutY="114.0" prefHeight="40.0" prefWidth="250.0" stylesheets="@styles.css">
+                  <Label fx:id="showPhoneNumber1" alignment="CENTER" layoutX="41.0" layoutY="149.0" prefHeight="40.0" prefWidth="250.0" stylesheets="@styles.css">
                      <styleClass>
                         <String fx:value="password" />
                         <String fx:value="text-field1" />
                      </styleClass></Label>
-                  <Label fx:id="showNationcode1" alignment="CENTER" layoutX="41.0" layoutY="66.0" prefHeight="40.0" prefWidth="250.0" stylesheets="@styles.css">
+                  <Label fx:id="showNationcode1" alignment="CENTER" layoutX="38.0" layoutY="91.0" prefHeight="40.0" prefWidth="250.0" stylesheets="@styles.css">
                      <styleClass>
                         <String fx:value="password" />
                         <String fx:value="text-field1" />
@@ -58,7 +58,7 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </TextField>
-                  <ImageView fx:id="logoShow1" fitHeight="34.0" fitWidth="233.0" layoutX="50.0" layoutY="161.0" pickOnBounds="true" />
+                  <ImageView fx:id="logoShow1" fitHeight="48.0" fitWidth="52.0" layoutX="43.0" layoutY="208.0" pickOnBounds="true" />
                   <PasswordField fx:id="Cvv2Getter" layoutX="233.0" layoutY="398.0" prefHeight="39.0" prefWidth="113.0" promptText="Cvv2" stylesheets="@styles.css">
                      <styleClass>
                         <String fx:value="text-field1" />
@@ -87,7 +87,7 @@
                      </opaqueInsets>
                   </PasswordField>
                   <Label layoutX="52.0" layoutY="432.0" prefHeight="25.0" prefWidth="58.0" text="انقضاء" />
-                  <ComboBox fx:id="com1" layoutX="69.0" layoutY="207.0" prefHeight="25.0" prefWidth="194.0" promptText="انتخاب نام بانک " stylesheets="@styles.css">
+                  <ComboBox fx:id="com1" layoutX="96.0" layoutY="208.0" prefHeight="25.0" prefWidth="194.0" promptText="انتخاب نام بانک " stylesheets="@styles.css">
                      <styleClass>
                         <String fx:value="password" />
                         <String fx:value="text-field1" />
