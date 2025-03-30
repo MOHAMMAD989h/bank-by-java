@@ -293,7 +293,9 @@
 .accordion .titled-pane {
     -fx-margin: 10px; /* این کار مستقیماً در JavaFX CSS پشتیبانی نمی‌شود */
 }
-
+.mouse{
+    -fx-cursor: hand;
+}
 
 
 

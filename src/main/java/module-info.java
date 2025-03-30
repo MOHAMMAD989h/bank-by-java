@@ -5,6 +5,7 @@ module com.example.bank {
     requires java.mail;
     requires mysql.connector.j;
     requires java.desktop;
+    requires org.jsoup;
 
 
     opens com.example.bank to javafx.fxml;

@@ -7,6 +7,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -22,7 +23,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="2030.0" prefWidth="1535.0" style="-fx-background-color: #E0DECF;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bank.Controller">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="2817.0" prefWidth="1535.0" style="-fx-background-color: #E0DECF;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bank.Controller">
    <children>
       <AnchorPane prefHeight="790.0" prefWidth="1535.0">
          <children>
@@ -55,9 +56,9 @@
                   </ImageView>
                </children>
             </HBox>
-            <ScrollPane fx:id="scrol" layoutX="60.0" layoutY="102.0" prefHeight="690.0" prefWidth="1474.0" styleClass="scroll-bar" stylesheets="@styles.css">
+            <ScrollPane fx:id="scrol" layoutX="60.0" layoutY="102.0" prefHeight="691.0" prefWidth="1474.0" styleClass="scroll-bar" stylesheets="@styles.css">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1916.0" prefWidth="1459.0" style="-fx-background-color: #E0DECF;">
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="2710.0" prefWidth="1459.0" style="-fx-background-color: #E0DECF;">
                      <children>
                         <AnchorPane fx:id="ancktext" layoutX="450.0" layoutY="434.0" prefHeight="234.0" prefWidth="918.0" styleClass="button4" stylesheets="@styles.css" visible="false">
                            <children>
@@ -174,16 +175,175 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <AnchorPane layoutY="692.0" prefHeight="246.0" prefWidth="1454.0">
+                        <AnchorPane layoutY="740.0" prefHeight="351.0" prefWidth="1456.0">
                            <children>
-                              <Label layoutX="971.0" layoutY="19.0" prefHeight="42.0" prefWidth="480.0" style="-fx-background-radius: 10; -fx-background-color: #b3b3b3;" text="مارا در شبکه های اجتماعی دنبال کنید !">
+                              <Label layoutX="1174.0" layoutY="17.0" prefHeight="55.0" prefWidth="242.0" style="-fx-background-radius: 10; -fx-background-color: #b3b3b3;" text="نرخ های فعلی بازار">
                                  <font>
                                     <Font name="Arial Bold" size="36.0" />
                                  </font>
                               </Label>
-                              <VBox layoutY="86.0" prefHeight="276.0" prefWidth="130.0">
+                              <Button fx:id="updatebtn" layoutX="1082.0" layoutY="13.0" mnemonicParsing="false" onAction="#update" prefHeight="62.0" prefWidth="81.0" style="-fx-background-color: transparent;" styleClass="mouse" stylesheets="@styles.css">
+                                 <graphic>
+                                    <ImageView fitHeight="55.0" fitWidth="73.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../images/update_5129694.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <HBox layoutX="50.0" layoutY="121.0" prefHeight="249.0" prefWidth="1368.0" style="-fx-background-radius: 15;" styleClass="background-gradientt2" stylesheets="@styles.css">
                                  <children>
-                                    <Button mnemonicParsing="false" prefHeight="126.0" prefWidth="130.0" style="-fx-background-color: transparent;">
+                                    <VBox nodeOrientation="RIGHT_TO_LEFT" prefHeight="297.0" prefWidth="654.0" style="-fx-background-radius: 15; -fx-background-color: #b3b3b3;">
+                                       <HBox.margin>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </HBox.margin>
+                                       <children>
+                                          <HBox prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <ImageView fitHeight="107.0" fitWidth="107.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../../images/Screenshot%202025-03-30%20211800.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <Pane prefHeight="107.0" prefWidth="74.0" />
+                                                <Label prefHeight="47.0" prefWidth="160.0" text="دلار آمریکا" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="B Nazanin Bold" size="36.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets top="30.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <Label fx:id="dollor" alignment="CENTER" prefHeight="75.0" prefWidth="652.0" text="..." textFill="WHITE">
+                                             <font>
+                                                <Font name="Arial Bold" size="45.0" />
+                                             </font>
+                                          </Label>
+                                          <Label alignment="CENTER" prefHeight="75.0" prefWidth="652.0" text="ریال" textFill="WHITE">
+                                             <font>
+                                                <Font name="Arial Bold" size="45.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </VBox>
+                                    <VBox nodeOrientation="RIGHT_TO_LEFT" prefHeight="454.0" prefWidth="667.0" style="-fx-background-radius: 15; -fx-background-color: #b3b3b3;">
+                                       <HBox.margin>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </HBox.margin>
+                                       <children>
+                                          <HBox prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <ImageView fitHeight="107.0" fitWidth="107.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../../images/Screenshot%202025-03-30%20212041.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <Pane prefHeight="200.0" prefWidth="74.0" />
+                                                <Label prefHeight="47.0" prefWidth="160.0" text="یورو" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="B Nazanin Bold" size="36.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets top="30.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <Label fx:id="Euro" alignment="CENTER" prefHeight="75.0" prefWidth="652.0" text="..." textFill="WHITE">
+                                             <font>
+                                                <Font name="Arial Bold" size="45.0" />
+                                             </font>
+                                          </Label>
+                                          <Label alignment="CENTER" prefHeight="75.0" prefWidth="652.0" text="ریال" textFill="WHITE">
+                                             <font>
+                                                <Font name="Arial Bold" size="45.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="51.0" layoutY="1145.0" prefHeight="449.0" prefWidth="1403.0">
+                           <children>
+                              <HBox layoutY="102.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="245.0" prefWidth="1368.0" style="-fx-background-radius: 15;" styleClass="background-gradientt2" stylesheets="@styles.css">
+                                 <children>
+                                    <AnchorPane prefHeight="214.0" prefWidth="402.0">
+                                       <children>
+                                          <ImageView fitHeight="55.0" fitWidth="55.0" layoutX="7.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../images/Screenshot%202025-03-30%20211800.png" />
+                                             </image>
+                                          </ImageView>
+                                          <TextField fx:id="text1" alignment="CENTER" layoutX="70.0" layoutY="114.0" prefHeight="42.0" prefWidth="330.0" promptText="دلار" style="-fx-background-radius: 15;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                       </children>
+                                    </AnchorPane>
+                                    <Pane prefHeight="246.0" prefWidth="233.0" />
+                                    <AnchorPane prefHeight="246.0" prefWidth="94.0">
+                                       <children>
+                                          <Button fx:id="changebtn" layoutX="31.0" layoutY="107.0" mnemonicParsing="false" onAction="#change" prefHeight="64.0" prefWidth="76.0" style="-fx-background-color: transparent;" styleClass="mouse" stylesheets="@styles.css">
+                                             <graphic>
+                                                <ImageView fitHeight="56.0" fitWidth="81.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../../images/arrows_13015596.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                       </children>
+                                    </AnchorPane>
+                                    <Pane prefHeight="246.0" prefWidth="206.0" />
+                                    <AnchorPane prefHeight="246.0" prefWidth="500.0">
+                                       <children>
+                                          <ImageView fitHeight="55.0" fitWidth="55.0" layoutX="7.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../images/Screenshot%202025-03-30%20231809.png" />
+                                             </image>
+                                          </ImageView>
+                                          <TextField fx:id="text2" alignment="CENTER" layoutX="70.0" layoutY="114.0" prefHeight="42.0" prefWidth="330.0" promptText="ریال" style="-fx-background-radius: 15;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </HBox>
+                              <Label layoutX="1250.0" layoutY="27.0" prefHeight="55.0" prefWidth="113.0" style="-fx-background-radius: 10; -fx-background-color: #b3b3b3;" text="تبدیل ارز">
+                                 <font>
+                                    <Font name="Arial Bold" size="36.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="dtor" layoutX="1091.0" layoutY="29.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="110.0" stylesheets="@styles.css" text="دلار به ریال">
+                                 <styleClass>
+                                    <String fx:value="background-gradientt" />
+                                    <String fx:value="Button" />
+                                 </styleClass>
+                              </Button>
+                              <Label fx:id="message" layoutX="90.0" layoutY="45.0" prefHeight="42.0" prefWidth="299.0" style="-fx-background-radius: 10; -fx-background-color: #b3b3b3;" text="لطفا نرخ هارا آپدیت کنید" textFill="WHITE" visible="false">
+                                 <font>
+                                    <Font name="Arial" size="36.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutY="1500.0" prefHeight="246.0" prefWidth="1454.0">
+                           <children>
+                              <Label layoutX="945.0" layoutY="19.0" prefHeight="42.0" prefWidth="477.0" style="-fx-background-radius: 10; -fx-background-color: #b3b3b3;" text="مارا در شبکه های اجتماعی دنبال کنید !">
+                                 <font>
+                                    <Font name="Arial Bold" size="36.0" />
+                                 </font>
+                              </Label>
+                              <VBox layoutX="54.0" layoutY="86.0" prefHeight="367.0" prefWidth="76.0">
+                                 <children>
+                                    <Button fx:id="instabtn" mnemonicParsing="false" onAction="#insta" prefHeight="126.0" prefWidth="130.0" style="-fx-background-color: transparent;" styleClass="mouse" stylesheets="@styles.css">
                                        <graphic>
                                           <ImageView fitHeight="114.0" fitWidth="134.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
@@ -193,7 +353,7 @@
                                        </graphic>
                                     </Button>
                                     <Pane prefHeight="200.0" prefWidth="200.0" />
-                                    <Button mnemonicParsing="false" onAction="#tel" prefHeight="85.0" prefWidth="130.0" style="-fx-background-color: transparent;">
+                                    <Button fx:id="telbtn" mnemonicParsing="false" onAction="#tel" prefHeight="85.0" prefWidth="130.0" style="-fx-background-color: transparent;" styleClass="mouse" stylesheets="@styles.css">
                                        <graphic>
                                           <ImageView fitHeight="125.0" fitWidth="114.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
@@ -202,18 +362,37 @@
                                           </ImageView>
                                        </graphic>
                                     </Button>
+                                    <Button fx:id="phonebtn" mnemonicParsing="false" style="-fx-background-color: transparent;" styleClass="mouse" stylesheets="@styles.css">
+                                       <graphic>
+                                          <ImageView fitHeight="114.0" fitWidth="134.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../images/headphones_3068348.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
                                  </children>
                               </VBox>
-                              <Label layoutX="168.0" layoutY="274.0" onMouseClicked="#tel" prefHeight="42.0" prefWidth="418.0" style="-fx-background-radius: 15;" styleClass="background-gradientt2" stylesheets="@styles.css" text="https://t.me/AureousBank" textFill="WHITE">
+                              <Label layoutX="209.0" layoutY="247.0" onMouseClicked="#tel" prefHeight="58.0" prefWidth="422.0" style="-fx-background-radius: 15;" styleClass="background-gradientt2" stylesheets="@styles.css" text="https://t.me/AureousBank" textFill="WHITE">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="211.0" layoutY="371.0" prefHeight="54.0" prefWidth="226.0" style="-fx-background-radius: 15;" styleClass="background-gradientt2" stylesheets="@styles.css" text="09039078303" textFill="WHITE">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="212.0" layoutY="110.0" onMouseClicked="#insta" prefHeight="58.0" prefWidth="216.0" style="-fx-background-radius: 15;" styleClass="background-gradientt2" stylesheets="@styles.css" text="Auruse_bank" textFill="WHITE">
                                  <font>
                                     <Font size="36.0" />
                                  </font>
                               </Label>
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutY="1099.0" prefHeight="758.0" prefWidth="1456.0">
+                        <AnchorPane layoutY="2000.0" prefHeight="758.0" prefWidth="1456.0">
                            <children>
-                              <Label layoutX="1262.0" layoutY="4.0" prefHeight="42.0" prefWidth="183.0" style="-fx-background-radius: 10; -fx-background-color: #b3b3b3;" text="سوالات متداول">
+                              <Label layoutX="1246.0" layoutY="4.0" prefHeight="42.0" prefWidth="178.0" style="-fx-background-radius: 10; -fx-background-color: #b3b3b3;" text="سوالات متداول">
                                  <font>
                                     <Font name="Arial Bold" size="36.0" />
                                  </font>
@@ -224,6 +403,7 @@
                                        <styleClass>
                                           <String fx:value="Button" />
                                           <String fx:value="background-gradientt" />
+                                          <String fx:value="mouse" />
                                        </styleClass>
                                     </Button>
                                     <Pane prefHeight="110.0" prefWidth="66.0" />
@@ -231,6 +411,7 @@
                                        <styleClass>
                                           <String fx:value="Button" />
                                           <String fx:value="background-gradientt" />
+                                          <String fx:value="mouse" />
                                        </styleClass>
                                     </Button>
                                     <Pane prefHeight="8.0" prefWidth="66.0" />
@@ -238,6 +419,7 @@
                                        <styleClass>
                                           <String fx:value="Button" />
                                           <String fx:value="background-gradientt" />
+                                          <String fx:value="mouse" />
                                        </styleClass>
                                     </Button>
                                     <Pane prefHeight="8.0" prefWidth="66.0" />
@@ -245,6 +427,7 @@
                                        <styleClass>
                                           <String fx:value="Button" />
                                           <String fx:value="background-gradientt" />
+                                          <String fx:value="mouse" />
                                        </styleClass>
                                     </Button>
                                     <Pane prefHeight="8.0" prefWidth="66.0" />
@@ -252,6 +435,7 @@
                                        <styleClass>
                                           <String fx:value="Button" />
                                           <String fx:value="background-gradientt" />
+                                          <String fx:value="mouse" />
                                        </styleClass>
                                     </Button>
                                     <Pane prefHeight="8.0" prefWidth="66.0" />
@@ -259,6 +443,7 @@
                                        <styleClass>
                                           <String fx:value="Button" />
                                           <String fx:value="background-gradientt" />
+                                          <String fx:value="mouse" />
                                        </styleClass>
                                     </Button>
                                  </children>

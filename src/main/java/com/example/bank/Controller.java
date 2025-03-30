@@ -1,6 +1,7 @@
 package com.example.bank;
 
 import javafx.animation.*;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -31,6 +32,9 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.application.Platform;
 import javafx.scene.input.MouseEvent;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
 
 public class Controller {
     @FXML
@@ -150,6 +154,44 @@ public class Controller {
     @FXML
     private ScrollPane scrol;
 
+    @FXML
+    private Button updatebtn;
+
+    @FXML
+    private Label dollor;
+
+    @FXML
+    private Label Euro;
+
+    String Dolarstring;
+    String Eurostring;
+    int Dolarint;
+    int Euroint;
+
+    @FXML
+    private TextField text1;
+
+    @FXML
+    private TextField text2;
+
+    @FXML
+    private Label message;
+
+    @FXML
+    private Button dtor;
+
+    @FXML
+    private Button changebtn;
+
+    @FXML
+    private Button telbtn;
+
+    @FXML
+    private Button instabtn;
+
+    @FXML
+    private Button phonebtn;
+
 
     private AnimationTimer timer;
     private PauseTransition pauseTransition;
@@ -193,6 +235,22 @@ public class Controller {
         obj.applyHoverEffect(soal4);
         obj.applyHoverEffect(soal5);
         obj.applyHoverEffect(soal6);
+        obj.applyHoverEffect(dtor);
+        applyHoverEffect(instabtn);
+        applyHoverEffect(phonebtn);
+        applyHoverEffect(telbtn);
+
+        scrol.setOnKeyPressed(event -> {
+            switch (event.getCode()) {
+                case UP:
+                    scrol.setVvalue(scrol.getVvalue() - 0.1);
+                    break;
+                case DOWN:
+                    scrol.setVvalue(scrol.getVvalue() + 0.1);
+                    break;
+            }
+        });
+
 
         // استفاده از Platform.runLater برای اطمینان از تنظیم Scene
         /*Platform.runLater(() -> {
@@ -595,13 +653,23 @@ public class Controller {
             openNewWindow("loginpage.fxml", "loginpage", actionEvent);
         }
     }
-    public void tel (){
+    @FXML
+    private void tel (){
         String url = "https://t.me/AureousBank";
         try{Desktop.getDesktop().browse(new URI(url));}
         catch (Exception e){
             System.out.println(e);
         }
     }
+    @FXML
+    private void insta() {
+        String urlinsta = "https://www.instagram.com/auruse_bank?igsh=MTUwNTRxdDk2cnpzcg==";
+        try{Desktop.getDesktop().browse(new URI(urlinsta));}
+        catch (Exception e){
+            System.out.println(e);
+        }
+    }
+
     @FXML
     private void btn1(){
         acc1.setVisible(true);
@@ -661,5 +729,82 @@ public class Controller {
         double position = 5.0/6.0;
         scrol.setVvalue(position);
     }
+    @FXML
+    private void update (){
+        try{
+            RotateTransition rotateTransition = new RotateTransition(Duration.millis(1000), updatebtn);
+            rotateTransition.setByAngle(360);
+            rotateTransition.setCycleCount(5);
+            rotateTransition.play();
+            Task<Void> task = new Task<Void>() {
+                @Override
+                protected Void call() throws Exception {
+                    String url = "https://www.tgju.org/%D9%82%DB%8C%D9%85%D8%AA-%D8%AF%D9%84%D8%A7%D8%B1";
+                    Document doc = Jsoup.connect(url).get();
+                    Elements elements = doc.select("td.nf");
+                    String dollar = elements.get(0).text();
+                    Dolarstring = elements.get(0).text().replace(",","");
+                    Dolarint = Integer.parseInt(Dolarstring);
+                    Platform.runLater(() -> dollor.setText(dollar));
 
+                    String url1 = "https://www.tgju.org/profile/price_eur";
+                    Document doc1 = Jsoup.connect(url1).get();
+                    Elements elements1 = doc1.select("td.text-left");
+                    String euro = elements1.get(0).text();
+                    Eurostring = elements1.get(0).text().replace(",","");
+                    Euroint = Integer.parseInt(Eurostring);
+                    Platform.runLater(() -> Euro.setText(euro));
+                    return null;
+                }
+            };
+            new Thread(task).start();
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
+    }
+    @FXML
+    private void change(){
+        RotateTransition rotateTransition = new RotateTransition(Duration.millis(500), changebtn);
+        rotateTransition.setByAngle(180);
+        rotateTransition.setCycleCount(2);
+        rotateTransition.setAutoReverse(true);
+        rotateTransition.play();
+        if(Dolarint>0){
+            message.setVisible(false);
+            if(!text1.getText().isEmpty() && text2.getText().isEmpty()){
+                int tex1int = Integer.parseInt(text1.getText());
+                int result1 = tex1int * Dolarint ;
+                String res1 = String.valueOf(result1);
+                text2.setText(res1);
+            }
+            if(text1.getText().isEmpty() && !text2.getText().isEmpty()){
+                int tex2int = Integer.parseInt(text2.getText());
+                int result2 = tex2int/Dolarint ;
+                String res2 = String.valueOf(result2);
+                text1.setText(res2);
+            }
+        }
+        else{
+            message.setVisible(true);
+        }
+    }
+    //انیمیشن برای کوچک شدن
+    private void applyHoverEffect(Button button) {
+        Timeline hoverIn = new Timeline(
+                new KeyFrame(Duration.millis(200),
+                        new KeyValue(button.translateYProperty(), +5),
+                        new KeyValue(button.scaleXProperty(), 0.9),
+                        new KeyValue(button.scaleYProperty(), 0.9))
+        );
+
+        Timeline hoverOut = new Timeline(
+                new KeyFrame(Duration.millis(200),
+                        new KeyValue(button.translateYProperty(), 0),
+                        new KeyValue(button.scaleXProperty(), 1),
+                        new KeyValue(button.scaleYProperty(), 1))
+        );
+        button.setOnMouseEntered(e -> hoverIn.play());
+        button.setOnMouseExited(e -> hoverOut.play());
+    }
 }
