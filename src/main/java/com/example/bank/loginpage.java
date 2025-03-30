@@ -3,11 +3,13 @@ package com.example.bank;
 import javafx.animation.TranslateTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
@@ -161,6 +163,8 @@ public class loginpage{
     private ImageView profileImage;
 
     Image imageuser;
+    @FXML
+    private ProgressIndicator progressbar;
 
 
     @FXML
@@ -543,8 +547,37 @@ public class loginpage{
 
                 }
                 else {
-                    verifyCode1 = String.valueOf((int) (Math.random() * 900000) + 100000);
-                    sendEmail(su_emailsign1.getText(),verifyCode1);
+                    su_signupBtn.setDisable(true);
+                    progressbar.setProgress(0);
+
+                    Task<Void> task = new Task<Void>() {
+                        @Override
+                        protected Void call() throws Exception {
+                            verifyCode1 = String.valueOf((int) (Math.random() * 900000) + 100000);
+                            sendEmail(su_emailsign1.getText(),verifyCode1);
+
+                            return null;
+                        }
+
+                        @Override
+                        protected void succeeded() {
+                            super.succeeded();
+                            System.out.println("کار با موفقیت به پایان رسید و صفحه جدید باز شد!");
+                        }
+
+                        @Override
+                        protected void failed() {
+                            super.failed();
+                            System.err.println("خطا در انجام کار یا باز کردن صفحه جدید!");
+                            getException().printStackTrace();
+                        }
+                    };
+
+                    progressbar.progressProperty().bind(task.progressProperty());
+
+                    Thread thread = new Thread(task);
+                    thread.setDaemon(true);
+                    thread.start();
 
                     side_signUp.setVisible(false);
                     side_loginCodeEmail.setVisible(true);

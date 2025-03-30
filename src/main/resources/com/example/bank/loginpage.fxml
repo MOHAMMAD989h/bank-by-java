@@ -7,6 +7,7 @@
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -170,7 +171,7 @@
                         <String fx:value="password" />
                      </styleClass></TextField>
             <Button fx:id="si_viziblepass" layoutX="207.0" layoutY="343.0" mnemonicParsing="false" onAction="#viziblepass" prefHeight="0.0" prefWidth="10.0" styleClass="white-form" stylesheets="@hhhh.css" />
-                  <Button fx:id="uploadButton" layoutX="100.0" layoutY="454.0" mnemonicParsing="false" onAction="#uploadButton" prefHeight="24.0" prefWidth="95.0" styleClass="wallet" stylesheets="@styles.css" text="ارسال عکس">
+                  <Button fx:id="uploadButton" layoutX="175.0" layoutY="454.0" mnemonicParsing="false" onAction="#uploadButton" prefHeight="24.0" prefWidth="95.0" styleClass="wallet" stylesheets="@styles.css" text="ارسال عکس">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -192,6 +193,12 @@
                         <Image url="@../../../images/preview-show-interface-icon-free-vector.jpg" />
                      </image>
                   </ImageView>
+                  <ProgressBar fx:id="progressbar" layoutX="39.0" layoutY="459.0" prefHeight="18.0" prefWidth="126.0" progress="0.0" stylesheets="@styles.css">
+                     <styleClass>
+                        <String fx:value="text-field1" />
+                        <String fx:value="password" />
+                     </styleClass>
+                  </ProgressBar>
           </children>
         </AnchorPane>
             <AnchorPane fx:id="side_forgotemail" layoutX="300.0" layoutY="1.0" prefHeight="535.0" prefWidth="300.0" styleClass="white-form" stylesheets="@hhhh.css">

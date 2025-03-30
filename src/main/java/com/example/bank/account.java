@@ -376,13 +376,15 @@ public class account implements Initializable {
 
                     assert connect != null;
 
+                    long money = random.nextLong(1000000,1000000);
+
                     byte[] imageData = Files.readAllBytes(selectedImageFile.toPath());
                     String yyMM = String.valueOf(yearofExpire.getText()) + String.valueOf(monthofExpire.getText());
 
                     prepare = connect.prepareStatement(regdata);
                     prepare.setString(1, username);
-                    prepare.setString(2, "0");
-                    prepare.setString(3, "0");
+                    prepare.setString(2, String.valueOf(money));
+                    prepare.setString(3, String.valueOf(money));
                     prepare.setString(4, cartNumGetter.getText());
                     prepare.setString(5, Cvv2Getter.getText());
                     prepare.setString(6, yyMM);
