@@ -258,7 +258,7 @@
                               <Image url="@../../../images/DALL·E%202025-03-25%2018.13.11%20-%20A%20simple,%20minimalistic%20bidirectional%20arrow%20icon%20in%20orange%20color,%20representing%20money%20transfer.%20The%20arrows%20should%20be%20clean%20and%20straightforward,%20pointing.png" />
                            </image>
                         </ImageView>
-                        <Button layoutX="368.0" layoutY="533.0" mnemonicParsing="false" onAction="#backToHomeFromEntegal" style="-fx-background-color: #fff;">
+                        <Button layoutX="368.0" layoutY="533.0" mnemonicParsing="false" onAction="#backtoHessabView" style="-fx-background-color: #fff;">
                            <graphic>
                               <ImageView fitHeight="55.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
                                  <image>

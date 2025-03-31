@@ -36,6 +36,7 @@ import javafx.scene.input.MouseEvent;
 import static com.example.bank.loginpage.*;
 
 public class entegal {
+    loginpage login =new loginpage();
     @FXML
     private Label message;
     @FXML
@@ -587,5 +588,9 @@ public class entegal {
             Dargah.setVisible(true);
             sendPoyaPassword.setVisible(false);
         }
+    }
+
+    public void backtoHessabView(ActionEvent event) {
+        login.openNewWindow("hessabView.fxml","نمایش حساب",event);
     }
 }

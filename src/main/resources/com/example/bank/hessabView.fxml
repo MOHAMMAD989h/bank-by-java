@@ -78,7 +78,7 @@
                      </font>
                   </Label>
                   <Pane prefHeight="59.0" prefWidth="25.0" />
-                  <Label fx:id="numlabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="RIGHT_TO_LEFT" prefHeight="39.0" prefWidth="453.0" style="-fx-background-radius: 15;" styleClass="background-gradientt2" stylesheets="@styles.css">
+                  <Label fx:id="numlabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="RIGHT_TO_LEFT" prefHeight="39.0" prefWidth="453.0" style="-fx-background-radius: 15;" styleClass="background-gradientt2" stylesheets="@styles.css" textFill="WHITE">
                      <graphic>
                         <Button contentDisplay="RIGHT" mnemonicParsing="false" prefHeight="39.0" prefWidth="164.0" styleClass="Button" stylesheets="@styles.css" text="  : شماره موبایل" textFill="WHITE">
                            <graphic>
@@ -125,6 +125,7 @@
                      </graphic>
                   </Button>
                   <HBox alignment="CENTER_LEFT" prefHeight="122.0" prefWidth="42.0" spacing="10" />
+                  <Button mnemonicParsing="false" onAction="#backtoHesab" text="بازگشت" />
                   <Label prefHeight="20.0" prefWidth="324.0" styleClass="time-label" text="زمان" />
                   <Region HBox.hgrow="ALWAYS" />
                   <ImageView fitHeight="59.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">

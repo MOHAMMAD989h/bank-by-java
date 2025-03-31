@@ -21,7 +21,7 @@ import java.util.List;
 import static com.example.bank.loginpage.username;
 
 public class hessabView {
-
+    loginpage login = new loginpage();
     @FXML
     private Button btn1;
     @FXML
@@ -331,5 +331,9 @@ public class hessabView {
         }
         catch (Exception e) {e.printStackTrace();
         }
+    }
+
+    public void backtoHesab(ActionEvent event) {
+        login.openNewWindow("hesab.fxml","myaccounts",event);
     }
 }
