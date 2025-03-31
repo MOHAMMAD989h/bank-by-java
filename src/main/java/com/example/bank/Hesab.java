@@ -347,7 +347,7 @@ public class Hesab {
         hBox.setPrefWidth(1382.0);
         String uniqueId = "hbox_" + HId;
         hBox.setId(uniqueId);
-        hBox.setStyle("-fx-background-color: #1E8E73; -fx-border-color: #fff; -fx-padding: 15px;");
+        hBox.setStyle("-fx-background-color: #fff; -fx-border-color: #fff; -fx-padding: 15px;");
         hBox.setVisible(true);
         Pane pane =new Pane();
         pane.setPrefHeight(10.0);
@@ -355,7 +355,7 @@ public class Hesab {
         VBox vBox = new VBox();
         vBox.setPrefHeight(251.0);
         vBox.setPrefWidth(125.0);
-        vBox.setStyle("-fx-background-color: #4A80D0; -fx-border-color: #fff; -fx-padding: 15px;");
+        vBox.setStyle("-fx-background-color: #1E8E73; -fx-border-color: #fff; -fx-padding: 15px;");
 
         // ایجاد Label اول
         Label label1 = new Label(product.getPrice());
@@ -388,6 +388,7 @@ public class Hesab {
         VBox vBox = new VBox();
         vBox.setPrefHeight(251.0);
         vBox.setPrefWidth(256.0);
+        vBox.setStyle("-fx-background-color: #4A80D0; -fx-border-color: #fff; -fx-padding: 15px; -fx-background-radius: 15px; -fx-border-radius: 15px");
 
         // ایجاد Pane
         Pane pane = new Pane();
