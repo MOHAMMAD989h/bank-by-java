@@ -2,7 +2,10 @@ package com.example.bank;
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -11,6 +14,7 @@ import javafx.scene.input.ClipboardContent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.sql.Connection;
@@ -331,8 +335,8 @@ public class Hesab {
     public void HomeToLoginpage(ActionEvent event) {
         login.openNewWindow("loginpage.fxml","login",event);
     }
-    public void hessabView(ActionEvent event) {
-        login.openNewWindow("hessabView.fxml","نمایش حساب",event);
+    public void hessabView(String hessabNum,ActionEvent event) {
+        openNewWindow2("hessabView.fxml","نمایش حساب",hessabNum,event);
     }
     public void profile(ActionEvent event) {
         login.openNewWindow("profile1.fxml","login",event);
@@ -487,11 +491,35 @@ public class Hesab {
         mainButton.setPrefSize(256.0, 254.0);
         mainButton.setGraphic(pane);
         mainButton.setStyle("-fx-background-color: transparent; -fx-border-color: #ccc;");
-        mainButton.setOnAction(event -> hessabView(event));
+        mainButton.setOnAction(event -> hessabView(product.getName(),event));
 
         // اضافه کردن دکمه به VBox
         vBox.getChildren().add(mainButton);
         return vBox;
+    }
+    public void openNewWindow2 (String fxmlFile, String title, String method, ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
+            Scene scene = new Scene(loader.load(), 1535, 790);
+
+            //ارسال متد
+
+            hessabView controller = loader.getController();
+            controller.setMethod(method);
+
+            // ایجاد و نمایش صفحه جدید
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle(title);
+            stage.show();
+
+            // بستن صفحه فعلی
+            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            currentStage.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

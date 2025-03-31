@@ -9,7 +9,16 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.util.Duration;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.example.bank.loginpage.username;
 
 public class hessabView {
 
@@ -46,6 +55,14 @@ public class hessabView {
     private Label engeza;
     @FXML
     private Label cart;
+    @FXML
+    private Label userlabel;
+
+    @FXML
+    private Label codelabel;
+
+    @FXML
+    private Label numlabel;
 
     @FXML
     public void initialize() {
@@ -268,4 +285,51 @@ public class hessabView {
     private void handleServiceOption2(ActionEvent actionEvent) {
         Controller manager = new Controller();
         manager.openNewWindow("gabz.fxml","gabz",actionEvent);}
+    Connection connect;
+    PreparedStatement prepare;
+    ResultSet result;
+    ResultSet rs;
+
+    String infor = null;
+    private List<productVam> products = new ArrayList<>();
+    public void setMethod(String method) {
+        try {
+            connect = DataBase1.connectDB();
+            String data = "SELECT * FROM cards WHERE username = ?";
+
+            String selectdata = "SELECT * FROM employee WHERE username = ?";
+
+            prepare = connect.prepareStatement(selectdata);
+            prepare.setString(1, username);
+            rs = prepare.executeQuery();
+            String numberq = "";
+            while (rs.next()) {
+                numberq = rs.getString("name");
+                userlabel.setText(numberq);
+                codelabel.setText(rs.getString("nationcode"));
+                numlabel.setText(rs.getString("numberphone"));
+            }
+
+            prepare = connect.prepareStatement(data);
+            prepare.setString(1,username);
+            result = prepare.executeQuery();
+            products.clear();
+            while (result.next()) {
+                String number = result.getString("numbercard");
+                String time = result.getString("engeza");
+                String cvv2 = result.getString("cvv2");
+                String bankname = result.getString("bankname");
+                String money = result.getString("money");
+                if(number.trim().equals(method)){
+                    cart.setText(number);
+                    name.setText(numberq);
+                    cvv.setText(cvv2);
+                    engeza.setText(time);
+                    mojodi.setText(money);
+                }
+            }
+        }
+        catch (Exception e) {e.printStackTrace();
+        }
+    }
 }

@@ -78,7 +78,7 @@
                      </font>
                   </Label>
                   <Pane prefHeight="59.0" prefWidth="25.0" />
-                  <Label fx:id="numlabel" alignment="CENTER_RIGHT" prefHeight="39.0" prefWidth="453.0" style="-fx-background-radius: 15;" styleClass="background-gradientt2" stylesheets="@styles.css">
+                  <Label fx:id="numlabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="RIGHT_TO_LEFT" prefHeight="39.0" prefWidth="453.0" style="-fx-background-radius: 15;" styleClass="background-gradientt2" stylesheets="@styles.css">
                      <graphic>
                         <Button contentDisplay="RIGHT" mnemonicParsing="false" prefHeight="39.0" prefWidth="164.0" styleClass="Button" stylesheets="@styles.css" text="  : شماره موبایل" textFill="WHITE">
                            <graphic>
@@ -96,6 +96,9 @@
                      <HBox.margin>
                         <Insets top="10.0" />
                      </HBox.margin>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
                   </Label>
                   <Pane prefHeight="59.0" prefWidth="25.0" />
                </children>
