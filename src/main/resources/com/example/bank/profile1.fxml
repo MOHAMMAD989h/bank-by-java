@@ -4,7 +4,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -61,14 +60,7 @@
             </AnchorPane>
          </top>
          <right>
-            <AnchorPane prefHeight="560.0" prefWidth="594.0" BorderPane.alignment="CENTER">
-               <children>
-                  <ScrollPane layoutX="109.0" layoutY="-1.0" prefHeight="667.0" prefWidth="400.0">
-                     <content>
-                        <VBox fx:id="vboxshowcard" prefHeight="668.0" prefWidth="398.0" />
-                     </content>
-                  </ScrollPane>
-               </children></AnchorPane>
+            <AnchorPane prefHeight="560.0" prefWidth="594.0" BorderPane.alignment="CENTER" />
          </right>
          <left>
             <AnchorPane prefHeight="654.0" prefWidth="181.0" BorderPane.alignment="CENTER" />

@@ -106,19 +106,19 @@ public class Hesab {
             prepare.setString(1,username);
             result = prepare.executeQuery();
             products.clear();
-            boolean bankMaskan=false;
-            boolean bankAureous=false;
-            boolean bankAyandeh=false;
-            boolean bankDey=false;
-            boolean bankKesh=false;
-            boolean bankRefah=false;
-            boolean bankMelli=false;
-            boolean bankMellat=false;
-            boolean bankMehr=false;
-            boolean bankSaman=false;
-            boolean bankSepah=false;
-            boolean bankShahr=false;
-            boolean bankTejarat=false;
+            int bankMaskan=0;
+            int bankAureous=0;
+            int bankAyandeh=0;
+            int bankDey=0;
+            int bankKesh=0;
+            int bankRefah=0;
+            int bankMelli=0;
+            int bankMellat=0;
+            int bankMehr=0;
+            int bankSaman=0;
+            int bankSepah=0;
+            int bankShahr=0;
+            int bankTejarat=0;
             while (result.next()) {
                 String number = result.getString("numbercard");
                 String time = result.getString("engeza");
@@ -126,222 +126,197 @@ public class Hesab {
                 String bankname = result.getString("bankname");
                 String money = result.getString("money");
                 products.add(new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone));
-                if(bankname.trim().equals("Aureous Bank")){int tedadHesab=0;
-                    if(!bankAureous){
-                        for (productVam product1 : products) {
-                            bigV.getChildren().add(createHBox("Aur",product1));
-                        }bankAureous=true;
+                if(bankname.trim().equals("Aureous Bank")){
+                    if(bankAureous==0){productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                        bigV.setSpacing(10.0);
+                        bigV.getChildren().add(createHBox("Aur",product1));
                     }
                     HBox foundHBox = (HBox) bigV.lookup("#hbox_Aur");
-                    if (foundHBox != null) {
-                        for (productVam product1 : products) {tedadHesab++;
-                            foundHBox.getChildren().add(createVBoxWithPane(product1));
-                        }Label foundlabel = (Label) foundHBox.lookup("#hbox_Aurlab");
-                        foundlabel.setText("تعداد حساب ها:"+tedadHesab);
+                    if (foundHBox != null) {productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                        bankAureous++;
+                        foundHBox.getChildren().add(createVBoxWithPane(product1));
+                        Label foundlabel = (Label) foundHBox.lookup("#hbox_Aurlab");
+                        foundlabel.setText("تعداد حساب ها:"+bankAureous);
                         // اضافه کردن نود جدید
                     } else {
                         System.out.println("HBox پیدا نشد!");
                     }
                 }
-                if(bankname.trim().equals("بانک مسکن")){int tedadHesab=0;
-                    if(!bankMaskan){
-                        for (productVam product1 : products) {
-                            bigV.getChildren().add(createHBox("Mas",product1));
-                        }bankMaskan=true;
+                if(bankname.trim().equals("بانک مسکن")){
+                    if(bankMaskan==0){productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                        bigV.getChildren().add(createHBox("Mas",product1));
                     }
                     HBox foundHBox = (HBox) bigV.lookup("#hbox_Mas");
-                    if (foundHBox != null) {
-                        for (productVam product1 : products) {tedadHesab++;
-                            foundHBox.getChildren().add(createVBoxWithPane(product1));
-                        }Label foundlabel = (Label) foundHBox.lookup("#hbox_Maslab");
-                        foundlabel.setText("تعداد حساب ها:"+tedadHesab);
+                    if (foundHBox != null) {productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                        bankMaskan++;
+                        foundHBox.getChildren().add(createVBoxWithPane(product1));
+                        Label foundlabel = (Label) foundHBox.lookup("#hbox_Maslab");
+                        foundlabel.setText("تعداد حساب ها:"+bankMaskan);
                         // اضافه کردن نود جدید
                     } else {
                         System.out.println("HBox پیدا نشد!");
                     }
                 }
-                if(bankname.trim().equals("بانک آینده")){int tedadHesab=0;
-                    if(!bankAyandeh){
-                        for (productVam product1 : products) {
-                            bigV.getChildren().add(createHBox("Aya",product1));
-                        }bankAyandeh=true;
+                if(bankname.trim().equals("بانک آینده")){
+                    if(bankAyandeh==0){productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                        bigV.getChildren().add(createHBox("Aya",product1));
                     }
                     HBox foundHBox = (HBox) bigV.lookup("#hbox_Aya");
-                    if (foundHBox != null) {
-                        for (productVam product1 : products) {tedadHesab++;
-                            foundHBox.getChildren().add(createVBoxWithPane(product1));
-                        }Label foundlabel = (Label) foundHBox.lookup("#hbox_Ayalab");
-                        foundlabel.setText("تعداد حساب ها:"+tedadHesab);
+                    if (foundHBox != null) {productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                        bankAyandeh++;
+                        foundHBox.getChildren().add(createVBoxWithPane(product1));
+                        Label foundlabel = (Label) foundHBox.lookup("#hbox_Ayalab");
+                        foundlabel.setText("تعداد حساب ها:"+bankAyandeh);
                         // اضافه کردن نود جدید
                     } else {
                         System.out.println("HBox پیدا نشد!");
                     }
                 }
-                if(bankname.trim().equals("بانک دی")){int tedadHesab=0;
-                    if(!bankDey){
-                        for (productVam product1 : products) {
-                            bigV.getChildren().add(createHBox("Dey",product1));
-                        }bankDey=true;
+                if(bankname.trim().equals("بانک دی")){
+                    if(bankDey==0){productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                        bigV.getChildren().add(createHBox("Dey",product1));
                     }
                     HBox foundHBox = (HBox) bigV.lookup("#hbox_Dey");
-                    if (foundHBox != null) {
-                        for (productVam product1 : products) {tedadHesab++;
-                            foundHBox.getChildren().add(createVBoxWithPane(product1));
-                        }Label foundlabel = (Label) foundHBox.lookup("#hbox_Deylab");
-                        foundlabel.setText("تعداد حساب ها:"+tedadHesab);
+                    if (foundHBox != null) {productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                        bankDey++;
+                        foundHBox.getChildren().add(createVBoxWithPane(product1));
+                        Label foundlabel = (Label) foundHBox.lookup("#hbox_Deylab");
+                        foundlabel.setText("تعداد حساب ها:"+bankDey);
                         // اضافه کردن نود جدید
                     } else {
                         System.out.println("HBox پیدا نشد!");
                     }
                 }
-                if(bankname.trim().equals("بانک کشاورزی")){int tedadHesab=0;
-                    if(!bankKesh){
-                        for (productVam product1 : products) {
-                            bigV.getChildren().add(createHBox("Kesh",product1));
-                        }bankKesh=true;
+                if(bankname.trim().equals("بانک کشاورزی")){
+                    if(bankKesh==0){productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                        bigV.getChildren().add(createHBox("Kesh",product1));
                     }
                     HBox foundHBox = (HBox) bigV.lookup("#hbox_Kesh");
-                    if (foundHBox != null) {
-                        for (productVam product1 : products) {tedadHesab++;
-                            foundHBox.getChildren().add(createVBoxWithPane(product1));
-                        }Label foundlabel = (Label) foundHBox.lookup("#hbox_Keshlab");
-                        foundlabel.setText("تعداد حساب ها:"+tedadHesab);
+                    if (foundHBox != null) {productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                        bankKesh++;
+                        foundHBox.getChildren().add(createVBoxWithPane(product1));
+                        Label foundlabel = (Label) foundHBox.lookup("#hbox_Keshlab");
+                        foundlabel.setText("تعداد حساب ها:"+bankKesh);
                         // اضافه کردن نود جدید
                     } else {
                         System.out.println("HBox پیدا نشد!");
                     }
                 }
-                if(bankname.trim().equals("بانک رفاه")){int tedadHesab=0;
-                    if(!bankRefah){
-                        for (productVam product1 : products) {
-                            bigV.getChildren().add(createHBox("Ref",product1));
-                        }bankRefah=true;
+                if(bankname.trim().equals("بانک رفاه")){
+                    if(bankRefah==0){productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                        bigV.getChildren().add(createHBox("Ref",product1));
                     }
                     HBox foundHBox = (HBox) bigV.lookup("#hbox_Ref");
-                    if (foundHBox != null) {
-                        for (productVam product1 : products) {tedadHesab++;
-                            foundHBox.getChildren().add(createVBoxWithPane(product1));
-                        }Label foundlabel = (Label) foundHBox.lookup("#hbox_Reflab");
-                        foundlabel.setText("تعداد حساب ها:"+tedadHesab);
+                    if (foundHBox != null) {productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                        bankRefah++;
+                        foundHBox.getChildren().add(createVBoxWithPane(product1));
+                        Label foundlabel = (Label) foundHBox.lookup("#hbox_Reflab");
+                        foundlabel.setText("تعداد حساب ها:"+bankRefah);
                         // اضافه کردن نود جدید
                     } else {
                         System.out.println("HBox پیدا نشد!");
                     }
                 }
-                if(bankname.trim().equals("بانک ملی")){int tedadHesab=0;
-                    if(!bankMelli){
-                        for (productVam product1 : products) {
-                            bigV.getChildren().add(createHBox("Mli",product1));
-                        }bankMelli=true;
+                if(bankname.trim().equals("بانک ملی")){
+                    if(bankMelli==0){productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                        bigV.getChildren().add(createHBox("Mli",product1));
                     }
                     HBox foundHBox = (HBox) bigV.lookup("#hbox_Mli");
-                    if (foundHBox != null) {
-                        for (productVam product1 : products) {tedadHesab++;
-                            foundHBox.getChildren().add(createVBoxWithPane(product1));
-                        }Label foundlabel = (Label) foundHBox.lookup("#hbox_Mlilab");
-                        foundlabel.setText("تعداد حساب ها:"+tedadHesab);
+                    if (foundHBox != null) {productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                        bankMelli++;
+                        foundHBox.getChildren().add(createVBoxWithPane(product1));
+                        Label foundlabel = (Label) foundHBox.lookup("#hbox_Mlilab");
+                        foundlabel.setText("تعداد حساب ها:"+bankMelli);
                         // اضافه کردن نود جدید
                     } else {
                         System.out.println("HBox پیدا نشد!");
                     }
                 }
-                if(bankname.trim().equals("بانک ملت")){int tedadHesab=0;
-                    if(!bankMellat){
-                        for (productVam product1 : products) {
-                            bigV.getChildren().add(createHBox("Mlat",product1));
-                        }bankMellat=true;
+                if(bankname.trim().equals("بانک ملت")){
+                    if(bankMellat==0){productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                        bigV.getChildren().add(createHBox("Mlat",product1));
                     }
                     HBox foundHBox = (HBox) bigV.lookup("#hbox_Mlat");
-                    if (foundHBox != null) {
-                        for (productVam product1 : products) {tedadHesab++;
-                            foundHBox.getChildren().add(createVBoxWithPane(product1));
-                        }Label foundlabel = (Label) foundHBox.lookup("#hbox_Mlatlab");
-                        foundlabel.setText("تعداد حساب ها:"+tedadHesab);
+                    if (foundHBox != null) {productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                        bankMellat++;
+                        foundHBox.getChildren().add(createVBoxWithPane(product1));
+                        Label foundlabel = (Label) foundHBox.lookup("#hbox_Mlatlab");
+                        foundlabel.setText("تعداد حساب ها:"+bankMellat);
                         // اضافه کردن نود جدید
                     } else {
                         System.out.println("HBox پیدا نشد!");
                     }
                 }
-                if(bankname.trim().equals("بانک سامان")){int tedadHesab=0;
-                    if(!bankSaman){
-                        for (productVam product1 : products) {
-                            bigV.getChildren().add(createHBox("Sam",product1));
-                        }bankSaman=true;
+                if(bankname.trim().equals("بانک سامان")){
+                    if(bankSaman==0){productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                        bigV.getChildren().add(createHBox("Sam",product1));
                     }
                     HBox foundHBox = (HBox) bigV.lookup("#hbox_Sam");
-                    if (foundHBox != null) {
-                        for (productVam product1 : products) {tedadHesab++;
-                            foundHBox.getChildren().add(createVBoxWithPane(product1));
-                        }Label foundlabel = (Label) foundHBox.lookup("#hbox_Samlab");
-                        foundlabel.setText("تعداد حساب ها:"+tedadHesab);
+                    if (foundHBox != null) {productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                        bankSaman++;
+                        foundHBox.getChildren().add(createVBoxWithPane(product1));
+                        Label foundlabel = (Label) foundHBox.lookup("#hbox_Samlab");
+                        foundlabel.setText("تعداد حساب ها:"+bankSaman);
                         // اضافه کردن نود جدید
                     } else {
                         System.out.println("HBox پیدا نشد!");
                     }
                 }
-                if(bankname.trim().equals("بانک سپه")){int tedadHesab=0;
-                    if(!bankSepah){
-                        for (productVam product1 : products) {
-                            bigV.getChildren().add(createHBox("Sep",product1));
-                        }bankSepah=true;
+                if(bankname.trim().equals("بانک سپه")){
+                    if(bankSepah==0){productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                        bigV.getChildren().add(createHBox("Sep",product1));
                     }
                     HBox foundHBox = (HBox) bigV.lookup("#hbox_Sep");
-                    if (foundHBox != null) {
-                        for (productVam product1 : products) {tedadHesab++;
-                            foundHBox.getChildren().add(createVBoxWithPane(product1));
-                        }Label foundlabel = (Label) foundHBox.lookup("#hbox_Seplab");
-                        foundlabel.setText("تعداد حساب ها:"+tedadHesab);
+                    if (foundHBox != null) {productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                        bankSepah++;
+                        foundHBox.getChildren().add(createVBoxWithPane(product1));
+                        Label foundlabel = (Label) foundHBox.lookup("#hbox_Seplab");
+                        foundlabel.setText("تعداد حساب ها:"+bankSepah);
                         // اضافه کردن نود جدید
                     } else {
                         System.out.println("HBox پیدا نشد!");
                     }
                 }
-                if(bankname.trim().equals("بانک تجارت")){int tedadHesab=0;
-                    if(!bankTejarat){
-                        for (productVam product1 : products) {
-                            bigV.getChildren().add(createHBox("Tej",product1));
-                        }bankTejarat=true;
+                if(bankname.trim().equals("بانک تجارت")){
+                    if(bankTejarat==0){productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                        bigV.getChildren().add(createHBox("Tej",product1));
                     }
                     HBox foundHBox = (HBox) bigV.lookup("#hbox_Tej");
-                    if (foundHBox != null) {
-                        for (productVam product1 : products) {tedadHesab++;
-                            foundHBox.getChildren().add(createVBoxWithPane(product1));
-                        }Label foundlabel = (Label) foundHBox.lookup("#hbox_Tejlab");
-                        foundlabel.setText("تعداد حساب ها:"+tedadHesab);
+                    if (foundHBox != null) {productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                        bankTejarat++;
+                        foundHBox.getChildren().add(createVBoxWithPane(product1));
+                        Label foundlabel = (Label) foundHBox.lookup("#hbox_Tejlab");
+                        foundlabel.setText("تعداد حساب ها:"+bankTejarat);
                         // اضافه کردن نود جدید
                     } else {
                         System.out.println("HBox پیدا نشد!");
                     }
                 }
-                if(bankname.trim().equals("بانک مهر")){int tedadHesab=0;
-                    if(!bankMehr){
-                        for (productVam product1 : products) {
-                            bigV.getChildren().add(createHBox("Meh",product1));
-                        }bankMehr=true;
+                if(bankname.trim().equals("بانک مهر")){
+                    if(bankMehr==0){productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                        bigV.getChildren().add(createHBox("Meh",product1));
                     }
                     HBox foundHBox = (HBox) bigV.lookup("#hbox_Meh");
-                    if (foundHBox != null) {
-                        for (productVam product1 : products) {tedadHesab++;
-                            foundHBox.getChildren().add(createVBoxWithPane(product1));
-                        }Label foundlabel = (Label) foundHBox.lookup("#hbox_Mehlab");
-                        foundlabel.setText("تعداد حساب ها:"+tedadHesab);
+                    if (foundHBox != null) {productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                        bankMehr++;
+                        foundHBox.getChildren().add(createVBoxWithPane(product1));
+                        Label foundlabel = (Label) foundHBox.lookup("#hbox_Mehlab");
+                        foundlabel.setText("تعداد حساب ها:"+bankMehr);
                         // اضافه کردن نود جدید
                     } else {
                         System.out.println("HBox پیدا نشد!");
                     }
                 }
-                if(bankname.trim().equals("بانک شهر")){int tedadHesab=0;
-                    if(!bankShahr){
-                        for (productVam product1 : products) {
-                            bigV.getChildren().add(createHBox("Shr",product1));
-                        }bankShahr=true;
+                if(bankname.trim().equals("بانک شهر")){
+                    if(bankShahr==0){productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                        bigV.getChildren().add(createHBox("Shr",product1));
                     }
                     HBox foundHBox = (HBox) bigV.lookup("#hbox_Shr");
-                    if (foundHBox != null) {
-                        for (productVam product1 : products) {tedadHesab++;
-                            foundHBox.getChildren().add(createVBoxWithPane(product1));
-                        }Label foundlabel = (Label) foundHBox.lookup("#hbox_Shrlab");
-                        foundlabel.setText("تعداد حساب ها:"+tedadHesab);
+                    if (foundHBox != null) {productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                        bankShahr++;
+                        foundHBox.getChildren().add(createVBoxWithPane(product1));
+                        Label foundlabel = (Label) foundHBox.lookup("#hbox_Shrlab");
+                        foundlabel.setText("تعداد حساب ها:"+bankShahr);
                         // اضافه کردن نود جدید
                     } else {
                         System.out.println("HBox پیدا نشد!");
@@ -356,18 +331,23 @@ public class Hesab {
     public void HomeToLoginpage(ActionEvent event) {
         login.openNewWindow("loginpage.fxml","login",event);
     }
-
+    public void hessabView(ActionEvent event) {
+        login.openNewWindow("hessabView.fxml","نمایش حساب",event);
+    }
     public void profile(ActionEvent event) {
         login.openNewWindow("profile1.fxml","login",event);
     }
     public HBox createHBox(String HId,productVam product) {
         HBox hBox = new HBox();
-        hBox.setPrefHeight(251.0);
+        hBox.setPrefHeight(260.0);
         hBox.setPrefWidth(1382.0);
         String uniqueId = "hbox_" + HId;
         hBox.setId(uniqueId);
         hBox.setStyle("-fx-background-color: #f0f0f0; -fx-border-color: #ccc; -fx-padding: 10px;");
-
+        hBox.setVisible(true);
+        Pane pane =new Pane();
+        pane.setPrefHeight(10.0);
+        pane.setPrefWidth(1382.0);
         VBox vBox = new VBox();
         vBox.setPrefHeight(251.0);
         vBox.setPrefWidth(125.0);
@@ -391,7 +371,7 @@ public class Hesab {
         label2.setId(uniqueId+"lab");
 
         // افزودن اجزا به VBox
-        vBox.getChildren().addAll(label1, imageView, label2);
+        vBox.getChildren().addAll(label1, imageView, label2,pane);
         hBox.getChildren().add(vBox);
         // در صورتی که بخواهید VBox را در GridPane نمایش دهید
         return hBox;
@@ -450,22 +430,9 @@ public class Hesab {
         labelExpirationDate.setPrefWidth(127.0);
 
 
-        Button button1 = createButtonWithImage(202.0, 0.0);
-        Button button2 = createButtonWithImage(183.0, 43.0);
-        Button button3 = createButtonWithImage(160.0, 70.0);
-
-        // اضافه کردن لیبل‌ها به Pane
-        pane.getChildren().addAll(labelCardNumber, labelAccountNumber, labelPersonName, labelBalance, labelCvv2);
-
-        // اضافه کردن Pane به VBox
-        vBox.getChildren().add(pane);
-
-        return vBox;
-    }
-    private Button createButtonWithImage(double x, double y) {
         Button button = new Button();
-        button.setLayoutX(x);
-        button.setLayoutY(y);
+        button.setLayoutX(202.0);
+        button.setLayoutY(0.0);
         button.setMnemonicParsing(false);
         button.setPrefHeight(20.0);
         button.setPrefWidth(34.0);
@@ -480,7 +447,51 @@ public class Hesab {
         // افزودن تصویر به دکمه
         button.setGraphic(imageView);
 
-        return button;
+        Button button1 = new Button();
+        button.setLayoutX(183.0);
+        button.setLayoutY(43.0);
+        button.setMnemonicParsing(false);
+        button.setPrefHeight(20.0);
+        button.setPrefWidth(34.0);
+
+        // ایجاد ImageView
+        ImageView imageView1 = new ImageView();
+        imageView.setFitHeight(17.0);
+        imageView.setFitWidth(21.0);
+        imageView.setPickOnBounds(true);
+        imageView.setPreserveRatio(true);
+
+        // افزودن تصویر به دکمه
+        button1.setGraphic(imageView1);
+
+        Button button2 = new Button();
+        button.setLayoutX(160.0);
+        button.setLayoutY(70.0);
+        button.setMnemonicParsing(false);
+        button.setPrefHeight(20.0);
+        button.setPrefWidth(34.0);
+
+        // ایجاد ImageView
+        ImageView imageView2 = new ImageView();
+        imageView.setFitHeight(17.0);
+        imageView.setFitWidth(21.0);
+        imageView.setPickOnBounds(true);
+        imageView.setPreserveRatio(true);
+
+        // افزودن تصویر به دکمه
+        button2.setGraphic(imageView2);
+
+        // اضافه کردن لیبل‌ها به Pane
+        pane.getChildren().addAll(labelCardNumber, labelAccountNumber, labelPersonName, labelBalance, labelCvv2,button,button1,button2);
+        Button mainButton = new Button();
+        mainButton.setPrefSize(256.0, 254.0);
+        mainButton.setGraphic(pane);
+        mainButton.setStyle("-fx-background-color: transparent; -fx-border-color: #ccc;");
+        mainButton.setOnAction(event -> hessabView(event));
+
+        // اضافه کردن دکمه به VBox
+        vBox.getChildren().add(mainButton);
+        return vBox;
     }
 
 }
