@@ -35,7 +35,7 @@ public class Hesab {
     private Label numlabel;
     @FXML
     private VBox bigV;
-
+    loginpage login = new loginpage();
     @FXML
     private void copyuser() {
         messagelabel.setVisible(true);
@@ -126,22 +126,6 @@ public class Hesab {
                 String bankname = result.getString("bankname");
                 String money = result.getString("money");
                 products.add(new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone));
-                if(bankname.trim().equals("بانک مسکن")){
-                    if(!bankMaskan){
-                        for (productVam product1 : products) {
-                            bigV.getChildren().add(createHBox("mas",product1));
-                        }bankMaskan=true;
-                    }
-                    HBox foundHBox = (HBox) bigV.lookup("#hbox_mas");
-                    if (foundHBox != null) {
-                        for (productVam product1 : products) {
-                            foundHBox.getChildren().add(createVBoxWithPane(product1));
-                        }
-                        // اضافه کردن نود جدید
-                    } else {
-                        System.out.println("HBox پیدا نشد!");
-                    }
-                }
                 if(bankname.trim().equals("Aureous Bank")){int tedadHesab=0;
                     if(!bankAureous){
                         for (productVam product1 : products) {
@@ -159,17 +143,222 @@ public class Hesab {
                         System.out.println("HBox پیدا نشد!");
                     }
                 }
+                if(bankname.trim().equals("بانک مسکن")){int tedadHesab=0;
+                    if(!bankMaskan){
+                        for (productVam product1 : products) {
+                            bigV.getChildren().add(createHBox("Mas",product1));
+                        }bankMaskan=true;
+                    }
+                    HBox foundHBox = (HBox) bigV.lookup("#hbox_Mas");
+                    if (foundHBox != null) {
+                        for (productVam product1 : products) {tedadHesab++;
+                            foundHBox.getChildren().add(createVBoxWithPane(product1));
+                        }Label foundlabel = (Label) foundHBox.lookup("#hbox_Maslab");
+                        foundlabel.setText("تعداد حساب ها:"+tedadHesab);
+                        // اضافه کردن نود جدید
+                    } else {
+                        System.out.println("HBox پیدا نشد!");
+                    }
+                }
+                if(bankname.trim().equals("بانک آینده")){int tedadHesab=0;
+                    if(!bankAyandeh){
+                        for (productVam product1 : products) {
+                            bigV.getChildren().add(createHBox("Aya",product1));
+                        }bankAyandeh=true;
+                    }
+                    HBox foundHBox = (HBox) bigV.lookup("#hbox_Aya");
+                    if (foundHBox != null) {
+                        for (productVam product1 : products) {tedadHesab++;
+                            foundHBox.getChildren().add(createVBoxWithPane(product1));
+                        }Label foundlabel = (Label) foundHBox.lookup("#hbox_Ayalab");
+                        foundlabel.setText("تعداد حساب ها:"+tedadHesab);
+                        // اضافه کردن نود جدید
+                    } else {
+                        System.out.println("HBox پیدا نشد!");
+                    }
+                }
+                if(bankname.trim().equals("بانک دی")){int tedadHesab=0;
+                    if(!bankDey){
+                        for (productVam product1 : products) {
+                            bigV.getChildren().add(createHBox("Dey",product1));
+                        }bankDey=true;
+                    }
+                    HBox foundHBox = (HBox) bigV.lookup("#hbox_Dey");
+                    if (foundHBox != null) {
+                        for (productVam product1 : products) {tedadHesab++;
+                            foundHBox.getChildren().add(createVBoxWithPane(product1));
+                        }Label foundlabel = (Label) foundHBox.lookup("#hbox_Deylab");
+                        foundlabel.setText("تعداد حساب ها:"+tedadHesab);
+                        // اضافه کردن نود جدید
+                    } else {
+                        System.out.println("HBox پیدا نشد!");
+                    }
+                }
+                if(bankname.trim().equals("بانک کشاورزی")){int tedadHesab=0;
+                    if(!bankKesh){
+                        for (productVam product1 : products) {
+                            bigV.getChildren().add(createHBox("Kesh",product1));
+                        }bankKesh=true;
+                    }
+                    HBox foundHBox = (HBox) bigV.lookup("#hbox_Kesh");
+                    if (foundHBox != null) {
+                        for (productVam product1 : products) {tedadHesab++;
+                            foundHBox.getChildren().add(createVBoxWithPane(product1));
+                        }Label foundlabel = (Label) foundHBox.lookup("#hbox_Keshlab");
+                        foundlabel.setText("تعداد حساب ها:"+tedadHesab);
+                        // اضافه کردن نود جدید
+                    } else {
+                        System.out.println("HBox پیدا نشد!");
+                    }
+                }
+                if(bankname.trim().equals("بانک رفاه")){int tedadHesab=0;
+                    if(!bankRefah){
+                        for (productVam product1 : products) {
+                            bigV.getChildren().add(createHBox("Ref",product1));
+                        }bankRefah=true;
+                    }
+                    HBox foundHBox = (HBox) bigV.lookup("#hbox_Ref");
+                    if (foundHBox != null) {
+                        for (productVam product1 : products) {tedadHesab++;
+                            foundHBox.getChildren().add(createVBoxWithPane(product1));
+                        }Label foundlabel = (Label) foundHBox.lookup("#hbox_Reflab");
+                        foundlabel.setText("تعداد حساب ها:"+tedadHesab);
+                        // اضافه کردن نود جدید
+                    } else {
+                        System.out.println("HBox پیدا نشد!");
+                    }
+                }
+                if(bankname.trim().equals("بانک ملی")){int tedadHesab=0;
+                    if(!bankMelli){
+                        for (productVam product1 : products) {
+                            bigV.getChildren().add(createHBox("Mli",product1));
+                        }bankMelli=true;
+                    }
+                    HBox foundHBox = (HBox) bigV.lookup("#hbox_Mli");
+                    if (foundHBox != null) {
+                        for (productVam product1 : products) {tedadHesab++;
+                            foundHBox.getChildren().add(createVBoxWithPane(product1));
+                        }Label foundlabel = (Label) foundHBox.lookup("#hbox_Mlilab");
+                        foundlabel.setText("تعداد حساب ها:"+tedadHesab);
+                        // اضافه کردن نود جدید
+                    } else {
+                        System.out.println("HBox پیدا نشد!");
+                    }
+                }
+                if(bankname.trim().equals("بانک ملت")){int tedadHesab=0;
+                    if(!bankMellat){
+                        for (productVam product1 : products) {
+                            bigV.getChildren().add(createHBox("Mlat",product1));
+                        }bankMellat=true;
+                    }
+                    HBox foundHBox = (HBox) bigV.lookup("#hbox_Mlat");
+                    if (foundHBox != null) {
+                        for (productVam product1 : products) {tedadHesab++;
+                            foundHBox.getChildren().add(createVBoxWithPane(product1));
+                        }Label foundlabel = (Label) foundHBox.lookup("#hbox_Mlatlab");
+                        foundlabel.setText("تعداد حساب ها:"+tedadHesab);
+                        // اضافه کردن نود جدید
+                    } else {
+                        System.out.println("HBox پیدا نشد!");
+                    }
+                }
+                if(bankname.trim().equals("بانک سامان")){int tedadHesab=0;
+                    if(!bankSaman){
+                        for (productVam product1 : products) {
+                            bigV.getChildren().add(createHBox("Sam",product1));
+                        }bankSaman=true;
+                    }
+                    HBox foundHBox = (HBox) bigV.lookup("#hbox_Sam");
+                    if (foundHBox != null) {
+                        for (productVam product1 : products) {tedadHesab++;
+                            foundHBox.getChildren().add(createVBoxWithPane(product1));
+                        }Label foundlabel = (Label) foundHBox.lookup("#hbox_Samlab");
+                        foundlabel.setText("تعداد حساب ها:"+tedadHesab);
+                        // اضافه کردن نود جدید
+                    } else {
+                        System.out.println("HBox پیدا نشد!");
+                    }
+                }
+                if(bankname.trim().equals("بانک سپه")){int tedadHesab=0;
+                    if(!bankSepah){
+                        for (productVam product1 : products) {
+                            bigV.getChildren().add(createHBox("Sep",product1));
+                        }bankSepah=true;
+                    }
+                    HBox foundHBox = (HBox) bigV.lookup("#hbox_Sep");
+                    if (foundHBox != null) {
+                        for (productVam product1 : products) {tedadHesab++;
+                            foundHBox.getChildren().add(createVBoxWithPane(product1));
+                        }Label foundlabel = (Label) foundHBox.lookup("#hbox_Seplab");
+                        foundlabel.setText("تعداد حساب ها:"+tedadHesab);
+                        // اضافه کردن نود جدید
+                    } else {
+                        System.out.println("HBox پیدا نشد!");
+                    }
+                }
+                if(bankname.trim().equals("بانک تجارت")){int tedadHesab=0;
+                    if(!bankTejarat){
+                        for (productVam product1 : products) {
+                            bigV.getChildren().add(createHBox("Tej",product1));
+                        }bankTejarat=true;
+                    }
+                    HBox foundHBox = (HBox) bigV.lookup("#hbox_Tej");
+                    if (foundHBox != null) {
+                        for (productVam product1 : products) {tedadHesab++;
+                            foundHBox.getChildren().add(createVBoxWithPane(product1));
+                        }Label foundlabel = (Label) foundHBox.lookup("#hbox_Tejlab");
+                        foundlabel.setText("تعداد حساب ها:"+tedadHesab);
+                        // اضافه کردن نود جدید
+                    } else {
+                        System.out.println("HBox پیدا نشد!");
+                    }
+                }
+                if(bankname.trim().equals("بانک مهر")){int tedadHesab=0;
+                    if(!bankMehr){
+                        for (productVam product1 : products) {
+                            bigV.getChildren().add(createHBox("Meh",product1));
+                        }bankMehr=true;
+                    }
+                    HBox foundHBox = (HBox) bigV.lookup("#hbox_Meh");
+                    if (foundHBox != null) {
+                        for (productVam product1 : products) {tedadHesab++;
+                            foundHBox.getChildren().add(createVBoxWithPane(product1));
+                        }Label foundlabel = (Label) foundHBox.lookup("#hbox_Mehlab");
+                        foundlabel.setText("تعداد حساب ها:"+tedadHesab);
+                        // اضافه کردن نود جدید
+                    } else {
+                        System.out.println("HBox پیدا نشد!");
+                    }
+                }
+                if(bankname.trim().equals("بانک شهر")){int tedadHesab=0;
+                    if(!bankShahr){
+                        for (productVam product1 : products) {
+                            bigV.getChildren().add(createHBox("Shr",product1));
+                        }bankShahr=true;
+                    }
+                    HBox foundHBox = (HBox) bigV.lookup("#hbox_Shr");
+                    if (foundHBox != null) {
+                        for (productVam product1 : products) {tedadHesab++;
+                            foundHBox.getChildren().add(createVBoxWithPane(product1));
+                        }Label foundlabel = (Label) foundHBox.lookup("#hbox_Shrlab");
+                        foundlabel.setText("تعداد حساب ها:"+tedadHesab);
+                        // اضافه کردن نود جدید
+                    } else {
+                        System.out.println("HBox پیدا نشد!");
+                    }
+                }
             }
         }
         catch (Exception e) {e.printStackTrace();
         }
     }
 
-    public void HomeToLoginpage(ActionEvent actionEvent) {
+    public void HomeToLoginpage(ActionEvent event) {
+        login.openNewWindow("loginpage.fxml","login",event);
     }
 
-    public void profile(ActionEvent actionEvent) {
-
+    public void profile(ActionEvent event) {
+        login.openNewWindow("profile1.fxml","login",event);
     }
     public HBox createHBox(String HId,productVam product) {
         HBox hBox = new HBox();
