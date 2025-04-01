@@ -298,6 +298,55 @@
 }
 
 
+/* استایل اصلی لیست‌ویو */
+.custom-list-view {
+    -fx-background-color: transparent;
+    -fx-border-radius: 25px;
+    -fx-font-weight: bold;
+    -fx-font-family: "B Nazanin";
+    -fx-font-size: 18;
+    -fx-padding: 30;
+    -fx-margin: 30;
+}
+
+/* استایل آیتم‌های لیست */
+.custom-list-view .list-cell {
+    -fx-background-color: linear-gradient(to bottom right, #1E8E73,  #1fa784);
+    -fx-background-radius: 25px;
+    -fx-border-radius: 25px;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-family: "B Nazanin";
+    -fx-font-size: 18;
+    -fx-padding: 30;
+    -fx-margin: 30;
+}
+
+/* افکت هاور روی آیتم */
+.custom-list-view .list-cell:hover {
+    -fx-background-color: #e0ae1d;
+    -fx-background-radius: 25px;
+    -fx-border-radius: 25px;
+    -fx-text-fill:#4d4d4d;
+    -fx-font-weight: bold;
+    -fx-font-family: "B Nazanin";
+    -fx-font-size: 18;
+    -fx-padding: 30;
+    -fx-margin: 30;
+}
+
+/* آیتم انتخاب‌شده */
+.custom-list-view .list-cell:selected {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-family: "B Nazanin";
+    -fx-font-size: 18;
+    -fx-padding: 30;
+    -fx-margin: 30;
+}
+
+
 
 
 

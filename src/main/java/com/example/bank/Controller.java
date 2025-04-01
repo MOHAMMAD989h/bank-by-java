@@ -5,6 +5,7 @@ import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
@@ -22,10 +23,13 @@ import javafx.event.EventHandler;
 
 import java.awt.*;
 import javafx.scene.control.ScrollPane;
+
+import java.io.File;
+import java.io.IOException;
 import java.net.URI;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
+import java.util.*;
 import java.util.List;
 
 import javafx.scene.image.ImageView;
@@ -192,6 +196,11 @@ public class Controller {
     @FXML
     private Button phonebtn;
 
+    @FXML
+    private ListView<String> listTopics;
+
+    private HashMap<String, String> topicFXMLMap = new HashMap<>();
+
 
     private AnimationTimer timer;
     private PauseTransition pauseTransition;
@@ -248,6 +257,14 @@ public class Controller {
                 case DOWN:
                     scrol.setVvalue(scrol.getVvalue() + 0.1);
                     break;
+            }
+        });
+
+        loadTopics();
+
+        listTopics.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
+            if (newVal != null) {
+                openFXML(newVal);
             }
         });
 
@@ -806,5 +823,43 @@ public class Controller {
         );
         button.setOnMouseEntered(e -> hoverIn.play());
         button.setOnMouseExited(e -> hoverOut.play());
+    }
+    //اطلاعیه ها
+    private void loadTopics() {
+        try {
+            Scanner scan = new Scanner(new File("topics.txt"));
+            while (scan.hasNextLine()) {
+                String line = scan.nextLine();
+                StringTokenizer tokens = new StringTokenizer(line, ",");
+                if (tokens.hasMoreTokens()) {
+                    String topic = tokens.nextToken();
+                    String fxmlFile = tokens.hasMoreTokens() ? tokens.nextToken() : "";
+                    listTopics.getItems().add(topic);
+                    topicFXMLMap.put(topic, fxmlFile);
+                }
+            }
+            scan.close();
+        } catch (IOException e) {
+            System.out.println("خطا در خواندن فایل موضوعات.");
+        }
+    }
+
+    private void openFXML(String topic) {
+        String fxmlFile = topicFXMLMap.get(topic);
+        if (fxmlFile == null || fxmlFile.isEmpty()) {
+            System.out.println("فایل FXML برای این موضوع مشخص نشده است.");
+            return;
+        }
+
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlFile));
+            Parent root = fxmlLoader.load();
+            Stage newStage = new Stage();
+            newStage.setTitle(topic);
+            newStage.setScene(new Scene(root));
+            newStage.show();
+        } catch (IOException e) {
+            System.out.println("خطا در باز کردن FXML: " + e.getMessage());
+        }
     }
 }

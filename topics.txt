@@ -1,0 +1,6 @@
+اطلاعیه آزمایشی,adminmainpage.fxml
+2,adminmainpage.fxml
+3,adminmainpage.fxml
+4,adminmainpage.fxml
+5,
+6,adminmainpage.fxml
