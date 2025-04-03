@@ -7,6 +7,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -18,7 +19,17 @@
    <children>
       <AnchorPane fx:id="side_form" prefHeight="634.0" prefWidth="962.0" styleClass="container" stylesheets="@hhhh.css">
          <children>
-            <AnchorPane fx:id="introducer" layoutX="306.0" layoutY="-1.0" prefHeight="613.0" prefWidth="495.0" styleClass="white-form" stylesheets="@hhhh.css">
+            <AnchorPane fx:id="vboxDeposid" layoutX="308.0" layoutY="-2.0" prefHeight="614.0" prefWidth="495.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <Slider fx:id="deposidMonth" layoutX="161.0" layoutY="113.0" />
+                  <TextField fx:id="deposidMoney" layoutX="151.0" layoutY="170.0" promptText="میزان پول" />
+                  <Label fx:id="deposidSodd" layoutX="211.0" layoutY="217.0" text="Label" />
+                  <Button layoutX="201.0" layoutY="374.0" mnemonicParsing="false" onAction="#deposidBtn" text="Button" />
+                  <TextField fx:id="numbercardDeposid" layoutX="152.0" layoutY="307.0" promptText="شماره کارت" />
+                  <ComboBox fx:id="comdeposidtype" layoutX="150.0" layoutY="57.0" prefWidth="150.0" promptText="نوع سپرده" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="introducer" layoutX="306.0" layoutY="-1.0" prefHeight="613.0" prefWidth="495.0" styleClass="white-form" stylesheets="@hhhh.css" visible="false">
                <children>
                   <Button layoutX="133.0" layoutY="569.0" mnemonicParsing="false" onAction="#estelamBank" prefHeight="30.0" prefWidth="220.0" styleClass="wallet" stylesheets="@styles.css" text="استعلام کارت " />
                   <Button layoutX="40.0" layoutY="425.0" mnemonicParsing="false" styleClass="white-form" stylesheets="@hhhh.css" />
@@ -114,9 +125,9 @@
                   </ComboBox>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="maker" layoutX="308.0" prefHeight="613.0" prefWidth="495.0" styleClass="white-form" stylesheets="@hhhh.css">
+            <AnchorPane fx:id="maker" layoutX="308.0" prefHeight="613.0" prefWidth="495.0" styleClass="white-form" stylesheets="@hhhh.css" visible="false">
                <children>
-                  <PasswordField fx:id="accountPassword" layoutX="23.0" layoutY="369.0" prefHeight="30.0" prefWidth="220.0" promptText="رمز کارت" stylesheets="@styles.css">
+                  <PasswordField fx:id="accountPassword" layoutX="120.0" layoutY="369.0" prefHeight="30.0" prefWidth="220.0" promptText="رمز کارت" stylesheets="@styles.css">
                      <styleClass>
                         <String fx:value="text-field1" />
                         <String fx:value="password" />
@@ -125,12 +136,12 @@
                         <Insets />
                      </opaqueInsets>
                   </PasswordField>
-                  <Button layoutX="150.0" layoutY="536.0" mnemonicParsing="false" onAction="#createbankaccount" prefHeight="39.0" prefWidth="220.0" styleClass="wallet" stylesheets="@styles.css" text="ساختن حساب">
+                  <Button layoutX="120.0" layoutY="536.0" mnemonicParsing="false" onAction="#createbankaccount" prefHeight="39.0" prefWidth="220.0" styleClass="wallet" stylesheets="@styles.css" text="ساختن حساب">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
                   </Button>
-                  <PasswordField fx:id="tekrarRamz" layoutX="23.0" layoutY="428.0" prefHeight="30.0" prefWidth="220.0" promptText="تکرار رمز" stylesheets="@styles.css">
+                  <PasswordField fx:id="tekrarRamz" layoutX="120.0" layoutY="428.0" prefHeight="30.0" prefWidth="220.0" promptText="تکرار رمز" stylesheets="@styles.css">
                      <styleClass>
                         <String fx:value="text-field1" />
                         <String fx:value="password" />
@@ -139,7 +150,7 @@
                         <Insets />
                      </opaqueInsets>
                   </PasswordField>
-                  <TextField fx:id="homeNumberGet" layoutX="25.0" layoutY="320.0" prefHeight="39.0" prefWidth="213.0" promptText="تلفن ثابت" stylesheets="@styles.css">
+                  <TextField fx:id="homeNumberGet" layoutX="123.0" layoutY="318.0" prefHeight="39.0" prefWidth="213.0" promptText="تلفن ثابت" stylesheets="@styles.css">
                      <styleClass>
                         <String fx:value="text-field1" />
                         <String fx:value="password" />
@@ -176,42 +187,42 @@
                         <String fx:value="password" />
                      </styleClass>
                   </TextField>
-                  <Button fx:id="si_viziblepass" layoutX="209.0" layoutY="376.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="10.0" styleClass="white-form" stylesheets="@hhhh.css" />
-                  <Label fx:id="showName" layoutX="23.0" layoutY="110.0" prefHeight="36.0" prefWidth="220.0" stylesheets="@styles.css">
+                  <Button fx:id="si_viziblepass" layoutX="319.0" layoutY="376.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="10.0" styleClass="white-form" stylesheets="@hhhh.css" />
+                  <Label fx:id="showName" layoutX="107.0" layoutY="93.0" prefHeight="36.0" prefWidth="220.0" stylesheets="@styles.css">
                      <styleClass>
                         <String fx:value="password" />
                         <String fx:value="text-field1" />
                      </styleClass>
                   </Label>
-                  <Label fx:id="showPhoneNumber" layoutX="23.0" layoutY="213.0" prefHeight="38.0" prefWidth="220.0" stylesheets="@styles.css">
+                  <Label fx:id="showPhoneNumber" layoutX="107.0" layoutY="205.0" prefHeight="38.0" prefWidth="220.0" stylesheets="@styles.css">
                      <styleClass>
                         <String fx:value="text-field1" />
                         <String fx:value="password" />
                      </styleClass>
                   </Label>
-                  <Label fx:id="showNationcode" layoutX="23.0" layoutY="163.0" prefHeight="38.0" prefWidth="220.0" stylesheets="@styles.css">
+                  <Label fx:id="showNationcode" layoutX="107.0" layoutY="152.0" prefHeight="38.0" prefWidth="220.0" stylesheets="@styles.css">
                      <styleClass>
                         <String fx:value="text-field1" />
                         <String fx:value="password" />
                      </styleClass>
                   </Label>
-                  <Button fx:id="sendnationcardphoto" layoutX="47.0" layoutY="481.0" mnemonicParsing="false" onAction="#sendnationcardphoto" prefHeight="30.0" prefWidth="170.0" styleClass="wallet" stylesheets="@styles.css" text="ارسال عکس کارت ملی">
+                  <Button fx:id="sendnationcardphoto" layoutX="145.0" layoutY="493.0" mnemonicParsing="false" onAction="#sendnationcardphoto" prefHeight="30.0" prefWidth="170.0" styleClass="wallet" stylesheets="@styles.css" text="ارسال عکس کارت ملی">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
                   </Button>
-                  <Label layoutX="150.0" layoutY="409.0" text="باید چهار رقم باشد ">
+                  <Label layoutX="250.0" layoutY="409.0" text="باید چهار رقم باشد ">
                      <font>
                         <Font size="10.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="comaccount" layoutX="47.0" layoutY="259.0" prefHeight="38.0" prefWidth="150.0" promptText="نوع حساب" stylesheets="@styles.css">
+                  <ComboBox fx:id="comaccount" layoutX="155.0" layoutY="259.0" prefHeight="38.0" prefWidth="150.0" promptText="نوع حساب" stylesheets="@styles.css">
                      <styleClass>
                         <String fx:value="text-field1" />
                         <String fx:value="password" />
                      </styleClass>
                   </ComboBox>
-                  <ImageView fitHeight="62.0" fitWidth="200.0" layoutX="33.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="62.0" fitWidth="200.0" layoutX="97.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../images/Aureous%20Bank%20Logo.png" />
                      </image>

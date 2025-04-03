@@ -1,5 +1,7 @@
 package com.example.bank;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -10,6 +12,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -103,9 +106,29 @@ public class account implements Initializable {
     @FXML
     private Label showNationcode1;
     @FXML
+    private TextField deposidMoney;
+
+    @FXML
+    private Slider deposidMonth;
+
+    @FXML
+    private Label deposidSodd;
+    @FXML
     private ImageView logoShow1;
     ObservableList<String> list = FXCollections.observableArrayList("بانک تجارت","بانک رفاه", "بانک ملی","بانک ملت","بانک شهر","بانک مسکن","بانک مهر","بانک سامان","بانک کشاورزی","بانک اینده","بانک سپه","بانک دی");
 
+    Timeline timeline = new Timeline();
+    private Long deposidMonthnum;
+    @FXML
+    private ComboBox<String> comdeposidtype;
+    @FXML
+    private AnchorPane vboxDeposid;
+    @FXML
+    private TextField numbercardDeposid;
+    String BigNumberString;
+    byte[] imageData;
+
+    profile pro = new profile();
 
     int persianMonth;
     int persianYear;
@@ -119,6 +142,36 @@ public class account implements Initializable {
         com2.setOnAction(this::switchForm);
         comaccount.setItems(listaccount);
         comaccountcreate.setItems(listaccountcreate);
+
+        deposidMonth.setMin(3);
+        deposidMonth.setMax(12);
+        deposidMonth.setValue(3);
+        deposidMonth.setBlockIncrement(1);
+
+
+        // تنظیم اسلایدر برای انتخاب تنها اعداد صحیح
+        deposidMonth.setMajorTickUnit(1);
+        deposidMonth.setMinorTickCount(0);
+        deposidMonth.setSnapToTicks(true);
+        deposidMonth.setShowTickMarks(true);
+        deposidMonth.setShowTickLabels(true);
+        timeline = new Timeline(new KeyFrame(Duration.millis(50), event -> {
+            deposidMonthnum =  Math.round(deposidMonth.getValue());
+        }));
+        timeline.setCycleCount(Timeline.INDEFINITE);
+
+        // فعال‌سازی انیمیشن هنگام کشیدن اسلایدر
+        deposidMonth.valueProperty().addListener((observable, oldValue, newValue) -> {
+            timeline.playFromStart(); // اجرای انیمیشن هنگام تغییر مقدار
+        });
+
+        // به‌روز رسانی برچسب با استفاده از lambda expression هنگام تغییر مقدار اسلایدر
+        deposidMonth.valueProperty().addListener((observable, oldValue, newValue) ->{
+                    deposidMonthnum = (long) newValue.intValue();
+                }
+        );
+
+        deposidSodd.setText("سود :"+deposidMonth.getValue() + 3);
         try {
             connect = DataBase1.connectDB();
             String selectdata = "SELECT * FROM employee";
@@ -248,7 +301,7 @@ public class account implements Initializable {
             alert.showAndWait();
 
         }else {
-            byte[] imageData = Files.readAllBytes(selectedImageFile.toPath());
+            imageData = Files.readAllBytes(selectedImageFile.toPath());
 
             LocalDate now = LocalDate.now(ZoneId.of("Asia/Tehran"));
             int year = now.getYear();
@@ -257,7 +310,7 @@ public class account implements Initializable {
 
             BigInteger randomBigInt = new BigInteger(33, random).add(new BigInteger("1000000000"));
 
-            String BigNumberString = "504412" + randomBigInt.toString();
+            BigNumberString = "504412" + randomBigInt.toString();
 
             // تبدیل میلادی به شمسی (تخمینی)
             persianYear = year - ((month < 3) || (month == 3 && day < 21) ? 622 : 621) + 10;
@@ -314,25 +367,30 @@ public class account implements Initializable {
                 prepare.setString(10, Arrays.toString(imageData));
                 int rowsAffected = prepare.executeUpdate();
             } else if (comaccount.getValue().equals("حساب سپرده")) {
+                maker.setVisible(false);
+                introducer.setVisible(false);
+                vboxDeposid.setVisible(true);
+                /*
 
                 regdata = "INSERT INTO blockedcard (username,money,credit,numbercard,cvv2,engeza,bankname,phonenumberhome,password,imagecard) " +
                         "VALUES(?,?,?,?,?,?,?,?,?,?)";
-
 
                 assert connect != null;
 
                 prepare = connect.prepareStatement(regdata);
                 prepare.setString(1, username);
-                prepare.setString(2, "0");
-                prepare.setString(3, "0");
+                prepare.setString(2, deposidMoney.getText());
+                prepare.setString(3, deposidMoney.getText());
                 prepare.setString(4, BigNumberString);
-                prepare.setString(5, String.valueOf(cvv2));
-                prepare.setString(6, yyMM);
+                prepare.setString(5, String.valueOf(deposidSodd.getText()));
+                prepare.setString(6, String.valueOf(deposidMonth.getValue()));
                 prepare.setString(7, "Aureous Bank");
                 prepare.setString(8, homeNumberGet.getText());
                 prepare.setString(9, accountPassword.getText());
                 prepare.setString(10, Arrays.toString(imageData));
                 int rowsAffected = prepare.executeUpdate();
+
+                 */
             }
 
             alert = new Alert(Alert.AlertType.INFORMATION);
@@ -345,7 +403,7 @@ public class account implements Initializable {
             accountPassword.clear();
             tekrarRamz.clear();
 
-            login.openNewWindow("profile1.fxml", "Profile", actionEvent);
+            //login.openNewWindow("profile1.fxml", "Profile", actionEvent);
         }
 
     }
@@ -377,7 +435,7 @@ public class account implements Initializable {
 
                     assert connect != null;
 
-                    BigInteger randomBigInt = new BigInteger(33, random).add(new BigInteger("1000000"));
+                    BigInteger randomBigInt = new BigInteger(23, random).add(new BigInteger("1000000"));
 
                     byte[] imageData = Files.readAllBytes(selectedImageFile.toPath());
                     String yyMM = String.valueOf(yearofExpire.getText()) + String.valueOf(monthofExpire.getText());
@@ -438,6 +496,43 @@ public class account implements Initializable {
                 alert.setContentText("You are already logged in");
                 alert.showAndWait();
             }
+        }
+    }
+
+    public void deposidBtn(ActionEvent actionEvent) throws SQLException {
+        if(deposidMoney.getText().isEmpty() || numbercardDeposid.getText().isEmpty()) {
+            regdata = "INSERT INTO blockedcard (username,money,credit,numbercard,cvv2,engeza,bankname,phonenumberhome,password,imagecard) " +
+                    "VALUES(?,?,?,?,?,?,?,?,?,?)";
+
+            assert connect != null;
+
+            pro.updateCredit(numbercardDeposid.getText(), Integer.parseInt(deposidMoney.getText()));
+
+            prepare = connect.prepareStatement(regdata);
+            prepare.setString(1, username);
+            prepare.setString(2, deposidMoney.getText());
+            prepare.setString(3, deposidMoney.getText());
+            prepare.setString(4, BigNumberString);
+            prepare.setString(5, String.valueOf(deposidMonth.getValue() + 3));
+            prepare.setString(6, String.valueOf(deposidMonth.getValue()));
+            prepare.setString(7, "Aureous Bank");
+            prepare.setString(8, homeNumberGet.getText());
+            prepare.setString(9, accountPassword.getText());
+            prepare.setString(10, Arrays.toString(imageData));
+            int rowsAffected = prepare.executeUpdate();
+
+            alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information");
+            alert.setHeaderText(null);
+            alert.setContentText("Seccessfully");
+            alert.showAndWait();
+        }
+        else{
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("fill the balnks");
+            alert.showAndWait();
         }
     }
 

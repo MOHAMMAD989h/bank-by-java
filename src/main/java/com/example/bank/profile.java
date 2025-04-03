@@ -101,7 +101,6 @@ public class profile {
 
     loginpage login = new loginpage();
 
-    private List<productVam> products = new ArrayList<>();
     public void initialize() {
         try {
             connect = DataBase1.connectDB();
@@ -126,33 +125,6 @@ public class profile {
                 ByteArrayInputStream inputStream = new ByteArrayInputStream(imagedata);
                 Image image = new Image(inputStream);
                 profileImage.setImage(image);
-            }
-
-            prepare = connect.prepareStatement(data);
-            prepare.setString(1,username);
-            result = prepare.executeQuery();
-            products.clear();
-            while (result.next()) {
-                String number = result.getString("numbercard");
-                String time = result.getString("engeza");
-                String cvv2 = result.getString("cvv2");
-                String bankname = result.getString("bankname");
-                products.add(new productVam(number,bankname , cvv2, time, "",numberq,""));
-
-            }
-            prepare = connect.prepareStatement(data1);
-            prepare.setString(1,username);
-            rs1 = prepare.executeQuery();
-            while (rs1.next()) {
-                String number = rs1.getString("numbercard");
-                String time = rs1.getString("engeza");
-                String cvv2 = rs1.getString("cvv2");
-                String bankname = rs1.getString("bankname");
-                products.add(new productVam(number,bankname , cvv2, time, "",numberq,""));
-
-            }
-            for (productVam product1 : products) {
-                vboxshowcard.getChildren().add(createProductPane(product1));
             }
         }
         catch (Exception e) {e.printStackTrace();}
@@ -528,44 +500,6 @@ public class profile {
         return  (currentCredit - Math.abs(budget));
     }
 
-    private AnchorPane createProductPane(productVam product) {
-        AnchorPane pane = null;
-
-        pane = new AnchorPane();
-        pane.setPrefHeight(100);
-        pane.setStyle("-fx-background-color: #f0f0f0; -fx-border-color: #ccc; -fx-padding: 10px;");
-        vboxshowcard.setStyle("-fx-max-height: Infinity;-fx-pref-height: USE_COMPUTED_SIZE;");
-
-        //numbercard
-        Label nameLabel = new Label( "شماره کارت : "+product.getName());
-        nameLabel.setLayoutX(50);
-        nameLabel.setLayoutY(20);
-
-        //cvv2
-        Label soodLabel = new Label( " cvv2 :"+product.getSood());
-        soodLabel.setLayoutX(250);
-        soodLabel.setLayoutY(20);
-
-        //time
-        Label timeLabel = new Label( "انقضا : "+product.getTime());
-        timeLabel.setLayoutX(50);
-        timeLabel.setLayoutY(50);
-
-        //name
-        Label nameLbl = new Label( "نام : "+product.getDiscription());
-        nameLbl.setLayoutX(200);
-        nameLbl.setLayoutY(50);
-
-        //name
-        Label banknameLbl = new Label( "  نام بانک : "+product.getPrice());
-        banknameLbl.setLayoutX(100);
-        banknameLbl.setLayoutY(70);
-
-        pane.getChildren().addAll(nameLabel,soodLabel,timeLabel,nameLbl,banknameLbl);
-
-        return pane;
-
-    }
     public void openNewWindow(String fxmlFile, String title, ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));

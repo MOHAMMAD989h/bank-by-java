@@ -261,7 +261,7 @@
                   </Button>
           </children>
             </AnchorPane>
-        <AnchorPane fx:id="side_form" layoutY="-0.8" prefHeight="540.0" prefWidth="300.0" visible="false">
+        <AnchorPane fx:id="side_form" layoutY="-0.8" prefHeight="540.0" prefWidth="300.0">
           <children>
             <Label layoutX="91.0" layoutY="334.0" prefHeight="36.0" prefWidth="143.0" text="ساختن حساب">
               <font>
