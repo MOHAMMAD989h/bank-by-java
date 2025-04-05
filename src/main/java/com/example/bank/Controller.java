@@ -862,4 +862,8 @@ public class Controller {
             System.out.println("خطا در باز کردن FXML: " + e.getMessage());
         }
     }
+
+    public void chatbotOpen(ActionEvent actionEvent) {
+        openNewWindow("chatConto.fxml","ChatBot",actionEvent);
+    }
 }

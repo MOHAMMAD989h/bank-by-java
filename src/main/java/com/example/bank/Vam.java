@@ -33,8 +33,6 @@ public class Vam {
     private Label vamdiscription;
 
 
-    HelloController controller = new HelloController();
-
     private List<productVam> products = new ArrayList<>();
 
     public void initialize() {
