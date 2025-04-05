@@ -13,13 +13,15 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import static com.example.bank.loginpage.IDCard;
-import static com.example.bank.loginpage.loginID;
+import static com.example.bank.loginpage.*;
 
 public class charge {
 
@@ -37,6 +39,10 @@ public class charge {
     private String input;
     private String[] inputs;
     Alert alert;
+
+    Connection connect;
+    PreparedStatement prepare;
+    ResultSet rs;
 
 
     private List<PRODUCTcharge> productcharges = new ArrayList<PRODUCTcharge>();
@@ -88,7 +94,17 @@ public class charge {
         Chargebtn.setOnAction((ActionEvent e) -> {
             int result = 0;
             try {
-                result = pro.updateCredit(numberCharge.getText(), -Integer.parseInt(productcharge.getPrice()));
+                connect = DataBase1.connectDB();
+                String data = "SELECT * FROM cards WHERE username=?";
+                assert connect != null;
+                prepare = connect.prepareStatement(data);
+                prepare.setString(1,username);
+                rs = prepare.executeQuery();
+                while (rs.next()) {
+                    if(numberCharge.getText().equals(rs.getString("numbercard"))) {
+                        result = pro.updateCredit(numberCharge.getText(), -Integer.parseInt(productcharge.getPrice()));
+                    }
+                }
             } catch (SQLException ex) {
                 throw new RuntimeException(ex);
             }
