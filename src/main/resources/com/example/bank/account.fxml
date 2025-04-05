@@ -29,7 +29,7 @@
                   <ComboBox fx:id="comdeposidtype" layoutX="150.0" layoutY="57.0" prefWidth="150.0" promptText="نوع سپرده" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="introducer" layoutX="306.0" layoutY="-1.0" prefHeight="613.0" prefWidth="495.0" styleClass="white-form" stylesheets="@hhhh.css" visible="false">
+            <AnchorPane fx:id="introducer" layoutX="306.0" layoutY="-1.0" prefHeight="613.0" prefWidth="495.0" styleClass="white-form" stylesheets="@hhhh.css">
                <children>
                   <Button layoutX="133.0" layoutY="569.0" mnemonicParsing="false" onAction="#estelamBank" prefHeight="30.0" prefWidth="220.0" styleClass="wallet" stylesheets="@styles.css" text="استعلام کارت " />
                   <Button layoutX="40.0" layoutY="425.0" mnemonicParsing="false" styleClass="white-form" stylesheets="@hhhh.css" />
@@ -125,7 +125,7 @@
                   </ComboBox>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="maker" layoutX="308.0" prefHeight="613.0" prefWidth="495.0" styleClass="white-form" stylesheets="@hhhh.css" visible="false">
+            <AnchorPane fx:id="maker" layoutX="308.0" prefHeight="613.0" prefWidth="495.0" styleClass="white-form" stylesheets="@hhhh.css">
                <children>
                   <PasswordField fx:id="accountPassword" layoutX="120.0" layoutY="369.0" prefHeight="30.0" prefWidth="220.0" promptText="رمز کارت" stylesheets="@styles.css">
                      <styleClass>

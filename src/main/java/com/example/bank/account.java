@@ -16,15 +16,17 @@ import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-
+import java.util.concurrent.*;
+import java.time.LocalTime;
 import java.io.*;
 import java.math.BigInteger;
 import java.net.URL;
-
+import java.time.*;
 import java.nio.file.Files;
 import java.sql.*;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
@@ -121,6 +123,7 @@ public class account implements Initializable {
     private Long deposidMonthnum;
     @FXML
     private ComboBox<String> comdeposidtype;
+    ObservableList<String> listdeposid = FXCollections.observableArrayList("عادی","قرض الحسنه");
     @FXML
     private AnchorPane vboxDeposid;
     @FXML
@@ -129,6 +132,8 @@ public class account implements Initializable {
     byte[] imageData;
 
     profile pro = new profile();
+    boolean iscreateaccount=false;
+
 
     int persianMonth;
     int persianYear;
@@ -142,6 +147,8 @@ public class account implements Initializable {
         com2.setOnAction(this::switchForm);
         comaccount.setItems(listaccount);
         comaccountcreate.setItems(listaccountcreate);
+        comdeposidtype.setItems(listdeposid);
+        scheduleDailyInterestCheck();
 
         deposidMonth.setMin(3);
         deposidMonth.setMax(12);
@@ -241,7 +248,9 @@ public class account implements Initializable {
                 logoShow1.setImage(image);
             }
         });
+        timeline = new Timeline(new KeyFrame(Duration.hours(720), event -> {
 
+        }));
 
         /*myScrollPane.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
             if (event.getCode() == KeyCode.UP || event.getCode() == KeyCode.DOWN) {
@@ -293,7 +302,7 @@ public class account implements Initializable {
 
     public void createbankaccount(ActionEvent actionEvent) throws IOException, SQLException {
         if(homeNumberGet.getText().length() < 3|| !accountPassword.getText().matches("[0-9]{4}") ||
-        !tekrarRamz.getText().equals(accountPassword.getText()) || issendphoto  || comaccount.getValue().equals("")) {
+        !tekrarRamz.getText().equals(accountPassword.getText()) || issendphoto  || comaccount.getValue().isEmpty()) {
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
@@ -370,40 +379,21 @@ public class account implements Initializable {
                 maker.setVisible(false);
                 introducer.setVisible(false);
                 vboxDeposid.setVisible(true);
-                /*
-
-                regdata = "INSERT INTO blockedcard (username,money,credit,numbercard,cvv2,engeza,bankname,phonenumberhome,password,imagecard) " +
-                        "VALUES(?,?,?,?,?,?,?,?,?,?)";
-
-                assert connect != null;
-
-                prepare = connect.prepareStatement(regdata);
-                prepare.setString(1, username);
-                prepare.setString(2, deposidMoney.getText());
-                prepare.setString(3, deposidMoney.getText());
-                prepare.setString(4, BigNumberString);
-                prepare.setString(5, String.valueOf(deposidSodd.getText()));
-                prepare.setString(6, String.valueOf(deposidMonth.getValue()));
-                prepare.setString(7, "Aureous Bank");
-                prepare.setString(8, homeNumberGet.getText());
-                prepare.setString(9, accountPassword.getText());
-                prepare.setString(10, Arrays.toString(imageData));
-                int rowsAffected = prepare.executeUpdate();
-
-                 */
             }
-
-            alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Information");
-            alert.setHeaderText(null);
-            alert.setContentText("Seccessfully");
-            alert.showAndWait();
 
             homeNumberGet.clear();
             accountPassword.clear();
             tekrarRamz.clear();
 
-            //login.openNewWindow("profile1.fxml", "Profile", actionEvent);
+            if(comaccount.getValue().equals("حساب جاری")) {
+                alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Information");
+                alert.setHeaderText(null);
+                alert.setContentText("Seccessfully");
+                alert.showAndWait();
+
+                login.openNewWindow("profile1.fxml", "Profile", actionEvent);
+            }
         }
 
     }
@@ -418,6 +408,7 @@ public class account implements Initializable {
             alert.showAndWait();
         }
         else {
+            iscreateaccount = true;
 
             String selectdata = "SELECT * FROM cards WHERE numbercard =?";
 
@@ -454,40 +445,25 @@ public class account implements Initializable {
                     int rowsAffected = prepare.executeUpdate();
                 }
                 else if(comaccountcreate.getValue().equals("حساب سپرده")){
-                    regdata = "INSERT INTO blockedcard (username,money,credit,numbercard,cvv2,engeza,bankname,phonenumberhome,password,imagecard) " +
-                            "VALUES(?,?,?,?,?,?,?,?,?,?)";
-
-                    assert connect != null;
-
-                    byte[] imageData = Files.readAllBytes(selectedImageFile.toPath());
-                    String yyMM = String.valueOf(yearofExpire.getText()) + String.valueOf(monthofExpire.getText());
-
-                    prepare = connect.prepareStatement(regdata);
-                    prepare.setString(1, username);
-                    prepare.setString(2, "0");
-                    prepare.setString(3, "0");
-                    prepare.setString(4, cartNumGetter.getText());
-                    prepare.setString(5, Cvv2Getter.getText());
-                    prepare.setString(6, yyMM);
-                    prepare.setString(7, com1.getValue());
-                    prepare.setString(8, phonehome.getText());
-                    prepare.setString(9, accountPassword1.getText());
-                    prepare.setString(10, Arrays.toString(imageData));
-                    int rowsAffected = prepare.executeUpdate();
+                    maker.setVisible(false);
+                    introducer.setVisible(false);
+                    vboxDeposid.setVisible(true);
                 }
 
-
-                alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Information");
-                alert.setHeaderText(null);
-                alert.setContentText("Seccessfully");
-                alert.showAndWait();
 
                 homeNumberGet.clear();
                 accountPassword.clear();
                 tekrarRamz.clear();
 
-                login.openNewWindow("profile1.fxml", "Profile", actionEvent);
+                if(comaccountcreate.getValue().equals("حساب جاری")) {
+
+                    alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Information");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Seccessfully");
+                    alert.showAndWait();
+                    login.openNewWindow("profile1.fxml", "Profile", actionEvent);
+                }
             }
             else {
                 alert = new Alert(Alert.AlertType.ERROR);
@@ -498,41 +474,104 @@ public class account implements Initializable {
             }
         }
     }
-
-    public void deposidBtn(ActionEvent actionEvent) throws SQLException {
-        if(deposidMoney.getText().isEmpty() || numbercardDeposid.getText().isEmpty()) {
-            regdata = "INSERT INTO blockedcard (username,money,credit,numbercard,cvv2,engeza,bankname,phonenumberhome,password,imagecard) " +
-                    "VALUES(?,?,?,?,?,?,?,?,?,?)";
-
-            assert connect != null;
-
-            pro.updateCredit(numbercardDeposid.getText(), Integer.parseInt(deposidMoney.getText()));
-
-            prepare = connect.prepareStatement(regdata);
-            prepare.setString(1, username);
-            prepare.setString(2, deposidMoney.getText());
-            prepare.setString(3, deposidMoney.getText());
-            prepare.setString(4, BigNumberString);
-            prepare.setString(5, String.valueOf(deposidMonth.getValue() + 3));
-            prepare.setString(6, String.valueOf(deposidMonth.getValue()));
-            prepare.setString(7, "Aureous Bank");
-            prepare.setString(8, homeNumberGet.getText());
-            prepare.setString(9, accountPassword.getText());
-            prepare.setString(10, Arrays.toString(imageData));
-            int rowsAffected = prepare.executeUpdate();
-
-            alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Information");
-            alert.setHeaderText(null);
-            alert.setContentText("Seccessfully");
-            alert.showAndWait();
-        }
-        else{
+    @FXML
+    public void deposidBtn(ActionEvent actionEvent) throws SQLException, IOException {
+        if(deposidMoney.getText().isEmpty() || numbercardDeposid.getText().isEmpty() || comdeposidtype.getValue().isEmpty()) {
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
-            alert.setContentText("fill the balnks");
+            alert.setContentText("please fill blanks");
             alert.showAndWait();
+        }
+        else{
+            String data = "SELECT * FROM cards WHERE username =?";
+            connect = DataBase1.connectDB();
+            assert connect != null;
+            prepare = connect.prepareStatement(data);
+            prepare.setString(1, username);
+            result = prepare.executeQuery();
+            if (!result.next()) {
+                if (!numbercardDeposid.getText().equals(result.getString("numbercard"))) {
+                    alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setHeaderText(null);
+                    alert.setContentText("numbercard doesn't match");
+                    alert.showAndWait();
+                    return;
+                }
+            }
+            int n = pro.updateCredit(numbercardDeposid.getText(), -Integer.parseInt(deposidMoney.getText()));
+            LocalDate now = null;
+            double sood = 0;
+
+            if (n > 0) {
+                if(comdeposidtype.getValue().equals("عادی")){
+                    sood = deposidMonth.getValue() + 3;
+                }
+                regdata = "INSERT INTO blockedcard (username,money,sood,numbercard,numbercardto,lastdate,startdate,engeza,bankname,phonenumberhome,password,imagecard) " +
+                        "VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
+
+                connect = DataBase1.connectDB();
+
+                now = LocalDate.now();
+
+                if (!iscreateaccount) {
+
+
+                    prepare = connect.prepareStatement(regdata);
+                    prepare.setString(1, username);
+                    prepare.setString(2, deposidMoney.getText());
+                    prepare.setString(3, String.valueOf(sood));
+                    prepare.setString(4, BigNumberString);
+                    prepare.setString(5, numbercardDeposid.getText());
+                    prepare.setDate(6, Date.valueOf(now));
+                    prepare.setDate(7, Date.valueOf(now));
+                    prepare.setString(8, String.valueOf(deposidMonth.getValue()));
+                    prepare.setString(9, "Aureous Bank");
+                    prepare.setString(10, phonehome.getText());
+                    prepare.setString(11, accountPassword1.getText());
+                    prepare.setString(12, Arrays.toString(imageData));
+                    int rowsAffected = prepare.executeUpdate();
+
+                    alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Information");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Seccessfully");
+                    alert.showAndWait();
+
+                    pro.openNewWindow("profile1.fxml", "Profile", actionEvent);
+                }
+            } else {
+
+                assert connect != null;
+
+                byte[] imageData = Files.readAllBytes(selectedImageFile.toPath());
+
+
+                prepare = connect.prepareStatement(regdata);
+                prepare.setString(1, username);
+                prepare.setString(2, deposidMoney.getText());
+                prepare.setString(3, String.valueOf(sood));
+                prepare.setString(4, cartNumGetter.getText());
+                prepare.setString(5, numbercardDeposid.getText());
+                prepare.setDate(6, Date.valueOf(now));
+                prepare.setDate(7, Date.valueOf(now));
+                prepare.setString(8, String.valueOf(deposidMonth.getValue()));
+                prepare.setString(9, com1.getValue());
+                prepare.setString(10, phonehome.getText());
+                prepare.setString(11, accountPassword1.getText());
+                prepare.setString(12, Arrays.toString(imageData));
+                int rowsAffected = prepare.executeUpdate();
+
+
+                alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Information");
+                alert.setHeaderText(null);
+                alert.setContentText("Seccessfully");
+                alert.showAndWait();
+
+                pro.openNewWindow("profile1.fxml", "Profile", actionEvent);
+            }
         }
     }
 
@@ -563,6 +602,65 @@ public class account implements Initializable {
         } else {
             System.out.println("کاربر هیچ عکسی انتخاب نکرد.");
         }
+    }
+    public void applyMonthlyintrest() throws SQLException {
+        String data = "SELECT * FROM blockedcard";
+        connect = DataBase1.connectDB();
+        assert connect != null;
+        prepare = connect.prepareStatement(data);
+        result = prepare.executeQuery();
+
+        while (result.next()) {
+            String id = result.getString("username");
+            String numbercardto = result.getString("numbercardto");
+            double amount = Double.parseDouble(result.getString("money"));
+            double rate = Double.parseDouble(result.getString("sood"));
+            LocalDate startdate = result.getDate("startdate").toLocalDate();
+            LocalDate lastdate = result.getDate("enddate").toLocalDate();
+            double duration = Double.parseDouble(result.getString("engeza"));
+
+            LocalDate now = LocalDate.now();
+            long monthsPassed = ChronoUnit.MONTHS.between(startdate, now);
+
+
+            if (monthsPassed >= duration) {
+                // غیرفعال کردن سپرده
+                pro.updateCredit(numbercardto, (int) amount);
+                String update = "DELETE FROM blockedcard WHERE id = ?";
+                prepare = connect.prepareStatement(update);
+                prepare.setString(1, id);
+                prepare.executeUpdate();
+                continue;
+            }
+
+            // آیا یک ماه از آخرین سود گذشته؟
+            if (ChronoUnit.MONTHS.between(lastdate, now) >= 1) {
+                double newAmount = amount * (1 + rate/100);
+                String update = "UPDATE blockedcard SET money = ?, lastdate = ?";
+                prepare = connect.prepareStatement(update);
+                prepare.setDouble(1, newAmount);
+                prepare.setDate(2, java.sql.Date.valueOf(now));
+                prepare.executeUpdate();
+            }
+        }
+
+    }
+    public void scheduleDailyInterestCheck() {
+        ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+
+        // محاسبه مدت تا ساعت مورد نظر (مثلاً 2 صبح)
+        LocalTime now = LocalTime.now();
+        LocalTime targetTime = LocalTime.of(2, 0); // ساعت 2 صبح
+        long initialDelay = ChronoUnit.MINUTES.between(now, targetTime);
+        if (initialDelay < 0) initialDelay += 24 * 60; // اگر گذشته، فردا اجرا بشه
+
+        scheduler.scheduleAtFixedRate(() -> {
+            try {
+                applyMonthlyintrest();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }, initialDelay, 24 * 60, TimeUnit.MINUTES); // هر 24 ساعت
     }
 
     public void toIntroduceMeno(ActionEvent event) {
