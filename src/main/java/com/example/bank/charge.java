@@ -2,6 +2,7 @@ package com.example.bank;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -20,7 +21,7 @@ import java.util.Random;
 import static com.example.bank.loginpage.IDCard;
 import static com.example.bank.loginpage.loginID;
 
-public class Internet {
+public class charge {
 
     @FXML
     private TextField numberCharge;
@@ -35,11 +36,12 @@ public class Internet {
 
     private String input;
     private String[] inputs;
+    Alert alert;
 
 
     private List<PRODUCTcharge> productcharges = new ArrayList<PRODUCTcharge>();
 
-    loginpage login = new loginpage();
+    profile pro = new profile();
 
     public void initialize() throws IOException {
         productcharges.add(new PRODUCTcharge("5000"));
@@ -84,16 +86,21 @@ public class Internet {
         pane.getChildren().addAll(PriceLbl,Chargebtn);
 
         Chargebtn.setOnAction((ActionEvent e) -> {
-           /* int result = 0;
+            int result = 0;
             try {
-                result = login.updateCredit(String.valueOf(IDCard), -Integer.parseInt(productcharge.getPrice()));
+                result = pro.updateCredit(numberCharge.getText(), -Integer.parseInt(productcharge.getPrice()));
             } catch (SQLException ex) {
                 throw new RuntimeException(ex);
             }
-            login.openNewWindow("main.fxml", "Home", e);
-            if (result == -1) {System.out.println("Not enough credit!");}
-            else {System.out.println("Payment successful! New balance: " + result);}
-        */});
+            if (result == -1) {
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Error");
+                alert.setTitle("ERROR");
+                alert.showAndWait();
+            }
+            else {System.out.println("Payment successful! New balance: " + result);
+                pro.openNewWindow("main.fxml", "Home", e);}
+        });
 
         return pane;
     }
@@ -111,7 +118,7 @@ public class Internet {
 
     @FXML
     void backtoHomeFromCharge(ActionEvent event) {
-        login.openNewWindow("main.fxml","Home",event);
+        pro.openNewWindow("main.fxml","Home",event);
     }
 
     @FXML
