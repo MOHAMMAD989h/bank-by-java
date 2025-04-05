@@ -2,10 +2,11 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane  maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="790.0" prefWidth="1535.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bank.Vam">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="790.0" prefWidth="1535.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bank.disVam">
    <top>
       <AnchorPane prefHeight="135.0" prefWidth="1535.0" BorderPane.alignment="CENTER" />
    </top>
@@ -25,8 +26,10 @@
             <Label fx:id="pricevamLbl" layoutX="862.0" layoutY="53.0" />
             <Label fx:id="soodvamLbl" layoutX="701.0" layoutY="53.0" />
             <Label fx:id="timevamLbl" layoutX="554.0" layoutY="53.0" />
-            <Button layoutX="528.0" layoutY="388.0" mnemonicParsing="false" text="گرفتن وام" />
+            <Button layoutX="528.0" layoutY="388.0" mnemonicParsing="false" onAction="#getloan" text="گرفتن وام" />
             <Label fx:id="vamdiscription" layoutX="687.0" layoutY="186.0" />
+            <TextField fx:id="numbercardto" layoutX="493.0" layoutY="321.0" promptText="شماره کارت" />
+            <TextField fx:id="numbercardfrom" layoutX="493.0" layoutY="353.0" promptText="شماره کارت ضامن" />
          </children>
       </AnchorPane>
    </center>

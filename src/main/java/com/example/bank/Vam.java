@@ -1,5 +1,6 @@
 package com.example.bank;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -10,7 +11,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,20 +18,6 @@ import java.util.List;
 public class Vam {
     @FXML
     private VBox vboxVam;
-    @FXML
-    private Label namevamLbl;
-
-    @FXML
-    private Label pricevamLbl;
-
-    @FXML
-    private Label soodvamLbl;
-
-    @FXML
-    private Label timevamLbl;
-    @FXML
-    private Label vamdiscription;
-
 
     private List<productVam> products = new ArrayList<>();
 
@@ -96,25 +82,29 @@ public class Vam {
 
         //set on action vambutton
         vambutton.setOnAction(event -> {
-
+            product.getTime();
+            try {
+                openNewWindow("disVam.fxml","Loan",event);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         });
 
         return pane;
 
     }
 
-    public String soodVam(String loanAmount, String months, String annualInterestRate) {
+    public int soodVam(String loanAmount, String months, String annualInterestRate) {
         double monthlyInterestRate = (Double.parseDouble(annualInterestRate) / 100) / 12;
 
         double monthlyPayment = (Double.parseDouble(loanAmount) * monthlyInterestRate) / (1 - Math.pow(1 + monthlyInterestRate, -Integer.parseInt(months)));
 
-        return String.valueOf(monthlyPayment);
+        return (int) monthlyPayment;
     }
-    public void openNewWindow(String Path , String title, MouseEvent event) throws IOException {
+    public void openNewWindow(String Path , String title, ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource( "/com/example/bank/"+Path));
         Scene scene = new Scene(loader.load(), 1535, 790);
 
-        // ایجاد و نمایش صفحه جدید
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.setTitle(title);
@@ -122,7 +112,6 @@ public class Vam {
 
         System.out.println("Opening: " + Path);
 
-        // بستن صفحه فعلی
         Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         currentStage.close();
     }
