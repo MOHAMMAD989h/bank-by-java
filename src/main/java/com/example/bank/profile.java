@@ -104,8 +104,6 @@ public class profile {
     public void initialize() {
         try {
             connect = DataBase1.connectDB();
-            String data = "SELECT * FROM cards WHERE username = ?";
-            String data1 = "SELECT * FROM blockedcard WHERE username = ?";
             String selectdata = "SELECT * FROM employee WHERE username = ?";
 
             prepare = connect.prepareStatement(selectdata);
