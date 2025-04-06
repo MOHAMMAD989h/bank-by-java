@@ -358,7 +358,6 @@ public class profile {
 
                         TranslateTransition slider = new TranslateTransition();
 
-                        //slider.setNode(si_sendcode);
 
                         slider.setOnFinished((event1) -> {
                             old1.setVisible(false);

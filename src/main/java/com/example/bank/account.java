@@ -663,9 +663,7 @@ public class account implements Initializable {
         }, initialDelay, 24 * 60, TimeUnit.MINUTES); // هر 24 ساعت
     }
 
-    public void toIntroduceMeno(ActionEvent event) {
-        login.openNewWindow("main.fxml","Banking App",event);
-    }
+    public void toIntroduceMeno(ActionEvent event) {login.openNewWindow("main.fxml","Banking App",event);}
 
     public void toAccounts(ActionEvent event) {
         login.openNewWindow("hesab.fxml","حساب های شما",event);
