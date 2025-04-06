@@ -355,12 +355,12 @@ public class Controller {
             startPauseTransition(() -> loanOptions.setVisible(false));
         });
 
-        bank.setOnMouseEntered(event -> {
+        /*bank.setOnMouseEntered(event -> {
             bank.setVisible(true);
             cancelPauseTransition();
-        });
+        });*/
 
-        bank.setOnMouseExited(event -> {
+        /*bank.setOnMouseExited(event -> {
             startPauseTransition(() -> bank.setVisible(false));
             startPauseTransition(() -> ancktext.setVisible(false));
             startPauseTransition(() -> bank1.setVisible(false));
@@ -375,7 +375,7 @@ public class Controller {
             startPauseTransition(() -> bank10.setVisible(false));
             startPauseTransition(() -> bank11.setVisible(false));
             startPauseTransition(() -> bank12.setVisible(false));
-        });
+        });*/
     }
 
     private void startPauseTransition(Runnable action) {
@@ -390,11 +390,11 @@ public class Controller {
         }
     }
 
-    @FXML
+    /*@FXML
     public void showbankoption (){
         bank.setVisible(true);
         loanOptions.setVisible(false);
-    }
+    }*/
 
     /*@FXML
     public void showServicesOptions() {
@@ -406,7 +406,6 @@ public class Controller {
     @FXML
     public void showLoanOptions() {
         loanOptions.setVisible(true);
-        bank.setVisible(false);
     }
 
     @FXML
@@ -415,14 +414,13 @@ public class Controller {
     }
 
 
-    @FXML
+    /*@FXML
     public void hidebankoption(){
         startPauseTransition(() -> bank.setVisible(false));
-    }
+    }*/
 
     @FXML
     public void hideAllOptions() {
-        bank.setVisible(false);
         loanOptions.setVisible(false);
     }
 
@@ -433,10 +431,10 @@ public class Controller {
         System.out.println("Loan option clicked!");
     }
 
-    @FXML
+    /*@FXML
     public void keepbankoption(){
         bank.setVisible(true);
-    }
+    }*/
 
     @FXML
     public void keepLoanOptionsVisible() {

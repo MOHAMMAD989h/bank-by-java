@@ -161,10 +161,10 @@
     -fx-background-radius: 15px;
 }
 .button5{
-    -fx-text-fill: yellow;
-    -fx-font-family: "Arial";
-    -fx-font-weight: normal;
-    -fx-text-size: 5px;
+    -fx-text-fill: Black;
+    -fx-font-family: "B Nazanin";
+    -fx-font-weight: Bold;
+    -fx-text-size: 32px;
     -fx-text-alignment: justify;
 }
 .button6{
