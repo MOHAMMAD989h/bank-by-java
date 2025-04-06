@@ -40,6 +40,8 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
+import static com.example.bank.loginpage.loginID;
+
 public class Controller {
     @FXML
     private AnchorPane ancktext;
@@ -658,7 +660,7 @@ public class Controller {
     }
 
     public void profile(ActionEvent actionEvent) {
-        if(loginpage.loginID) {
+        if(loginID) {
             openNewWindow("profile1.fxml", "profile", actionEvent);
         }
         else {
@@ -865,5 +867,18 @@ public class Controller {
 
     public void chatbotOpen(ActionEvent actionEvent) {
         openNewWindow("chatConto.fxml","ChatBot",actionEvent);
+    }
+
+    public void loanBtn(ActionEvent actionEvent) {
+        if(loginID){
+            openNewWindow("Vam.fxml","Loan",actionEvent);
+        }
+        else{
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText(null);
+            alert.setContentText("please login first");
+            alert.showAndWait();
+        }
     }
 }

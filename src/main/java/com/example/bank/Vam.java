@@ -19,11 +19,17 @@ public class Vam {
     @FXML
     private VBox vboxVam;
 
+    public static String nameLoan;
+    public static Long priceLoan;
+    public static double soodLoan;
+    public static int timeLoan;
+
+
     private List<productVam> products = new ArrayList<>();
 
     public void initialize() {
-        products.add(new productVam("وام یک","100000000","14","30","disVam.fxml","ffffhhhh",""));
-        products.add(new productVam("وام یک","100000000","14","30","disVam.fxml","ffff",""));
+        products.add(new productVam("وام یک","10000000","14","30","disVam.fxml","ffffhhhh",""));
+        products.add(new productVam("2","10000000","4","30","disVam.fxml","ffff",""));
 
         for (productVam product1 : products) {
             vboxVam.getChildren().add(createProductPane(product1));
@@ -84,6 +90,10 @@ public class Vam {
         vambutton.setOnAction(event -> {
             product.getTime();
             try {
+                nameLoan = product.getName();
+                timeLoan = Integer.parseInt(product.getTime());
+                soodLoan = Double.parseDouble(product.getSood());
+                priceLoan = Long.valueOf(product.getPrice());
                 openNewWindow("disVam.fxml","Loan",event);
             } catch (IOException e) {
                 throw new RuntimeException(e);
