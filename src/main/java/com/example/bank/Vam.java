@@ -23,12 +23,13 @@ public class Vam {
     public static Long priceLoan;
     public static double soodLoan;
     public static int timeLoan;
+    public static double soodVammonth;
 
 
     private List<productVam> products = new ArrayList<>();
 
     public void initialize() {
-        products.add(new productVam("وام یک","10000000","14","30","disVam.fxml","ffffhhhh",""));
+        products.add(new productVam("وام یک","10000","14","30","disVam.fxml","ffffhhhh",""));
         products.add(new productVam("2","10000000","4","30","disVam.fxml","ffff",""));
 
         for (productVam product1 : products) {
@@ -94,6 +95,7 @@ public class Vam {
                 timeLoan = Integer.parseInt(product.getTime());
                 soodLoan = Double.parseDouble(product.getSood());
                 priceLoan = Long.valueOf(product.getPrice());
+                soodVammonth = soodVam(product.getPrice(),product.getTime(),product.getSood());
                 openNewWindow("disVam.fxml","Loan",event);
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -126,4 +128,7 @@ public class Vam {
         currentStage.close();
     }
 
+    public void exitLoan(ActionEvent actionEvent) throws IOException {
+        openNewWindow("main.fxml","Home",actionEvent);
+    }
 }

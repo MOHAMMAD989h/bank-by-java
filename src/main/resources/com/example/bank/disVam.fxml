@@ -30,6 +30,7 @@
             <Label fx:id="vamdiscription" layoutX="687.0" layoutY="186.0" />
             <TextField fx:id="numbercardto" layoutX="493.0" layoutY="321.0" promptText="شماره کارت" />
             <TextField fx:id="numbercardfrom" layoutX="493.0" layoutY="353.0" promptText="شماره کارت ضامن" />
+            <Button layoutX="46.0" layoutY="334.0" mnemonicParsing="false" onAction="#exitDisvam" text="exit" />
          </children>
       </AnchorPane>
    </center>
