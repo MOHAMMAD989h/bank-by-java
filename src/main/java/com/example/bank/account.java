@@ -626,7 +626,7 @@ public class account implements Initializable {
             if (monthsPassed >= duration) {
                 // غیرفعال کردن سپرده
                 pro.updateCredit(numbercardto, (int) amount);
-                String update = "DELETE FROM blockedcard WHERE id = ?";
+                String update = "DELETE FROM blockedcard WHERE username = ?";
                 prepare = connect.prepareStatement(update);
                 prepare.setString(1, id);
                 prepare.executeUpdate();
@@ -645,7 +645,7 @@ public class account implements Initializable {
         }
 
     }
-    public void scheduleDailyInterestCheck() {
+    private void scheduleDailyInterestCheck() {
         ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
 
         // محاسبه مدت تا ساعت مورد نظر (مثلاً 2 صبح)

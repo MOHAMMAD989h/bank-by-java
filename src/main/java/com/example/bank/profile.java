@@ -448,6 +448,40 @@ public class profile {
 
         return -1;
     }
+    public int updateCreditblocked(String Numbercard, int budget) throws SQLException {
+        String selectCredit = "SELECT * FROM blockedcard WHERE numbercard  = ?";
+        String updateCredit = "UPDATE blockedcard SET money = money + ? WHERE numbercard  = ?";
+        String updateCreditDeduct = "UPDATE blockedcard SET money = money - ? WHERE numbercard  = ?";
+
+
+        connect = DataBase1.connectDB();
+
+        assert connect != null;
+        prepare = connect.prepareStatement(selectCredit);
+        prepare.setString(1, Numbercard);
+        result = prepare.executeQuery();
+
+        if (result.next()) {
+            int currentCredit = Integer.parseInt(result.getString("money"));
+
+            if (budget < 0) {
+                if (Math.abs(budget) > currentCredit) {
+                    return -1;
+                }
+                prepare = connect.prepareStatement(updateCreditDeduct);
+            } else {
+                prepare = connect.prepareStatement(updateCredit);
+            }
+
+            prepare.setInt(1, Math.abs(budget));
+            prepare.setString(2, Numbercard);
+            prepare.executeUpdate();
+
+            return currentCredit-budget;
+        }
+
+        return -1;
+    }
     public long transferMoney(String Numbercardfrom,String Numbercardto, long budget) throws SQLException {
         String selectCredit = "SELECT money FROM cards WHERE numbercard = ?";
         String updateCreditAdd = "UPDATE cards SET money = money + ?, credit = credit + ? WHERE numbercard = ?";
