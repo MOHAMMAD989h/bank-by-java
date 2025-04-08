@@ -15,6 +15,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -35,9 +38,6 @@ public class profile {
 
     @FXML
     private Label label_resilt_change1;
-
-    @FXML
-    private AnchorPane openAccountProfile;
 
     @FXML
     private ImageView profileImage;
@@ -93,6 +93,29 @@ public class profile {
     @FXML
     private Button welcomeImage;
 
+    @FXML
+    private Button btn1;
+    @FXML
+    private Button btn2;
+    @FXML
+    private Button btn3;
+    @FXML
+    private Button btn4;
+    @FXML
+    private Button btn5;
+    @FXML
+    private Button btn6;
+    @FXML
+    private Button btn7;
+    @FXML
+    private MediaView media1;
+    @FXML
+    private MediaView media2;
+
+    private MediaPlayer mediaPlayer;
+
+
+
     Connection connect;
     PreparedStatement prepare;
     ResultSet result;
@@ -114,6 +137,24 @@ public class profile {
         }));
         timeline.setCycleCount(1);
         timeline.play();
+
+        hessabView obj = new hessabView();
+        obj.applyHoverEffect(btn1);
+        obj.applyHoverEffect(btn2);
+        obj.applyHoverEffect(btn3);
+        obj.applyHoverEffect(btn4);
+        obj.applyHoverEffect(btn5);
+        obj.applyHoverEffect(btn6);
+        obj.applyHoverEffect(btn7);
+
+        //ویدیو
+        String videoPath1 = getClass().getResource("/budget_15579057.mp4").toExternalForm();
+        playMedia(videoPath1,media1);
+        String videoPath2 = getClass().getResource("/login_18986466.mp4").toString();
+        playMedia(videoPath2,media2);
+
+
+
 
         try {
             connect = DataBase1.connectDB();
@@ -140,6 +181,27 @@ public class profile {
         }
         catch (Exception e) {e.printStackTrace();}
 
+    }
+    public void playMedia(String videoPath,MediaView media1) {
+        Media media = new Media(videoPath);
+        mediaPlayer = new MediaPlayer(media);
+
+        // اتصال MediaPlayer به MediaView
+        media1.setMediaPlayer(mediaPlayer);
+
+        // پخش خودکار ویدیو
+        mediaPlayer.setAutoPlay(true);
+
+        // تکرار خودکار ویدیو پس از پایان
+        mediaPlayer.setOnEndOfMedia(() -> {
+            mediaPlayer.seek(javafx.util.Duration.ZERO);
+            mediaPlayer.play();
+        });
+
+        // تنظیم سایز MediaView
+        media1.setFitWidth(80);
+        media1.setFitHeight(80);
+        media1.setPreserveRatio(false);
     }
 
 

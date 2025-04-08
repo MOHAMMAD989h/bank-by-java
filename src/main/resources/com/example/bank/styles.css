@@ -388,6 +388,13 @@
     -fx-background-radius: 25px;
     -fx-border-radius: 25px;
 }
+.loginbtn2{
+    -fx-background-radius: 25px;
+    -fx-background-color:white;
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+    -fx-font-family: "B Nazanin";
+}
 
 
 

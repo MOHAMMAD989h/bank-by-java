@@ -2,6 +2,7 @@
 
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -11,15 +12,15 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.media.MediaView?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="790.0" prefWidth="1535.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bank.profile">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="790.0" prefWidth="1535.0" style="-fx-background-color: #E0DECF;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bank.profile">
    <children>
       <BorderPane prefHeight="200.0" prefWidth="200.0">
          <top>
             <AnchorPane prefHeight="125.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button layoutX="1170.0" layoutY="14.0" mnemonicParsing="false" onAction="#mainpage" prefHeight="51.0" prefWidth="348.0" style="-fx-background-color: #F4F4F4;" styleClass="white-form" stylesheets="@hhhh.css">
+                  <Button layoutX="1170.0" layoutY="14.0" mnemonicParsing="false" onAction="#mainpage" prefHeight="51.0" prefWidth="348.0" style="-fx-background-color: transparent;" stylesheets="@hhhh.css">
                      <graphic>
                         <ImageView fitHeight="43.0" fitWidth="230.0" pickOnBounds="true" preserveRatio="true" styleClass="white-form">
                            <image>
@@ -28,16 +29,16 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="welcomeImage" layoutX="507.0" layoutY="9.0" mnemonicParsing="false" style="-fx-background-color: #F4F4F4;">
+                  <Button fx:id="welcomeImage" layoutX="507.0" layoutY="9.0" mnemonicParsing="false" prefHeight="102.0" prefWidth="201.0" style="-fx-background-color: transparent;">
                      <graphic>
-                        <ImageView fitHeight="93.0" fitWidth="250.0" pickOnBounds="true">
+                        <ImageView fitHeight="106.0" fitWidth="152.0" pickOnBounds="true">
                            <image>
-                              <Image url="@../../../images/download__4_-removebg-preview.png" />
+                              <Image url="@../../../images/لاتلتلت-removebg-preview.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button layoutX="27.0" layoutY="36.0" mnemonicParsing="false" style="-fx-background-color: #F4F4F4;">
+                  <Button layoutX="27.0" layoutY="36.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
                      <graphic>
                         <ImageView fx:id="profileImage" fitHeight="40.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
@@ -48,31 +49,23 @@
          <right>
             <AnchorPane prefHeight="560.0" prefWidth="594.0" BorderPane.alignment="CENTER">
                <children>
-                  <AnchorPane fx:id="openAccountProfile" layoutX="120.0" layoutY="58.0" prefHeight="200.0" prefWidth="300.0" styleClass="wallet" stylesheets="@styles.css">
+                  <AnchorPane layoutX="120.0" layoutY="58.0" prefHeight="474.0" prefWidth="300.0" stylesheets="@styles.css">
                      <children>
-                        <Text layoutX="171.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="باز کردن حساب" />
-                        <Button layoutX="51.0" layoutY="50.0" mnemonicParsing="false" onAction="#openAccount" prefHeight="100.0" prefWidth="120.0" styleClass="wallet" stylesheets="@styles.css">
+                        <Button layoutX="61.0" layoutY="276.0" mnemonicParsing="false" onAction="#openmyaccount" prefHeight="100.0" prefWidth="174.0" styleClass="loginbtn2" stylesheets="@styles.css" text="ورود به حساب">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                            <graphic>
-                              <ImageView fitHeight="71.0" fitWidth="79.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../images/1486441-نماد-کیف-پول-در-سبک-تخت-مرسوم-مد-روز-و-جدا-شده-در-پس-زمینه-خاکستری-نماد-کیف-پول-برای-طراحی-وب-سایت-آرم-برنامه-رابط-کاربر-تصویر-برداری-EPS10.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic></Button>
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane fx:id="openAccountProfile1" layoutX="120.0" layoutY="332.0" prefHeight="200.0" prefWidth="300.0" styleClass="wallet" stylesheets="@styles.css">
-                     <children>
-                        <Text layoutX="168.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" حساب" />
-                        <Button layoutX="48.0" layoutY="58.0" mnemonicParsing="false" onAction="#openmyaccount" prefHeight="100.0" prefWidth="120.0" styleClass="wallet" stylesheets="@styles.css">
-                           <graphic>
-                              <ImageView fitHeight="71.0" fitWidth="79.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../images/1486441-نماد-کیف-پول-در-سبک-تخت-مرسوم-مد-روز-و-جدا-شده-در-پس-زمینه-خاکستری-نماد-کیف-پول-برای-طراحی-وب-سایت-آرم-برنامه-رابط-کاربر-تصویر-برداری-EPS10.png" />
-                                 </image>
-                              </ImageView>
+                              <MediaView fx:id="media2" fitHeight="80.0" fitWidth="80.0" />
                            </graphic>
                         </Button>
+                        <Button layoutX="61.0" layoutY="81.0" mnemonicParsing="false" onAction="#openAccount" prefHeight="100.0" prefWidth="174.0" styleClass="loginbtn2" stylesheets="@styles.css" text="باز کردن حساب">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <MediaView fx:id="media1" fitHeight="80.0" fitWidth="80.0" />
+                           </graphic></Button>
                      </children>
                   </AnchorPane>
                </children></AnchorPane>
@@ -85,89 +78,65 @@
                <children>
                   <VBox fx:id="vbox_profile" layoutY="1.0" prefHeight="652.0" prefWidth="586.0">
                      <children>
-                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="180.0" styleClass="wallet" stylesheets="@styles.css" text="نام">
+                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="180.0" style="-fx-background-radius: 15;" styleClass="background-gradientt2" stylesheets="@styles.css" text="نام" textFill="WHITE">
                            <VBox.margin>
                               <Insets left="30.0" top="15.0" />
                            </VBox.margin>
                         </Label>
-                        <Label fx:id="txtName" prefHeight="40.0" prefWidth="508.0" stylesheets="@styles.css">
-                           <VBox.margin>
-                              <Insets left="30.0" right="80.0" top="15.0" />
-                           </VBox.margin>
-                           <styleClass>
-                              <String fx:value="text-field1" />
-                              <String fx:value="password" />
-                           </styleClass>
-                        </Label>
-                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="180.0" styleClass="wallet" stylesheets="@styles.css" text="نام کاربری:">
+                        <Label fx:id="txtName" prefHeight="40.0" prefWidth="508.0" styleClass="logintext" stylesheets="@styles.css">
                            <VBox.margin>
                               <Insets left="30.0" right="80.0" top="15.0" />
                            </VBox.margin>
                         </Label>
-                        <Label fx:id="txtUsername" prefHeight="30.0" prefWidth="521.0" stylesheets="@styles.css">
-                           <styleClass>
-                              <String fx:value="password" />
-                              <String fx:value="text-field1" />
-                           </styleClass>
+                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="180.0" style="-fx-background-radius: 15;" styleClass="background-gradientt2" stylesheets="@styles.css" text="نام کاربری:" textFill="WHITE">
                            <VBox.margin>
                               <Insets left="30.0" right="80.0" top="15.0" />
                            </VBox.margin>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="180.0" styleClass="wallet" stylesheets="@styles.css" text="ایمیل:">
+                        <Label fx:id="txtUsername" prefHeight="30.0" prefWidth="521.0" styleClass="logintext" stylesheets="@styles.css">
+                           <VBox.margin>
+                              <Insets left="30.0" right="80.0" top="15.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="180.0" style="-fx-background-radius: 15;" styleClass="background-gradientt2" stylesheets="@styles.css" text="ایمیل:" textFill="WHITE">
                            <VBox.margin>
                               <Insets bottom="15.0" left="30.0" right="80.0" top="15.0" />
                            </VBox.margin>
                         </Label>
-                        <Label fx:id="txtEmail" prefHeight="30.0" prefWidth="520.0" stylesheets="@styles.css">
+                        <Label fx:id="txtEmail" prefHeight="30.0" prefWidth="520.0" styleClass="logintext" stylesheets="@styles.css">
                            <VBox.margin>
                               <Insets left="30.0" right="80.0" />
                            </VBox.margin>
-                           <styleClass>
-                              <String fx:value="password" />
-                              <String fx:value="text-field1" />
-                           </styleClass>
                         </Label>
-                        <Label alignment="CENTER" layoutX="40.0" layoutY="227.0" prefHeight="30.0" prefWidth="180.0" styleClass="wallet" stylesheets="@styles.css" text="شماره:">
+                        <Label alignment="CENTER" layoutX="40.0" layoutY="227.0" prefHeight="30.0" prefWidth="180.0" style="-fx-background-radius: 15;" styleClass="background-gradientt2" stylesheets="@styles.css" text="شماره:" textFill="WHITE">
                            <VBox.margin>
                               <Insets bottom="15.0" left="30.0" top="15.0" />
                            </VBox.margin>
                         </Label>
-                        <Label fx:id="txtNumberphone" prefHeight="30.0" prefWidth="520.0" stylesheets="@styles.css">
-                           <VBox.margin>
-                              <Insets bottom="15.0" left="30.0" right="80.0" top="15.0" />
-                           </VBox.margin>
-                           <styleClass>
-                              <String fx:value="password" />
-                              <String fx:value="text-field1" />
-                           </styleClass>
-                        </Label>
-                        <Label alignment="CENTER" maxWidth="179.0" prefHeight="26.0" prefWidth="180.0" styleClass="wallet" stylesheets="@styles.css" text="کد ملی :">
+                        <Label fx:id="txtNumberphone" prefHeight="30.0" prefWidth="520.0" styleClass="logintext" stylesheets="@styles.css">
                            <VBox.margin>
                               <Insets bottom="15.0" left="30.0" right="80.0" top="15.0" />
                            </VBox.margin>
                         </Label>
-                        <Label fx:id="txtNationcode" layoutX="40.0" layoutY="272.0" prefHeight="30.0" prefWidth="520.0" stylesheets="@styles.css">
-                           <styleClass>
-                              <String fx:value="password" />
-                              <String fx:value="text-field1" />
-                           </styleClass>
+                        <Label alignment="CENTER" maxWidth="179.0" prefHeight="26.0" prefWidth="180.0" style="-fx-background-radius: 15;" styleClass="background-gradientt2" stylesheets="@styles.css" text="کد ملی :" textFill="WHITE">
                            <VBox.margin>
                               <Insets bottom="15.0" left="30.0" right="80.0" top="15.0" />
                            </VBox.margin>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="180.0" styleClass="wallet" stylesheets="@styles.css" text="ادرس">
+                        <Label fx:id="txtNationcode" layoutX="40.0" layoutY="272.0" prefHeight="30.0" prefWidth="520.0" styleClass="logintext" stylesheets="@styles.css">
+                           <VBox.margin>
+                              <Insets bottom="15.0" left="30.0" right="80.0" top="15.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="180.0" style="-fx-background-radius: 15;" styleClass="background-gradientt2" stylesheets="@styles.css" text="ادرس" textFill="WHITE">
                            <VBox.margin>
                               <Insets left="30.0" right="80.0" />
                            </VBox.margin>
                         </Label>
-                        <Label fx:id="txtAddress" prefHeight="50.0" prefWidth="520.0" stylesheets="@styles.css">
+                        <Label fx:id="txtAddress" prefHeight="50.0" prefWidth="520.0" styleClass="logintext" stylesheets="@styles.css">
                            <VBox.margin>
                               <Insets bottom="15.0" left="30.0" right="80.0" top="15.0" />
                            </VBox.margin>
-                           <styleClass>
-                              <String fx:value="password" />
-                              <String fx:value="text-field1" />
-                           </styleClass>
                         </Label>
                      </children>
                   </VBox>
@@ -295,40 +264,75 @@
                   </VBox>
                   <VBox layoutX="631.0" layoutY="51.0" prefHeight="480.0" prefWidth="140.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#Changepass2" prefHeight="30.0" prefWidth="160.0" styleClass="wallet" stylesheets="@styles.css" text="تغییر رمز">
+                        <Button fx:id="btn1" mnemonicParsing="false" onAction="#Changepass2" prefHeight="30.0" prefWidth="160.0" stylesheets="@styles.css" text="تغییر رمز">
                            <VBox.margin>
                               <Insets bottom="15.0" top="15.0" />
                            </VBox.margin>
+                           <styleClass>
+                              <String fx:value="Button" />
+                              <String fx:value="background-gradientt" />
+                              <String fx:value="mouse" />
+                           </styleClass>
                         </Button>
-                        <Button layoutX="10.0" layoutY="30.0" mnemonicParsing="false" onAction="#changeName1" prefHeight="30.0" prefWidth="160.0" styleClass="wallet" stylesheets="@styles.css" text="تغییر نام">
+                        <Button fx:id="btn2" layoutX="10.0" layoutY="30.0" mnemonicParsing="false" onAction="#changeName1" prefHeight="30.0" prefWidth="160.0" stylesheets="@styles.css" text="تغییر نام">
                            <VBox.margin>
                               <Insets bottom="15.0" top="15.0" />
                            </VBox.margin>
+                           <styleClass>
+                              <String fx:value="Button" />
+                              <String fx:value="background-gradientt" />
+                              <String fx:value="mouse" />
+                           </styleClass>
                         </Button>
-                        <Button layoutX="10.0" layoutY="100.0" mnemonicParsing="false" onAction="#changeUser1" prefHeight="30.0" prefWidth="160.0" styleClass="wallet" stylesheets="@styles.css" text="تغییر نام کاربری">
+                        <Button fx:id="btn3" layoutX="10.0" layoutY="100.0" mnemonicParsing="false" onAction="#changeUser1" prefHeight="30.0" prefWidth="160.0" stylesheets="@styles.css" text="تغییر نام کاربری">
                            <VBox.margin>
                               <Insets bottom="15.0" top="15.0" />
                            </VBox.margin>
+                           <styleClass>
+                              <String fx:value="Button" />
+                              <String fx:value="background-gradientt" />
+                              <String fx:value="mouse" />
+                           </styleClass>
                         </Button>
-                        <Button layoutX="10.0" layoutY="240.0" mnemonicParsing="false" onAction="#changePostcode1" prefHeight="30.0" prefWidth="160.0" styleClass="wallet" stylesheets="@styles.css" text="تغییر شماره">
+                        <Button fx:id="btn4" layoutX="10.0" layoutY="240.0" mnemonicParsing="false" onAction="#changePostcode1" prefHeight="30.0" prefWidth="160.0" stylesheets="@styles.css" text="تغییر شماره">
                            <VBox.margin>
                               <Insets bottom="15.0" top="15.0" />
                            </VBox.margin>
+                           <styleClass>
+                              <String fx:value="Button" />
+                              <String fx:value="background-gradientt" />
+                              <String fx:value="mouse" />
+                           </styleClass>
                         </Button>
-                        <Button layoutX="10.0" layoutY="265.0" mnemonicParsing="false" onAction="#changeEmail1" prefHeight="30.0" prefWidth="160.0" styleClass="wallet" stylesheets="@styles.css" text="تغییر ایمیل">
+                        <Button fx:id="btn5" layoutX="10.0" layoutY="265.0" mnemonicParsing="false" onAction="#changeEmail1" prefHeight="30.0" prefWidth="160.0" stylesheets="@styles.css" text="تغییر ایمیل">
                            <VBox.margin>
                               <Insets bottom="15.0" top="15.0" />
                            </VBox.margin>
+                           <styleClass>
+                              <String fx:value="Button" />
+                              <String fx:value="background-gradientt" />
+                              <String fx:value="mouse" />
+                           </styleClass>
                         </Button>
-                        <Button layoutX="10.0" layoutY="325.0" mnemonicParsing="false" onAction="#changeAddress1" prefHeight="30.0" prefWidth="160.0" styleClass="wallet" stylesheets="@styles.css" text="تغییر ادرس ">
+                        <Button fx:id="btn6" layoutX="10.0" layoutY="325.0" mnemonicParsing="false" onAction="#changeAddress1" prefHeight="30.0" prefWidth="160.0" stylesheets="@styles.css" text="تغییر ادرس ">
                            <VBox.margin>
                               <Insets bottom="15.0" top="15.0" />
                            </VBox.margin>
+                           <styleClass>
+                              <String fx:value="Button" />
+                              <String fx:value="background-gradientt" />
+                              <String fx:value="mouse" />
+                           </styleClass>
                         </Button>
-                        <Button layoutX="10.0" layoutY="385.0" mnemonicParsing="false" onAction="#logOutProfile" prefHeight="30.0" prefWidth="160.0" styleClass="wallet" stylesheets="@styles.css" text="خروج">
+                        <Button fx:id="btn7" layoutX="10.0" layoutY="385.0" mnemonicParsing="false" onAction="#logOutProfile" prefHeight="30.0" prefWidth="160.0" stylesheets="@styles.css" text="خروج">
                            <VBox.margin>
                               <Insets bottom="15.0" top="15.0" />
                            </VBox.margin>
+                           <styleClass>
+                              <String fx:value="Button" />
+                              <String fx:value="background-gradientt" />
+                              <String fx:value="mouse" />
+                           </styleClass>
                         </Button>
                      </children>
                   </VBox>
