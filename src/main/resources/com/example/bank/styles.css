@@ -454,6 +454,14 @@
     -fx-border-color: #c0c0c0; /* حاشیه نشانگر */
     -fx-border-width: 2px; /* ضخامت حاشیه */
 }
+.text-area{
+    -fx-border-radius : 25px;
+    -fx-background-radius: 25px;
+    -fx-background-color: #fff;
+    -fx-border-color: #fff;
+    -fx-font-weight: bold;
+    -fx-font-family: "B Nazanin";
+}
 
 
 

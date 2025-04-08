@@ -11,15 +11,22 @@ import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
+import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 import javafx.event.ActionEvent;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 
 
 import java.awt.*;
@@ -204,6 +211,22 @@ public class Controller {
 
     @FXML
     private MediaView mediaView;
+    @FXML
+    private MediaView media2;
+    @FXML
+    private AnchorPane chat;
+    @FXML
+    private Button btnm;
+    @FXML
+    private Circle circle;
+    @FXML
+    private TextField inputField;
+
+    @FXML
+    private TextArea chatArea;
+
+    @FXML
+    private Button sendButton;
 
     private MediaPlayer mediaPlayer;
 
@@ -217,6 +240,18 @@ public class Controller {
 
     @FXML
     public void initialize() {
+
+        sendButton.setOnAction(event -> sendMessage());
+        chatArea.setEditable(false);
+        Platform.runLater(() -> {
+            sendButton.getScene().setOnKeyPressed(event -> {
+                if (event.getCode() == KeyCode.ENTER) {
+                    sendButton.fire(); // مثل کلیک کردن دکمه
+                }
+            });
+        });
+
+
         timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
@@ -226,7 +261,7 @@ public class Controller {
         timer.start();
 
         //ویدیو
-        // مسیر فایل ویدیویی (آدرس را متناسب با پروژه خود تنظیم کنید)
+
         String videoPath = getClass().getResource("/Final-color change-1.mp4").toExternalForm();
         Media media = new Media(videoPath);
         mediaPlayer = new MediaPlayer(media);
@@ -242,11 +277,18 @@ public class Controller {
             mediaPlayer.seek(javafx.util.Duration.ZERO); // بازگشت به ابتدای ویدیو
             mediaPlayer.play();
         });
+        String videoPath2 = getClass().getResource("/chat-bot_12134116.mp4").toExternalForm();
+        profile obj2 = new profile();
+        obj2.playMedia(videoPath2,media2,50,50);
 
         // تنظیم سایز MediaView
         mediaView.setFitWidth(1478);
         mediaView.setFitHeight(700);
         mediaView.setPreserveRatio(false); // نسبت تصویر حفظ نشود (اگر بخوای تصویر دقیقاً به این اندازه در بیاد)
+
+        Tooltip tooltip = new Tooltip("ارتباط با هوش مصنوعی بانکی");
+        btnm.setTooltip(tooltip);
+
 
 
         hessabView obj = new hessabView();
@@ -300,6 +342,23 @@ public class Controller {
 
         // تنظیم رویدادهای موس برای گرید پین‌ها
         setupGridPaneHoverBehavior();
+    }
+    private void sendMessage() {
+        String userMessage = inputField.getText();
+        if (!userMessage.isEmpty()) {
+            chatArea.appendText("شما: " + userMessage + "\n");
+
+
+
+            try {
+                String botResponse = ChatbotService.getAIResponse(userMessage);
+                chatArea.appendText("چت‌بات: " + botResponse + "\n");
+            } catch (Exception e) {
+                chatArea.appendText("⚠ خطا در ارتباط با چت‌بات!\n");
+            }
+
+            inputField.clear();
+        }
     }
 
 
@@ -858,5 +917,17 @@ public class Controller {
             alert.setContentText("please login first");
             alert.showAndWait();
         }
+    }
+    @FXML
+    private void start(){
+        circle.setVisible(false);
+        btnm.setVisible(false);
+        chat.setVisible(true);
+    }
+    @FXML
+    private void close(){
+        circle.setVisible(true);
+        btnm.setVisible(true);
+        chat.setVisible(false);
     }
 }

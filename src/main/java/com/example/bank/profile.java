@@ -149,9 +149,9 @@ public class profile {
 
         //ویدیو
         String videoPath1 = getClass().getResource("/budget_15579057.mp4").toExternalForm();
-        playMedia(videoPath1,media1);
+        playMedia(videoPath1,media1,80,80);
         String videoPath2 = getClass().getResource("/login_18986466.mp4").toString();
-        playMedia(videoPath2,media2);
+        playMedia(videoPath2,media2,80,80);
 
 
 
@@ -182,7 +182,7 @@ public class profile {
         catch (Exception e) {e.printStackTrace();}
 
     }
-    public void playMedia(String videoPath,MediaView media1) {
+    public void playMedia(String videoPath,MediaView media1,int W,int H) {
         Media media = new Media(videoPath);
         mediaPlayer = new MediaPlayer(media);
 
@@ -199,8 +199,8 @@ public class profile {
         });
 
         // تنظیم سایز MediaView
-        media1.setFitWidth(80);
-        media1.setFitHeight(80);
+        media1.setFitWidth(W);
+        media1.setFitHeight(H);
         media1.setPreserveRatio(false);
     }
 
