@@ -1,27 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="790.0" prefWidth="1535.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bank.gabz">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="790.0" prefWidth="1535.0" style="-fx-background-color: #1b1937;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bank.gabz">
    <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="380.0" prefWidth="380.0" style="-fx-background-color: #ffffff;" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="gabzTextfield" layoutX="263.0" layoutY="42.0" prefHeight="26.0" prefWidth="250.0" promptText="شناسه قبض" />
-            <Button fx:id="gabznumber" layoutX="363.0" layoutY="141.0" mnemonicParsing="false" onAction="#gabznumber" prefHeight="26.0" prefWidth="54.0" text="بعدی" />
-            <Label fx:id="moneyGabz" alignment="CENTER" layoutX="261.0" layoutY="87.0" prefHeight="18.0" prefWidth="251.0" />
-            <Button fx:id="gabzPayment" layoutX="364.0" layoutY="182.0" mnemonicParsing="false" onAction="#gabzPayment" text="پرداخت" />
-            <Label fx:id="gabz1" layoutX="114.0" layoutY="97.0" />
-            <Label fx:id="gabz2" layoutX="114.0" layoutY="146.0" />
-            <Label fx:id="gabz3" layoutX="114.0" layoutY="186.0" />
-            <Label fx:id="gabz4" layoutX="114.0" layoutY="229.0" />
-            <Label fx:id="gabz5" layoutX="114.0" layoutY="281.0" />
-            <Button layoutX="370.0" layoutY="247.0" mnemonicParsing="false" onAction="#backtomainFromGabz" text="back" />
-            <Label fx:id="organGabz" alignment="CENTER" layoutX="264.0" layoutY="115.0" prefHeight="18.0" prefWidth="251.0" />
-            <TextField fx:id="numbercardGetter" layoutX="312.0" layoutY="8.0" promptText="شماره کارت" />
+            <TextField fx:id="gabzTextfield" layoutX="316.0" layoutY="114.0" prefHeight="26.0" prefWidth="250.0" promptText="شناسه قبض" stylesheets="@style.css">
+               <styleClass>
+                  <String fx:value="text-field1" />
+                  <String fx:value="password" />
+               </styleClass></TextField>
+            <Button fx:id="gabznumber" layoutX="419.0" layoutY="251.0" mnemonicParsing="false" onAction="#gabznumber" prefHeight="26.0" prefWidth="54.0" styleClass="wallet" stylesheets="@styles.css" text="بعدی" />
+            <Label fx:id="moneyGabz" alignment="CENTER" layoutX="315.0" layoutY="161.0" prefHeight="18.0" prefWidth="251.0" />
+            <Button fx:id="gabzPayment" layoutX="416.0" layoutY="251.0" mnemonicParsing="false" onAction="#gabzPayment" styleClass="wallet" stylesheets="@styles.css" text="پرداخت" visible="false" />
+            <Button layoutX="337.0" layoutY="14.0" mnemonicParsing="false" onAction="#backtomainFromGabz" style="-fx-background-color: #ffffff;">
+               <graphic>
+                  <ImageView fitHeight="33.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/Aureous%20Bank%20Logo.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <Label fx:id="organGabz" alignment="CENTER" layoutX="316.0" layoutY="195.0" prefHeight="18.0" prefWidth="251.0" />
+            <TextField fx:id="numbercardGetter" layoutX="317.0" layoutY="56.0" prefHeight="25.0" prefWidth="250.0" promptText="شماره کارت" stylesheets="@style.css">
+               <styleClass>
+                  <String fx:value="text-field1" />
+                  <String fx:value="password" />
+               </styleClass></TextField>
          </children>
       </AnchorPane>
    </center>
@@ -29,10 +42,10 @@
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </top>
    <left>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <AnchorPane prefHeight="390.0" prefWidth="351.0" BorderPane.alignment="CENTER" />
    </left>
    <right>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <AnchorPane prefHeight="390.0" prefWidth="350.0" BorderPane.alignment="CENTER" />
    </right>
    <bottom>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
