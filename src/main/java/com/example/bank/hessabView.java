@@ -5,18 +5,25 @@ import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import static com.example.bank.loginpage.username;
 
@@ -63,9 +70,19 @@ public class hessabView {
 
     @FXML
     private Label numlabel;
-
+    File file = new File("gabz.dat");
     @FXML
-    public void initialize() {
+    private VBox vboxGabz;
+    private List<productCharge> productGabz = new ArrayList<productCharge>();
+    @FXML
+    private VBox vboxInternet;
+    private List<productCharge> productInternet = new ArrayList<productCharge>();
+
+    private String input;
+    private String[] inputs;
+    Random random = new Random();
+    @FXML
+    public void initialize() throws IOException {
         applyHoverEffect(btn1);
         applyHoverEffect(btn2);
         applyHoverEffect(btn3);
@@ -74,6 +91,67 @@ public class hessabView {
         applyHoverEffect(btn6);
         applyHoverEffect(btn7);
         applyHoverEffect(btn8);
+
+        //internet
+        productInternet.add(new productCharge("همراه اول یک گیگ اینترنت هفتگی","15000"));
+        productInternet.add(new productCharge("همراه اول دو گیگ اینترنت هفتگی","18000"));
+        productInternet.add(new productCharge("همراه اول سه گیگ اینترنت هفتگی","22000"));
+        productInternet.add(new productCharge("همراه اول پنچ گیگ اینترنت هفتگی","25000"));
+        productInternet.add(new productCharge("همراه اول یک گیگ اینترنت ماهانه","19000"));
+        productInternet.add(new productCharge("همراه اول سه گیگ اینترنت ماهانه","24000"));
+        productInternet.add(new productCharge("همراه اول پنج گیگ اینترنت ماهانه","28000"));
+        productInternet.add(new productCharge("همراه اول هفت گیگ اینترنت ماهانه","33000"));
+        productInternet.add(new productCharge("ایرانسل اول یک گیگ اینترنت هفتگی","15000"));
+        productInternet.add(new productCharge("ایرانسل  اول دو گیگ اینترنت هفتگی","18000"));
+        productInternet.add(new productCharge("ایرانسل  اول سه گیگ اینترنت هفتگی","22000"));
+        productInternet.add(new productCharge("ایرانسل  اول پنچ گیگ اینترنت هفتگی","25000"));
+        productInternet.add(new productCharge("ایرانسل  اول یک گیگ اینترنت ماهانه","19000"));
+        productInternet.add(new productCharge("ایرانسل  اول سه گیگ اینترنت ماهانه","24000"));
+        productInternet.add(new productCharge("ایرانسل  اول پنج گیگ اینترنت ماهانه","28000"));
+        productInternet.add(new productCharge("ایرانسل  اول هفت گیگ اینترنت ماهانه","33000"));
+
+        //gabz
+        input = Files.readString(file.toPath());
+        inputs = input.split(",|\\n");
+        int  k = random.nextInt(inputs.length);
+        if(inputs[k].length() < 10) {
+            k++;
+        }
+        productGabz.add(new productCharge(inputs[k],inputs[k+1]));
+        productGabz.add(new productCharge(inputs[k+2],inputs[k+3]));
+        productGabz.add(new productCharge(inputs[k+4],inputs[k+5]));
+        productGabz.add(new productCharge(inputs[k+6],inputs[k+7]));
+        productGabz.add(new productCharge(inputs[k+8],inputs[k+9]));
+
+        for (productCharge p : productInternet) {
+            vboxInternet.getChildren().add(createproductpane(p));
+        }
+        for (productCharge p : productGabz) {
+            vboxGabz.getChildren().add(createproductpane(p));
+        }
+    }
+
+    private AnchorPane createproductpane(productCharge p) {
+        AnchorPane pane = null;
+
+        pane = new AnchorPane();
+        pane.setPrefHeight(100);
+        pane.setStyle("-fx-background-color: #f0f0f0; -fx-border-color: #ccc; -fx-padding: 10px;");
+        vboxInternet.setStyle("-fx-max-height: Infinity;-fx-pref-height: USE_COMPUTED_SIZE;");
+
+        //type
+        Label typeLbl = new Label(p.getType());
+        typeLbl.setLayoutX(50);
+        typeLbl.setLayoutY(20);
+
+        //price
+        Label PriceLbl = new Label( "قیمت (تومان) :  "+p.getPrice());
+        PriceLbl.setLayoutX(350);
+        PriceLbl.setLayoutY(20);
+
+        pane.getChildren().addAll(typeLbl, PriceLbl);
+
+        return pane;
     }
 
     void applyHoverEffect(Button button) {
@@ -335,5 +413,9 @@ public class hessabView {
 
     public void backtoHesab(ActionEvent event) {
         login.openNewWindow("hesab.fxml","myaccounts",event);
+    }
+
+    public void openInternet(ActionEvent actionEvent) {
+        login.openNewWindow("internet.fxml","Internet",actionEvent);
     }
 }

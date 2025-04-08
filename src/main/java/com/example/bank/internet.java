@@ -23,19 +23,13 @@ import java.util.Random;
 
 import static com.example.bank.loginpage.*;
 
-public class charge {
 
-    @FXML
-    private TextField numberCharge;
-
+public class internet {
     @FXML
     private Label moneyCharge;
 
     @FXML
-    private VBox vboxCharge;
-
-    Random random = new Random();
-    File file = new File("charge.txt");
+    private TextField numberCharge;
 
     @FXML
     private TextField numberphone;
@@ -43,49 +37,60 @@ public class charge {
     @FXML
     private VBox vboxInternet;
 
+    Random random = new Random();
+    File file = new File("charge.txt");
+
+
     private String input;
     private String[] inputs;
     Alert alert;
+
+    profile pro = new profile();
 
     Connection connect;
     PreparedStatement prepare;
     ResultSet rs;
 
+    charge Charge = new charge();
 
-    private List<productCharge> productcharges = new ArrayList<productCharge>();
-    profile pro = new profile();
+    private List<productCharge> productInternet = new ArrayList<productCharge>();
+
 
     public void initialize() throws IOException {
-        productcharges.add(new productCharge("همراه اول","5000"));
-        productcharges.add(new productCharge("همراه اول","10000"));
-        productcharges.add(new productCharge("همراه اول","20000"));
-        productcharges.add(new productCharge("همراه اول","50000"));
-        productcharges.add(new productCharge("ایرانسل","5000"));
-        productcharges.add(new productCharge("ایرانسل","10000"));
-        productcharges.add(new productCharge("ایرانسل","20000"));
-        productcharges.add(new productCharge("ایرانسل","50000"));
+        productInternet.add(new productCharge("همراه اول یک گیگ اینترنت هفتگی","15000"));
+        productInternet.add(new productCharge("همراه اول دو گیگ اینترنت هفتگی","18000"));
+        productInternet.add(new productCharge("همراه اول سه گیگ اینترنت هفتگی","22000"));
+        productInternet.add(new productCharge("همراه اول پنچ گیگ اینترنت هفتگی","25000"));
+        productInternet.add(new productCharge("همراه اول یک گیگ اینترنت ماهانه","19000"));
+        productInternet.add(new productCharge("همراه اول سه گیگ اینترنت ماهانه","24000"));
+        productInternet.add(new productCharge("همراه اول پنج گیگ اینترنت ماهانه","28000"));
+        productInternet.add(new productCharge("همراه اول هفت گیگ اینترنت ماهانه","33000"));
+        productInternet.add(new productCharge("ایرانسل اول یک گیگ اینترنت هفتگی","15000"));
+        productInternet.add(new productCharge("ایرانسل  اول دو گیگ اینترنت هفتگی","18000"));
+        productInternet.add(new productCharge("ایرانسل  اول سه گیگ اینترنت هفتگی","22000"));
+        productInternet.add(new productCharge("ایرانسل  اول پنچ گیگ اینترنت هفتگی","25000"));
+        productInternet.add(new productCharge("ایرانسل  اول یک گیگ اینترنت ماهانه","19000"));
+        productInternet.add(new productCharge("ایرانسل  اول سه گیگ اینترنت ماهانه","24000"));
+        productInternet.add(new productCharge("ایرانسل  اول پنج گیگ اینترنت ماهانه","28000"));
+        productInternet.add(new productCharge("ایرانسل  اول هفت گیگ اینترنت ماهانه","33000"));
 
-
-
-        for (productCharge p : productcharges) {
-            vboxCharge.getChildren().add(createproductpane(p));
+        for (productCharge p : productInternet) {
+            vboxInternet.getChildren().add(createproductpane(p));
         }
 
         fileCharge();
 
         input = Files.readString(file.toPath());
         inputs = input.split(",");
-    }
-
-    private AnchorPane createproductpane(productCharge productcharge) {
+    }private AnchorPane createproductpane(productCharge productcharge) {
         AnchorPane pane = null;
 
         pane = new AnchorPane();
         pane.setPrefHeight(100);
         pane.setStyle("-fx-background-color: #f0f0f0; -fx-border-color: #ccc; -fx-padding: 10px;");
-        vboxCharge.setStyle("-fx-max-height: Infinity;-fx-pref-height: USE_COMPUTED_SIZE;");
+        vboxInternet.setStyle("-fx-max-height: Infinity;-fx-pref-height: USE_COMPUTED_SIZE;");
 
-        //price
+        //type
         Label typeLbl = new Label( productcharge.getType());
         typeLbl.setLayoutX(50);
         typeLbl.setLayoutY(20);
@@ -160,10 +165,9 @@ public class charge {
             }
         });
 
-
         return pane;
     }
-     private void fileCharge() throws IOException {
+    private void fileCharge() throws IOException {
         FileWriter fw = new FileWriter(file);
         for (int i = 0; i < 10000; i++) {
             long numberCharge = random.nextLong(10000000, 99999999);
@@ -176,8 +180,7 @@ public class charge {
     }
 
     @FXML
-    private void backtoHomeFromCharge(ActionEvent event) {
+    void backtoHomeFromCharge(ActionEvent event) {
         pro.openNewWindow("hessabView.fxml","Account",event);
     }
-
 }

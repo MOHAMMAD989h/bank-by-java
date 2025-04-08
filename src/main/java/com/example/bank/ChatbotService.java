@@ -18,7 +18,7 @@ public class ChatbotService {
             conn.setRequestProperty("Content-Type", "application/json");
             conn.setDoOutput(true);
 
-            // ساختار صحیح JSON
+            //ساختار صحیح JSON
             JSONObject jsonRequest = new JSONObject();
             jsonRequest.put("model", "gemma3:1b");
 

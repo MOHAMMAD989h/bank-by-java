@@ -12,10 +12,10 @@
    <top>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="160.0" layoutY="100.0" mnemonicParsing="false" onAction="#nextbtnCharge" text="Button" />
-            <TextField fx:id="numberCharge" layoutX="112.0" layoutY="39.0" />
+            <TextField fx:id="numberCharge" layoutX="112.0" layoutY="39.0" promptText="شماره کارت" />
             <Button layoutX="416.0" layoutY="100.0" mnemonicParsing="false" onAction="#backtoHomeFromCharge" text="back" />
             <Label fx:id="moneyCharge" layoutX="186.0" layoutY="74.0" />
+            <TextField fx:id="numberphone" layoutX="331.0" layoutY="39.0" promptText="شماره همراه" />
          </children>
       </AnchorPane>
    </top>
