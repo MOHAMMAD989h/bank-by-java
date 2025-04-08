@@ -1,5 +1,7 @@
 package com.example.bank;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -14,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.ByteArrayInputStream;
 import java.sql.*;
@@ -87,12 +90,16 @@ public class profile {
     private VBox vbox_change1;
     @FXML
     private Label txtNumberphone;
+    @FXML
+    private Button welcomeImage;
 
     Connection connect;
     PreparedStatement prepare;
     ResultSet result;
     ResultSet rs;
     ResultSet rs1;
+
+    Timeline timeline;
 
     String infor = null;
 
@@ -102,6 +109,12 @@ public class profile {
     loginpage login = new loginpage();
 
     public void initialize() {
+        timeline = new Timeline(new KeyFrame(Duration.seconds(3), e -> {
+            welcomeImage.setVisible(false);
+        }));
+        timeline.setCycleCount(1);
+        timeline.play();
+
         try {
             connect = DataBase1.connectDB();
             String selectdata = "SELECT * FROM employee WHERE username = ?";
@@ -126,6 +139,7 @@ public class profile {
             }
         }
         catch (Exception e) {e.printStackTrace();}
+
     }
 
 

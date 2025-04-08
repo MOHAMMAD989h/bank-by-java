@@ -36,6 +36,10 @@ public class gabz {
 
     @FXML
     private TextField numbercardGetter;
+    @FXML
+    private Button gabznumber;
+    @FXML
+    private Button gabzPayment;
 
     Connection connect = null;
     PreparedStatement prepare = null;
@@ -69,6 +73,8 @@ public class gabz {
     @FXML
     void gabznumber(ActionEvent event) throws IOException {
         if(loginID){
+            gabznumber.setVisible(false);
+            gabzPayment.setVisible(true);
             for (int i = 0; i < inputs.length; i=i+2) {
                 if (gabzTextfield.getText().equals(inputs[i])) {
                     payment = Integer.parseInt(inputs[i+1]);
@@ -96,7 +102,10 @@ public class gabz {
             }
         }
         else{
-            moneyGabz.setText("first open account");
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("please login first");
+            alert.setTitle("ERROR");
+            alert.showAndWait();
         }
     }
 
