@@ -11,15 +11,16 @@ import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+
 
 import java.awt.*;
 import javafx.scene.control.ScrollPane;
@@ -30,12 +31,10 @@ import java.net.URI;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
-import java.util.List;
 
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.application.Platform;
-import javafx.scene.input.MouseEvent;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
@@ -203,6 +202,11 @@ public class Controller {
 
     private HashMap<String, String> topicFXMLMap = new HashMap<>();
 
+    @FXML
+    private MediaView mediaView;
+
+    private MediaPlayer mediaPlayer;
+
 
     private AnimationTimer timer;
     private PauseTransition pauseTransition;
@@ -221,11 +225,29 @@ public class Controller {
         };
         timer.start();
 
-        imagePaths = new ArrayList<>();
-        imagePaths.add(getClass().getResource("/images/Untitled-1.png").toExternalForm());
-        imagePaths.add(getClass().getResource("/images/hjmhjmhjm.png").toExternalForm());
-        imagePaths.add(getClass().getResource("/images/123.png").toExternalForm());
-        startSlideshow();
+        //ویدیو
+        // مسیر فایل ویدیویی (آدرس را متناسب با پروژه خود تنظیم کنید)
+        String videoPath = getClass().getResource("/Final-color change-1.mp4").toExternalForm();
+        Media media = new Media(videoPath);
+        mediaPlayer = new MediaPlayer(media);
+
+        // اتصال MediaPlayer به MediaView
+        mediaView.setMediaPlayer(mediaPlayer);
+
+        // پخش خودکار ویدیو
+        mediaPlayer.setAutoPlay(true);
+
+        // تکرار خودکار ویدیو پس از پایان
+        mediaPlayer.setOnEndOfMedia(() -> {
+            mediaPlayer.seek(javafx.util.Duration.ZERO); // بازگشت به ابتدای ویدیو
+            mediaPlayer.play();
+        });
+
+        // تنظیم سایز MediaView
+        mediaView.setFitWidth(1478);
+        mediaView.setFitHeight(700);
+        mediaView.setPreserveRatio(false); // نسبت تصویر حفظ نشود (اگر بخوای تصویر دقیقاً به این اندازه در بیاد)
+
 
         hessabView obj = new hessabView();
         obj.applyHoverEffect(bank1btn);
@@ -295,48 +317,6 @@ public class Controller {
             System.err.println("Scene یا Window هنوز تنظیم نشده است.");
         }
     }*/
-    @FXML
-    private ImageView imgg;
-    private List<String> imagePaths;
-    private int currentIndex = 0;
-    private Timeline imageSlideshow;
-    @FXML
-    private void handleLeftClick () {
-        if (!imagePaths.isEmpty()) {
-
-            currentIndex = (currentIndex - 1 + imagePaths.size()) % imagePaths.size();
-            showImage();
-            resetSlideshow();
-        }
-    }
-
-    @FXML
-    private void handleRightClick() {
-        if (!imagePaths.isEmpty()) {
-
-            currentIndex = (currentIndex + 1) % imagePaths.size();
-            showImage();
-            resetSlideshow();
-        }
-    }
-    private void startSlideshow() {
-        imageSlideshow = new Timeline(new KeyFrame(Duration.seconds(5), event -> handleRightClick()));
-        imageSlideshow.setCycleCount(Animation.INDEFINITE);
-        imageSlideshow.play();
-    }
-
-    private void resetSlideshow() {
-        if (imageSlideshow != null) {
-            imageSlideshow.stop();
-            startSlideshow();
-        }
-    }
-
-    private void showImage() {
-
-        Image image = new Image(imagePaths.get(currentIndex));
-        imgg.setImage(image);
-    }
 
     private void updateTime() {
         LocalDateTime now = LocalDateTime.now();

@@ -7,6 +7,7 @@ module com.example.bank {
     requires java.desktop;
     requires org.jsoup;
     requires org.json;
+    requires javafx.media;
 
 
     opens com.example.bank to javafx.fxml;

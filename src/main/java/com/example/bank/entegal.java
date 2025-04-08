@@ -1,4 +1,5 @@
 package com.example.bank;
+import javafx.animation.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -12,8 +13,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.animation.AnimationTimer;
-import javafx.animation.PauseTransition;
 import javafx.util.Duration;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -55,16 +54,10 @@ public class entegal {
     private HBox profileoption;
 
     @FXML
-    private GridPane servicesOptions;
-
-    @FXML
     private GridPane loanOptions;
 
     @FXML
     private HBox contactOptions;
-
-    @FXML
-    private StackPane optionsStackPane;
 
     @FXML
     private Label timeLabel;
@@ -122,13 +115,22 @@ public class entegal {
         };
         timer.start();
 
+        applyHoverEffect(text1);
+        applyHoverEffect(text3);
+        applyHoverEffect(pool);
+        applyHoverEffect(cvv);
+        applyHoverEffect(month);
+        applyHoverEffect(year);
+        applyHoverEffect(PasswordPoya);
+
+
+
         // استفاده از Platform.runLater برای اطمینان از تنظیم Scene
-        Platform.runLater(() -> {
+        /*Platform.runLater(() -> {
             bindImageSizeToWindow();
-        });
+        });*/
 
         // تنظیم رویدادهای موس برای گرید پین‌ها
-        setupGridPaneHoverBehavior();
         text1.textProperty().addListener((observable, oldValue, newValue) -> {
             // چک کردن اینکه فقط اعداد وارد شوند و حداکثر ۱۶ رقم باشد
             if (!newValue.matches("\\d*")) {
@@ -289,7 +291,7 @@ public class entegal {
         });
     }
 
-    private void bindImageSizeToWindow() {
+    /*private void bindImageSizeToWindow() {
         // بررسی null نبودن Scene و Window
         if (backgroundImage.getScene() != null && backgroundImage.getScene().getWindow() != null) {
             Stage stage = (Stage) backgroundImage.getScene().getWindow();
@@ -301,7 +303,7 @@ public class entegal {
         } else {
             System.err.println("Scene یا Window هنوز تنظیم نشده است.");
         }
-    }
+    }*/
 
     private void updateTime() {
         LocalDateTime now = LocalDateTime.now();
@@ -309,26 +311,8 @@ public class entegal {
         timeLabel.setText(now.format(formatter));
     }
 
-    private void setupGridPaneHoverBehavior() {
-        // تنظیم رویدادهای موس برای servicesOptions
-        servicesOptions.setOnMouseEntered(event -> {
-            servicesOptions.setVisible(true);
-            cancelPauseTransition();
-        });
+    /*private void setupGridPaneHoverBehavior() {
 
-        servicesOptions.setOnMouseExited(event -> {
-            startPauseTransition(() -> servicesOptions.setVisible(false));
-        });
-
-        // تنظیم رویدادهای موس برای loanOptions
-        loanOptions.setOnMouseEntered(event -> {
-            loanOptions.setVisible(true);
-            cancelPauseTransition();
-        });
-
-        loanOptions.setOnMouseExited(event -> {
-            startPauseTransition(() -> loanOptions.setVisible(false));
-        });
         // تنظیم رویدادهای موس برای profile
         profile.setOnMouseEntered(event -> {
             profileoption.setVisible(true);
@@ -339,24 +323,7 @@ public class entegal {
             startPauseTransition(() -> profileoption.setVisible(false));
         });
 
-        // تنظیم رویدادهای موس برای contactOptions
-        contactOptions.setOnMouseEntered(event -> {
-            contactOptions.setVisible(true);
-            cancelPauseTransition();
-        });
-
-        contactOptions.setOnMouseExited(event -> {
-            startPauseTransition(() -> contactOptions.setVisible(false));
-        });
-        profileoption.setOnMouseEntered(event -> {
-            profileoption.setVisible(true);
-            cancelPauseTransition();
-        });
-
-        profileoption.setOnMouseExited(event -> {
-            startPauseTransition(() -> profileoption.setVisible(false));
-        });
-    }
+    }*/
 
     private void startPauseTransition(Runnable action) {
         pauseTransition = new PauseTransition(Duration.seconds(0.5)); // تأخیر 0.5 ثانیه
@@ -370,105 +337,6 @@ public class entegal {
         }
     }
 
-    @FXML
-    public void showServicesOptions() {
-        servicesOptions.setVisible(true);
-        loanOptions.setVisible(false);
-        contactOptions.setVisible(false);
-        profileoption.setVisible(false);
-    }
-
-    @FXML
-    public void hideServicesOptions() {
-        startPauseTransition(() -> servicesOptions.setVisible(false));
-    }
-
-    @FXML
-    public void showLoanOptions() {
-        loanOptions.setVisible(true);
-        servicesOptions.setVisible(false);
-        contactOptions.setVisible(false);
-        profileoption.setVisible(false);
-    }
-
-    @FXML
-    public void hideLoanOptions() {
-        startPauseTransition(() -> loanOptions.setVisible(false));
-    }
-
-    @FXML
-    public void showprofileoption() {
-        profileoption.setVisible(true);
-        loanOptions.setVisible(false);
-        servicesOptions.setVisible(false);
-        contactOptions.setVisible(false);
-    }
-
-    @FXML
-    public void hideprofileoption() {
-        startPauseTransition(() -> profileoption.setVisible(false));
-    }
-
-    @FXML
-    public void showContactOptions() {
-        contactOptions.setVisible(true);
-        servicesOptions.setVisible(false);
-        loanOptions.setVisible(false);
-        profileoption.setVisible(false);
-    }
-
-    @FXML
-    public void hideContactOptions() {
-        startPauseTransition(() -> contactOptions.setVisible(false));
-    }
-
-    @FXML
-    public void hideAllOptions() {
-        servicesOptions.setVisible(false);
-        loanOptions.setVisible(false);
-        contactOptions.setVisible(false);
-        profileoption.setVisible(false);
-    }
-
-    @FXML
-    public void handleServiceOption() {
-        System.out.println("Service option clicked!");
-    }
-
-
-    @FXML
-    public void handleLoanOption() {
-        System.out.println("Loan option clicked!");
-    }
-
-    @FXML
-    public void handleContactOption() {
-        System.out.println("Contact option clicked!");
-    }
-
-    @FXML
-    public void keepproofileoption(){
-        profileoption.setVisible(true);}
-
-    @FXML
-    public void hideproofileoption() {
-        startPauseTransition(() -> profileoption.setVisible(false));
-    }
-
-    @FXML
-    public void keepServicesOptionsVisible() {
-        servicesOptions.setVisible(true);
-    }
-
-    @FXML
-    public void keepLoanOptionsVisible() {
-        loanOptions.setVisible(true);
-    }
-
-    @FXML
-    public void keepContactOptionsVisible() {
-        contactOptions.setVisible(true);
-    }
     public void openNewWindow(String fxmlFile, String title, ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
@@ -491,7 +359,7 @@ public class entegal {
     public void handleServiceOption1(ActionEvent event) {
         openNewWindow("entegal.fxml","انتقال وجه",event);
     }
-    public void poya (ActionEvent event) {
+    /*public void poya (ActionEvent event) {
         PasswordPoya.setVisible(true);
         Random rand = new Random();
         randomnumber = rand.nextInt(100000,999999);
@@ -512,7 +380,7 @@ public class entegal {
             }
         };
         timer.schedule(task, 10000);
-    }
+    }*/
 
     public void Dargah (ActionEvent event) throws SQLException {
         if(verifyCode1.equals(PasswordPoya.getText())) {
@@ -592,5 +460,24 @@ public class entegal {
 
     public void backtoHessabView(ActionEvent event) {
         login.openNewWindow("hessabView.fxml","نمایش حساب",event);
+    }
+
+    void applyHoverEffect(TextField text) {
+        Timeline hoverIn = new Timeline(
+                new KeyFrame(Duration.millis(200),
+                        new KeyValue(text.translateYProperty(), -5),
+                        new KeyValue(text.scaleXProperty(), 1.1),
+                        new KeyValue(text.scaleYProperty(), 1.1))
+        );
+
+        Timeline hoverOut = new Timeline(
+                new KeyFrame(Duration.millis(200),
+                        new KeyValue(text.translateYProperty(), 0),
+                        new KeyValue(text.scaleXProperty(), 1),
+                        new KeyValue(text.scaleYProperty(), 1))
+        );
+        //وقتی ماوس میره روش متد hoverIn اجرا میشه و وقتی خارج می شود متد hoverOut اجرا می شود
+        text.setOnMouseEntered(e -> hoverIn.play());
+        text.setOnMouseExited(e -> hoverOut.play());
     }
 }

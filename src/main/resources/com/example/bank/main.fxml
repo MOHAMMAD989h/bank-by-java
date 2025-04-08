@@ -21,6 +21,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.media.MediaView?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -35,13 +36,13 @@
                   <URL value="@styles.css" />
                </stylesheets>
             </Pane>
-            <Pane layoutX="1.0" layoutY="-1.0" prefHeight="790.0" prefWidth="59.0" styleClass="parallelogram2">
+            <Pane layoutX="3.0" layoutY="1.0" prefHeight="788.0" prefWidth="54.0" styleClass="parallelogram2">
                <stylesheets>
                   <URL value="@motavazi.css" />
                   <URL value="@styles.css" />
                </stylesheets>
             </Pane>
-            <HBox alignment="CENTER_RIGHT" layoutX="60.0" layoutY="47.0" prefHeight="56.0" prefWidth="1476.0" style="-fx-background-color: #4d4d4d;" stylesheets="@styles.css">
+            <HBox alignment="CENTER_RIGHT" layoutX="57.0" layoutY="48.0" prefHeight="50.0" prefWidth="1482.0" style="-fx-background-color: #4d4d4d;" stylesheets="@styles.css">
                <children>
                   <Button mnemonicParsing="false" onAction="#profile" prefHeight="37.0" prefWidth="62.0" text="Button" />
                   <HBox alignment="CENTER_LEFT" prefHeight="122.0" prefWidth="42.0" spacing="10" />
@@ -58,10 +59,11 @@
                   </ImageView>
                </children>
             </HBox>
-            <ScrollPane fx:id="scrol" layoutX="60.0" layoutY="102.0" prefHeight="695.0" prefWidth="1474.0" styleClass="scroll-bar" stylesheets="@styles.css">
+            <ScrollPane fx:id="scrol" layoutX="56.0" layoutY="98.0" prefHeight="693.0" prefWidth="1478.0" styleClass="scroll-bar" stylesheets="@styles.css">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="3747.0" prefWidth="1459.0" style="-fx-background-color: #E0DECF;">
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="3685.0" prefWidth="1459.0" style="-fx-background-color: #E0DECF;">
                      <children>
+                        <MediaView fx:id="mediaView" fitHeight="700.0" fitWidth="1478.0" layoutX="-5.5" layoutY="-8.0" />
                         <StackPane fx:id="optionsStackPane" layoutX="756.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="362.0" prefWidth="715.0" stylesheets="@styles.css">
                            <children>
                               <GridPane fx:id="loanOptions" alignment="CENTER" hgap="30" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#keepLoanOptionsVisible" onMouseExited="#hideLoanOptions" prefHeight="355.0" prefWidth="229.0" styleClass="options-pane" vgap="30" visible="false" StackPane.alignment="CENTER_RIGHT">
@@ -86,33 +88,6 @@
                               </GridPane>
                            </children>
                         </StackPane>
-                        <HBox prefHeight="688.0" prefWidth="458.0">
-                           <children>
-                              <ImageView fx:id="imgg" fitHeight="688.0" fitWidth="458.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../images/hjmhjmhjm.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </HBox>
-                        <Button layoutX="10.0" layoutY="650.0" mnemonicParsing="false" onAction="#handleLeftClick" prefHeight="30.0" prefWidth="31.0" style="-fx-background-color: transparent;">
-                           <graphic>
-                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../images/circle-left-arrow.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <Button layoutX="390.0" layoutY="650.0" mnemonicParsing="false" onAction="#handleRightClick" prefHeight="21.0" prefWidth="46.0" style="-fx-background-color: transparent;">
-                           <graphic>
-                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../images/circle-right-arrow.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
                         <AnchorPane layoutX="-130.0" layoutY="688.0" prefHeight="654.0" prefWidth="1588.0">
                            <children>
                               <AnchorPane layoutX="75.0" layoutY="-2.0" prefHeight="654.0" prefWidth="907.0">
