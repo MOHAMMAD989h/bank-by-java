@@ -19,28 +19,7 @@ public class gabz {
     File file = new File("gabz.dat");  // فایل باینری
 
     @FXML
-    private Button gabzPayment;
-
-    @FXML
     private TextField gabzTextfield;
-
-    @FXML
-    private Button gabznumber;
-
-    @FXML
-    private Label gabz1;
-
-    @FXML
-    private Label gabz2;
-
-    @FXML
-    private Label gabz3;
-
-    @FXML
-    private Label gabz4;
-
-    @FXML
-    private Label gabz5;
 
     private String input;
     private String[] inputs;
@@ -61,20 +40,7 @@ public class gabz {
     Connection connect = null;
     PreparedStatement prepare = null;
 
-    public void initialize() throws IOException, SQLException {
-        filegabz();
-        input = Files.readString(file.toPath());
-        inputs = input.split(",");
-        int  k = random.nextInt(inputs.length);
-        if(gabzTextfield.getText().length() < 10) {
-            k++;
-        }
-        gabz1.setText(inputs[k]);
-        gabz2.setText(inputs[k+2]);
-        gabz3.setText(inputs[k+4]);
-        gabz4.setText(inputs[k+6]);
-        gabz5.setText(inputs[k+8]);
-    }
+    public void initialize() throws IOException, SQLException {filegabz();}
 
     @FXML
     void gabzPayment(ActionEvent event) throws SQLException, IOException, ClassNotFoundException {
@@ -134,50 +100,44 @@ public class gabz {
         }
     }
 
-    private void filegabz() throws IOException, SQLException {
-        FileOutputStream fos = new FileOutputStream(file);
-        ObjectOutputStream oos = new ObjectOutputStream(fos);
+    private void filegabz() throws IOException {
+        FileWriter writer = new FileWriter(file);
+        BufferedWriter bufferedWriter = new BufferedWriter(writer);
 
         for (int i = 0; i < 20000; i++) {
             int pricegabz = random.nextInt(20000, 2000000);
             long numbergabz = random.nextLong(10000000, 999999999);
             int pishnum = random.nextInt(1, 9);
             long number = Long.parseLong(String.valueOf(pishnum) + String.valueOf(numbergabz));
-            oos.writeObject(number + "," + pricegabz);  // نوشتن داده‌ها به صورت باینری
+            bufferedWriter.write(number + "," + pricegabz);
+            bufferedWriter.newLine();
         }
 
-        oos.close();
+        bufferedWriter.close();
     }
 
-    private void updateGabzFile(String gabzNumber) throws IOException, ClassNotFoundException {
-        // خواندن فایل به صورت باینری
-        FileInputStream fis = new FileInputStream(file);
-        ObjectInputStream ois = new ObjectInputStream(fis);
-
+    private void updateGabzFile(String gabzNumber) throws IOException {
+        BufferedReader reader = new BufferedReader(new FileReader(file));
         List<String> updatedContent = new ArrayList<>();
         String line;
 
-        while (fis.available() > 0) {
-            line = (String) ois.readObject();
+        while ((line = reader.readLine()) != null) {
             String[] data = line.split(",");
             if (data[0].equals(gabzNumber)) {
-                data[1] = "0";  // مقدار را صفر کن
+                data[1] = "0";
             }
             updatedContent.add(String.join(",", data));
         }
 
-        ois.close();
-        fis.close();
+        reader.close();
 
-        // نوشتن مجدد فایل باینری
-        FileOutputStream fos = new FileOutputStream(file);
-        ObjectOutputStream oos = new ObjectOutputStream(fos);
-
+        BufferedWriter writer = new BufferedWriter(new FileWriter(file));
         for (String updatedLine : updatedContent) {
-            oos.writeObject(updatedLine);
+            writer.write(updatedLine);
+            writer.newLine();
         }
 
-        oos.close();
+        writer.close();
     }
 
     public void backtomainFromGabz(ActionEvent actionEvent) {

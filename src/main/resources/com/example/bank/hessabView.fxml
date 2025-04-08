@@ -140,26 +140,18 @@
                   <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="42.0" prefWidth="232.0" styleClass="Button" stylesheets="@styles.css" text="قبض های پرداخت قابل شما" />
                   <ScrollPane prefHeight="246.0" prefWidth="558.0" styleClass="scrol" stylesheets="@styles.css">
                      <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="206.0" prefWidth="546.0">
-                           <children>
-                              <VBox layoutX="-3.0" prefHeight="207.0" prefWidth="542.0" />
-                           </children>
-                        </AnchorPane>
+                        <VBox fx:id="vboxGabz" prefHeight="215.0" prefWidth="556.0" />
                      </content>
                   </ScrollPane>
                   <Label alignment="CENTER_RIGHT" prefHeight="38.0" prefWidth="225.0" styleClass="Button" stylesheets="@styles.css" text="بسته های اینترنتی پیشنهادی" />
                   <ScrollPane prefHeight="289.0" prefWidth="558.0" stylesheets="@styles.css">
-                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="236.0" prefWidth="489.0">
-                           <children>
-                              <VBox layoutX="-3.0" prefHeight="219.0" prefWidth="486.0" />
-                           </children>
-                        </AnchorPane>
-                     </content>
                      <styleClass>
                         <String fx:value="scrol" />
                         <String fx:value="viewport" />
                      </styleClass>
+                     <content>
+                        <VBox fx:id="vboxInternet" prefHeight="256.0" prefWidth="564.0" />
+                     </content>
                   </ScrollPane>
                </children>
             </VBox>
@@ -167,7 +159,7 @@
                <children>
                   <AnchorPane layoutX="149.0" layoutY="16.0" prefHeight="216.0" prefWidth="487.0" style="-fx-background-color: #4d4d4d; -fx-background-radius: 15;">
                      <children>
-                        <ImageView fx:id="imge" fitHeight="207.0" fitWidth="324.0" layoutX="82.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="imge" fitHeight="207.0" fitWidth="324.0" layoutX="101.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true" />
                         <Button fx:id="change" layoutX="416.0" layoutY="154.0" mnemonicParsing="false" onAction="#changee" prefHeight="48.0" prefWidth="59.0" style="-fx-background-color: transparent;" styleClass="button3" stylesheets="@styles.css" visible="false">
                            <graphic>
                               <ImageView fx:id="imge2" fitHeight="40.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
@@ -198,7 +190,7 @@
                               <Font name="Arial Bold" size="14.0" />
                            </font>
                         </Label>
-                        <Label fx:id="cart" layoutX="219.0" layoutY="111.0" prefHeight="23.0" prefWidth="59.0" text="شماره کارت" textFill="WHITE" visible="false">
+                        <Label fx:id="cart" layoutX="185.0" layoutY="111.0" prefHeight="23.0" prefWidth="144.0" text="شماره کارت" textFill="WHITE" visible="false">
                            <font>
                               <Font name="Arial Bold" size="14.0" />
                            </font>
@@ -236,7 +228,7 @@
                         <String fx:value="Button" />
                      </styleClass>
                   </Button>
-                  <Button fx:id="btn4" layoutX="514.0" layoutY="385.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="144.0" stylesheets="@styles.css" text="خرید بسته">
+                  <Button fx:id="btn4" layoutX="514.0" layoutY="385.0" mnemonicParsing="false" onAction="#openInternet" prefHeight="67.0" prefWidth="144.0" stylesheets="@styles.css" text="خرید بسته">
                      <styleClass>
                         <String fx:value="background-gradientt" />
                         <String fx:value="Button" />
