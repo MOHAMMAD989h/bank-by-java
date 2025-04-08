@@ -165,7 +165,11 @@ public class loginpage{
     Image imageuser;
 
     @FXML
-    public void initialize() throws SQLException {}
+    public void initialize() throws SQLException {
+        hessabView obj = new hessabView();
+        obj.applyHoverEffect(side_createBtn);
+        obj.applyHoverEffect(side_AlreadyHave);
+    }
 
     @FXML
     public void switchForm(javafx.event.ActionEvent event) {

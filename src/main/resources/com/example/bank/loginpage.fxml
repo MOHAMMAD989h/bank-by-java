@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
-<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
@@ -17,7 +16,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="790.0" prefWidth="1535.0" style="-fx-background-color: #1b1937;" styleClass="body" stylesheets="@hhhh.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bank.loginpage">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="790.0" prefWidth="1535.0" style="-fx-background-color: #b3b3b3;" styleClass="body" stylesheets="@hhhh.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bank.loginpage">
   <children>
     <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="container" stylesheets="@hhhh.css">
       <children>
@@ -72,19 +71,11 @@
             </AnchorPane>
         <AnchorPane fx:id="side_signUp" layoutY="-2.0" prefHeight="540.0" prefWidth="300.0" styleClass="white-form" stylesheets="@hhhh.css">
           <children>
-            <TextField fx:id="su_username" layoutX="40.0" layoutY="98.0" prefHeight="30.0" prefWidth="220.0" promptText="نام کاربری" stylesheets="@styles.css">
-                     <styleClass>
-                        <String fx:value="text-field1" />
-                        <String fx:value="password" />
-                     </styleClass>
+            <TextField fx:id="su_username" layoutX="40.0" layoutY="98.0" prefHeight="30.0" prefWidth="220.0" promptText="نام کاربری" styleClass="logintext" stylesheets="@styles.css">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets></TextField>
-            <PasswordField fx:id="su_password" layoutX="40.0" layoutY="349.0" prefHeight="30.0" prefWidth="220.0" promptText="رمز" stylesheets="@styles.css">
-                     <styleClass>
-                        <String fx:value="text-field1" />
-                        <String fx:value="password" />
-                     </styleClass>
+            <PasswordField fx:id="su_password" layoutX="40.0" layoutY="349.0" prefHeight="30.0" prefWidth="220.0" promptText="رمز" styleClass="logintext" stylesheets="@styles.css">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets></PasswordField>
@@ -96,39 +87,23 @@
                         <Insets />
                      </opaqueInsets>
             </Label>
-            <Button fx:id="su_signupBtn" layoutX="38.0" layoutY="495.0" mnemonicParsing="false" onAction="#SignupBtn" prefHeight="30.0" prefWidth="220.0" styleClass="wallet" stylesheets="@styles.css" text="ثبت نام">
+            <Button fx:id="su_signupBtn" layoutX="38.0" layoutY="495.0" mnemonicParsing="false" onAction="#SignupBtn" prefHeight="30.0" prefWidth="220.0" styleClass="loginbtn" stylesheets="@styles.css" text="ثبت نام">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets></Button>
-            <PasswordField fx:id="su_cpassword" layoutX="38.0" layoutY="408.0" prefHeight="30.0" prefWidth="220.0" promptText="رمز" stylesheets="@styles.css">
-                     <styleClass>
-                        <String fx:value="text-field1" />
-                        <String fx:value="password" />
-                     </styleClass>
+            <PasswordField fx:id="su_cpassword" layoutX="38.0" layoutY="408.0" prefHeight="30.0" prefWidth="220.0" promptText="رمز" styleClass="logintext" stylesheets="@styles.css">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets></PasswordField>
-            <TextField fx:id="su_number" layoutX="40.0" layoutY="190.0" prefHeight="30.0" prefWidth="220.0" promptText="شماره" stylesheets="@styles.css">
-                     <styleClass>
-                        <String fx:value="text-field1" />
-                        <String fx:value="password" />
-                     </styleClass>
+            <TextField fx:id="su_number" layoutX="40.0" layoutY="190.0" prefHeight="30.0" prefWidth="220.0" promptText="شماره" styleClass="logintext" stylesheets="@styles.css">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets></TextField>
-            <TextField fx:id="su_nationcode" layoutX="40.0" layoutY="236.0" prefHeight="30.0" prefWidth="220.0" promptText="کدملی" stylesheets="@styles.css">
-                     <styleClass>
-                        <String fx:value="text-field1" />
-                        <String fx:value="password" />
-                     </styleClass>
+            <TextField fx:id="su_nationcode" layoutX="40.0" layoutY="236.0" prefHeight="30.0" prefWidth="220.0" promptText="کدملی" styleClass="logintext" stylesheets="@styles.css">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets></TextField>
-            <TextField fx:id="su_address" layoutX="40.0" layoutY="284.0" prefHeight="58.0" prefWidth="220.0" promptText="ادرس" stylesheets="@styles.css">
-                     <styleClass>
-                        <String fx:value="text-field1" />
-                        <String fx:value="password" />
-                     </styleClass>
+            <TextField fx:id="su_address" layoutX="40.0" layoutY="284.0" prefHeight="58.0" prefWidth="220.0" promptText="ادرس" styleClass="logintext" stylesheets="@styles.css">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets></TextField>
@@ -137,40 +112,38 @@
                 <Font size="10.0" />
               </font>
             </Label>
-            <TextField fx:id="su_hidepass" layoutX="40.0" layoutY="328.0" prefHeight="30.0" prefWidth="220.0" promptText="Password" styleClass="text-field1" stylesheets="@hhhh.css" visible="false">
+            <TextField fx:id="su_hidepass" layoutX="40.0" layoutY="328.0" prefHeight="30.0" prefWidth="220.0" promptText="Password" styleClass="logintext" stylesheets="@styles.css" visible="false">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets></TextField>
-            <TextField fx:id="su_password2" layoutX="40.0" layoutY="379.0" prefHeight="30.0" prefWidth="220.0" promptText="Password" styleClass="text-field1" stylesheets="@hhhh.css" visible="false">
+            <TextField fx:id="su_password2" layoutX="40.0" layoutY="379.0" prefHeight="30.0" prefWidth="220.0" promptText="Password" styleClass="logintext" stylesheets="@styles.css" visible="false">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets></TextField>
-                  <TextField fx:id="su_emailsign1" layoutX="38.0" layoutY="142.0" prefHeight="30.0" prefWidth="220.0" promptText="ایمیل" stylesheets="@styles.css">
-                     <styleClass>
-                        <String fx:value="text-field1" />
-                        <String fx:value="password" />
-                     </styleClass>
+                  <TextField fx:id="su_emailsign1" layoutX="38.0" layoutY="142.0" prefHeight="30.0" prefWidth="220.0" promptText="ایمیل" styleClass="logintext" stylesheets="@styles.css">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets></TextField>
-                  <TextField fx:id="si_textpassword" layoutX="40.0" layoutY="349.0" prefHeight="30.0" prefWidth="220.0" promptText="رمز" stylesheets="@styles.css" visible="false">
+                  <TextField fx:id="si_textpassword" layoutX="40.0" layoutY="349.0" prefHeight="30.0" prefWidth="220.0" promptText="رمز" styleClass="logintext" stylesheets="@styles.css" visible="false">
                      <opaqueInsets>
                         <Insets />
-                     </opaqueInsets>
-                     <styleClass>
-                        <String fx:value="text-field1" />
-                        <String fx:value="password" />
-                     </styleClass></TextField>
-                  <TextField fx:id="si_textpassword1" layoutX="40.0" layoutY="408.0" prefHeight="30.0" prefWidth="220.0" promptText="رمز" stylesheets="@styles.css" visible="false">
+                     </opaqueInsets></TextField>
+                  <TextField fx:id="si_textpassword1" layoutX="40.0" layoutY="408.0" prefHeight="30.0" prefWidth="220.0" promptText="رمز" styleClass="logintext" stylesheets="@styles.css" visible="false">
                      <opaqueInsets>
                         <Insets />
-                     </opaqueInsets>
-                     <styleClass>
-                        <String fx:value="text-field1" />
-                        <String fx:value="password" />
-                     </styleClass></TextField>
-            <Button fx:id="si_viziblepass" layoutX="207.0" layoutY="343.0" mnemonicParsing="false" onAction="#viziblepass" prefHeight="0.0" prefWidth="10.0" styleClass="white-form" stylesheets="@hhhh.css" />
-                  <Button fx:id="uploadButton" layoutX="100.0" layoutY="459.0" mnemonicParsing="false" onAction="#uploadButton" prefHeight="24.0" prefWidth="95.0" styleClass="wallet" stylesheets="@styles.css" text="ارسال عکس">
+                     </opaqueInsets></TextField>
+            <Button fx:id="si_viziblepass" layoutX="207.0" layoutY="350.0" mnemonicParsing="false" onAction="#viziblepass" prefHeight="23.0" prefWidth="38.0" style="-fx-background-color: transparent;" stylesheets="@hhhh.css">
+                     <graphic>
+                        <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../images/preview-show-interface-icon-free-vector.jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                  <Button fx:id="uploadButton" layoutX="100.0" layoutY="459.0" mnemonicParsing="false" onAction="#uploadButton" prefHeight="24.0" prefWidth="95.0" styleClass="loginbtn" stylesheets="@styles.css" text="ارسال عکس">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -178,32 +151,23 @@
                         <Font size="10.0" />
                      </font>
                   </Button>
-                  <TextField fx:id="su_name" layoutX="40.0" layoutY="50.0" prefHeight="30.0" prefWidth="220.0" promptText="نام " stylesheets="@styles.css">
-                     <styleClass>
-                        <String fx:value="text-field1" />
-                        <String fx:value="password" />
-                     </styleClass>
+                  <TextField fx:id="su_name" layoutX="40.0" layoutY="50.0" prefHeight="30.0" prefWidth="220.0" promptText="نام " styleClass="logintext" stylesheets="@styles.css">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
                   </TextField>
-                  <ImageView fitHeight="22.0" fitWidth="43.0" layoutX="223.0" layoutY="358.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../images/preview-show-interface-icon-free-vector.jpg" />
-                     </image>
-                  </ImageView>
           </children>
         </AnchorPane>
             <AnchorPane fx:id="side_forgotemail" layoutX="300.0" layoutY="1.0" prefHeight="535.0" prefWidth="300.0" styleClass="white-form" stylesheets="@hhhh.css">
                <children>
-                  <TextField fx:id="si_emailforgot" layoutX="40.0" layoutY="165.0" prefHeight="30.0" prefWidth="220.0" promptText="ایمیل" styleClass="text-field1" stylesheets="@hhhh.css" />
-                  <Label layoutX="40.0" layoutY="76.0" prefHeight="36.0" prefWidth="166.0" styleClass="head-label" stylesheets="@hhhh.css" text="Forgot Password" textFill="#125980">
+                  <TextField fx:id="si_emailforgot" layoutX="40.0" layoutY="165.0" prefHeight="30.0" prefWidth="220.0" promptText="ایمیل" styleClass="logintext" stylesheets="@styles.css" />
+                  <Label layoutX="40.0" layoutY="76.0" prefHeight="36.0" prefWidth="166.0" styleClass="head-label" stylesheets="@hhhh.css" text="فراموشی رمز" textFill="#125980">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Button fx:id="si_sendcode" layoutX="40.0" layoutY="298.0" mnemonicParsing="false" onAction="#sendcode" prefHeight="30.0" prefWidth="220.0" styleClass="login-btn1" stylesheets="@hhhh.css" text="فرستادن کد" />
-                  <Button fx:id="si_backforgot" layoutX="40.0" layoutY="404.0" minWidth="26.0" mnemonicParsing="false" onAction="#backforgot" prefHeight="30.0" prefWidth="30.0" styleClass="white-form" stylesheets="@hhhh.css">
+                  <Button fx:id="si_sendcode" layoutX="40.0" layoutY="298.0" mnemonicParsing="false" onAction="#sendcode" prefHeight="30.0" prefWidth="220.0" styleClass="loginbtn" stylesheets="@styles.css" text="فرستادن کد" />
+                  <Button fx:id="si_backforgot" layoutX="40.0" layoutY="404.0" minWidth="26.0" mnemonicParsing="false" onAction="#backforgot" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: transparent;" stylesheets="@hhhh.css">
                      <font>
                         <Font size="10.0" />
                      </font>
@@ -215,32 +179,22 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <TextField fx:id="si_emailforgot11" layoutX="40.0" layoutY="210.0" prefHeight="30.0" prefWidth="220.0" promptText="کد" styleClass="text-field1" stylesheets="@hhhh.css" visible="false" />
-                  <Button fx:id="si_entercode" layoutX="40.0" layoutY="298.0" mnemonicParsing="false" onAction="#entercode" prefHeight="30.0" prefWidth="220.0" styleClass="login-btn1" stylesheets="@hhhh.css" text="Enter Code" visible="false" />
+                  <TextField fx:id="si_emailforgot11" layoutX="40.0" layoutY="210.0" prefHeight="30.0" prefWidth="220.0" promptText="کد" styleClass="logintext" stylesheets="@styles.css" visible="false" />
+                  <Button fx:id="si_entercode" layoutX="40.0" layoutY="298.0" mnemonicParsing="false" onAction="#entercode" prefHeight="30.0" prefWidth="220.0" styleClass="loginbtn" stylesheets="@styles.css" text="وارد کردن کد" visible="false" />
                </children>
             </AnchorPane>
         <AnchorPane fx:id="side_login" layoutX="300.0" layoutY="-2.0" prefHeight="540.0" prefWidth="300.0" styleClass="white-form" stylesheets="@hhhh.css">
           <children>
-            <TextField fx:id="si_username" layoutX="40.0" layoutY="150.0" prefHeight="30.0" prefWidth="220.0" promptText="نام کاربری" stylesheets="@styles.css">
-                     <styleClass>
-                        <String fx:value="text-field1" />
-                        <String fx:value="password" />
-                     </styleClass>
-                  </TextField>
-            <PasswordField fx:id="si_password" layoutX="40.0" layoutY="199.0" prefHeight="30.0" prefWidth="220.0" promptText="رمز" stylesheets="@styles.css">
-                     <styleClass>
-                        <String fx:value="text-field1" />
-                        <String fx:value="password" />
-                     </styleClass>
-                  </PasswordField>
-            <Label alignment="CENTER" layoutX="40.0" layoutY="67.0" prefHeight="36.0" prefWidth="143.0" styleClass="head-label" stylesheets="@hhhh.css" text="ورود" textFill="#125980">
+            <TextField fx:id="si_username" layoutX="40.0" layoutY="150.0" prefHeight="30.0" prefWidth="220.0" promptText="نام کاربری" styleClass="logintext" stylesheets="@styles.css" />
+            <PasswordField fx:id="si_password" layoutX="40.0" layoutY="199.0" prefHeight="30.0" prefWidth="220.0" promptText="رمز" styleClass="logintext" stylesheets="@styles.css" />
+            <Label alignment="CENTER" layoutX="112.0" layoutY="67.0" prefHeight="36.0" prefWidth="79.0" styleClass="head-label" stylesheets="@hhhh.css" text="ورود" textFill="#125980">
               <font>
                 <Font size="20.0" />
               </font>
             </Label>
-            <Button fx:id="si_loginbtn" layoutX="40.0" layoutY="305.0" mnemonicParsing="false" onAction="#loginBtn" prefHeight="30.0" prefWidth="220.0" styleClass="wallet" stylesheets="@styles.css" text="ورود" />
-            <Hyperlink fx:id="si_forgotpass" layoutX="39.0" layoutY="269.0" onAction="#forgotpass" text="فراموشی رمز" />
-            <Button fx:id="si_helplogin" layoutX="40.0" layoutY="353.0" minWidth="26.0" mnemonicParsing="false" onAction="#helplogin" prefHeight="30.0" prefWidth="25.0" styleClass="wallet" stylesheets="@styles.css" text="?">
+            <Button fx:id="si_loginbtn" layoutX="40.0" layoutY="305.0" mnemonicParsing="false" onAction="#loginBtn" prefHeight="30.0" prefWidth="220.0" styleClass="loginbtn" stylesheets="@styles.css" text="ورود" />
+            <Hyperlink fx:id="si_forgotpass" layoutX="39.0" layoutY="269.0" onAction="#forgotpass" text="فراموشی رمز" textFill="#ff5858" />
+            <Button fx:id="si_helplogin" layoutX="40.0" layoutY="353.0" minWidth="26.0" mnemonicParsing="false" onAction="#helplogin" prefHeight="30.0" prefWidth="25.0" styleClass="loginbtn" stylesheets="@styles.css" text="?">
               <font>
                 <Font size="10.0" />
               </font>
@@ -250,7 +204,7 @@
                 <Font size="10.0" />
               </font>
             </Label>
-                  <Button layoutX="40.0" layoutY="425.0" mnemonicParsing="false" onAction="#backLoginTo" styleClass="white-form" stylesheets="@hhhh.css">
+                  <Button layoutX="40.0" layoutY="425.0" mnemonicParsing="false" onAction="#backLoginTo" style="-fx-background-color: transparent;">
                      <graphic>
                         <ImageView fitHeight="41.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -261,9 +215,9 @@
                   </Button>
           </children>
             </AnchorPane>
-        <AnchorPane fx:id="side_form" layoutY="-0.8" prefHeight="540.0" prefWidth="300.0">
+        <AnchorPane fx:id="side_form" layoutY="-0.8" prefHeight="540.0" prefWidth="300.0" styleClass="login" stylesheets="@styles.css">
           <children>
-            <Label layoutX="91.0" layoutY="334.0" prefHeight="36.0" prefWidth="143.0" text="ساختن حساب">
+            <Label layoutX="91.0" layoutY="334.0" prefHeight="36.0" prefWidth="143.0" text="ساختن حساب" textFill="WHITE">
               <font>
                 <Font size="20.0" />
               </font>
@@ -273,7 +227,7 @@
                 <Font name="Edwardian Script ITC" size="40.0" />
               </font>
             </Label>
-            <Button fx:id="side_AlreadyHave" layoutX="40.0" layoutY="391.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="30.0" prefWidth="220.0" styleClass="wallet" stylesheets="@styles.css" text="قبلا ساخته شده ">
+            <Button fx:id="side_AlreadyHave" layoutX="40.0" layoutY="391.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="30.0" prefWidth="220.0" styleClass="loginbtn" stylesheets="@styles.css" text="قبلا ساخته شده ">
               <textFill>
                 <LinearGradient endX="0.9431818181818181" endY="1.0" startX="0.10227272907892863" startY="0.1969697258689187">
                   <stops>
@@ -291,43 +245,18 @@
                 </LinearGradient>
               </textFill>
             </Button>
-            <Button fx:id="side_createBtn" layoutX="40.0" layoutY="392.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="30.0" prefWidth="220.0" styleClass="wallet" stylesheets="@styles.css" text="ساختن حساب جدید">
-              <textFill>
-                <LinearGradient endX="0.9431818181818181" endY="1.0" startX="0.10227272907892863" startY="0.1969697258689187">
-                  <stops>
-                    <Stop>
-                      <color>
-                        <Color red="0.15933723747730255" green="0.7052631378173828" blue="0.15933723747730255" />
-                      </color>
-                    </Stop>
-                    <Stop offset="1.0">
-                      <color>
-                        <Color red="0.3529411852359772" green="0.3294117748737335" blue="0.6627451181411743" />
-                      </color>
-                    </Stop>
-                  </stops>
-                </LinearGradient>
-              </textFill>
-            </Button>
+            <Button fx:id="side_createBtn" layoutX="40.0" layoutY="392.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="30.0" prefWidth="220.0" styleClass="loginbtn" stylesheets="@styles.css" text="ساختن حساب جدید" textFill="WHITE" />
             <ImageView fitHeight="84.0" fitWidth="152.0" layoutX="108.0" layoutY="91.0" pickOnBounds="true" preserveRatio="true">
               <image>
-                <Image url="@../../../Images/photo_2025-01-03_12-39-34.png" />
+                <Image url="@../../../images/user_1077063.png" />
               </image>
             </ImageView>
                 <ImageView fitHeight="27.0" fitWidth="230.0" layoutX="71.0" layoutY="243.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../../images/Aureous%20Bank%20Logo.png" />
+                        <Image url="@../../../images/Aureous%20Bank%20Logo2.png" />
                     </image>
                 </ImageView>
           </children>
-               <stylesheets>
-                  <URL value="@styles.css" />
-                  <URL value="@hhhh.css" />
-               </stylesheets>
-               <styleClass>
-                  <String fx:value="gradient" />
-                  <String fx:value="wallet" />
-               </styleClass>
         </AnchorPane>
       </children>
     </AnchorPane>

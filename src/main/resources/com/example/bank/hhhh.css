@@ -4,6 +4,9 @@
 
 .white-form {
     -fx-background-color: #fff;
+    -fx-border-radius: 25px;
+    -fx-background-radius: 25px;
+    -fx-border-color: #e0ae1d;
 }
 .icon {
     -fx-font-size: 50px;
