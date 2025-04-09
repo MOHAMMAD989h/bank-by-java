@@ -902,10 +902,6 @@ public class Controller {
         }
     }
 
-    public void chatbotOpen(ActionEvent actionEvent) {
-        openNewWindow("chatConto.fxml","ChatBot",actionEvent);
-    }
-
     public void loanBtn(ActionEvent actionEvent) {
         if(loginID){
             openNewWindow("Vam.fxml","Loan",actionEvent);

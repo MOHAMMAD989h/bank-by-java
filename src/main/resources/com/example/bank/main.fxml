@@ -57,7 +57,6 @@
                   <HBox alignment="CENTER_LEFT" prefHeight="122.0" prefWidth="42.0" spacing="10" />
                   <Label fx:id="timeLabel" prefHeight="20.0" prefWidth="324.0" styleClass="time-label" text="زمان" />
                   <Region HBox.hgrow="ALWAYS" />
-                  <Button layoutX="681.0" layoutY="21.0" onAction="#chatbotOpen" prefHeight="33.0" prefWidth="158.0" styleClass="menu-button" text="پشتیبانی با ربات" />
                   <Button onAction="#HomeToLoginpage" prefHeight="33.0" prefWidth="158.0" styleClass="menu-button" text="ورود / احراز هویت" />
                   <Button onAction="#loanBtn" onMouseEntered="#showLoanOptions" onMouseExited="#hideLoanOptions" prefHeight="30.0" prefWidth="81.0" styleClass="menu-button" text="وام" textFill="GOLD" />
                   <Button onAction="#FAQ" onMouseEntered="#hideAllOptions" prefHeight="30.0" prefWidth="152.0" styleClass="menu-button" text="سوالات متداول" />
