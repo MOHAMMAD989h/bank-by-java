@@ -165,7 +165,7 @@ public class charge {
     }
      private void fileCharge() throws IOException {
         FileWriter fw = new FileWriter(file);
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < 1000; i++) {
             long numberCharge = random.nextLong(10000000, 99999999);
             int pishnum = random.nextInt(1, 3);
             long number = Long.parseLong("09"+String.valueOf(pishnum) + String.valueOf(numberCharge));

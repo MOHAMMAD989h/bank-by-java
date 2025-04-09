@@ -22,7 +22,11 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.*;
 import static com.example.bank.loginpage.username;
 
@@ -113,6 +117,7 @@ public class profile {
     private MediaView media2;
 
     private MediaPlayer mediaPlayer;
+    Random random = new Random();
 
 
 
@@ -125,6 +130,9 @@ public class profile {
     Timeline timeline;
 
     String infor = null;
+
+    File file1 = new File("filetransfer.txt");
+    FileWriter fileWriter1 = null;
 
     public static String lastScene = "main.fxml";
     public static String lastScenetitle = "Home";
@@ -605,6 +613,13 @@ public class profile {
         prepare.executeUpdate();
 
         return  (currentCredit - Math.abs(budget));
+    }
+    public void fileTransfer(String numbercard1,String numbercard2,String budget,String bankname) throws IOException {
+        Long rand = random.nextLong(100000000,999999999);
+        LocalDate now1 = LocalDate.now();
+
+        fileWriter1 = new FileWriter(file1);
+        fileWriter1.write(numbercard1+','+numbercard2+','+budget+','+bankname+','+rand+","+now1);
     }
 
     public void openNewWindow(String fxmlFile, String title, ActionEvent event) {

@@ -216,7 +216,7 @@
                         <String fx:value="Button" />
                      </styleClass>
                   </Button>
-                  <Button fx:id="btn7" layoutX="150.0" layoutY="556.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="144.0" stylesheets="@styles.css" text="موبایلی">
+                  <Button fx:id="btn7" layoutX="150.0" layoutY="556.0" mnemonicParsing="false" onAction="#openToVam" prefHeight="67.0" prefWidth="144.0" stylesheets="@styles.css" text="وام">
                      <styleClass>
                         <String fx:value="background-gradientt" />
                         <String fx:value="Button" />

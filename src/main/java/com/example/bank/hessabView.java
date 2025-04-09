@@ -418,4 +418,8 @@ public class hessabView {
     public void openInternet(ActionEvent actionEvent) {
         login.openNewWindow("internet.fxml","Internet",actionEvent);
     }
+
+    public void openToVam(ActionEvent actionEvent) {
+        login.openNewWindow("vam.fxml","Loan",actionEvent);
+    }
 }

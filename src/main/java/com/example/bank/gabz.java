@@ -113,7 +113,7 @@ public class gabz {
         FileWriter writer = new FileWriter(file);
         BufferedWriter bufferedWriter = new BufferedWriter(writer);
 
-        for (int i = 0; i < 20000; i++) {
+        for (int i = 0; i < 1000; i++) {
             int pricegabz = random.nextInt(20000, 2000000);
             long numbergabz = random.nextLong(10000000, 999999999);
             int pishnum = random.nextInt(1, 9);
