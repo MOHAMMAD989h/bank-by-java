@@ -210,7 +210,7 @@
                         <String fx:value="Button" />
                      </styleClass>
                   </Button>
-                  <Button fx:id="btn5" layoutX="150.0" layoutY="471.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="144.0" stylesheets="@styles.css" text="سوابق تراکنش">
+                  <Button fx:id="btn5" layoutX="150.0" layoutY="471.0" mnemonicParsing="false" onAction="#openTransfer" prefHeight="67.0" prefWidth="144.0" stylesheets="@styles.css" text="سوابق تراکنش">
                      <styleClass>
                         <String fx:value="background-gradientt" />
                         <String fx:value="Button" />
