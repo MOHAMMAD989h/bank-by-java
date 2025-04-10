@@ -70,8 +70,9 @@ public class disVam {
             prepare.setString(1, username);
             rs = prepare.executeQuery();
             boolean isusername = false;
-            String numbercardto1 = rs.getString("numbercard");
+            String numbercardto1 = "";
             while(rs.next()){
+                numbercardto1 = rs.getString("numbercard");
                 if(numbercardto.getText().equals(rs.getString("numbercard"))){
                     isusername = true;
                 }
@@ -89,9 +90,11 @@ public class disVam {
                 prepare = connect.prepareStatement(data1);
                 prepare.setString(1, username);
                 rs = prepare.executeQuery();
+                String numbercard2 = "";
                 isusername = false;
                 while(rs.next()){
                     if(numbercardfrom.getText().equals(rs.getString("numbercard"))){
+                        numbercard2 = rs.getString("numbercard");
                         isusername = true;
                     }
                 }
@@ -113,7 +116,7 @@ public class disVam {
                     prepare.setString(2, String.valueOf((int) Vam.soodVammonth));
                     prepare.setString(3, String.valueOf(Vam.timeLoan));
                     prepare.setString(4, numbercardto1);
-                    prepare.setString(5, rs.getString("numbercard"));
+                    prepare.setString(5,numbercard2);
                     prepare.setDate(6, Date.valueOf(now));
                     prepare.setDate(7, Date.valueOf(now));
                     prepare.executeUpdate();
