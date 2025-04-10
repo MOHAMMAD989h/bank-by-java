@@ -54,6 +54,7 @@ public class gabz {
             gabzTextfield.setText("");
             moneyGabz.setText("");
         } else {
+            pro.fileTransfer(numbercardGetter.getText(),"", Long.valueOf(String.valueOf(-payment)),"قیوض");
             alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setContentText("successfully");
             alert.setTitle("INFORMATION");

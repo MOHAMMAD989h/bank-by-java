@@ -81,6 +81,7 @@ public class hessabView {
     private String input;
     private String[] inputs;
     Random random = new Random();
+    public static String numbercard;
     @FXML
     public void initialize() throws IOException {
         applyHoverEffect(btn1);
@@ -393,6 +394,7 @@ public class hessabView {
             result = prepare.executeQuery();
             products.clear();
             while (result.next()) {
+                numbercard = result.getString("numbercard");
                 String number = result.getString("numbercard");
                 String time = result.getString("engeza");
                 String cvv2 = result.getString("cvv2");

@@ -144,6 +144,11 @@ public class charge {
                         alert.showAndWait();
                     } else {
                         System.out.println("Payment successful! New balance: " + result);
+                        try {
+                            pro.fileTransfer(numberCharge.getText(),"", (long) -Integer.parseInt(productcharge.getPrice()),"شارژ سیمکارت");
+                        } catch (IOException ex) {
+                            throw new RuntimeException(ex);
+                        }
                         pro.openNewWindow("main.fxml", "Home", e);
                     }
                 } else {

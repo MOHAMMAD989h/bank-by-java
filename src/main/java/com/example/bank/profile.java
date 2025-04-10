@@ -593,7 +593,7 @@ public class profile {
             return -1;
         }
 
-        long currentCredit = Integer.parseInt(result.getString("money"));
+        long currentCredit = Long.parseLong(result.getString("money"));
 
         if (Math.abs(budget) > currentCredit) {
             System.out.println("موجودی کارت مبدا کافی نیست."); // موجودی کارت مبدا کافی نیست
@@ -614,13 +614,18 @@ public class profile {
 
         return  (currentCredit - Math.abs(budget));
     }
-    public void fileTransfer(String numbercard1,String numbercard2,String budget,String bankname) throws IOException {
+    public void fileTransfer(String numbercard1,String numbercard2,Long budget,String name) throws IOException {
         Long rand = random.nextLong(100000000,999999999);
         LocalDate now1 = LocalDate.now();
 
-        fileWriter1 = new FileWriter(file1);
-        fileWriter1.write(numbercard1+','+numbercard2+','+budget+','+bankname+','+rand+","+now1);
+        try {
+            fileWriter1 = new FileWriter(file1, true);
+            fileWriter1.write(numbercard1 + ',' + name+',' + numbercard2 + ',' + budget + ',' + rand + "," + now1);
+            fileWriter1.close();
+        }
+        catch (IOException e) {e.printStackTrace();}
     }
+
 
     public void openNewWindow(String fxmlFile, String title, ActionEvent event) {
         try {

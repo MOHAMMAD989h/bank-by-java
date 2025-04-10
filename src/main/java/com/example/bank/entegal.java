@@ -17,6 +17,7 @@ import javafx.util.Duration;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -103,7 +104,8 @@ public class entegal {
     @FXML
     private Button Dargah;
 
-
+    public static boolean isupdatecredit;
+    public static boolean is;
 
     @FXML
     public void initialize() {
@@ -382,7 +384,7 @@ public class entegal {
         timer.schedule(task, 10000);
     }*/
 
-    public void Dargah (ActionEvent event) throws SQLException {
+    public void Dargah (ActionEvent event) throws SQLException, IOException {
         if(verifyCode1.equals(PasswordPoya.getText())) {
             long resulttransfer = pro.transferMoney(text1.getText(), text3.getText(), Integer.parseInt(pool.getText()));
             if (resulttransfer < 0) {
@@ -392,6 +394,8 @@ public class entegal {
                 alert.setContentText("موجودی کم است");
                 alert.showAndWait();
             } else {
+                pro.fileTransfer(text1.getText(),text3.getText(), -Long.parseLong(pool.getText()),"کارت به کارت");
+                pro.fileTransfer(text3.getText(),text1.getText(), +Long.parseLong(pool.getText()),"کارت به کارت");
                 alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Information");
                 alert.setHeaderText(null);

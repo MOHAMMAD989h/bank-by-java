@@ -26,10 +26,10 @@
         </AnchorPane>
     </top>
     <left>
-        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+        <AnchorPane prefHeight="200.0" prefWidth="150.0" BorderPane.alignment="CENTER" />
     </left>
     <right>
-        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+        <AnchorPane prefHeight="200.0" prefWidth="150.0" BorderPane.alignment="CENTER" />
     </right>
     <bottom>
         <AnchorPane prefHeight="120.0" prefWidth="1535.0" BorderPane.alignment="CENTER" />
@@ -37,7 +37,7 @@
     <center>
         <ScrollPane prefHeight="506.0" prefWidth="1135.0" stylesheets="@styles.css" BorderPane.alignment="CENTER">
             <content>
-                <VBox fx:id="vboxTransferRec" prefHeight="390.0" prefWidth="1133.0" />
+                <VBox fx:id="vboxTransferRec" prefHeight="550.0" prefWidth="1134.0" />
             </content>
         </ScrollPane>
     </center>

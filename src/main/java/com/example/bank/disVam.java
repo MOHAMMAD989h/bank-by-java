@@ -116,7 +116,7 @@ public class disVam {
                     prepare.setString(2, String.valueOf((int) Vam.soodVammonth));
                     prepare.setString(3, String.valueOf(Vam.timeLoan));
                     prepare.setString(4, numbercardto1);
-                    prepare.setString(5,numbercard2);
+                    prepare.setString(5, numbercard2);
                     prepare.setDate(6, Date.valueOf(now));
                     prepare.setDate(7, Date.valueOf(now));
                     prepare.executeUpdate();
