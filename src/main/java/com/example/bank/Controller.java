@@ -231,6 +231,7 @@ public class Controller {
     private MediaPlayer mediaPlayer;
 
 
+
     private AnimationTimer timer;
     private PauseTransition pauseTransition;
     Alert alert;
@@ -261,30 +262,22 @@ public class Controller {
         timer.start();
 
         //ویدیو
-
-        String videoPath = getClass().getResource("/Final-color change-1.mp4").toExternalForm();
-        Media media = new Media(videoPath);
-        mediaPlayer = new MediaPlayer(media);
-
-        // اتصال MediaPlayer به MediaView
-        mediaView.setMediaPlayer(mediaPlayer);
-
-        // پخش خودکار ویدیو
-        mediaPlayer.setAutoPlay(true);
-
-        // تکرار خودکار ویدیو پس از پایان
-        mediaPlayer.setOnEndOfMedia(() -> {
-            mediaPlayer.seek(javafx.util.Duration.ZERO); // بازگشت به ابتدای ویدیو
-            mediaPlayer.play();
-        });
-        String videoPath2 = getClass().getResource("/chat-bot_12134116.mp4").toExternalForm();
-        profile obj2 = new profile();
-        obj2.playMedia(videoPath2,media2,50,50);
-
-        // تنظیم سایز MediaView
-        mediaView.setFitWidth(1478);
-        mediaView.setFitHeight(700);
-        mediaView.setPreserveRatio(false); // نسبت تصویر حفظ نشود (اگر بخوای تصویر دقیقاً به این اندازه در بیاد)
+        try {
+            String videoPath = getClass().getResource("/main.mp4").toExternalForm();
+            profile obj2 = new profile();
+            obj2.playMedia(videoPath, mediaView, 1478, 700);
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        try {
+            String videoPath2 = getClass().getResource("/chat.mp4").toExternalForm();
+            profile obj2 = new profile();
+            obj2.playMedia(videoPath2, media2, 50, 50);
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
 
         Tooltip tooltip = new Tooltip("ارتباط با هوش مصنوعی بانکی");
         btnm.setTooltip(tooltip);
@@ -782,7 +775,7 @@ public class Controller {
     }
     @FXML
     private void FAQ(){
-        double position = 9.5/10.0;
+        double position = 5.75/10.0;
         scrol.setVvalue(position);
     }
     @FXML

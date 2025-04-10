@@ -191,25 +191,50 @@ public class profile {
 
     }
     public void playMedia(String videoPath,MediaView media1,int W,int H) {
-        Media media = new Media(videoPath);
-        mediaPlayer = new MediaPlayer(media);
+        try {
+            Media media = new Media(videoPath);
+            MediaPlayer playmedia2 = new MediaPlayer(media);
 
-        // اتصال MediaPlayer به MediaView
-        media1.setMediaPlayer(mediaPlayer);
+            // اتصال MediaPlayer به MediaView
+            media1.setMediaPlayer(playmedia2);
 
-        // پخش خودکار ویدیو
-        mediaPlayer.setAutoPlay(true);
+            // فقط وقتی آماده شد، پخش کن
+            playmedia2.setOnReady(() -> {
+                playmedia2.play();
+                System.out.println("playmedia2 played");
+            });
+            playmedia2.setOnError(() -> {
+                System.out.println("Error in playmedia: " + playmedia2.getError());
+                media1.setMediaPlayer(null); // unlink
+                playmedia2.dispose(); // cleanup
+                try{
+                    playMedia(videoPath,media1,W,H);
+                }
+                catch (Exception e) {
+                    System.out.println("Error in playmedia: " + e.getMessage());
+                }
+            });
 
-        // تکرار خودکار ویدیو پس از پایان
-        mediaPlayer.setOnEndOfMedia(() -> {
-            mediaPlayer.seek(javafx.util.Duration.ZERO);
-            mediaPlayer.play();
-        });
+            media.setOnError(() -> {
+                System.out.println("Error in media1: " + media.getError());
+                media1.setMediaPlayer(null); // unlink
+                playmedia2.dispose(); // cleanup
+            });
 
-        // تنظیم سایز MediaView
-        media1.setFitWidth(W);
-        media1.setFitHeight(H);
-        media1.setPreserveRatio(false);
+            // تکرار خودکار ویدیو پس از پایان
+            playmedia2.setOnEndOfMedia(() -> {
+                playmedia2.seek(javafx.util.Duration.ZERO);
+                playmedia2.play();
+            });
+
+            // تنظیم سایز MediaView
+            media1.setFitWidth(W);
+            media1.setFitHeight(H);
+            media1.setPreserveRatio(false);
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
 
