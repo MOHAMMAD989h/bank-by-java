@@ -43,6 +43,7 @@ public class transferRec {
         try {
             String data = "SELECT * FROM cards WHERE username= ?";
             String line = Files.readString(file1.toPath());
+            System.out.println(line);
             inputs = line.split(",|\\n");
             for (int i = 0; i < inputs.length; i = i + 6) {
                 conn = DataBase1.connectDB();
