@@ -44,7 +44,17 @@ public class gabz {
     Connection connect = null;
     PreparedStatement prepare = null;
 
-    public void initialize() throws IOException, SQLException {filegabz();}
+    public void initialize() throws IOException, SQLException {
+        filegabz();
+        input = Files.readString(file.toPath());
+        inputs = input.split(",|\\n");
+        for (int i=0;i<inputs.length;i++) {
+            inputs[i] = inputs[i].trim();
+        }
+        for (int i = 0; i < inputs.length; i++) {
+            System.out.println(inputs[i]);
+        }
+    }
 
     @FXML
     void gabzPayment(ActionEvent event) throws SQLException, IOException, ClassNotFoundException {
@@ -54,7 +64,7 @@ public class gabz {
             gabzTextfield.setText("");
             moneyGabz.setText("");
         } else {
-            pro.fileTransfer(numbercardGetter.getText(),"", Long.valueOf(String.valueOf(-payment)),"قیوض");
+            pro.fileTransfer(numbercardGetter.getText(),"", Long.valueOf(String.valueOf(-payment)),"قبض");
             alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setContentText("successfully");
             alert.setTitle("INFORMATION");
@@ -74,12 +84,15 @@ public class gabz {
     @FXML
     void gabznumber(ActionEvent event) throws IOException {
         if(loginID){
-            gabznumber.setVisible(false);
-            gabzPayment.setVisible(true);
+            System.out.println(gabzTextfield.getText().trim());
             for (int i = 0; i < inputs.length; i=i+2) {
-                if (gabzTextfield.getText().equals(inputs[i])) {
+                if (gabzTextfield.getText().trim().equals(inputs[i]) && gabzTextfield.getText().trim().equals(inputs[i+1]) ) {
+                    gabznumber.setVisible(false);
+                    gabzPayment.setVisible(true);
                     payment = Integer.parseInt(inputs[i+1]);
+                    System.out.println(inputs[i+1]);
                     moneyGabz.setText("" + payment);
+                    System.out.println(String.valueOf(inputs[i]).trim().charAt(0));
                     if(String.valueOf(inputs[i]).trim().charAt(0) == '1'){
                         organGabz.setText(" اداره اب و فاضلاب");
                     } else if (String.valueOf(inputs[i]).trim().charAt(0) == '2') {
@@ -116,7 +129,7 @@ public class gabz {
 
         for (int i = 0; i < 1000; i++) {
             int pricegabz = random.nextInt(20000, 2000000);
-            long numbergabz = random.nextLong(10000000, 999999999);
+            long numbergabz = random.nextLong(100000000, 999999999);
             int pishnum = random.nextInt(1, 9);
             long number = Long.parseLong(String.valueOf(pishnum) + String.valueOf(numbergabz));
             bufferedWriter.write(number + "," + pricegabz);
@@ -151,6 +164,6 @@ public class gabz {
     }
 
     public void backtomainFromGabz(ActionEvent actionEvent) {
-        login.openNewWindow("main.fxml", "Home", actionEvent);
+        login.openNewWindow("hesab.fxml", "Account", actionEvent);
     }
 }

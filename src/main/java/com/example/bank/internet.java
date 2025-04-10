@@ -116,7 +116,7 @@ public class internet {
             boolean flag = false;
 
             if (loginID) {
-                for (int i = 0; i < inputs.length; i = i + 2) {
+                for (int i = 0; i < inputs.length; i++) {
                     if (numberphone.getText().equals(inputs[i])) {
                         flag = true;
                         break;
