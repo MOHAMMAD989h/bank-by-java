@@ -54,7 +54,7 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </TextField>
-                  <ImageView fx:id="logoShow1" fitHeight="48.0" fitWidth="52.0" layoutX="43.0" layoutY="208.0" pickOnBounds="true" />
+                  <ImageView fx:id="logoShow1" fitHeight="30.0" fitWidth="47.0" layoutX="70.0" layoutY="214.0" pickOnBounds="true" />
                   <PasswordField fx:id="Cvv2Getter" layoutX="195.0" layoutY="381.0" prefHeight="42.0" prefWidth="99.0" promptText="Cvv2" styleClass="logintext" stylesheets="@styles.css">
                      <opaqueInsets>
                         <Insets />

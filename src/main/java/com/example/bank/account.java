@@ -198,54 +198,62 @@ public class account implements Initializable {
         catch (Exception e){e.printStackTrace();}
         com1.valueProperty().addListener((observable, oldValue, newValue) -> {
             if(com1.getValue().equals("بانک تجارت")){
-                Image image = new Image("../images/tejarat.png");
-                logoShow1.setImage(image);
+                String imagePath = "/images/tejarat.png";
+                Image img = new Image(getClass().getResource(imagePath).toExternalForm());
+                logoShow1.setImage(img);
             } else if (com1.getValue().equals("بانک رفاه")) {
-                Image image = new Image("../images/refah.png");
-                logoShow1.setImage(image);
+                String imagePath = "/images/refah.png";
+                Image img = new Image(getClass().getResource(imagePath).toExternalForm());
+                logoShow1.setImage(img);
             } else if (com1.getValue().equals("بانک ملی")) {
-                Image image = new Image("../images/melli.png");
-                logoShow1.setImage(image);
+                String imagePath = "/images/melli.png";
+                Image img = new Image(getClass().getResource(imagePath).toExternalForm());
+                logoShow1.setImage(img);
             }
             else if (com1.getValue().equals("بانک ملت")) {
-                Image image = new Image("../images/mellat.png");
-                logoShow1.setImage(image);
+                String imagePath = "/images/mellat.png";
+                Image img = new Image(getClass().getResource(imagePath).toExternalForm());
+                logoShow1.setImage(img);
             }
             else if (com1.getValue().equals("بانک شهر")) {
-                Image image = new Image("../images/shahr.png");
-                logoShow1.setImage(image);
-            }
-            else if (com1.getValue().equals("بانک شهر")) {
-                Image image = new Image("../images/shahr.png");
-                logoShow1.setImage(image);
+                String imagePath = "/images/shahr.png";
+                Image img = new Image(getClass().getResource(imagePath).toExternalForm());
+                logoShow1.setImage(img);
             }
             else if (com1.getValue().equals("بانک مسکن")) {
-                Image image = new Image("../images/maskan.png");
-                logoShow1.setImage(image);
+                String imagePath = "/images/maskan.png";
+                Image img = new Image(getClass().getResource(imagePath).toExternalForm());
+                logoShow1.setImage(img);
             }
             else if (com1.getValue().equals("بانک مهر")) {
-                Image image = new Image("../images/maskan.png");
-                logoShow1.setImage(image);
+                String imagePath = "/images/mehr.png";
+                Image img = new Image(getClass().getResource(imagePath).toExternalForm());
+                logoShow1.setImage(img);
             }
             else if (com1.getValue().equals("بانک سامان")) {
-                Image image = new Image("../images/maskan.png");
-                logoShow1.setImage(image);
+                String imagePath = "/images/saman.png";
+                Image img = new Image(getClass().getResource(imagePath).toExternalForm());
+                logoShow1.setImage(img);
             }
             else if (com1.getValue().equals("بانک کشاورزی")) {
-                Image image = new Image("../images/maskan.png");
-                logoShow1.setImage(image);
+                String imagePath = "/images/kesh.png";
+                Image img = new Image(getClass().getResource(imagePath).toExternalForm());
+                logoShow1.setImage(img);
             }
             else if (com1.getValue().equals("بانک اینده")) {
-                Image image = new Image("../images/maskan.png");
-                logoShow1.setImage(image);
+                String imagePath = "/images/Ayande.png";
+                Image img = new Image(getClass().getResource(imagePath).toExternalForm());
+                logoShow1.setImage(img);
             }
             else if (com1.getValue().equals("بانک سپه")) {
-                Image image = new Image("../images/maskan.png");
-                logoShow1.setImage(image);
+                String imagePath = "/images/sepah.png";
+                Image img = new Image(getClass().getResource(imagePath).toExternalForm());
+                logoShow1.setImage(img);
             }
             else if (com1.getValue().equals("بانک دی")) {
-                Image image = new Image("../images/maskan.png");
-                logoShow1.setImage(image);
+                String imagePath = "/images/Day.png";
+                Image img = new Image(getClass().getResource(imagePath).toExternalForm());
+                logoShow1.setImage(img);
             }
         });
         timeline = new Timeline(new KeyFrame(Duration.hours(720), event -> {
@@ -667,7 +675,7 @@ public class account implements Initializable {
     public void toIntroduceMeno(ActionEvent event) {login.openNewWindow("main.fxml","Banking App",event);}
 
     public void toAccounts(ActionEvent event) {
-        login.openNewWindow("hesab.fxml","حساب های شما",event);
+        login.openNewWindow("profile1.fxml","حساب های شما",event);
     }
 
     public void toProfile(ActionEvent event) {

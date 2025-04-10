@@ -63,7 +63,7 @@
                   </ImageView>
                </children>
             </HBox>
-            <VBox layoutX="563.0" layoutY="117.0" prefHeight="626.0" prefWidth="403.0" style="-fx-background-radius: 15;" styleClass="background-gradientt2" stylesheets="@styles.css">
+            <VBox layoutX="581.0" layoutY="140.0" prefHeight="602.0" prefWidth="354.0" style="-fx-background-radius: 15;" styleClass="background-gradientt2" stylesheets="@styles.css">
                <children>
                   <Label nodeOrientation="RIGHT_TO_LEFT" prefHeight="39.0" prefWidth="444.0" text="شماره کارت مبدا" textFill="WHITE">
                      <graphic>

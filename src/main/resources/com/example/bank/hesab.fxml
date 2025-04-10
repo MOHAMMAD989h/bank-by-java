@@ -15,11 +15,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="740.0" prefWidth="1535.0" style="-fx-background-color: #B5B5B3;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bank.Hesab">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="790.0" prefWidth="1535.0" style="-fx-background-color: #c0bea5;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bank.Hesab">
 <children>
     <AnchorPane prefHeight="877.0" prefWidth="1537.0">
         <children>
-            <Pane layoutX="3.0" layoutY="2.0" prefHeight="42.0" prefWidth="1533.0" styleClass="parallelogram">
+            <Pane layoutX="3.0" layoutY="2.0" prefHeight="44.0" prefWidth="1534.0" styleClass="parallelogram">
                 <stylesheets>
                     <URL value="@motavazi.css" />
                     <URL value="@styles.css" />
@@ -32,13 +32,13 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="1.0" layoutY="-1.0" prefHeight="741.0" prefWidth="59.0" styleClass="parallelogram2">
+            <Pane layoutX="1.0" layoutY="-1.0" prefHeight="791.0" prefWidth="59.0" styleClass="parallelogram2">
                 <stylesheets>
                     <URL value="@motavazi.css" />
                     <URL value="@styles.css" />
                 </stylesheets>
             </Pane>
-            <HBox layoutX="60.0" layoutY="111.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="59.0" prefWidth="1476.0" style="-fx-background-color: #4d4d4d;" stylesheets="@styles.css">
+            <HBox layoutX="59.0" layoutY="111.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="59.0" prefWidth="1478.0" style="-fx-background-color: #4d4d4d;" stylesheets="@styles.css">
                <children>
                   <Label fx:id="userlabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="RIGHT_TO_LEFT" prefHeight="36.0" prefWidth="491.0" style="-fx-background-color: #1fa784; -fx-background-radius: 15;" textFill="WHITE">
                      <graphic>
@@ -107,14 +107,21 @@
                   </Label>
                </children>
             </HBox>
-            <HBox alignment="CENTER_RIGHT" layoutX="59.0" layoutY="44.0" prefHeight="67.0" prefWidth="1476.0" style="-fx-background-color: #4d4d4d;" stylesheets="@styles.css">
+            <HBox alignment="CENTER_RIGHT" layoutX="59.0" layoutY="46.0" prefHeight="65.0" prefWidth="1478.0" style="-fx-background-color: #4d4d4d;" stylesheets="@styles.css">
                <children>
-                  <Button mnemonicParsing="false" onAction="#profile" prefHeight="37.0" prefWidth="69.0" text="Button" />
+                  <Button mnemonicParsing="false" onAction="#profile" prefHeight="37.0" prefWidth="69.0" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../images/return-icon-png-21.jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
                   <Button mnemonicParsing="false" onAction="#HomeToLoginpage" prefHeight="30.0" prefWidth="44.0" style="-fx-background-color: transparrent;">
                      <graphic>
                         <ImageView fitHeight="32.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../images/photo_2025-01-03_12-39-34.png" />
+                              <Image url="@../../../images/user_1077063.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -129,11 +136,11 @@
                   </ImageView>
                </children>
             </HBox>
-            <ScrollPane layoutX="61.0" layoutY="168.0" prefHeight="563.0" prefWidth="1469.0">
+            <ScrollPane layoutX="58.0" layoutY="170.0" prefHeight="620.0" prefWidth="1478.0" styleClass="scroll-bar" stylesheets="@styles.css">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="3241.0" prefWidth="1468.0" style="-fx-background-color: #c0bea5;">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="3228.0" prefWidth="1460.0" style="-fx-background-color: #c0bea5;">
                      <children>
-                        <VBox fx:id="bigV" layoutX="47.0" layoutY="48.0" prefHeight="3233.0" prefWidth="1366.0" />
+                        <VBox fx:id="bigV" layoutX="47.0" layoutY="48.0" prefHeight="3234.0" prefWidth="1389.0" />
                      </children>
                   </AnchorPane>
               </content>

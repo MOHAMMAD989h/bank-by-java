@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
@@ -8,49 +9,84 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="790.0" prefWidth="1535.0" style="-fx-background-color: #1b1937;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bank.internet">
-    <top>
-        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-            <children>
-                <TextField fx:id="numberCharge" layoutX="219.0" layoutY="92.0" prefWidth="200.0" promptText="شماره کارت" stylesheets="@style.css">
-               <styleClass>
-                  <String fx:value="text-field1" />
-                  <String fx:value="password" />
-               </styleClass></TextField>
-                <Button layoutX="1282.0" layoutY="14.0" mnemonicParsing="false" onAction="#backtoHomeFromCharge" style="-fx-background-color: #1b1937;">
-               <graphic>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../images/Aureous%20Bank%20Logo.png" />
-                     </image>
-                  </ImageView>
-               </graphic></Button>
-                <Label fx:id="moneyCharge" layoutX="186.0" layoutY="74.0" />
-            <TextField fx:id="numberphone" layoutX="219.0" layoutY="150.0" prefWidth="200.0" promptText="شماره همراه" stylesheets="@style.css">
-               <styleClass>
-                  <String fx:value="password" />
-                  <String fx:value="text-field1" />
-               </styleClass></TextField>
-            </children>
-        </AnchorPane>
-    </top>
-    <left>
-        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
-    </left>
-    <right>
-        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
-    </right>
-    <bottom>
-        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
-    </bottom>
-    <center>
-        <ScrollPane prefHeight="200.0" prefWidth="200.0" stylesheets="@styles.css" BorderPane.alignment="CENTER">
-            <content>
-                <VBox fx:id="vboxInternet" prefHeight="390.0" prefWidth="1133.0" />
-            </content>
-        </ScrollPane>
-    </center>
-</BorderPane>
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="790.0" prefWidth="1535.0" style="-fx-background-color: #B5B5B3;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bank.internet">
+<children>
+    <AnchorPane prefHeight="46.0" prefWidth="1312.0">
+        <children>
+            <Pane layoutX="3.0" layoutY="2.0" prefHeight="50.0" prefWidth="1534.0" styleClass="parallelogram">
+                <stylesheets>
+                    <URL value="@motavazi.css" />
+                    <URL value="@styles.css" />
+                </stylesheets>
+            </Pane>
+            <Pane layoutX="1.0" layoutY="-1.0" prefHeight="790.0" prefWidth="59.0" styleClass="parallelogram2">
+                <stylesheets>
+                    <URL value="@motavazi.css" />
+                    <URL value="@styles.css" />
+                </stylesheets>
+            </Pane>
+        </children>
+    </AnchorPane>
+    <AnchorPane prefHeight="680.0" prefWidth="1535.0">
+        <children>
+            <HBox alignment="CENTER_RIGHT" layoutX="59.0" layoutY="47.0" prefHeight="56.0" prefWidth="1477.0" style="-fx-background-color: #4d4d4d;" stylesheets="@styles.css">
+                <children>
+                    <Button mnemonicParsing="false" onAction="#backtoHomeFromCharge" style="-fx-background-color: transparent;">
+                        <graphic>
+                            <ImageView fitHeight="55.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@../../../images/return-icon-png-21.jpg" />
+                                </image>
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                    <Pane prefHeight="56.0" prefWidth="14.0" />
+                    <Button fx:id="profile" mnemonicParsing="false" prefHeight="37.0" prefWidth="62.0" text="Button" />
+                    <HBox alignment="CENTER_LEFT" prefHeight="122.0" prefWidth="42.0" spacing="10" />
+                    <Label fx:id="timeLabel" prefHeight="20.0" prefWidth="324.0" styleClass="time-label" text="زمان" />
+                    <Region HBox.hgrow="ALWAYS" />
+                    <Button layoutX="681.0" layoutY="21.0" prefHeight="33.0" prefWidth="158.0" styleClass="menu-button" text="پشتیبانی با ربات" />
+                    <Button prefHeight="33.0" prefWidth="158.0" styleClass="menu-button" text="ورود / احراز هویت" />
+                    <Button prefHeight="30.0" prefWidth="81.0" styleClass="menu-button" text="وام" textFill="GOLD" />
+                    <Button prefHeight="30.0" prefWidth="152.0" styleClass="menu-button" text="سوالات متداول" />
+                    <ImageView fitHeight="59.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="@../../../images/Aureous%20Bank%20Logo2.png" />
+                        </image>
+                    </ImageView>
+                </children>
+            </HBox>
+            <VBox layoutX="631.0" layoutY="160.0" prefHeight="102.0" prefWidth="286.0" style="-fx-background-radius: 15;" styleClass="background-gradientt2" stylesheets="@styles.css">
+               <children>
+                  <TextField fx:id="numberCharge" prefWidth="200.0" promptText="شماره کارت" styleClass="textfield3" stylesheets="@styles.css">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="numberphone" prefWidth="200.0" promptText="شماره همراه" styleClass="textfield3">
+                     <stylesheets>
+                        <URL value="@style.css" />
+                        <URL value="@styles.css" />
+                     </stylesheets>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+               </children>
+            </VBox>
+            <Label fx:id="moneyCharge" layoutX="677.0" layoutY="122.0" prefHeight="28.0" prefWidth="189.0" />
+            <ScrollPane layoutX="73.0" layoutY="282.0" prefHeight="499.0" prefWidth="1462.0" styleClass="scroll-bar" stylesheets="@styles.css">
+               <content>
+                  <VBox fx:id="vboxInternet" prefHeight="482.0" prefWidth="1446.0" style="-fx-background-radius: 10;" />
+               </content>
+            </ScrollPane>
+        </children>
+    </AnchorPane>
+</children>
+</StackPane>
