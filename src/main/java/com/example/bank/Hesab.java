@@ -672,8 +672,8 @@ public class Hesab {
 
         Label labelBalance = new Label("موجودی:");
         labelBalance.setAlignment(Pos.CENTER_RIGHT);
-        labelBalance.setLayoutX(28.0);
-        labelBalance.setLayoutY(168.0);
+        labelBalance.setLayoutX(78.00);
+        labelBalance.setLayoutY(158.0);
         labelBalance.setPrefHeight(28.0);
         labelBalance.setPrefWidth(95.0);
 
