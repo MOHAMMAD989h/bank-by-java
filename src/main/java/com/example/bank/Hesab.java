@@ -1,5 +1,6 @@
 package com.example.bank;
 import javafx.animation.PauseTransition;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -130,15 +131,39 @@ public class Hesab {
                 String bankname = result.getString("bankname");
                 String money = result.getString("money");
                 products.add(new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone));
-                if(bankname.trim().equals("Aureous Bank")){
+                if(bankname.trim().equals("Aureous Bank")){String HboxName="#hbox_Aur";
                     if(bankAureous==0){productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
-                        bigV.setSpacing(10.0);
-                        bigV.getChildren().add(createHBox("Aur",product1));
+                        bigV.getChildren().add(createHBox("Aur",product1,true));
+                    }else if((bankAureous+1)%5==0){int shoaresatr=(bankAureous+1)/5;
+                        ObservableList<Node> children = bigV.getChildren();
+
+                        int insertIndex = 0;
+                        for (int i = 0; i < children.size(); i++) {
+                            String HboxName2=HboxName;
+                            if(shoaresatr>1){HboxName2=HboxName + String.valueOf(shoaresatr-1);}
+                            Node current = children.get(i);
+                            String HboxName3="#"+current.getId();
+                            System.out.println(HboxName3);
+                            System.out.println(HboxName);
+                            System.out.println(HboxName2);
+                            if (current.getId() != null && HboxName3.equals(HboxName2)) {
+                                insertIndex = i + 1;
+                                System.out.println("وارد سد");
+                                break; // خروج از حلقه
+                            }
+                        }
+                        productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                        String aur="Aur"+String.valueOf(shoaresatr);
+                        bigV.getChildren().add(insertIndex,createHBox(aur,product1,false));
+                        HboxName=HboxName+String.valueOf(shoaresatr);
+                    }else if(bankAureous>4){int test=bankAureous/5;
+                        HboxName=HboxName+String.valueOf(test);
                     }
                     HBox foundHBox = (HBox) bigV.lookup("#hbox_Aur");
+                    HBox foundHBox1 = (HBox) bigV.lookup(HboxName);
                     if (foundHBox != null) {productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
                         bankAureous++;
-                        foundHBox.getChildren().add(createVBoxWithPane(product1));
+                        foundHBox1.getChildren().add(createVBoxWithPane(product1));
                         Label foundlabel = (Label) foundHBox.lookup("#hbox_Aurlab");
                         foundlabel.setText("تعداد حساب ها:"+bankAureous);
                         // اضافه کردن نود جدید
@@ -146,14 +171,36 @@ public class Hesab {
                         System.out.println("HBox پیدا نشد!");
                     }
                 }
-                if(bankname.trim().equals("بانک مسکن")){
+                if(bankname.trim().equals("بانک مسکن")){String HboxName="#hbox_Mas";
                     if(bankMaskan==0){productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
-                        bigV.getChildren().add(createHBox("Mas",product1));
+                        bigV.getChildren().add(createHBox("Mas",product1,true));
+                    }else if((bankMaskan+1)%5==0){int shoaresatr=(bankMaskan+1)/5;
+                        ObservableList<Node> children = bigV.getChildren();
+
+                        int insertIndex = 0;
+                        for (int i = 0; i < children.size(); i++) {
+                            String HboxName2=HboxName;
+                            if(shoaresatr>1){HboxName2=HboxName + String.valueOf(shoaresatr-1);}
+                            Node current = children.get(i);
+                            String HboxName3="#"+current.getId();
+                            if (current.getId() != null && HboxName3.equals(HboxName2)) {
+                                insertIndex = i + 1;
+                                System.out.println("وارد سد");
+                                break; // خروج از حلقه
+                            }
+                        }
+                        productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                        String aur="Mas"+String.valueOf(shoaresatr);
+                        bigV.getChildren().add(insertIndex,createHBox(aur,product1,false));
+                        HboxName=HboxName+String.valueOf(shoaresatr);
+                    }else if(bankAureous>4){int test=bankAureous/5;
+                        HboxName=HboxName+String.valueOf(test);
                     }
                     HBox foundHBox = (HBox) bigV.lookup("#hbox_Mas");
+                    HBox foundHBox1 = (HBox) bigV.lookup(HboxName);
                     if (foundHBox != null) {productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
                         bankMaskan++;
-                        foundHBox.getChildren().add(createVBoxWithPane(product1));
+                        foundHBox1.getChildren().add(createVBoxWithPane(product1));
                         Label foundlabel = (Label) foundHBox.lookup("#hbox_Maslab");
                         foundlabel.setText("تعداد حساب ها:"+bankMaskan);
                         // اضافه کردن نود جدید
@@ -161,29 +208,36 @@ public class Hesab {
                         System.out.println("HBox پیدا نشد!");
                     }
                 }
-                if(bankname.trim().equals("بانک آینده")){
-                    if(bankAyandeh==0){productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
-                        bigV.getChildren().add(createHBox("Aya",product1));
-                    }
-                    HBox foundHBox = (HBox) bigV.lookup("#hbox_Aya");
-                    if (foundHBox != null) {productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
-                        bankAyandeh++;
-                        foundHBox.getChildren().add(createVBoxWithPane(product1));
-                        Label foundlabel = (Label) foundHBox.lookup("#hbox_Ayalab");
-                        foundlabel.setText("تعداد حساب ها:"+bankAyandeh);
-                        // اضافه کردن نود جدید
-                    } else {
-                        System.out.println("HBox پیدا نشد!");
-                    }
-                }
-                if(bankname.trim().equals("بانک دی")){
+                if(bankname.trim().equals("بانک دی")){String HboxName="#hbox_Dey";
                     if(bankDey==0){productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
-                        bigV.getChildren().add(createHBox("Dey",product1));
+                        bigV.getChildren().add(createHBox("Dey",product1,true));
+                    }else if((bankDey+1)%5==0){int shoaresatr=(bankDey+1)/5;
+                        ObservableList<Node> children = bigV.getChildren();
+
+                        int insertIndex = 0;
+                        for (int i = 0; i < children.size(); i++) {
+                            String HboxName2=HboxName;
+                            if(shoaresatr>1){HboxName2=HboxName + String.valueOf(shoaresatr-1);}
+                            Node current = children.get(i);
+                            String HboxName3="#"+current.getId();
+                            if (current.getId() != null && HboxName3.equals(HboxName2)) {
+                                insertIndex = i + 1;
+                                System.out.println("وارد سد");
+                                break; // خروج از حلقه
+                            }
+                        }
+                        productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                        String aur="Dey"+String.valueOf(shoaresatr);
+                        bigV.getChildren().add(insertIndex,createHBox(aur,product1,false));
+                        HboxName=HboxName+String.valueOf(shoaresatr);
+                    }else if(bankDey>4){int test=bankDey/5;
+                        HboxName=HboxName+String.valueOf(test);
                     }
                     HBox foundHBox = (HBox) bigV.lookup("#hbox_Dey");
+                    HBox foundHBox1 = (HBox) bigV.lookup(HboxName);
                     if (foundHBox != null) {productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
                         bankDey++;
-                        foundHBox.getChildren().add(createVBoxWithPane(product1));
+                        foundHBox1.getChildren().add(createVBoxWithPane(product1));
                         Label foundlabel = (Label) foundHBox.lookup("#hbox_Deylab");
                         foundlabel.setText("تعداد حساب ها:"+bankDey);
                         // اضافه کردن نود جدید
@@ -191,14 +245,36 @@ public class Hesab {
                         System.out.println("HBox پیدا نشد!");
                     }
                 }
-                if(bankname.trim().equals("بانک کشاورزی")){
+                if(bankname.trim().equals("بانک کشاورزی")){String HboxName="#hbox_Kesh";
                     if(bankKesh==0){productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
-                        bigV.getChildren().add(createHBox("Kesh",product1));
+                        bigV.getChildren().add(createHBox("Kesh",product1,true));
+                    }else if((bankKesh+1)%5==0){int shoaresatr=(bankKesh+1)/5;
+                        ObservableList<Node> children = bigV.getChildren();
+
+                        int insertIndex = 0;
+                        for (int i = 0; i < children.size(); i++) {
+                            String HboxName2=HboxName;
+                            if(shoaresatr>1){HboxName2=HboxName + String.valueOf(shoaresatr-1);}
+                            Node current = children.get(i);
+                            String HboxName3="#"+current.getId();
+                            if (current.getId() != null && HboxName3.equals(HboxName2)) {
+                                insertIndex = i + 1;
+                                System.out.println("وارد سد");
+                                break; // خروج از حلقه
+                            }
+                        }
+                        productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                        String aur="Kesh"+String.valueOf(shoaresatr);
+                        bigV.getChildren().add(insertIndex,createHBox(aur,product1,false));
+                        HboxName=HboxName+String.valueOf(shoaresatr);
+                    }else if(bankKesh>4){int test=bankKesh/5;
+                        HboxName=HboxName+String.valueOf(test);
                     }
                     HBox foundHBox = (HBox) bigV.lookup("#hbox_Kesh");
+                    HBox foundHBox1 = (HBox) bigV.lookup(HboxName);
                     if (foundHBox != null) {productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
                         bankKesh++;
-                        foundHBox.getChildren().add(createVBoxWithPane(product1));
+                        foundHBox1.getChildren().add(createVBoxWithPane(product1));
                         Label foundlabel = (Label) foundHBox.lookup("#hbox_Keshlab");
                         foundlabel.setText("تعداد حساب ها:"+bankKesh);
                         // اضافه کردن نود جدید
@@ -206,14 +282,36 @@ public class Hesab {
                         System.out.println("HBox پیدا نشد!");
                     }
                 }
-                if(bankname.trim().equals("بانک رفاه")){
+                if(bankname.trim().equals("بانک رفاه")){String HboxName="#hbox_Ref";
                     if(bankRefah==0){productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
-                        bigV.getChildren().add(createHBox("Ref",product1));
+                        bigV.getChildren().add(createHBox("Ref",product1,true));
+                    }else if((bankRefah+1)%5==0){int shoaresatr=(bankRefah+1)/5;
+                        ObservableList<Node> children = bigV.getChildren();
+
+                        int insertIndex = 0;
+                        for (int i = 0; i < children.size(); i++) {
+                            String HboxName2=HboxName;
+                            if(shoaresatr>1){HboxName2=HboxName + String.valueOf(shoaresatr-1);}
+                            Node current = children.get(i);
+                            String HboxName3="#"+current.getId();
+                            if (current.getId() != null && HboxName3.equals(HboxName2)) {
+                                insertIndex = i + 1;
+                                System.out.println("وارد سد");
+                                break; // خروج از حلقه
+                            }
+                        }
+                        productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                        String aur="Ref"+String.valueOf(shoaresatr);
+                        bigV.getChildren().add(insertIndex,createHBox(aur,product1,false));
+                        HboxName=HboxName+String.valueOf(shoaresatr);
+                    }else if(bankRefah>4){int test=bankRefah/5;
+                        HboxName=HboxName+String.valueOf(test);
                     }
                     HBox foundHBox = (HBox) bigV.lookup("#hbox_Ref");
+                    HBox foundHBox1 = (HBox) bigV.lookup(HboxName);
                     if (foundHBox != null) {productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
                         bankRefah++;
-                        foundHBox.getChildren().add(createVBoxWithPane(product1));
+                        foundHBox1.getChildren().add(createVBoxWithPane(product1));
                         Label foundlabel = (Label) foundHBox.lookup("#hbox_Reflab");
                         foundlabel.setText("تعداد حساب ها:"+bankRefah);
                         // اضافه کردن نود جدید
@@ -221,14 +319,39 @@ public class Hesab {
                         System.out.println("HBox پیدا نشد!");
                     }
                 }
-                if(bankname.trim().equals("بانک ملی")){
+                if(bankname.trim().equals("بانک ملی")){String HboxName="#hbox_Mli";
                     if(bankMelli==0){productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
-                        bigV.getChildren().add(createHBox("Mli",product1));
+                        bigV.getChildren().add(createHBox("Mli",product1,true));
+                    }else if((bankMelli+1)%5==0){int shoaresatr=(bankMelli+1)/5;
+                        ObservableList<Node> children = bigV.getChildren();
+
+                        int insertIndex = 0;
+                        for (int i = 0; i < children.size(); i++) {
+                            String HboxName2=HboxName;
+                            if(shoaresatr>1){HboxName2=HboxName + String.valueOf(shoaresatr-1);}
+                            Node current = children.get(i);
+                            String HboxName3="#"+current.getId();
+                            System.out.println(HboxName3);
+                            System.out.println(HboxName);
+                            System.out.println(HboxName2);
+                            if (current.getId() != null && HboxName3.equals(HboxName2)) {
+                                insertIndex = i + 1;
+                                System.out.println("وارد سد");
+                                break; // خروج از حلقه
+                            }
+                        }
+                        productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                        String aur="Mli"+String.valueOf(shoaresatr);
+                        bigV.getChildren().add(insertIndex,createHBox(aur,product1,false));
+                        HboxName=HboxName+String.valueOf(shoaresatr);
+                    }else if(bankMelli>4){int test=bankMelli/5;
+                        HboxName=HboxName+String.valueOf(test);
                     }
                     HBox foundHBox = (HBox) bigV.lookup("#hbox_Mli");
+                    HBox foundHBox1 = (HBox) bigV.lookup(HboxName);
                     if (foundHBox != null) {productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
                         bankMelli++;
-                        foundHBox.getChildren().add(createVBoxWithPane(product1));
+                        foundHBox1.getChildren().add(createVBoxWithPane(product1));
                         Label foundlabel = (Label) foundHBox.lookup("#hbox_Mlilab");
                         foundlabel.setText("تعداد حساب ها:"+bankMelli);
                         // اضافه کردن نود جدید
@@ -236,14 +359,36 @@ public class Hesab {
                         System.out.println("HBox پیدا نشد!");
                     }
                 }
-                if(bankname.trim().equals("بانک ملت")){
+                if(bankname.trim().equals("بانک ملت")){String HboxName="#hbox_Mlat";
                     if(bankMellat==0){productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
-                        bigV.getChildren().add(createHBox("Mlat",product1));
+                        bigV.getChildren().add(createHBox("Mlat",product1,true));
+                    }else if((bankMellat+1)%5==0){int shoaresatr=(bankMellat+1)/5;
+                        ObservableList<Node> children = bigV.getChildren();
+
+                        int insertIndex = 0;
+                        for (int i = 0; i < children.size(); i++) {
+                            String HboxName2=HboxName;
+                            if(shoaresatr>1){HboxName2=HboxName + String.valueOf(shoaresatr-1);}
+                            Node current = children.get(i);
+                            String HboxName3="#"+current.getId();
+                            if (current.getId() != null && HboxName3.equals(HboxName2)) {
+                                insertIndex = i + 1;
+                                System.out.println("وارد سد");
+                                break; // خروج از حلقه
+                            }
+                        }
+                        productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                        String aur="Mlat"+String.valueOf(shoaresatr);
+                        bigV.getChildren().add(insertIndex,createHBox(aur,product1,false));
+                        HboxName=HboxName+String.valueOf(shoaresatr);
+                    }else if(bankMellat>4){int test=bankMellat/5;
+                        HboxName=HboxName+String.valueOf(test);
                     }
                     HBox foundHBox = (HBox) bigV.lookup("#hbox_Mlat");
+                    HBox foundHBox1 = (HBox) bigV.lookup(HboxName);
                     if (foundHBox != null) {productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
-                        bankMellat++;
-                        foundHBox.getChildren().add(createVBoxWithPane(product1));
+                        bankAureous++;
+                        foundHBox1.getChildren().add(createVBoxWithPane(product1));
                         Label foundlabel = (Label) foundHBox.lookup("#hbox_Mlatlab");
                         foundlabel.setText("تعداد حساب ها:"+bankMellat);
                         // اضافه کردن نود جدید
@@ -251,14 +396,36 @@ public class Hesab {
                         System.out.println("HBox پیدا نشد!");
                     }
                 }
-                if(bankname.trim().equals("بانک سامان")){
+                if(bankname.trim().equals("بانک سامان")){String HboxName="#hbox_Sam";
                     if(bankSaman==0){productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
-                        bigV.getChildren().add(createHBox("Sam",product1));
+                        bigV.getChildren().add(createHBox("Sam",product1,true));
+                    }else if((bankSaman+1)%5==0){int shoaresatr=(bankSaman+1)/5;
+                        ObservableList<Node> children = bigV.getChildren();
+
+                        int insertIndex = 0;
+                        for (int i = 0; i < children.size(); i++) {
+                            String HboxName2=HboxName;
+                            if(shoaresatr>1){HboxName2=HboxName + String.valueOf(shoaresatr-1);}
+                            Node current = children.get(i);
+                            String HboxName3="#"+current.getId();
+                            if (current.getId() != null && HboxName3.equals(HboxName2)) {
+                                insertIndex = i + 1;
+                                System.out.println("وارد سد");
+                                break; // خروج از حلقه
+                            }
+                        }
+                        productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                        String aur="Sam"+String.valueOf(shoaresatr);
+                        bigV.getChildren().add(insertIndex,createHBox(aur,product1,false));
+                        HboxName=HboxName+String.valueOf(shoaresatr);
+                    }else if(bankSaman>4){int test=bankSaman/5;
+                        HboxName=HboxName+String.valueOf(test);
                     }
                     HBox foundHBox = (HBox) bigV.lookup("#hbox_Sam");
+                    HBox foundHBox1 = (HBox) bigV.lookup(HboxName);
                     if (foundHBox != null) {productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
                         bankSaman++;
-                        foundHBox.getChildren().add(createVBoxWithPane(product1));
+                        foundHBox1.getChildren().add(createVBoxWithPane(product1));
                         Label foundlabel = (Label) foundHBox.lookup("#hbox_Samlab");
                         foundlabel.setText("تعداد حساب ها:"+bankSaman);
                         // اضافه کردن نود جدید
@@ -266,14 +433,36 @@ public class Hesab {
                         System.out.println("HBox پیدا نشد!");
                     }
                 }
-                if(bankname.trim().equals("بانک سپه")){
+                if(bankname.trim().equals("بانک سپه")){String HboxName="#hbox_Sep";
                     if(bankSepah==0){productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
-                        bigV.getChildren().add(createHBox("Sep",product1));
+                        bigV.getChildren().add(createHBox("Sep",product1,true));
+                    }else if((bankSepah+1)%5==0){int shoaresatr=(bankSepah+1)/5;
+                        ObservableList<Node> children = bigV.getChildren();
+
+                        int insertIndex = 0;
+                        for (int i = 0; i < children.size(); i++) {
+                            String HboxName2=HboxName;
+                            if(shoaresatr>1){HboxName2=HboxName + String.valueOf(shoaresatr-1);}
+                            Node current = children.get(i);
+                            String HboxName3="#"+current.getId();
+                            if (current.getId() != null && HboxName3.equals(HboxName2)) {
+                                insertIndex = i + 1;
+                                System.out.println("وارد سد");
+                                break; // خروج از حلقه
+                            }
+                        }
+                        productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                        String aur="Sep"+String.valueOf(shoaresatr);
+                        bigV.getChildren().add(insertIndex,createHBox(aur,product1,false));
+                        HboxName=HboxName+String.valueOf(shoaresatr);
+                    }else if(bankSepah>4){int test=bankSepah/5;
+                        HboxName=HboxName+String.valueOf(test);
                     }
                     HBox foundHBox = (HBox) bigV.lookup("#hbox_Sep");
+                    HBox foundHBox1 = (HBox) bigV.lookup(HboxName);
                     if (foundHBox != null) {productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
                         bankSepah++;
-                        foundHBox.getChildren().add(createVBoxWithPane(product1));
+                        foundHBox1.getChildren().add(createVBoxWithPane(product1));
                         Label foundlabel = (Label) foundHBox.lookup("#hbox_Seplab");
                         foundlabel.setText("تعداد حساب ها:"+bankSepah);
                         // اضافه کردن نود جدید
@@ -281,14 +470,36 @@ public class Hesab {
                         System.out.println("HBox پیدا نشد!");
                     }
                 }
-                if(bankname.trim().equals("بانک تجارت")){
+                if(bankname.trim().equals("بانک تجارت")){String HboxName="#hbox_Tej";
                     if(bankTejarat==0){productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
-                        bigV.getChildren().add(createHBox("Tej",product1));
+                        bigV.getChildren().add(createHBox("Tej",product1,true));
+                    }else if((bankTejarat+1)%5==0){int shoaresatr=(bankTejarat+1)/5;
+                        ObservableList<Node> children = bigV.getChildren();
+
+                        int insertIndex = 0;
+                        for (int i = 0; i < children.size(); i++) {
+                            String HboxName2=HboxName;
+                            if(shoaresatr>1){HboxName2=HboxName + String.valueOf(shoaresatr-1);}
+                            Node current = children.get(i);
+                            String HboxName3="#"+current.getId();
+                            if (current.getId() != null && HboxName3.equals(HboxName2)) {
+                                insertIndex = i + 1;
+                                System.out.println("وارد سد");
+                                break; // خروج از حلقه
+                            }
+                        }
+                        productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                        String aur="Tej"+String.valueOf(shoaresatr);
+                        bigV.getChildren().add(insertIndex,createHBox(aur,product1,false));
+                        HboxName=HboxName+String.valueOf(shoaresatr);
+                    }else if(bankTejarat>4){int test=bankTejarat/5;
+                        HboxName=HboxName+String.valueOf(test);
                     }
                     HBox foundHBox = (HBox) bigV.lookup("#hbox_Tej");
+                    HBox foundHBox1 = (HBox) bigV.lookup(HboxName);
                     if (foundHBox != null) {productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
                         bankTejarat++;
-                        foundHBox.getChildren().add(createVBoxWithPane(product1));
+                        foundHBox1.getChildren().add(createVBoxWithPane(product1));
                         Label foundlabel = (Label) foundHBox.lookup("#hbox_Tejlab");
                         foundlabel.setText("تعداد حساب ها:"+bankTejarat);
                         // اضافه کردن نود جدید
@@ -296,14 +507,36 @@ public class Hesab {
                         System.out.println("HBox پیدا نشد!");
                     }
                 }
-                if(bankname.trim().equals("بانک مهر")){
+                if(bankname.trim().equals("بانک مهر")){String HboxName="#hbox_Meh";
                     if(bankMehr==0){productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
-                        bigV.getChildren().add(createHBox("Meh",product1));
+                        bigV.getChildren().add(createHBox("Meh",product1,true));
+                    }else if((bankMehr+1)%5==0){int shoaresatr=(bankMehr+1)/5;
+                        ObservableList<Node> children = bigV.getChildren();
+
+                        int insertIndex = 0;
+                        for (int i = 0; i < children.size(); i++) {
+                            String HboxName2=HboxName;
+                            if(shoaresatr>1){HboxName2=HboxName + String.valueOf(shoaresatr-1);}
+                            Node current = children.get(i);
+                            String HboxName3="#"+current.getId();
+                            if (current.getId() != null && HboxName3.equals(HboxName2)) {
+                                insertIndex = i + 1;
+                                System.out.println("وارد سد");
+                                break; // خروج از حلقه
+                            }
+                        }
+                        productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                        String aur="Meh"+String.valueOf(shoaresatr);
+                        bigV.getChildren().add(insertIndex,createHBox(aur,product1,false));
+                        HboxName=HboxName+String.valueOf(shoaresatr);
+                    }else if(bankMehr>4){int test=bankMehr/5;
+                        HboxName=HboxName+String.valueOf(test);
                     }
                     HBox foundHBox = (HBox) bigV.lookup("#hbox_Meh");
+                    HBox foundHBox1 = (HBox) bigV.lookup(HboxName);
                     if (foundHBox != null) {productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
                         bankMehr++;
-                        foundHBox.getChildren().add(createVBoxWithPane(product1));
+                        foundHBox1.getChildren().add(createVBoxWithPane(product1));
                         Label foundlabel = (Label) foundHBox.lookup("#hbox_Mehlab");
                         foundlabel.setText("تعداد حساب ها:"+bankMehr);
                         // اضافه کردن نود جدید
@@ -311,14 +544,36 @@ public class Hesab {
                         System.out.println("HBox پیدا نشد!");
                     }
                 }
-                if(bankname.trim().equals("بانک شهر")){
+                if(bankname.trim().equals("بانک شهر")){String HboxName="#hbox_Shr";
                     if(bankShahr==0){productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
-                        bigV.getChildren().add(createHBox("Shr",product1));
+                        bigV.getChildren().add(createHBox("Shr",product1,true));
+                    }else if((bankShahr+1)%5==0){int shoaresatr=(bankShahr+1)/5;
+                        ObservableList<Node> children = bigV.getChildren();
+
+                        int insertIndex = 0;
+                        for (int i = 0; i < children.size(); i++) {
+                            String HboxName2=HboxName;
+                            if(shoaresatr>1){HboxName2=HboxName + String.valueOf(shoaresatr-1);}
+                            Node current = children.get(i);
+                            String HboxName3="#"+current.getId();
+                            if (current.getId() != null && HboxName3.equals(HboxName2)) {
+                                insertIndex = i + 1;
+                                System.out.println("وارد سد");
+                                break; // خروج از حلقه
+                            }
+                        }
+                        productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                        String aur="Shr"+String.valueOf(shoaresatr);
+                        bigV.getChildren().add(insertIndex,createHBox(aur,product1,false));
+                        HboxName=HboxName+String.valueOf(shoaresatr);
+                    }else if(bankShahr>4){int test=bankShahr/5;
+                        HboxName=HboxName+String.valueOf(test);
                     }
                     HBox foundHBox = (HBox) bigV.lookup("#hbox_Shr");
+                    HBox foundHBox1 = (HBox) bigV.lookup(HboxName);
                     if (foundHBox != null) {productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
                         bankShahr++;
-                        foundHBox.getChildren().add(createVBoxWithPane(product1));
+                        foundHBox1.getChildren().add(createVBoxWithPane(product1));
                         Label foundlabel = (Label) foundHBox.lookup("#hbox_Shrlab");
                         foundlabel.setText("تعداد حساب ها:"+bankShahr);
                         // اضافه کردن نود جدید
@@ -341,7 +596,7 @@ public class Hesab {
     public void profile(ActionEvent event) {
         login.openNewWindow("profile1.fxml","login",event);
     }
-    public HBox createHBox(String HId,productVam product) {
+    public HBox createHBox(String HId,productVam product,boolean test) {
         HBox hBox = new HBox();
         hBox.setPrefHeight(260.0);
         hBox.setPrefWidth(1382.0);
@@ -349,36 +604,36 @@ public class Hesab {
         hBox.setId(uniqueId);
         hBox.setStyle("-fx-background-color: #f7dc84; -fx-border-color: #fff; -fx-padding: 15px; -fx-background-radius: 15px; -fx-border-radius: 15px;");
         hBox.setVisible(true);
-        Pane pane =new Pane();
-        pane.setPrefHeight(10.0);
-        pane.setPrefWidth(1382.0);
-        VBox vBox = new VBox();
-        vBox.setPrefHeight(251.0);
-        vBox.setPrefWidth(125.0);
-        vBox.setStyle("-fx-background-color: #1E8E73; -fx-border-color: #fff; -fx-padding: 15px; -fx-background-radius: 15px; -fx-border-radius: 15px; ");
+        if (test) {Pane pane =new Pane();
+            pane.setPrefHeight(10.0);
+            pane.setPrefWidth(1382.0);
+            VBox vBox = new VBox();
+            vBox.setPrefHeight(251.0);
+            vBox.setPrefWidth(125.0);
+            vBox.setStyle("-fx-background-color: #1E8E73; -fx-border-color: #fff; -fx-padding: 15px; -fx-background-radius: 15px; -fx-border-radius: 15px; ");
 
-        // ایجاد Label اول
-        Label label1 = new Label(product.getPrice());
-        label1.setPrefHeight(37.0);
-        label1.setPrefWidth(128.0);
+            // ایجاد Label اول
+            Label label1 = new Label(product.getPrice());
+            label1.setPrefHeight(37.0);
+            label1.setPrefWidth(128.0);
 
-        // ایجاد ImageView
-        ImageView imageView = new ImageView();
-        imageView.setFitHeight(98.0);
-        imageView.setFitWidth(124.0);
-        imageView.setPickOnBounds(true);
-        imageView.setPreserveRatio(true);
+            // ایجاد ImageView
+            ImageView imageView = new ImageView();
+            imageView.setFitHeight(98.0);
+            imageView.setFitWidth(124.0);
+            imageView.setPickOnBounds(true);
+            imageView.setPreserveRatio(true);
 
-        // ایجاد Label دوم
-        Label label2 = new Label();
-        label2.setPrefHeight(48.0);
-        label2.setPrefWidth(133.0);
-        label2.setId(uniqueId+"lab");
+            // ایجاد Label دوم
+            Label label2 = new Label();
+            label2.setPrefHeight(48.0);
+            label2.setPrefWidth(133.0);
+            label2.setId(uniqueId+"lab");
 
-        // افزودن اجزا به VBox
-        vBox.getChildren().addAll(label1, imageView, label2,pane);
-        hBox.getChildren().add(vBox);
-        // در صورتی که بخواهید VBox را در GridPane نمایش دهید
+            // افزودن اجزا به VBox
+            vBox.getChildren().addAll(label1, imageView, label2,pane);
+            hBox.getChildren().add(vBox);
+        }
         return hBox;
     }
 
