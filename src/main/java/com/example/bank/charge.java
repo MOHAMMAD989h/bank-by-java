@@ -82,8 +82,8 @@ public class charge {
 
         pane = new AnchorPane();
         pane.setPrefHeight(100);
-        pane.setStyle("-fx-background-color: #f0f0f0; -fx-border-color: #ccc; -fx-padding: 10px;");
-        vboxCharge.setStyle("-fx-max-height: Infinity;-fx-pref-height: USE_COMPUTED_SIZE;");
+        pane.setStyle("-fx-background-color: #f7dc84; -fx-background-radius: 10px;-fx-border-radius:10px;-fx-padding: 15px; -fx-margin: 15px;-fx-border-color: #fff;");
+        vboxCharge.setStyle("-fx-max-height: Infinity;-fx-pref-height: USE_COMPUTED_SIZE;-fx-padding: 15px; -fx-margin: 15px");
 
         //price
         Label typeLbl = new Label( productcharge.getType());
@@ -99,11 +99,11 @@ public class charge {
         Button Chargebtn = new Button("خرید");
         Chargebtn.setLayoutX(900);
         Chargebtn.setLayoutY(20);
-        Chargebtn.setStyle("    -fx-background-color: linear-gradient(to bottom right ,#FFD700, #d3005f );\n" +
-                "    -fx-background-radius: 5px;\n" +
+        Chargebtn.setStyle("    -fx-background-color: linear-gradient(to bottom right, #1E8E73,  #1fa784);\n" +
+                "    -fx-background-radius: 10px;\n" +
                 "    -fx-cursor: hand;\n" +
                 "    -fx-text-fill: #fff;\n" +
-                "    -fx-font-size: 14px;");
+                "    -fx-font-size: 14px;"+"-fx-font-weight: bold;"+"-fx-font-family: 'B Nazanin';");
 
         pane.getChildren().addAll(typeLbl,PriceLbl,Chargebtn);
 
