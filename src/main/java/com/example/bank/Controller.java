@@ -228,6 +228,18 @@ public class Controller {
     @FXML
     private Button sendButton;
 
+    @FXML
+    private TextArea textarea;
+
+    @FXML
+    private TextField email;
+
+    @FXML
+    private Button emailbtn;
+
+    @FXML
+    private TextField name;
+
     private MediaPlayer mediaPlayer;
 
 
@@ -241,6 +253,10 @@ public class Controller {
 
     @FXML
     public void initialize() {
+
+        textarea.setWrapText(true);  // اجازه به خط به خط شدن متن
+        textarea.setPrefRowCount(5);
+        textarea.setPrefColumnCount(38);
 
         sendButton.setOnAction(event -> sendMessage());
         chatArea.setEditable(false);
@@ -303,6 +319,7 @@ public class Controller {
         obj.applyHoverEffect(soal4);
         obj.applyHoverEffect(soal5);
         obj.applyHoverEffect(soal6);
+        obj.applyHoverEffect(emailbtn);
         obj.applyHoverEffect(dtor);
         applyHoverEffect(instabtn);
         applyHoverEffect(phonebtn);
@@ -918,5 +935,14 @@ public class Controller {
         circle.setVisible(true);
         btnm.setVisible(true);
         chat.setVisible(false);
+    }
+    @FXML
+    private void emailtobank (){
+        String text = textarea.getText();
+        String email = this.email.getText();
+        loginpage.sendEmail(email,text);
+        textarea.setText("");
+        this.email.setText("");
+        name.setText("");
     }
 }

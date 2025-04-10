@@ -462,6 +462,18 @@
     -fx-font-weight: bold;
     -fx-font-family: "B Nazanin";
 }
+.nazar{
+    -fx-background-radius: 25px;
+    -fx-border-color: #fff;
+    -fx-border-radius: 25px;
+    -fx-text-fill: #1E8E73;
+    -fx-font-weight: bold;
+    -fx-font-family: "B Nazanin";
+    -fx-font-size:25px;
+}
+.nazar2:hover {
+    -fx-border-color: #C99200;
+}
 
 
 
