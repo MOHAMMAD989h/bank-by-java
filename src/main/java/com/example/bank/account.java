@@ -538,7 +538,7 @@ public class account implements Initializable {
                     alert.setHeaderText(null);
                     alert.setContentText("Seccessfully");
                     alert.showAndWait();
-
+                    pro.fileTransfer(numbercardDeposid.getText(),"", -Long.valueOf(deposidMoney.getText()),"میزان انتقال به سپرده");
                     pro.openNewWindow("profile1.fxml", "Profile", actionEvent);
                 }
             } else {
@@ -569,7 +569,7 @@ public class account implements Initializable {
                 alert.setHeaderText(null);
                 alert.setContentText("Seccessfully");
                 alert.showAndWait();
-
+                pro.fileTransfer(numbercardDeposid.getText(),"", -Long.valueOf(deposidMoney.getText()),"میزان انتقال به سپرده");
                 pro.openNewWindow("profile1.fxml", "Profile", actionEvent);
             }
         }
@@ -603,7 +603,7 @@ public class account implements Initializable {
             System.out.println("کاربر هیچ عکسی انتخاب نکرد.");
         }
     }
-    public void applyMonthlyintrest() throws SQLException {
+    public void applyMonthlyintrest() throws SQLException, IOException {
         String data = "SELECT * FROM blockedcard";
         connect = DataBase1.connectDB();
         assert connect != null;
@@ -641,6 +641,7 @@ public class account implements Initializable {
                 prepare.setDouble(1, newAmount);
                 prepare.setDate(2, java.sql.Date.valueOf(now));
                 prepare.executeUpdate();
+                pro.fileTransfer(numbercardto,"", (long) +newAmount,"سود سپرده");
             }
         }
 

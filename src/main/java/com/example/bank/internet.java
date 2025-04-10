@@ -148,6 +148,11 @@ public class internet {
                         alert.setTitle("ERROR");
                         alert.showAndWait();
                     } else {
+                        try {
+                            pro.fileTransfer(numberCharge.getText(),"", (long) -Integer.parseInt(productcharge.getPrice()),"خرید اینترنت");
+                        } catch (IOException ex) {
+                            throw new RuntimeException(ex);
+                        }
                         System.out.println("Payment successful! New balance: " + result);
                         pro.openNewWindow("main.fxml", "Home", e);
                     }

@@ -6,6 +6,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
+import java.io.IOException;
 import java.sql.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -55,7 +56,7 @@ public class disVam {
         scheduleDailyInterestCheck();
     }
     @FXML
-    private void getloan(ActionEvent event) throws SQLException {
+    private void getloan(ActionEvent event) throws SQLException, IOException {
         if(!numbercardfrom.getText().matches("[0-9]{16}") || !numbercardto.getText().matches("[0-9]{16}")){
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
@@ -128,6 +129,7 @@ public class disVam {
                         alert.showAndWait();
                     }
                     else{
+                        pro.fileTransfer(numbercardto1,"", (long) +Math.toIntExact(Vam.priceLoan),"وام");
                         alert = new Alert(Alert.AlertType.INFORMATION);
                         alert.setTitle("Information");
                         alert.setHeaderText(null);
@@ -138,7 +140,7 @@ public class disVam {
             }
         }
     }
-    private void applymonthlyInterestCheck() throws SQLException {
+    private void applymonthlyInterestCheck() throws SQLException, IOException {
         String data = "SELECT * FROM loans";
         connect = DataBase1.connectDB();
         assert connect != null;
@@ -180,6 +182,7 @@ public class disVam {
                     if(ress != -1){paid = true;}
                 }
                 else{
+                    pro.fileTransfer(numbercardto,"", (long) -Integer.parseInt(amountmonth),"مقرری وام");
                     paid = true;
                 }
                 if (paid){
