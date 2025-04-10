@@ -15,8 +15,10 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -424,4 +426,24 @@ public class hessabView {
     public void openToVam(ActionEvent actionEvent) {login.openNewWindow("vam.fxml","Loan",actionEvent);}
 
     public void openTransfer(ActionEvent actionEvent) {login.openNewWindow("transferRec.fxml","Transfer",actionEvent);}
+
+    public void rolesBtn(ActionEvent actionEvent) {
+        try {
+            File pdfFile = new File(getClass().getResource("/قوانین بانک.pdf").toURI());
+            if (pdfFile.exists()) {
+                if (Desktop.isDesktopSupported()) {
+                    Desktop.getDesktop().open(pdfFile);
+                } else {
+                    System.out.println("Desktop is not supported");
+                }
+            } else {
+                System.out.println("File does not exist");
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

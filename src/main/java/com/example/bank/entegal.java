@@ -456,7 +456,7 @@ public class entegal {
             alert.showAndWait();
         } else {
             verifyCode1 = String.valueOf((int) (Math.random() * 900000) + 100000);
-            sendEmail(email, verifyCode1);
+            sendEmail(email, "رمز پویا :"+verifyCode1);
             Dargah.setVisible(true);
             sendPoyaPassword.setVisible(false);
         }

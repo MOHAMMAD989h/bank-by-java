@@ -79,11 +79,21 @@ public class Vam {
         Button vambutton = new Button("دریافت وام");
         vambutton.setLayoutX(1200);
         vambutton.setLayoutY(20);
-        vambutton.setStyle("    -fx-background-color: linear-gradient(to bottom right ,#FFD700, #d3005f );\n" +
-                "    -fx-background-radius: 5px;\n" +
-                "    -fx-cursor: hand;\n" +
-                "    -fx-text-fill: #fff;\n" +
-                "    -fx-font-size: 14px;");
+        vambutton.setStyle("    -fx-font-family: \"B Nazanin\";\n" +
+                "    -fx-font-size: 18;\n" +
+                "    -fx-font-weight: bold;\n" +
+                "    -fx-text-fill: white;\n" +
+                "    -fx-background-color: transparrent;\n" +
+                "    -fx-background-radius: 15px;    -fx-background-color: linear-gradient(to bottom right, #1E8E73,  #1fa784);\n" +
+                "    -fx-text-fill:  #4d4d4d;\n" +
+                "    -fx-background-color: linear-gradient(to bottom right,#4A80D0 ,#70A0E0,  #90B0C8);\n" +
+                "    -fx-translate-y: -3px;\n" +
+                "    -fx-scale-x: 1.05;\n" +
+                "    -fx-scale-y: 1.05;    -fx-text-fill:  #fff;\n" +
+                "    -fx-background-color: linear-gradient(to bottom right,#4A80D0 ,#70A0E0,  #90B0C8);\n" +
+                "    -fx-translate-y: -3px;\n" +
+                "    -fx-scale-x: 1.05;\n" +
+                "    -fx-scale-y: 1.05;    -fx-cursor: hand;\n");
 
         pane.getChildren().addAll(nameLabel,soodLabel, priceLabel,timeLabel,monthlyPayment,vambutton,discriptionLbl);
 
