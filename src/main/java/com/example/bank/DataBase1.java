@@ -308,7 +308,7 @@ public class DataBase1 {
         prepare = connect.prepareStatement(data);
         prepare.setString(1, dataimport);
         result = prepare.executeQuery();
-        while (result.next()) {
+        if (result.next()) {
             return result.getString(Return);
         }
         return null;

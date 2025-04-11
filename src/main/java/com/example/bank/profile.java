@@ -357,16 +357,9 @@ public class profile {
                 label_resilt_change.setText("password must be at least 8 characters");
             }
             else{
-                String selectdata = "SELECT * FROM employee WHERE password= ?";
-
-                connect = DataBase1.connectDB();
-
                 try{
-                    prepare = connect.prepareStatement(selectdata);
-                    prepare.setString(1, txt_oldpassword.getText());
-                    result = prepare.executeQuery();
 
-                    if(result.next()){
+                    if(database.isdataimportvalid(txt_oldpassword.getText(),"employee","password")){
                         label_resilt_change.setText("");
                         label_resilt_change.setText("Seccessfully");
 
@@ -402,18 +395,8 @@ public class profile {
                 label_resilt_change.setText("password must be at least 8 characters");
             }
             else {
-                String selectdata = "UPDATE employee SET password =? WHERE password = ?";
-
-                connect = DataBase1.connectDB();
-
                 try {
-                    prepare = connect.prepareStatement(selectdata);
-                    prepare.setString(1, txt_newpassword.getText());
-                    prepare.setString(2, txt_oldpassword.getText());
-                    int result = prepare.executeUpdate();
-
-
-                    if (result > 0) {
+                    if (database.updatedataimport(txt_newpassword.getText(),txt_oldpassword.getText(),"employee","password")) {
                         label_resilt_change.setText("");
                         label_resilt_change.setText("Seccessfully");
 
