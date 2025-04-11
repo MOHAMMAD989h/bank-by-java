@@ -93,7 +93,7 @@ public class gabz {
                 gabznumber.setVisible(false);
                 gabzPayment.setVisible(true);
                 payment = Integer.parseInt(inputs[i+1]);
-                moneyGabz.setText("قیمت(تومان)" + payment);
+                moneyGabz.setText("قیمت(تومان) : " + payment);
                 if(String.valueOf(inputs[i]).trim().charAt(0) == '1'){
                     organGabz.setText(" اداره اب و فاضلاب");
                 } else if (String.valueOf(inputs[i]).trim().charAt(0) == '2') {

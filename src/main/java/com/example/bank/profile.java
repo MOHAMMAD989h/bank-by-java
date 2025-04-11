@@ -523,6 +523,10 @@ public class profile {
 
     }
     public int updateCredit(String Numbercard, int budget) throws SQLException {
+        if(budget == 0){
+            System.out.println("مقدار صفر دارد");
+            return -1;
+        }
         String selectCredit = "SELECT * FROM cards WHERE numbercard  = ?";
         String updateCredit = "UPDATE cards SET money = money + ?,credit = credit + ? WHERE numbercard  = ?";
         String updateCreditDeduct = "UPDATE cards SET money = money - ?,credit = credit + ? WHERE numbercard  = ?";
@@ -558,6 +562,10 @@ public class profile {
         return -1;
     }
     public int updateCreditblocked(String Numbercard, int budget) throws SQLException {
+        if(budget == 0){
+            System.out.println("مقدار صفر دارد");
+            return -1;
+        }
         String selectCredit = "SELECT * FROM blockedcard WHERE numbercard  = ?";
         String updateCredit = "UPDATE blockedcard SET money = money + ? WHERE numbercard  = ?";
         String updateCreditDeduct = "UPDATE blockedcard SET money = money - ? WHERE numbercard  = ?";
@@ -592,6 +600,10 @@ public class profile {
         return -1;
     }
     public long transferMoney(String Numbercardfrom,String Numbercardto, long budget) throws SQLException {
+        if(budget == 0){
+            System.out.println("مقدار صفر دارد");
+            return -1;
+        }
         String selectCredit = "SELECT money FROM cards WHERE numbercard = ?";
         String updateCreditAdd = "UPDATE cards SET money = money + ?, credit = credit + ? WHERE numbercard = ?";
         String updateCreditDeduct = "UPDATE cards SET money = money - ?,credit = credit + ? WHERE numbercard = ?";

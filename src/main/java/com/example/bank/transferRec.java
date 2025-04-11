@@ -36,7 +36,7 @@ public class transferRec {
     FileReader fr = null;
 
 
-    private List<productVam> productVam = new ArrayList<productVam>();
+    private List<productVam> productlist = new ArrayList<productVam>();
 
 
     public void initialize() throws IOException {
@@ -45,20 +45,24 @@ public class transferRec {
             String line = Files.readString(file1.toPath());
             System.out.println(line);
             inputs = line.split(",|\\n");
-            for (int i = 0; i < inputs.length; i = i + 6) {
-                conn = DataBase1.connectDB();
-                assert conn != null;
-                pst = conn.prepareStatement(data);
-                pst.setString(1,username);
-                rs = pst.executeQuery();
-                while (rs.next()) {
-                    if(rs.getString("numbercard").equals(inputs[i])) {
-                        productVam.add(new productVam(inputs[i], inputs[i + 1], inputs[i + 2], inputs[i + 3], inputs[i + 4], "", ""));
+            System.out.println(inputs.length);
+            for (int i = 0; i < inputs.length; i++) {
+                System.out.println(inputs[i]);
+            }
+            conn = DataBase1.connectDB();
+            assert conn != null;
+            pst = conn.prepareStatement(data);
+            pst.setString(1,username);
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                for (int i = 0; i <= inputs.length -6; i += 6) {
+                    if (rs.getString("numbercard").trim().equals(inputs[i].trim())) {
+                        productlist.add(new productVam(inputs[i], inputs[i + 1], inputs[i + 2], inputs[i + 3], inputs[i + 4], inputs[i + 5], ""));
                     }
                 }
             }
 
-            for (productVam product1 : productVam) {
+            for (productVam product1 : productlist) {
                 vboxTransferRec.getChildren().add(createproductpane(product1));
             }
         }

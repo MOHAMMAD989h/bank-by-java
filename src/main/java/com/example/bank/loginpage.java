@@ -313,7 +313,7 @@ public class loginpage{
             message.setFrom(new InternetAddress(from));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
             message.setSubject("Your Verification Code");
-            message.setText(" سلام خوش امدید به بانک آرئوس \n" + code);
+            message.setText(code);
 
             Transport.send(message);
             System.out.println("Email sent successfully!");

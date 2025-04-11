@@ -88,6 +88,8 @@ public class hessabView {
     private String[] inputs;
     Random random = new Random();
     public static String numbercard;
+    profile pro = new profile();
+
     @FXML
     public void initialize() throws IOException {
         applyHoverEffect(btn1);
@@ -137,6 +139,10 @@ public class hessabView {
         for (productCharge p : productGabz) {
             vboxGabz.getChildren().add(createproductpane(p));
         }
+
+        btn6.setOnAction(event -> {
+            pro.openNewWindow("TransferShort.fxml","Transfer",event);
+        });
     }
 
     private AnchorPane createproductpane(productCharge p) {
