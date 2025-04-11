@@ -657,7 +657,7 @@ public class profile {
 
         try {
             fileWriter1 = new FileWriter(file1, true);
-            fileWriter1.write(numbercard1 + ',' + name+',' + numbercard2 + ',' + budget + ',' + rand + "," + now1);
+            fileWriter1.write(numbercard1 + ',' + name+',' + numbercard2 + ',' + budget + ',' + rand + "," + now1+',');
             fileWriter1.close();
         }
         catch (IOException e) {e.printStackTrace();}

@@ -74,6 +74,8 @@ public class hessabView {
     @FXML
     private Label codelabel;
 
+    public static boolean isTransferShort;
+
     @FXML
     private Label numlabel;
     File file = new File("gabz.dat");
@@ -141,7 +143,8 @@ public class hessabView {
         }
 
         btn6.setOnAction(event -> {
-            pro.openNewWindow("TransferShort.fxml","Transfer",event);
+            pro.openNewWindow("transferRec.fxml","Transfer",event);
+            isTransferShort = true;
         });
     }
 

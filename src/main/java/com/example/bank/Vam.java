@@ -139,6 +139,6 @@ public class Vam {
     }
 
     public void exitLoan(ActionEvent actionEvent) throws IOException {
-        openNewWindow("main.fxml","Home",actionEvent);
+        openNewWindow("hesab.fxml","Hesab",actionEvent);
     }
 }
