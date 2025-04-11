@@ -357,32 +357,14 @@ public class account implements Initializable {
 
             String monthPer = String.format("%02d", persianMonth);
 
-            String yyMM = String.valueOf(yearPer + monthPer);
-
+            String yy = yearPer;
+            String MM=monthPer;
 
             int cvv2 = random.nextInt(100, 1000);
 
             connect = DataBase1.connectDB();
             if(comaccount.getValue().equals("حساب جاری")) {
-
-                regdata = "INSERT INTO cards (username,money,credit,numbercard,cvv2,engeza,bankname,phonenumberhome,password,imagecard) " +
-                        "VALUES(?,?,?,?,?,?,?,?,?,?)";
-
-
-                assert connect != null;
-
-                prepare = connect.prepareStatement(regdata);
-                prepare.setString(1, username);
-                prepare.setString(2, "0");
-                prepare.setString(3, "0");
-                prepare.setString(4, BigNumberString);
-                prepare.setString(5, String.valueOf(cvv2));
-                prepare.setString(6, yyMM);
-                prepare.setString(7, "Aureous Bank");
-                prepare.setString(8, homeNumberGet.getText());
-                prepare.setString(9, accountPassword.getText());
-                prepare.setString(10, Arrays.toString(imageData));
-                int rowsAffected = prepare.executeUpdate();
+                DataBase1 hesab=new DataBase1(connect,username,String.valueOf(cvv2),"0","0",BigNumberString,"Aureous Bank",homeNumberGet.getText(),accountPassword.getText(),MM,yy,Arrays.toString(imageData));
             } else if (comaccount.getValue().equals("حساب سپرده")) {
                 maker.setVisible(false);
                 introducer.setVisible(false);

@@ -15,8 +15,8 @@ public class DataBase1 {
     private Connection connect;
     private PreparedStatement prepare;
     private ResultSet result;
-    int yyengeza,MMengeza,update;
-    String name,userName,password,email,numberphone,nationcode,address, cvv2,money,credit,cartNum,bankName,phoneNumberHome,passwordCard;
+    int update;
+    String name,userName,password,email,numberphone,nationcode,address, cvv2,money,credit,cartNum,bankName,phoneNumberHome,passwordCard,yyengeza,MMengeza;
     File imageCard,imageData;
     boolean isSuccessFul;
     public DataBase1(String name, String userName, String password, String email, String numberphone, String nationcode, String address, File imageData) throws SQLException, IOException {
@@ -59,7 +59,7 @@ public class DataBase1 {
         }
     }
 
-    public DataBase1(Connection connect, String userName, String cvv2, String money, String credit, String cartNum, String bankName, String phoneNumberHome, String passwordCard, int MMengeza, int yyengeza, File imageCard) throws SQLException, IOException {
+    public DataBase1(Connection connect, String userName, String cvv2, String money, String credit, String cartNum, String bankName, String phoneNumberHome, String passwordCard, String MMengeza, String yyengeza, File imageCard) throws SQLException, IOException {
         this.connect = connect;
         this.userName = userName;
         this.cvv2 = cvv2;
@@ -244,18 +244,18 @@ public class DataBase1 {
         this.passwordCard = passwordCard;
     }
 
-    public int getYyengeza() {
+    public String getYyengeza() {
         return yyengeza;
     }
 
-    public void setYyengeza(int yyengeza) {
+    public void setYyengeza(String yyengeza) {
         this.yyengeza = yyengeza;
     }
 
-    public int getMMengeza() {
+    public String getMMengeza() {
         return MMengeza;
     }
-    public void setMMengeza(int MMengeza) {
+    public void setMMengeza(String MMengeza) {
         this.MMengeza = MMengeza;
     }
 
@@ -299,6 +299,20 @@ public class DataBase1 {
         prepare = connect.prepareStatement(data);
         prepare.setString(1, dataimport);
         result = prepare.executeQuery();
+        return result.next();
+    }
+    public boolean isdataimportvalid1(String dataimport,String table,String tableinfor) throws SQLException {
+        String data = "SELECT * FROM "+table+" WHERE "+ tableinfor +" = ?";
+        connect = connectDB();
+        assert connect != null;
+        prepare = connect.prepareStatement(data);
+        prepare.setString(1, dataimport);
+        result = prepare.executeQuery();
+        cartNum = result.getString("numbercard");
+        yyengeza = result.getString("engeza");
+        cvv2 = result.getString("cvv2");
+        bankName = result.getString("bankname");
+        money = result.getString("money");
         return result.next();
     }
     public String finddataimport(String dataimport,String table,String tableinfor,String Return) throws SQLException {
@@ -347,7 +361,7 @@ public class DataBase1 {
             return false;
         }
     }
-    public boolean insertToCards( String username, String Cvv2Getter, String cartNumgetter, String com1, String phonehome, String accountPassword, int monthofExpire,int yearofExpire,File imageCard) throws SQLException, IOException {
+    public boolean insertToCards( String username, String Cvv2Getter, String cartNumgetter, String com1, String phonehome, String accountPassword, String monthofExpire,String yearofExpire,File imageCard) throws SQLException, IOException {
         String regData = "INSERT INTO cards (username ,money ,credit ,numbercard ,cvv2,engeza,bankname ,phonenumberhome,password,imagecard) " +
                 "VALUES(?,?,?,?,?,?,?,?,?,?)";
         assert connect != null;

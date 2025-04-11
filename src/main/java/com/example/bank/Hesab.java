@@ -18,6 +18,9 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -86,30 +89,34 @@ public class Hesab {
     String infor = null;
     private List<productVam> products = new ArrayList<>();
     public void initialize() {
-        try {
+        try {DataBase1 Select=new DataBase1();
+            try (FileInputStream fileIn = new FileInputStream("userData.dat");
+                  ObjectInputStream in = new ObjectInputStream(fileIn)) {
+
+            Select = (DataBase1) in.readObject();
+
+            System.out.println("Object loaded successfully!");
+            // حالا می‌تونی با loadedObject کار کنی:
+            // مثلاً:
+            // System.out.println(loadedObject.getUserName());
+
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
             connect = DataBase1.connectDB();
-            String data = "SELECT * FROM cards WHERE username = ?";
 
-            String selectdata = "SELECT * FROM employee WHERE username = ?";
-
-            prepare = connect.prepareStatement(selectdata);
-            prepare.setString(1, username);
-            rs = prepare.executeQuery();
             String numberq = "";
             String nationcode="";
             String numberphone="";
-            while (rs.next()) {
-                numberq = rs.getString("name");
+            while (Select.isdataimportvalid(username,"employee","username")) {
+                numberq = Select.getName();
                 userlabel.setText(numberq);
-                codelabel.setText(rs.getString("nationcode"));
-                numlabel.setText(rs.getString("numberphone"));
-                nationcode=rs.getString("nationcode");
-                numberphone=rs.getString("numberphone");
+                codelabel.setText(Select.getNationcode());
+                numlabel.setText(Select.getNumberphone());
+                nationcode = Select.getNationcode();
+                numberphone = Select.getNumberphone();
             }
-
-            prepare = connect.prepareStatement(data);
-            prepare.setString(1,username);
-            result = prepare.executeQuery();
+            DataBase1 getting=new DataBase1();
             products.clear();
             int bankMaskan=0;
             int bankAureous=0;
@@ -124,12 +131,12 @@ public class Hesab {
             int bankSepah=0;
             int bankShahr=0;
             int bankTejarat=0;
-            while (result.next()) {
-                String number = result.getString("numbercard");
-                String time = result.getString("engeza");
-                String cvv2 = result.getString("cvv2");
-                String bankname = result.getString("bankname");
-                String money = result.getString("money");
+            while (getting.isdataimportvalid1(username,"cards","username")) {
+                String number =getting.getCartNum();
+                String time = getting.getYyengeza();
+                String cvv2 = getting.getCvv2();
+                String bankname = getting.getBankName();
+                String money = getting.getMoney();
                 products.add(new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone));
                 if(bankname.trim().equals("Aureous Bank")){String HboxName="#hbox_Aur";
                     if(bankAureous==0){productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
@@ -314,6 +321,43 @@ public class Hesab {
                         foundHBox1.getChildren().add(createVBoxWithPane(product1));
                         Label foundlabel = (Label) foundHBox.lookup("#hbox_Reflab");
                         foundlabel.setText("تعداد حساب ها:"+bankRefah);
+                        // اضافه کردن نود جدید
+                    } else {
+                        System.out.println("HBox پیدا نشد!");
+                    }
+                }
+                if(bankname.trim().equals("بانک آینده")){String HboxName="#hbox_Aya";
+                    if(bankAyandeh==0){productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                        bigV.getChildren().add(createHBox("Aya",product1,true));
+                    }else if((bankAyandeh+1)%5==0){int shoaresatr=(bankAyandeh+1)/5;
+                        ObservableList<Node> children = bigV.getChildren();
+
+                        int insertIndex = 0;
+                        for (int i = 0; i < children.size(); i++) {
+                            String HboxName2=HboxName;
+                            if(shoaresatr>1){HboxName2=HboxName + String.valueOf(shoaresatr-1);}
+                            Node current = children.get(i);
+                            String HboxName3="#"+current.getId();
+                            if (current.getId() != null && HboxName3.equals(HboxName2)) {
+                                insertIndex = i + 1;
+                                System.out.println("وارد سد");
+                                break; // خروج از حلقه
+                            }
+                        }
+                        productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                        String aur="Aya"+String.valueOf(shoaresatr);
+                        bigV.getChildren().add(insertIndex,createHBox(aur,product1,false));
+                        HboxName=HboxName+String.valueOf(shoaresatr);
+                    }else if(bankAyandeh>4){int test=bankAyandeh/5;
+                        HboxName=HboxName+String.valueOf(test);
+                    }
+                    HBox foundHBox = (HBox) bigV.lookup("#hbox_Aya");
+                    HBox foundHBox1 = (HBox) bigV.lookup(HboxName);
+                    if (foundHBox != null) {productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                        bankAyandeh++;
+                        foundHBox1.getChildren().add(createVBoxWithPane(product1));
+                        Label foundlabel = (Label) foundHBox.lookup("#hbox_Ayalab");
+                        foundlabel.setText("تعداد حساب ها:"+bankAyandeh);
                         // اضافه کردن نود جدید
                     } else {
                         System.out.println("HBox پیدا نشد!");

@@ -333,7 +333,19 @@ public class loginpage{
 
         }
         else{DataBase1 Select=new DataBase1();
-            try {
+            try {try (FileInputStream fileIn = new FileInputStream("userData.dat");
+                      ObjectInputStream in = new ObjectInputStream(fileIn)) {
+
+                Select = (DataBase1) in.readObject();
+
+                System.out.println("Object loaded successfully!");
+                // حالا می‌تونی با loadedObject کار کنی:
+                // مثلاً:
+                // System.out.println(loadedObject.getUserName());
+
+            } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
                 if(Select.isdataimportvalid(si_emailforgot.getText(),"employee","email")){
                     verifyCode1 = String.valueOf( (int)(Math.random() * 900000) + 100000);
                     sendEmail(si_emailforgot.getText(), verifyCode1);
@@ -417,7 +429,7 @@ public class loginpage{
             alert.showAndWait();
         }
         else{DataBase1 UpdateTheInserted=new DataBase1();
-            try (FileInputStream fileIn = new FileInputStream("userData.bin");
+            try (FileInputStream fileIn = new FileInputStream("userData.dat");
                   ObjectInputStream in = new ObjectInputStream(fileIn)) {
 
             UpdateTheInserted = (DataBase1) in.readObject();
@@ -459,6 +471,13 @@ public class loginpage{
                     alert.setContentText("Incorrect  password");
                     alert.showAndWait();
                 }
+                try (FileOutputStream fileOut = new FileOutputStream("userData.dat");
+                      ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
+                    out.writeObject(UpdateTheInserted);
+                    System.out.println("Object saved successfully.");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
             }
             catch (Exception e) {
@@ -480,7 +499,7 @@ public class loginpage{
         }
         else{ username=si_username.getText();
             try{DataBase1 Select=new DataBase1();
-                try (FileInputStream fileIn = new FileInputStream("userData.bin");
+                try (FileInputStream fileIn = new FileInputStream("userData.dat");
                      ObjectInputStream in = new ObjectInputStream(fileIn)) {
 
                 Select = (DataBase1) in.readObject();
@@ -530,12 +549,9 @@ public class loginpage{
             alert.setContentText("Name and username and Address and email must be at least 3 characters and password must be at least 8 characters");
             alert.showAndWait();
         } else {
-            connect = DataBase1.connectDB();
-            if(connect==null){
-                System.out.println("Connect Error");
-            }
+
             DataBase1 Select=new DataBase1();
-            try {System.out.println(Select.finddataimport(su_username.getText(),"employee","username","username")+Select.finddataimport(su_emailsign1.getText(),"employee","username","emal"));
+            try {System.out.println(Select.finddataimport(su_username.getText(),"employee","username","username")+Select.finddataimport(su_emailsign1.getText(),"employee","username","email"));
 
                 if (Select.isdataimportvalid(su_username.getText(),"employee","username")&&Select.isdataimportvalid(su_password.getText(),"employee","password")&&Select.isdataimportvalid(su_emailsign1.getText(),"employee","email")) {
                     alert = new Alert(Alert.AlertType.ERROR);
