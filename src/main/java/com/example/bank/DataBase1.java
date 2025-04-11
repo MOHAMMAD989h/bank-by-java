@@ -91,8 +91,8 @@ public class DataBase1 {
         else{
             return false;
         }
-    }
-    public void DataBase11(int update,String updateS) throws SQLException, IOException {
+    }public void DataBase11(int update,String updateS)throws SQLException, IOException{DataBase112(update,updateS);}
+    private void DataBase112(int update,String updateS) throws SQLException, IOException {
         this.update = update;
         if(update<0){//update person
             if(update==-1){isSuccessFul=updateToemployee(updateS,password,email,numberphone,address);}
