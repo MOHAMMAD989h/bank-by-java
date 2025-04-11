@@ -43,9 +43,7 @@ public class transferRec {
         try {
             String data = "SELECT * FROM cards WHERE username= ?";
             String line = Files.readString(file1.toPath());
-            System.out.println(line);
             inputs = line.split(",|\\n");
-            System.out.println(inputs.length);
             for (int i = 0; i < inputs.length; i++) {
                 System.out.println(inputs[i]);
             }

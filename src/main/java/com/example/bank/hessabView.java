@@ -485,16 +485,19 @@ public class hessabView {
     private void filegabz() throws IOException {
         FileWriter writer = new FileWriter(file);
         BufferedWriter bufferedWriter = new BufferedWriter(writer);
+        String line = Files.readString(file.toPath());
 
-        for (int i = 0; i < 1000; i++) {
-            int pricegabz = random.nextInt(20000, 2000000);
-            long numbergabz = random.nextLong(100000000, 999999999);
-            int pishnum = random.nextInt(1, 9);
-            long number = Long.parseLong(String.valueOf(pishnum) + String.valueOf(numbergabz));
-            bufferedWriter.write(number + "," + pricegabz);
-            bufferedWriter.newLine();
+        if(line.equals("")) {
+            for (int i = 0; i < 1000; i++) {
+                int pricegabz = random.nextInt(20000, 2000000);
+                long numbergabz = random.nextLong(100000000, 999999999);
+                int pishnum = random.nextInt(1, 9);
+                long number = Long.parseLong(String.valueOf(pishnum) + String.valueOf(numbergabz));
+                bufferedWriter.write(number + "," + pricegabz);
+                bufferedWriter.newLine();
+            }
+
+            bufferedWriter.close();
         }
-
-        bufferedWriter.close();
     }
 }

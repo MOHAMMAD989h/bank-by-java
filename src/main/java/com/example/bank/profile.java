@@ -686,4 +686,13 @@ public class profile {
 
     public void openmyaccount(ActionEvent actionEvent) {openNewWindow("hesab.fxml","myaccount",actionEvent);
     }
+
+    public void deleteProfile(ActionEvent actionEvent) throws SQLException {
+        String data = "DELETE FROM employee WHERE username = ?";
+        connect = DataBase1.connectDB();
+        assert connect != null;
+        prepare = connect.prepareStatement(data);
+        prepare.setString(1, username);
+        prepare.executeUpdate();
+    }
 }

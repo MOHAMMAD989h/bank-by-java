@@ -262,7 +262,7 @@
                         </Button>
                      </children>
                   </VBox>
-                  <VBox layoutX="631.0" layoutY="51.0" prefHeight="480.0" prefWidth="140.0">
+                  <VBox layoutX="631.0" layoutY="51.0" prefHeight="555.0" prefWidth="140.0">
                      <children>
                         <Button fx:id="btn1" mnemonicParsing="false" onAction="#Changepass2" prefHeight="30.0" prefWidth="160.0" stylesheets="@styles.css" text="تغییر رمز">
                            <VBox.margin>
@@ -333,6 +333,16 @@
                               <String fx:value="background-gradientt" />
                               <String fx:value="mouse" />
                            </styleClass>
+                        </Button>
+                        <Button fx:id="btn71" layoutX="10.0" layoutY="448.0" mnemonicParsing="false" onAction="#deleteProfile" prefHeight="30.0" prefWidth="160.0" stylesheets="@styles.css" text="حذف حساب">
+                           <styleClass>
+                              <String fx:value="Button" />
+                              <String fx:value="background-gradientt" />
+                              <String fx:value="mouse" />
+                           </styleClass>
+                           <VBox.margin>
+                              <Insets bottom="15.0" top="15.0" />
+                           </VBox.margin>
                         </Button>
                      </children>
                   </VBox>
