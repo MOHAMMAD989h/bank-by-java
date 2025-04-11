@@ -18,10 +18,7 @@ import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
 import java.awt.*;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.sql.Connection;
@@ -435,34 +432,38 @@ public class hessabView {
     String infor = null;
     private List<productVam> products = new ArrayList<>();
     public void setMethod(String method) {
-        try {
-            connect = DataBase1.connectDB();
-            String data = "SELECT * FROM cards WHERE username = ?";
+        try {DataBase1 Select=new DataBase1();
+            try (FileInputStream fileIn = new FileInputStream("userData.dat");
+                 ObjectInputStream in = new ObjectInputStream(fileIn)) {
 
-            String selectdata = "SELECT * FROM employee WHERE username = ?";
+                Select = (DataBase1) in.readObject();
 
-            prepare = connect.prepareStatement(selectdata);
-            prepare.setString(1, username);
-            rs = prepare.executeQuery();
-            String numberq = "";
-            while (rs.next()) {
-                numberq = rs.getString("name");
-                userlabel.setText(numberq);
-                codelabel.setText(rs.getString("nationcode"));
-                numlabel.setText(rs.getString("numberphone"));
+                System.out.println("Object loaded successfully!");
+                // حالا می‌تونی با loadedObject کار کنی:
+                // مثلاً:
+                // System.out.println(loadedObject.getUserName());
+
+            } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace();
             }
-
-            prepare = connect.prepareStatement(data);
-            prepare.setString(1,username);
-            result = prepare.executeQuery();
+            String numberq = "";
+            String nationcode="";
+            String numberphone="";
+            while (Select.isdataimportvalid(username,"employee","username")) {
+                numberq = Select.getName();
+                userlabel.setText(numberq);
+                codelabel.setText(Select.getNationcode());
+                numlabel.setText(Select.getNumberphone());
+            }
+            DataBase1 getting=new DataBase1();
             products.clear();
-            while (result.next()) {
-                numbercard = result.getString("numbercard");
-                String number = result.getString("numbercard");
-                String time = result.getString("engeza");
-                String cvv2 = result.getString("cvv2");
-                String bankname = result.getString("bankname");
-                String money = result.getString("money");
+            while (getting.isdataimportvalid1(username,"cards","username")) {
+                numbercard=getting.getCartNum();
+                String number =getting.getCartNum();
+                String time = getting.getYyengeza();
+                String cvv2 = getting.getCvv2();
+                String bankname = getting.getBankName();
+                String money = getting.getMoney();
                 if(number.trim().equals(method)){
                     cart.setText(number);
                     name.setText(numberq);

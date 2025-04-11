@@ -100,11 +100,9 @@ public class Hesab {
             // مثلاً:
             // System.out.println(loadedObject.getUserName());
 
-        } catch (IOException | ClassNotFoundException e) {
+            } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
-        }
-            connect = DataBase1.connectDB();
-
+            }
             String numberq = "";
             String nationcode="";
             String numberphone="";
