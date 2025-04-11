@@ -301,7 +301,7 @@ public class DataBase1 {
         result = prepare.executeQuery();
         return result.next();
     }
-    public String finddataimport(String dataimport,String table,String tableinfor) throws SQLException {
+    public String finddataimport(String dataimport,String table,String tableinfor,String Return) throws SQLException {
         String data = "SELECT * FROM "+table+" WHERE "+ tableinfor +" = ?";
         connect = connectDB();
         assert connect != null;
@@ -309,9 +309,18 @@ public class DataBase1 {
         prepare.setString(1, dataimport);
         result = prepare.executeQuery();
         while (result.next()) {
-            return result.getString(1);
+            return result.getString(Return);
         }
         return null;
+    }
+    public boolean updatedataimport(String newdataimport,String olddataimport,String table,String tableinfor) throws SQLException {
+        String data = "UPDATE "+table +" SET "+tableinfor+" WHERE "+ tableinfor +" = ?";
+        connect = connectDB();
+        prepare = connect.prepareStatement(data);
+        prepare.setString(1, newdataimport);
+        prepare.setString(2, olddataimport);
+        result = prepare.executeQuery();
+        return result.next();
     }
     public boolean insertToemployee(String name, String username, String password, String email, String numberphone, String nationcode, String address, File imagedata) throws SQLException, IOException {
         String regData = "INSERT INTO employee (name,username ,password,email,numberphone,nationcode,address,imageData) " +

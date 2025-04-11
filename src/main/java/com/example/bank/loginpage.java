@@ -535,7 +535,7 @@ public class loginpage{
                 System.out.println("Connect Error");
             }
             DataBase1 Select=new DataBase1();
-            try {System.out.println(Select.finddataimport(su_username.getText(),"employee","username")+Select.finddataimport(su_password.getText(),"employee","password")+Select.finddataimport(su_emailsign1.getText(),"employee","email"));
+            try {System.out.println(Select.finddataimport(su_username.getText(),"employee","username","username")+Select.finddataimport(su_emailsign1.getText(),"employee","username","emal"));
 
                 if (Select.isdataimportvalid(su_username.getText(),"employee","username")&&Select.isdataimportvalid(su_password.getText(),"employee","password")&&Select.isdataimportvalid(su_emailsign1.getText(),"employee","email")) {
                     alert = new Alert(Alert.AlertType.ERROR);

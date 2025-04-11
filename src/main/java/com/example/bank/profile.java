@@ -137,6 +137,8 @@ public class profile {
     public static String lastScene = "main.fxml";
     public static String lastScenetitle = "Home";
 
+    DataBase1 database = new DataBase1();
+
     loginpage login = new loginpage();
 
     public void initialize() {
@@ -165,27 +167,15 @@ public class profile {
 
 
         try {
-            connect = DataBase1.connectDB();
-            String selectdata = "SELECT * FROM employee WHERE username = ?";
-
-            prepare = connect.prepareStatement(selectdata);
-            prepare.setString(1, username);
-            rs = prepare.executeQuery();
             String numberq = "";
+            numberq =database.finddataimport(username,"employee","username","name");
+            txtName.setText(numberq);
+            txtEmail.setText(database.finddataimport(username,"employee","username","email"));
+            txtAddress.setText(database.finddataimport(username,"employee","username","address"));
+            txtUsername.setText(database.finddataimport(username,"employee","username","username"));
+            txtNationcode.setText(database.finddataimport(username,"employee","username","nationcode"));
+            txtNumberphone.setText(database.finddataimport(username,"employee","username","numberphone"));
 
-            while (rs.next()) {
-                numberq = rs.getString("name");
-                txtName.setText(numberq);
-                txtEmail.setText(rs.getString("email"));
-                txtAddress.setText(rs.getString("address"));
-                txtUsername.setText(rs.getString("username"));
-                txtNationcode.setText(rs.getString("nationcode"));
-                txtNumberphone.setText(rs.getString("numberphone"));
-                byte[] imagedata = rs.getBytes("imageData");
-                ByteArrayInputStream inputStream = new ByteArrayInputStream(imagedata);
-                Image image = new Image(inputStream);
-                profileImage.setImage(image);
-            }
         }
         catch (Exception e) {e.printStackTrace();}
 
@@ -356,7 +346,7 @@ public class profile {
         slider.play();
     }
 
-    public void Changeuser1(ActionEvent actionEvent) {ChangeuserCls(infor, txt_oldusername1, txt_newusername1, actionEvent);}
+    public void Changeuser1(ActionEvent actionEvent) throws SQLException {ChangeuserCls(infor, txt_oldusername1, txt_newusername1, actionEvent);}
 
     public void backchangeToprofile(ActionEvent actionEvent) {openNewWindow("profile1.fxml","Profile",actionEvent);}
 
@@ -445,23 +435,16 @@ public class profile {
             }
         }
     }
-    public void ChangeuserCls(String name11,TextField old1 , TextField new1,ActionEvent actionEvent) {
+    public void ChangeuserCls(String name11,TextField old1 , TextField new1,ActionEvent actionEvent) throws SQLException {
         if(old1.isVisible()){
             if(old1.getText().length() < 3 ){
                 label_resilt_change.setText( name11+" must be at least 3 characters");
             }
             else{
                 username =name11;
-                String selectdata = "SELECT * FROM employee WHERE "+name11+"= ?";
-
-                connect = DataBase1.connectDB();
-
                 try{
-                    prepare = connect.prepareStatement(selectdata);
-                    prepare.setString(1, old1.getText());
-                    result = prepare.executeQuery();
 
-                    if(result.next()){
+                    if(database.isdataimportvalid(old1.getText(),"employee",name11)){
                         label_resilt_change.setText("");
                         label_resilt_change.setText("Seccessfully");
 
@@ -494,19 +477,9 @@ public class profile {
                 label_resilt_change.setText("username must be at least 3 characters");
             }
             else {
-                String selectdata = "UPDATE employee SET "+name11+"=? WHERE "+name11+"= ?";
-
-                connect = DataBase1.connectDB();
-
                 try {
-                    prepare = connect.prepareStatement(selectdata);
-                    prepare.setString(1, new1.getText());
-                    prepare.setString(2, old1.getText());
-                    int result = prepare.executeUpdate();
-                    openNewWindow("profile1.fxml","Profile",actionEvent);
-
-
-                    if (result > 0) {
+                    if (database.updatedataimport(new1.getText(),old1.getText(),"employee",name11)) {
+                        openNewWindow("profile1.fxml","Profile",actionEvent);
                         label_resilt_change.setText("");
                         label_resilt_change.setText("Seccessfully");
                     } else {
