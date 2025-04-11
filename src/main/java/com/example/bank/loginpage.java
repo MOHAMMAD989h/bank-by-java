@@ -163,7 +163,6 @@ public class loginpage{
     private ImageView profileImage;
 
     Image imageuser;
-
     @FXML
     public void initialize() throws SQLException {
         hessabView obj = new hessabView();
@@ -333,18 +332,9 @@ public class loginpage{
             alert.showAndWait();
 
         }
-        else{
-            String selectdata = "SELECT email FROM employee WHERE email = ?";
-
-            connect = DataBase1.connectDB();
-
+        else{DataBase1 Select=new DataBase1();
             try {
-
-                prepare = connect.prepareStatement(selectdata);
-                prepare.setString(1, si_emailforgot.getText());
-                result = prepare.executeQuery();
-
-                if(result.next()){
+                if(Select.isdataimportvalid(si_emailforgot.getText(),"employee","email")){
                     verifyCode1 = String.valueOf( (int)(Math.random() * 900000) + 100000);
                     sendEmail(si_emailforgot.getText(), verifyCode1);
 
@@ -426,34 +416,50 @@ public class loginpage{
             alert.setContentText("Passwords do not match");
             alert.showAndWait();
         }
-        else{
-            String selectdata = "UPDATE employee SET password =? WHERE email = ?";
+        else{DataBase1 UpdateTheInserted=new DataBase1();
+            try (FileInputStream fileIn = new FileInputStream("userData.bin");
+                  ObjectInputStream in = new ObjectInputStream(fileIn)) {
 
-            connect = DataBase1.connectDB();
+            UpdateTheInserted = (DataBase1) in.readObject();
 
-            try{
-                prepare = connect.prepareStatement(selectdata);
-                prepare.setString(1, si_newpassword.getText());
-                prepare.setString(2, si_emailforgot.getText());
-                int result = prepare.executeUpdate();
+            System.out.println("Object loaded successfully!");
+            // حالا می‌تونی با loadedObject کار کنی:
+            // مثلاً:
+            // System.out.println(loadedObject.getUserName());
 
-
-
-                if(result > 0){
+            } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+            try{UpdateTheInserted.DataBase11(-2,si_newpassword.getText());
+                if(UpdateTheInserted.getIsSuccessFul()){
                     alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("INFORMATION");
                     alert.setHeaderText(null);
                     alert.setContentText("Please back and login Account");
                     alert.showAndWait();
 
-                }
-                else{
+                }else{
+                    alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("ERROR");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Incorrect  password");
+                    alert.showAndWait();
+                }UpdateTheInserted.DataBase11(-3,si_emailforgot.getText());
+                if(UpdateTheInserted.getIsSuccessFul()){
+                    alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("INFORMATION");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Please back and login Account");
+                    alert.showAndWait();
+
+                }else{
                     alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("ERROR");
                     alert.setHeaderText(null);
                     alert.setContentText("Incorrect  password");
                     alert.showAndWait();
                 }
+
             }
             catch (Exception e) {
                 e.printStackTrace();
@@ -473,22 +479,22 @@ public class loginpage{
             alert.showAndWait();
         }
         else{ username=si_username.getText();
-            String selectdata = "SELECT * FROM employee WHERE username= ? AND password= ?";
+            try{DataBase1 Select=new DataBase1();
+                try (FileInputStream fileIn = new FileInputStream("userData.bin");
+                     ObjectInputStream in = new ObjectInputStream(fileIn)) {
 
-            connect = DataBase1.connectDB();
-            if (this.connect == null) {
-                System.out.println("Database connection failed!");
-                return;
-            }
+                Select = (DataBase1) in.readObject();
 
-            try{
+                System.out.println("Object loaded successfully!");
+                // حالا می‌تونی با loadedObject کار کنی:
+                // مثلاً:
+                // System.out.println(loadedObject.getUserName());
 
-                assert connect != null;
-                prepare = connect.prepareStatement(selectdata);
-                prepare.setString(1, si_username.getText());
-                prepare.setString(2, si_password.getText());
-                result = prepare.executeQuery();
-                if(result.next()){
+
+                } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace();
+                }
+                if(Select.isdataimportvalid(si_username.getText(),"employee","username")&&Select.isdataimportvalid( si_password.getText(),"employee","password")){
                     loginpage.mm = true;
                     openNewWindow("profile1.fxml","profile",event);
                     profile.lastScene = "loginpage.fxml";
@@ -528,24 +534,15 @@ public class loginpage{
             if(connect==null){
                 System.out.println("Connect Error");
             }
+            DataBase1 Select=new DataBase1();
+            try {System.out.println(Select.finddataimport(su_username.getText(),"employee","username")+Select.finddataimport(su_password.getText(),"employee","password")+Select.finddataimport(su_emailsign1.getText(),"employee","email"));
 
-            try {
-
-                String checkUserOrPassword = "SELECT * FROM employee WHERE username = ? OR password = ? OR email = ?";
-                prepare = connect.prepareStatement(checkUserOrPassword);
-                prepare.setString(1, su_username.getText());
-                prepare.setString(2, su_password.getText());
-                prepare.setString(3, su_emailsign1.getText());
-                result = prepare.executeQuery();
-                System.out.println(result);
-
-                if (result.next()) {
+                if (Select.isdataimportvalid(su_username.getText(),"employee","username")&&Select.isdataimportvalid(su_password.getText(),"employee","password")&&Select.isdataimportvalid(su_emailsign1.getText(),"employee","email")) {
                     alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Error");
                     alert.setHeaderText(null);
                     alert.setContentText("please choose new username or new password");
                     alert.showAndWait();
-
                 }
                 else {
                     su_signupBtn.setDisable(true);
@@ -601,25 +598,15 @@ public class loginpage{
         }
         else {
             try {
-
-                regData = "INSERT INTO employee (name,username ,password,email,numberphone,nationcode,address,imageData) " +
-                        "VALUES(?,?,?,?,?,?,?,?)";
-                connect = DataBase1.connectDB();
-
                 byte[] imageData = Files.readAllBytes(selectedImageFile.toPath());
-
-                assert connect != null;
-                prepare = connect.prepareStatement(regData);
-                prepare.setString(1, su_name.getText());
-                prepare.setString(2, su_username.getText());
-                prepare.setString(3, su_password.getText());
-                prepare.setString(4, su_emailsign1.getText());
-                prepare.setString(5, su_number.getText());
-                prepare.setString(6, su_nationcode.getText());
-                prepare.setString(7, su_address.getText());
-                prepare.setBytes(8, imageData);
-                int rowsAffected = prepare.executeUpdate();
-
+                DataBase1 Insert=new DataBase1(su_name.getText(),su_username.getText(),su_password.getText(),su_emailsign1.getText(),su_number.getText(),su_nationcode.getText(),su_address.getText(),imageData);
+                try (FileOutputStream fileOut = new FileOutputStream("userData.dat");
+                     ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
+                    out.writeObject(Insert);
+                    System.out.println("Object saved successfully.");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Information");
                 alert.setHeaderText(null);

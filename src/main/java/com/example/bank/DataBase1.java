@@ -30,6 +30,10 @@ public class DataBase1 {
         this.imageData = imageData;
         isSuccessFul=insertToemployee(name,userName,password,email,numberphone,nationcode,address,imageData);
     }
+
+    public DataBase1() {
+    }
+
     public boolean updateToemployee(String username, String password, String email, String numberphone, String address) throws SQLException, IOException {
         String regData = "UPDATE INTO employee (username ,password,email,numberphone,address) " +
                 "VALUES(?,?,?,?,?)";
@@ -85,7 +89,7 @@ public class DataBase1 {
             return false;
         }
     }
-    public DataBase1(int update,String updateS) throws SQLException, IOException {
+    public void DataBase11(int update,String updateS) throws SQLException, IOException {
         this.update = update;
         if(update<0){//update person
             if(update==-1){isSuccessFul=updateToemployee(updateS,password,email,numberphone,address);}
@@ -104,6 +108,7 @@ public class DataBase1 {
                     "VALUES(?,?,?,?)";
 
         }
+
     }
 
     public Connection getConnect() {
@@ -299,7 +304,7 @@ public class DataBase1 {
         }
     }
     public String finddataimport(String dataimport,String table,String tableinfor) throws SQLException {
-        String data = "SELECT * FROM"+table+"WHERE"+ tableinfor +"= ?";
+        String data = "SELECT * FROM"+table+"WHERE"+ tableinfor +" = ?";
         connect = connectDB();
         assert connect != null;
         prepare = connect.prepareStatement(data);
