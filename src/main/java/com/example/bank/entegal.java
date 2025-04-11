@@ -463,7 +463,7 @@ public class entegal {
     }
 
     public void backtoHessabView(ActionEvent event) {
-        login.openNewWindow("hessabView.fxml","نمایش حساب",event);
+        login.openNewWindow("hesab.fxml","نمایش حساب",event);
     }
 
     void applyHoverEffect(TextField text) {

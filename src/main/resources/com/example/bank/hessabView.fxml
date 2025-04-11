@@ -135,22 +135,32 @@
                   </ImageView>
                </children>
             </HBox>
-            <VBox alignment="CENTER" layoutX="940.0" layoutY="223.0" prefHeight="522.0" prefWidth="564.0">
+            <VBox alignment="CENTER" layoutX="940.0" layoutY="163.0" prefHeight="622.0" prefWidth="564.0">
                <children>
-                  <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="42.0" prefWidth="232.0" styleClass="Button" stylesheets="@styles.css" text="قبض های پرداخت قابل شما" />
-                  <ScrollPane prefHeight="246.0" prefWidth="558.0" styleClass="scrol" stylesheets="@styles.css">
+                  <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="21.0" prefWidth="232.0" styleClass="Button" stylesheets="@styles.css" text="قبض های پرداخت قابل شما" />
+                  <ScrollPane prefHeight="220.0" prefWidth="564.0" styleClass="scrol" stylesheets="@styles.css">
                      <content>
                         <VBox fx:id="vboxGabz" prefHeight="215.0" prefWidth="556.0" />
                      </content>
                   </ScrollPane>
-                  <Label alignment="CENTER_RIGHT" prefHeight="38.0" prefWidth="225.0" styleClass="Button" stylesheets="@styles.css" text="بسته های اینترنتی پیشنهادی" />
-                  <ScrollPane prefHeight="289.0" prefWidth="558.0" stylesheets="@styles.css">
+                  <Label alignment="CENTER_RIGHT" prefHeight="24.0" prefWidth="226.0" styleClass="Button" stylesheets="@styles.css" text="بسته های اینترنتی پیشنهادی" />
+                  <ScrollPane prefHeight="220.0" prefWidth="564.0" stylesheets="@styles.css">
                      <styleClass>
                         <String fx:value="scrol" />
                         <String fx:value="viewport" />
                      </styleClass>
                      <content>
                         <VBox fx:id="vboxInternet" prefHeight="256.0" prefWidth="564.0" />
+                     </content>
+                  </ScrollPane>
+                  <Label alignment="CENTER_RIGHT" layoutX="179.0" layoutY="206.0" prefHeight="24.0" prefWidth="226.0" styleClass="Button" stylesheets="@styles.css" text="سیم کارت های پیشنهادی " />
+                  <ScrollPane layoutX="10.0" layoutY="333.0" prefHeight="220.0" prefWidth="564.0" stylesheets="@styles.css">
+                     <styleClass>
+                        <String fx:value="scrol" />
+                        <String fx:value="viewport" />
+                     </styleClass>
+                     <content>
+                        <VBox fx:id="vboxsimcard" prefHeight="256.0" prefWidth="564.0" />
                      </content>
                   </ScrollPane>
                </children>

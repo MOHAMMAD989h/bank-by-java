@@ -29,8 +29,14 @@ public class Vam {
     private List<productVam> products = new ArrayList<>();
 
     public void initialize() {
-        products.add(new productVam("وام یک","10000","14","30","disVam.fxml","ffffhhhh",""));
-        products.add(new productVam("2","10000000","4","30","disVam.fxml","ffff",""));
+        products.add(new productVam("وام عادی","1000000000","24","30","disVam.fxml","این وام عادی بانک یزرگ آرئوس است که با هر سابقه ای به مشتریان بانک می دهد.",""));
+        products.add(new productVam("وام قرض الحسنه","50000000","4","60","disVam.fxml","این وام یک وام فوری برای کسانی که به پول نیاز دارند هست . به صورت سود چهار درست بوده تا به راحتی بتوانند برگردانند",""));
+        products.add(new productVam("وام اشتغال","100000000","14","24","disVam.fxml","این وام برای شروع یک کسب و کار و کمک به استغال کشور درست شده و دارای شرایط اسثسنایی است.",""));
+        products.add(new productVam("وام طرح نوروز aureuos bank","250000000","9","25","disVam.fxml","این وام برای نوروز و مشتریان این بانک فعال شده و هدف کمک به توسعه بانک و مردم برای پیشرفت در سال جدید است.",""));
+        products.add(new productVam("وام طرح ده سالگی آرئوس بانک","400000000","12","35","disVam.fxml","این وام در ده سالگی این بانک به مشتریان داده می شود تا هدیه ای برای ده سال کار درست و خدمت باشد.",""));
+        products.add(new productVam("وام تحصیل ","100000000","7","50","disVam.fxml","این وام برای تحصیل به همه افراد داده می شود تا تحصیل کرده و علم بیاموزند و به کشور کمک کنند.",""));
+
+
 
         for (productVam product1 : products) {
             vboxVam.getChildren().add(createProductPane(product1));
@@ -52,22 +58,22 @@ public class Vam {
 
         //sood
         Label soodLabel = new Label( "  سود :  "+product.getSood());
-        soodLabel.setLayoutX(150);
+        soodLabel.setLayoutX(300);
         soodLabel.setLayoutY(20);
 
         //time
         Label timeLabel = new Label( "  زمان(ماه) :  "+product.getTime());
-        timeLabel.setLayoutX(250);
+        timeLabel.setLayoutX(500);
         timeLabel.setLayoutY(20);
 
         //montly payment
         Label monthlyPayment = new Label(" پرداخت ماهانه(تومان) : " + soodVam(product.getPrice(),product.getTime(),product.getSood()));
-        monthlyPayment.setLayoutX(400);
+        monthlyPayment.setLayoutX(700);
         monthlyPayment.setLayoutY(20);
 
         //price
         Label priceLabel = new Label("تومان : " + product.getPrice());
-        priceLabel.setLayoutX(700);
+        priceLabel.setLayoutX(1000);
         priceLabel.setLayoutY(20);
 
         //discription
@@ -139,6 +145,6 @@ public class Vam {
     }
 
     public void exitLoan(ActionEvent actionEvent) throws IOException {
-        openNewWindow("main.fxml","Home",actionEvent);
+        openNewWindow("hesab.fxml","Hesab",actionEvent);
     }
 }

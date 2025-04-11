@@ -76,7 +76,7 @@
                         <String fx:value="combo-box2" />
                         <String fx:value="combo-box2-popup" />
                      </styleClass></ComboBox>
-                  <Button fx:id="sendnationcardphoto1" layoutX="261.0" layoutY="516.0" mnemonicParsing="false" onAction="#sendnationcardphoto1" prefHeight="30.0" prefWidth="160.0" styleClass="loginbtn" stylesheets="@styles.css" text="ارسال عکس کارت ملی">
+                  <Button fx:id="sendnationcardphoto1" layoutX="261.0" layoutY="516.0" mnemonicParsing="false" onAction="#sendnationcardphoto1" prefHeight="30.0" prefWidth="160.0" styleClass="loginbtn" stylesheets="@styles.css" text="ارسال عکس ">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -158,7 +158,7 @@
                   <Label fx:id="showName" layoutX="107.0" layoutY="93.0" prefHeight="39.0" prefWidth="213.0" styleClass="logintext" stylesheets="@styles.css" />
                   <Label fx:id="showPhoneNumber" layoutX="107.0" layoutY="205.0" prefHeight="39.0" prefWidth="213.0" styleClass="logintext" stylesheets="@styles.css" />
                   <Label fx:id="showNationcode" layoutX="107.0" layoutY="152.0" prefHeight="39.0" prefWidth="213.0" styleClass="logintext" stylesheets="@styles.css" />
-                  <Button fx:id="sendnationcardphoto" layoutX="145.0" layoutY="493.0" mnemonicParsing="false" onAction="#sendnationcardphoto" prefHeight="30.0" prefWidth="170.0" styleClass="loginbtn" stylesheets="@styles.css" text="ارسال عکس کارت ملی">
+                  <Button fx:id="sendnationcardphoto" layoutX="145.0" layoutY="493.0" mnemonicParsing="false" onAction="#sendnationcardphoto" prefHeight="30.0" prefWidth="170.0" styleClass="loginbtn" stylesheets="@styles.css" text="ارسال عکس ">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
