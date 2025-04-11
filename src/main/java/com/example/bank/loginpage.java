@@ -494,7 +494,7 @@ public class loginpage{
                 } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
                 }
-                if(Select.isdataimportvalid(si_username.getText(),"employee","username")&&Select.isdataimportvalid( si_password.getText(),"employee","password")){
+                if(Select.isdataimportvalid(si_username.getText(),"employee","username") || Select.isdataimportvalid( si_password.getText(),"employee","password")){
                     loginpage.mm = true;
                     openNewWindow("profile1.fxml","profile",event);
                     profile.lastScene = "loginpage.fxml";

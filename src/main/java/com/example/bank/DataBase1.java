@@ -293,21 +293,16 @@ public class DataBase1 {
 
     }
     public boolean isdataimportvalid(String dataimport,String table,String tableinfor) throws SQLException {
-        String data = "SELECT * FROM"+table+"WHERE"+ tableinfor +"= ?";
+        String data = "SELECT * FROM "+table+" WHERE "+ tableinfor +" = ?";
         connect = connectDB();
         assert connect != null;
         prepare = connect.prepareStatement(data);
         prepare.setString(1, dataimport);
         result = prepare.executeQuery();
-        if(result.next()) {
-            return false;
-        }
-        else{
-            return true;
-        }
+        return result.next();
     }
     public String finddataimport(String dataimport,String table,String tableinfor) throws SQLException {
-        String data = "SELECT * FROM"+table+"WHERE"+ tableinfor +" = ?";
+        String data = "SELECT * FROM "+table+" WHERE "+ tableinfor +" = ?";
         connect = connectDB();
         assert connect != null;
         prepare = connect.prepareStatement(data);
