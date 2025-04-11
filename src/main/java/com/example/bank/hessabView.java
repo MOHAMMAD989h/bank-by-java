@@ -108,6 +108,9 @@ public class hessabView {
         applyHoverEffect(btn7);
         applyHoverEffect(btn8);
 
+        //charge
+        fileCharge();
+
         //internet
         productInternet.add(new productCharge("همراه اول یک گیگ اینترنت هفتگی","15000"+"قیمت (تومان) :  "));
         productInternet.add(new productCharge("همراه اول دو گیگ اینترنت هفتگی","18000"+"قیمت (تومان) :  "));
@@ -521,5 +524,16 @@ public class hessabView {
 
             bufferedWriter.close();
         }
+    }
+    private void fileCharge() throws IOException {
+        FileWriter fw = new FileWriter(file);
+        for (int i = 0; i < 1000; i++) {
+            long numberCharge = random.nextLong(10000000, 99999999);
+            int pishnum = random.nextInt(1, 3);
+            long number = Long.parseLong("09"+String.valueOf(pishnum) + String.valueOf(numberCharge));
+            fw.write(String.valueOf(number) + ',');
+        }
+
+
     }
 }

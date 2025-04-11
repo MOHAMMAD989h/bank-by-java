@@ -129,7 +129,7 @@ public class transferRec {
         //date
         Label dateLbl = new Label("تاریخ : " + p.getDiscription());
         dateLbl.setStyle("   -fx-font-family: \"B Nazanin\";");
-        dateLbl.setLayoutX(600);
+        dateLbl.setLayoutX(800);
         dateLbl.setLayoutY(100);
 
         //colorLbl
@@ -197,7 +197,7 @@ public class transferRec {
             clipboard.setContent(content);
         });
 
-        pane.getChildren().addAll(numbercard2Lbl, nameLbl, moneyLbl, numbercard1Lbl, color, numberLbl,button);
+        pane.getChildren().addAll(numbercard2Lbl, nameLbl, moneyLbl, numbercard1Lbl, color,dateLbl, numberLbl,button);
 
 
         return pane;
