@@ -598,8 +598,7 @@ public class loginpage{
         }
         else {
             try {
-                byte[] imageData = Files.readAllBytes(selectedImageFile.toPath());
-                DataBase1 Insert=new DataBase1(su_name.getText(),su_username.getText(),su_password.getText(),su_emailsign1.getText(),su_number.getText(),su_nationcode.getText(),su_address.getText(),imageData);
+                DataBase1 Insert=new DataBase1(su_name.getText(),su_username.getText(),su_password.getText(),su_emailsign1.getText(),su_number.getText(),su_nationcode.getText(),su_address.getText(),selectedImageFile);
                 try (FileOutputStream fileOut = new FileOutputStream("userData.dat");
                      ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
                     out.writeObject(Insert);

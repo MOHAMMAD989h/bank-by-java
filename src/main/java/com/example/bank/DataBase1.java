@@ -34,6 +34,9 @@ public class DataBase1 {
     public DataBase1() {
     }
 
+    public DataBase1(String text, String text1, String text2, String text3, String text4, String text5, String text6, byte[] imageData) {
+    }
+
     public boolean updateToemployee(String username, String password, String email, String numberphone, String address) throws SQLException, IOException {
         String regData = "UPDATE INTO employee (username ,password,email,numberphone,address) " +
                 "VALUES(?,?,?,?,?)";

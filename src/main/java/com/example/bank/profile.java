@@ -686,5 +686,5 @@ public class profile {
 
     public void openmyaccount(ActionEvent actionEvent) {openNewWindow("hesab.fxml","myaccount",actionEvent);
     }
-    
+
 }
