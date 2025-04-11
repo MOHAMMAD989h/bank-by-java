@@ -15,10 +15,10 @@ public class DataBase1 {
     private Connection connect;
     private PreparedStatement prepare;
     private ResultSet result;
-    int yyengeza,MMengeza,update;
-    String name,userName,password,email,numberphone,nationcode,address, cvv2,money,credit,cartNum,bankName,phoneNumberHome,passwordCard;
-    File imageCard,imageData;
-    boolean isSuccessFul;
+    private int yyengeza,MMengeza,update;
+    private String name,userName,password,email,numberphone,nationcode,address, cvv2,money,credit,cartNum,bankName,phoneNumberHome,passwordCard;
+    private File imageCard,imageData;
+    private boolean isSuccessFul;
     public DataBase1(String name, String userName, String password, String email, String numberphone, String nationcode, String address, File imageData) throws SQLException, IOException {
         this.name = name;
         this.userName = userName;
@@ -37,7 +37,7 @@ public class DataBase1 {
     public DataBase1(String text, String text1, String text2, String text3, String text4, String text5, String text6, byte[] imageData) {
     }
 
-    public boolean updateToemployee(String username, String password, String email, String numberphone, String address) throws SQLException, IOException {
+    private boolean updateToemployee(String username, String password, String email, String numberphone, String address) throws SQLException, IOException {
         String regData = "UPDATE INTO employee (username ,password,email,numberphone,address) " +
                 "VALUES(?,?,?,?,?)";
         connect = DataBase1.connectDB();
@@ -74,7 +74,7 @@ public class DataBase1 {
         this.imageCard = imageCard;
         isSuccessFul=insertToCards(userName,  cartNum, cvv2,bankName,  phoneNumberHome,passwordCard, MMengeza, yyengeza,imageCard);
     }
-    public boolean updateToCards(String username, String money, String credit, String passwordCard) throws SQLException, IOException {
+    private boolean updateToCards(String username, String money, String credit, String passwordCard) throws SQLException, IOException {
         String regData = "UPDATE INTO cards (username ,money ,credit ,password) " +
                 "VALUES(?,?,?,?)";
         assert connect != null;
@@ -91,8 +91,8 @@ public class DataBase1 {
         else{
             return false;
         }
-    }
-    public void DataBase11(int update,String updateS) throws SQLException, IOException {
+    }public void DataBase11(int update,String updateS)throws SQLException, IOException{DataBase112(update,updateS);}
+    private void DataBase112(int update,String updateS) throws SQLException, IOException {
         this.update = update;
         if(update<0){//update person
             if(update==-1){isSuccessFul=updateToemployee(updateS,password,email,numberphone,address);}
@@ -117,7 +117,7 @@ public class DataBase1 {
     public Connection getConnect() {
         return connect;
     }
-    public boolean getIsSuccessFul() {
+    private boolean getIsSuccessFul() {
         return isSuccessFul;
     }
     public boolean isSuccessFull() {
@@ -313,7 +313,7 @@ public class DataBase1 {
         }
         return null;
     }
-    public boolean insertToemployee(String name, String username, String password, String email, String numberphone, String nationcode, String address, File imagedata) throws SQLException, IOException {
+    private boolean insertToemployee(String name, String username, String password, String email, String numberphone, String nationcode, String address, File imagedata) throws SQLException, IOException {
         String regData = "INSERT INTO employee (name,username ,password,email,numberphone,nationcode,address,imageData) " +
                 "VALUES(?,?,?,?,?,?,?,?)";
         connect = DataBase1.connectDB();
@@ -338,7 +338,7 @@ public class DataBase1 {
             return false;
         }
     }
-    public boolean insertToCards( String username, String Cvv2Getter, String cartNumgetter, String com1, String phonehome, String accountPassword, int monthofExpire,int yearofExpire,File imageCard) throws SQLException, IOException {
+    private boolean insertToCards( String username, String Cvv2Getter, String cartNumgetter, String com1, String phonehome, String accountPassword, int monthofExpire,int yearofExpire,File imageCard) throws SQLException, IOException {
         String regData = "INSERT INTO cards (username ,money ,credit ,numbercard ,cvv2,engeza,bankname ,phonenumberhome,password,imagecard) " +
                 "VALUES(?,?,?,?,?,?,?,?,?,?)";
         assert connect != null;

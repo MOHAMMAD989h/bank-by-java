@@ -431,7 +431,7 @@ public class loginpage{
                 e.printStackTrace();
             }
             try{UpdateTheInserted.DataBase11(-2,si_newpassword.getText());
-                if(UpdateTheInserted.getIsSuccessFul()){
+                if(UpdateTheInserted.isSuccessFull()){
                     alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("INFORMATION");
                     alert.setHeaderText(null);
@@ -445,7 +445,7 @@ public class loginpage{
                     alert.setContentText("Incorrect  password");
                     alert.showAndWait();
                 }UpdateTheInserted.DataBase11(-3,si_emailforgot.getText());
-                if(UpdateTheInserted.getIsSuccessFul()){
+                if(UpdateTheInserted.isSuccessFull()){
                     alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("INFORMATION");
                     alert.setHeaderText(null);
@@ -529,12 +529,7 @@ public class loginpage{
             alert.setHeaderText(null);
             alert.setContentText("Name and username and Address and email must be at least 3 characters and password must be at least 8 characters");
             alert.showAndWait();
-        } else {
-            connect = DataBase1.connectDB();
-            if(connect==null){
-                System.out.println("Connect Error");
-            }
-            DataBase1 Select=new DataBase1();
+        } else {DataBase1 Select=new DataBase1();
             try {System.out.println(Select.finddataimport(su_username.getText(),"employee","username")+Select.finddataimport(su_password.getText(),"employee","password")+Select.finddataimport(su_emailsign1.getText(),"employee","email"));
 
                 if (Select.isdataimportvalid(su_username.getText(),"employee","username")&&Select.isdataimportvalid(su_password.getText(),"employee","password")&&Select.isdataimportvalid(su_emailsign1.getText(),"employee","email")) {
