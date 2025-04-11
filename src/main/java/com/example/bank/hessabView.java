@@ -10,6 +10,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.ClipboardContent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -149,10 +151,35 @@ public class hessabView {
 
         //price
         Label PriceLbl = new Label( "قیمت (تومان) :  "+p.getPrice());
-        PriceLbl.setLayoutX(350);
+        PriceLbl.setLayoutX(400);
         PriceLbl.setLayoutY(20);
 
-        pane.getChildren().addAll(typeLbl, PriceLbl);
+        Button button = new Button("copy");
+        button.setStyle("    -fx-font-family: \"B Nazanin\";\n" +
+                "    -fx-font-size: 12;\n" +
+                "    -fx-text-fill: white;\n" +
+                "    -fx-background-color: transparrent;\n" +
+                "    -fx-background-radius: 15px;    -fx-background-color: linear-gradient(to bottom right, #1E8E73,  #1fa784);\n" +
+                "    -fx-text-fill:  #4d4d4d;\n" +
+                "    -fx-background-color: linear-gradient(to bottom right,#4A80D0 ,#70A0E0,  #90B0C8);\n" +
+                "    -fx-translate-y: -3px;\n" +
+                "    -fx-scale-x: 1.05;\n" +
+                "    -fx-scale-y: 1.05;    -fx-text-fill:  #fff;\n" +
+                "    -fx-background-color: linear-gradient(to bottom right,#4A80D0 ,#70A0E0,  #90B0C8);\n" +
+                "    -fx-translate-y: -3px;\n" +
+                "    -fx-scale-x: 1.05;\n" +
+                "    -fx-scale-y: 1.05;    -fx-cursor: hand;\n");
+        button.setLayoutX(300);
+        button.setLayoutY(20);
+
+        button.setOnAction(e -> {
+            final Clipboard clipboard = Clipboard.getSystemClipboard();
+            final ClipboardContent content = new ClipboardContent();
+            content.putString(typeLbl.getText());
+            clipboard.setContent(content);
+        });
+
+        pane.getChildren().addAll(typeLbl, PriceLbl,button);
 
         return pane;
     }

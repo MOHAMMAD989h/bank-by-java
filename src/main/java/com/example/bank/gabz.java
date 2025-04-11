@@ -85,8 +85,10 @@ public class gabz {
     void gabznumber(ActionEvent event) throws IOException {
         if(loginID){
             System.out.println(gabzTextfield.getText().trim());
-            for (int i = 0; i < inputs.length; i=i+2) {
-                if (gabzTextfield.getText().trim().equals(inputs[i]) && gabzTextfield.getText().trim().equals(inputs[i+1]) ) {
+            for (int i = 0; i < inputs.length; i+=2) {
+                gabznumber.setVisible(false);
+                gabzPayment.setVisible(true);
+                if (gabzTextfield.getText().trim().equals(inputs[i].trim()) && gabzTextfield.getText().trim().equals(inputs[i+1].trim()) ) {
                     gabznumber.setVisible(false);
                     gabzPayment.setVisible(true);
                     payment = Integer.parseInt(inputs[i+1]);
