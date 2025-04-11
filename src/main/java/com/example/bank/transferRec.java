@@ -62,21 +62,21 @@ public class transferRec {
                             productlist.add(new productVam(inputs[i], inputs[i + 1], inputs[i + 2], inputs[i + 3], inputs[i + 4], inputs[i + 5], ""));
                         }
                         else{
-                            productlist.add(new productVam("","","", inputs[i + 3], inputs[i + 4], inputs[i + 5], ""));
+                            productlist.add(new productVam("","","", inputs[i + 3],"","", ""));
                         }
                     }
                 }
             }
-            System.out.println(isTransferShort);
             for (productVam product1 : productlist) {
+                System.out.println(isTransferShort);
                 if(!isTransferShort) {
                     vboxTransferRec.getChildren().add(createproductpane(product1));
                 }
                 else{
                     vboxTransferRec.getChildren().add(createpaneshort(product1));
-                    isTransferShort = false;
                 }
             }
+            isTransferShort = false;
         }
         catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -151,7 +151,7 @@ public class transferRec {
                         "    -fx-scale-x: 1.05;\n" +
                         "    -fx-scale-y: 1.05;");
         } else {
-            color.setText("واریز");
+            color.setText(" واریز ");
             color.setStyle("    -fx-font-family: \"B Nazanin\";\n" +
                         "    -fx-font-size: 18;\n" +
                         "    -fx-font-weight: bold;\n" +
@@ -205,22 +205,22 @@ public class transferRec {
     private AnchorPane createpaneshort(productVam p){
         AnchorPane pane = null;
         pane = new AnchorPane();
-        pane.setPrefHeight(80);
-        pane.setStyle("-fx-background-color: #f7dc84; -fx-background-radius: 10px;-fx-border-radius:10px;-fx-padding: 15px; -fx-margin: 15px;-fx-border-color: #fff;");
-        vboxTransferRec.setStyle("-fx-max-height: Infinity;-fx-pref-height: USE_COMPUTED_SIZE;-fx-padding: 15px; -fx-margin: 15px");
+        pane.setPrefHeight(50);
+        pane.setStyle("-fx-background-color: #f7dc84; -fx-background-radius: 10px;-fx-border-radius:10px;-fx-padding: 10px; -fx-margin: 10px;-fx-border-color: #fff;");
+        vboxTransferRec.setStyle("-fx-max-height: Infinity;-fx-pref-height: USE_COMPUTED_SIZE;-fx-padding: 10px; -fx-margin: 10px");
 
         //money
         Label moneyLbl = new Label("(تومان) : " + p.getTime());
         moneyLbl.setStyle("   -fx-font-family: \"B Nazanin\";");
         moneyLbl.setLayoutX(300);
-        moneyLbl.setLayoutY(40);
+        moneyLbl.setLayoutY(25);
 
         //colorLbl
         Button color = new Button();
         if (p.getTime().charAt(0) == '-') {
             color.setText("برداشت");
             color.setStyle("    -fx-font-family: \"B Nazanin\";\n" +
-                    "    -fx-font-size: 18;\n" +
+                    "    -fx-font-size: 14;\n" +
                     "    -fx-font-weight: bold;\n" +
                     "    -fx-text-fill: white;\n" +
                     "    -fx-background-color: transparrent; -fx-background-color: RED;" +
@@ -233,9 +233,9 @@ public class transferRec {
                     "    -fx-scale-x: 1.05;\n" +
                     "    -fx-scale-y: 1.05;");
         } else {
-            color.setText("واریز");
+            color.setText(" واریز ");
             color.setStyle("    -fx-font-family: \"B Nazanin\";\n" +
-                    "    -fx-font-size: 18;\n" +
+                    "    -fx-font-size: 14;\n" +
                     "    -fx-font-weight: bold;\n" +
                     "    -fx-text-fill: white;\n" +
                     "    -fx-background-color: transparrent; -fx-background-color: GREEN;" +
@@ -249,7 +249,7 @@ public class transferRec {
                     "    -fx-scale-y: 1.05;");
         }
         color.setLayoutX(50);
-        color.setLayoutY(40);
+        color.setLayoutY(25);
 
         pane.getChildren().addAll(moneyLbl, color);
 

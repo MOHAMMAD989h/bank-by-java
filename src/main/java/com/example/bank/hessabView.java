@@ -143,8 +143,9 @@ public class hessabView {
         }
 
         btn6.setOnAction(event -> {
-            pro.openNewWindow("transferRec.fxml","Transfer",event);
             isTransferShort = true;
+            System.out.println(isTransferShort);
+            pro.openNewWindow("transferRec.fxml","Transfer",event);
         });
     }
 
