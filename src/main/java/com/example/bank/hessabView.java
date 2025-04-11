@@ -75,7 +75,8 @@ public class hessabView {
     private Label codelabel;
 
     public static boolean isTransferShort;
-
+    @FXML
+    private VBox vboxsimcard;
     @FXML
     private Label numlabel;
     File file = new File("gabz.dat");
@@ -85,12 +86,16 @@ public class hessabView {
     @FXML
     private VBox vboxInternet;
     private List<productCharge> productInternet = new ArrayList<productCharge>();
+    private List<productCharge> productsimcard = new ArrayList<productCharge>();
+
 
     private String input;
     private String[] inputs;
     Random random = new Random();
     public static String numbercard;
     profile pro = new profile();
+
+    File file1 = new File("charge.txt");
 
     @FXML
     public void initialize() throws IOException {
@@ -104,42 +109,55 @@ public class hessabView {
         applyHoverEffect(btn8);
 
         //internet
-        productInternet.add(new productCharge("همراه اول یک گیگ اینترنت هفتگی","15000"));
-        productInternet.add(new productCharge("همراه اول دو گیگ اینترنت هفتگی","18000"));
-        productInternet.add(new productCharge("همراه اول سه گیگ اینترنت هفتگی","22000"));
-        productInternet.add(new productCharge("همراه اول پنچ گیگ اینترنت هفتگی","25000"));
-        productInternet.add(new productCharge("همراه اول یک گیگ اینترنت ماهانه","19000"));
-        productInternet.add(new productCharge("همراه اول سه گیگ اینترنت ماهانه","24000"));
-        productInternet.add(new productCharge("همراه اول پنج گیگ اینترنت ماهانه","28000"));
-        productInternet.add(new productCharge("همراه اول هفت گیگ اینترنت ماهانه","33000"));
-        productInternet.add(new productCharge("ایرانسل اول یک گیگ اینترنت هفتگی","15000"));
-        productInternet.add(new productCharge("ایرانسل  اول دو گیگ اینترنت هفتگی","18000"));
-        productInternet.add(new productCharge("ایرانسل  اول سه گیگ اینترنت هفتگی","22000"));
-        productInternet.add(new productCharge("ایرانسل  اول پنچ گیگ اینترنت هفتگی","25000"));
-        productInternet.add(new productCharge("ایرانسل  اول یک گیگ اینترنت ماهانه","19000"));
-        productInternet.add(new productCharge("ایرانسل  اول سه گیگ اینترنت ماهانه","24000"));
-        productInternet.add(new productCharge("ایرانسل  اول پنج گیگ اینترنت ماهانه","28000"));
-        productInternet.add(new productCharge("ایرانسل  اول هفت گیگ اینترنت ماهانه","33000"));
+        productInternet.add(new productCharge("همراه اول یک گیگ اینترنت هفتگی","15000"+"قیمت (تومان) :  "));
+        productInternet.add(new productCharge("همراه اول دو گیگ اینترنت هفتگی","18000"+"قیمت (تومان) :  "));
+        productInternet.add(new productCharge("همراه اول سه گیگ اینترنت هفتگی","22000"+"قیمت (تومان) :  "));
+        productInternet.add(new productCharge("همراه اول پنچ گیگ اینترنت هفتگی","25000"+"قیمت (تومان) :  "));
+        productInternet.add(new productCharge("همراه اول یک گیگ اینترنت ماهانه","19000"+"قیمت (تومان) :  "));
+        productInternet.add(new productCharge("همراه اول سه گیگ اینترنت ماهانه","24000"+"قیمت (تومان) :  "));
+        productInternet.add(new productCharge("همراه اول پنج گیگ اینترنت ماهانه","28000"+"قیمت (تومان) :  "));
+        productInternet.add(new productCharge("همراه اول هفت گیگ اینترنت ماهانه","33000"+"قیمت (تومان) :  "));
+        productInternet.add(new productCharge("ایرانسل اول یک گیگ اینترنت هفتگی","15000"+"قیمت (تومان) :  "));
+        productInternet.add(new productCharge("ایرانسل  اول دو گیگ اینترنت هفتگی","18000"+"قیمت (تومان) :  "));
+        productInternet.add(new productCharge("ایرانسل  اول سه گیگ اینترنت هفتگی","22000"+"قیمت (تومان) :  "));
+        productInternet.add(new productCharge("ایرانسل  اول پنچ گیگ اینترنت هفتگی","25000"+"قیمت (تومان) :  "));
+        productInternet.add(new productCharge("ایرانسل  اول یک گیگ اینترنت ماهانه","19000"+"قیمت (تومان) :  "));
+        productInternet.add(new productCharge("ایرانسل  اول سه گیگ اینترنت ماهانه","24000"+"قیمت (تومان) :  "));
+        productInternet.add(new productCharge("ایرانسل  اول پنج گیگ اینترنت ماهانه","28000"+"قیمت (تومان) :  "));
+        productInternet.add(new productCharge("ایرانسل  اول هفت گیگ اینترنت ماهانه","33000"+"قیمت (تومان) :  "));
 
         //gabz
         filegabz();
         input = Files.readString(file.toPath());
         inputs = input.split(",|\\n");
-        int  k = random.nextInt(inputs.length);
+        int  k = random.nextInt(inputs.length - 5);
         if(inputs[k].length() < 10) {
             k++;
         }
-        productGabz.add(new productCharge(inputs[k],inputs[k+1]));
-        productGabz.add(new productCharge(inputs[k+2],inputs[k+3]));
-        productGabz.add(new productCharge(inputs[k+4],inputs[k+5]));
-        productGabz.add(new productCharge(inputs[k+6],inputs[k+7]));
-        productGabz.add(new productCharge(inputs[k+8],inputs[k+9]));
+        productGabz.add(new productCharge(inputs[k],inputs[k+1]+"قیمت (تومان) :  "));
+        productGabz.add(new productCharge(inputs[k+2],inputs[k+3]+"قیمت (تومان) :  "));
+        productGabz.add(new productCharge(inputs[k+4],inputs[k+5]+"قیمت (تومان) :  "));
+        productGabz.add(new productCharge(inputs[k+6],inputs[k+7]+"قیمت (تومان) :  "));
+        productGabz.add(new productCharge(inputs[k+8],inputs[k+9]+"قیمت (تومان) :  "));
+
+        input = Files.readString(file1.toPath());
+        inputs = input.split(",|\\n");
+        k = random.nextInt(inputs.length - 5);
+
+        productsimcard.add(new productCharge(inputs[k],"شماره : "));
+        productsimcard.add(new productCharge(inputs[k+1],"شماره : "));
+        productsimcard.add(new productCharge(inputs[k+2],"شماره : "));
+        productsimcard.add(new productCharge(inputs[k+3],"شماره : "));
+        productsimcard.add(new productCharge(inputs[k+4],"شماره : "));
 
         for (productCharge p : productInternet) {
             vboxInternet.getChildren().add(createproductpane(p));
         }
         for (productCharge p : productGabz) {
             vboxGabz.getChildren().add(createproductpane(p));
+        }
+        for (productCharge p : productsimcard) {
+            vboxsimcard.getChildren().add(createproductpane(p));
         }
 
         btn6.setOnAction(event -> {
@@ -163,7 +181,7 @@ public class hessabView {
         typeLbl.setLayoutY(20);
 
         //price
-        Label PriceLbl = new Label( "قیمت (تومان) :  "+p.getPrice());
+        Label PriceLbl = new Label(p.getPrice());
         PriceLbl.setLayoutX(400);
         PriceLbl.setLayoutY(20);
 
@@ -491,7 +509,7 @@ public class hessabView {
         BufferedWriter bufferedWriter = new BufferedWriter(writer);
         String line = Files.readString(file.toPath());
 
-        if(line.equals("")) {
+        if(line.isEmpty()) {
             for (int i = 0; i < 1000; i++) {
                 int pricegabz = random.nextInt(20000, 2000000);
                 long numbergabz = random.nextLong(100000000, 999999999);
