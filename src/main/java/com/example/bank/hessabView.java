@@ -457,7 +457,8 @@ public class hessabView {
             }
             DataBase1 getting=new DataBase1();
             products.clear();
-            while (getting.isdataimportvalid1(username,"cards","username")) {
+            ArrayList<String> data11 = new ArrayList<>();
+            for (int c=0;c < data11.size();c+=5) {
                 numbercard=getting.getCartNum();
                 String number =getting.getCartNum();
                 String time = getting.getYyengeza();

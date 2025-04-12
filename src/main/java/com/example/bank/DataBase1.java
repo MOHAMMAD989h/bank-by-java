@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.math.BigInteger;
 import java.nio.file.Files;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -301,19 +302,30 @@ public class DataBase1 {
         result = prepare.executeQuery();
         return result.next();
     }
-    public boolean isdataimportvalid1(String dataimport,String table,String tableinfor) throws SQLException {
+    ArrayList<String> dataimport1 = new ArrayList<>();
+    public ArrayList<String> isdataimportvalid1(String dataimport,String table,String tableinfor) throws SQLException {
         String data = "SELECT * FROM "+table+" WHERE "+ tableinfor +" = ?";
+        dataimport1.clear();
         connect = connectDB();
         assert connect != null;
         prepare = connect.prepareStatement(data);
         prepare.setString(1, dataimport);
         result = prepare.executeQuery();
-        cartNum = result.getString("numbercard");
-        yyengeza = result.getString("engeza");
-        cvv2 = result.getString("cvv2");
-        bankName = result.getString("bankname");
-        money = result.getString("money");
-        return result.next();
+        while (result.next()) {
+            System.out.println("****");
+            DataBase1 data1 = new DataBase1();
+            cartNum = result.getString("numbercard");
+            yyengeza = result.getString("engeza");
+            cvv2 = result.getString("cvv2");
+            bankName = result.getString("bankname");
+            money = result.getString("money");
+            dataimport1.add(cartNum);
+            dataimport1.add(yyengeza);
+            dataimport1.add(cvv2);
+            dataimport1.add(bankName);
+            dataimport1.add(money);
+        }
+        return dataimport1;
     }
     public String finddataimport(String dataimport,String table,String tableinfor,String Return) throws SQLException {
         String data = "SELECT * FROM "+table+" WHERE "+ tableinfor +" = ?";
