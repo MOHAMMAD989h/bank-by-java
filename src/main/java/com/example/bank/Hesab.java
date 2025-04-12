@@ -121,11 +121,11 @@ public class Hesab {
             System.out.println("8888");
             ArrayList<String> data11 =getting.isdataimportvalid1(username,"cards","username");
             for (int c = 0; c < data11.size(); c+=5) {
-                String number =data11.get(0);
-                String time = data11.get(1);
-                String cvv2 = data11.get(2);
-                String bankname = data11.get(3);
-                String money = data11.get(4);
+                String number =data11.get(c);
+                String time = data11.get(c+1);
+                String cvv2 = data11.get(c+2);
+                String bankname = data11.get(c+3);
+                String money = data11.get(c+4);
                 products.add(new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone));
                 if(bankname.trim().equals("Aureous Bank")){String HboxName="#hbox_Aur";
                     if(bankAureous==0){productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
