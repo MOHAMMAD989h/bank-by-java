@@ -81,7 +81,9 @@ public class gabz {
             login.openNewWindow("main.fxml", "Home", event);
         }
     }
-
+    public void setMethod(String method) {
+        numbercardGetter.setText(method);
+    }
     @FXML
     void gabznumber(ActionEvent event) throws IOException {
         boolean flag = false;

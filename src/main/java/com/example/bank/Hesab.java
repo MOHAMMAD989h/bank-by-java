@@ -129,7 +129,7 @@ public class Hesab {
             int bankSepah=0;
             int bankShahr=0;
             int bankTejarat=0;
-            while (getting.isdataimportvalid1(username,"cards","username")) {
+            while (getting.isDataImportValid1(username,"cards","username")) {
                 String number =getting.getCartNum();
                 String time = getting.getYyengeza();
                 String cvv2 = getting.getCvv2();

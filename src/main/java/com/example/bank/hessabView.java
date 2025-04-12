@@ -5,7 +5,9 @@ import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -15,6 +17,7 @@ import javafx.scene.input.ClipboardContent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.awt.*;
@@ -89,7 +92,7 @@ public class hessabView {
     private String input;
     private String[] inputs;
     Random random = new Random();
-    public static String numbercard;
+    private static String numbercard;
     profile pro = new profile();
 
     File file1 = new File("charge.txt");
@@ -412,22 +415,16 @@ public class hessabView {
     }
     @FXML
     private void handleServiceOption1(ActionEvent event) {
-        Controller manager = new Controller();
-        manager.openNewWindow("entegal.fxml","انتقال وجه",event);
+        openNewWindow2("entegal.fxml","انتقال وجه",numbercard,event);
     }
     @FXML
     private void handleServiceOption3(ActionEvent actionEvent) {
-        Controller manager = new Controller();
-        manager.openNewWindow("charge.fxml","charge",actionEvent);
+        openNewWindow2("charge.fxml","charge",numbercard,actionEvent);
     }
     @FXML
     private void handleServiceOption2(ActionEvent actionEvent) {
-        Controller manager = new Controller();
-        manager.openNewWindow("gabz.fxml","gabz",actionEvent);}
-    Connection connect;
-    PreparedStatement prepare;
-    ResultSet result;
-    ResultSet rs;
+        openNewWindow2("gabz.fxml","gabz",numbercard,actionEvent);}
+
 
     String infor = null;
     private List<productVam> products = new ArrayList<>();
@@ -536,5 +533,29 @@ public class hessabView {
         }
 
 
+    }
+    public void openNewWindow2 (String fxmlFile, String title, String method, ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
+            Scene scene = new Scene(loader.load(), 1535, 790);
+
+            //ارسال متد
+
+            hessabView controller = loader.getController();
+            controller.setMethod(method);
+
+            // ایجاد و نمایش صفحه جدید
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle(title);
+            stage.show();
+
+            // بستن صفحه فعلی
+            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            currentStage.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

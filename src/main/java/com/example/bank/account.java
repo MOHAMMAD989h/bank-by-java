@@ -181,10 +181,11 @@ public class account implements Initializable {
         deposidSodd.setText("سود :"+deposidMonth.getValue() + 3);
         try {
             connect = DataBase1.connectDB();
-            String selectdata = "SELECT * FROM employee";
+            String selectdata = "SELECT * FROM employee WHERE username = ?";
             assert connect != null;
             prepare = connect.prepareStatement(selectdata);
-            rs = prepare.executeQuery(selectdata);
+            prepare.setString(1,username);
+            rs = prepare.executeQuery();
 
             while (rs.next()) {
                 showName.setText(rs.getString("name"));
@@ -364,7 +365,7 @@ public class account implements Initializable {
 
             connect = DataBase1.connectDB();
             if(comaccount.getValue().equals("حساب جاری")) {
-                DataBase1 hesab=new DataBase1(connect,username,String.valueOf(cvv2),"0","0",BigNumberString,"Aureous Bank",homeNumberGet.getText(),accountPassword.getText(),MM,yy,Arrays.toString(imageData));
+                DataBase1 hesab=new DataBase1(connect,username,String.valueOf(cvv2),"0","0",BigNumberString,"Aureous Bank",homeNumberGet.getText(),accountPassword.getText(),MM,yy,selectedImageFile);
             } else if (comaccount.getValue().equals("حساب سپرده")) {
                 maker.setVisible(false);
                 introducer.setVisible(false);

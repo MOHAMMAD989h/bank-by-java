@@ -17,7 +17,9 @@ import javafx.util.Duration;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -483,5 +485,8 @@ public class entegal {
         //وقتی ماوس میره روش متد hoverIn اجرا میشه و وقتی خارج می شود متد hoverOut اجرا می شود
         text.setOnMouseEntered(e -> hoverIn.play());
         text.setOnMouseExited(e -> hoverOut.play());
+    }
+    public void setMethod(String method) {
+        text1.setText(method);
     }
 }

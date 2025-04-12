@@ -73,7 +73,7 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="text1" alignment="CENTER" prefHeight="47.0" prefWidth="464.0" promptText="---- ---- ---- ---- " styleClass="textfield3" stylesheets="@styles.css">
+                  <TextField fx:id="text1" accessibleRole="TEXT" alignment="CENTER" prefHeight="47.0" prefWidth="464.0" promptText="---- ---- ---- ---- " styleClass="textfield3" stylesheets="@styles.css">
                      <font>
                         <Font size="36.0" />
                      </font>

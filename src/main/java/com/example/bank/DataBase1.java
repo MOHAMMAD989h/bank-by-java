@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.math.BigInteger;
 import java.nio.file.Files;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -15,6 +16,7 @@ public class DataBase1 {
     private Connection connect;
     private PreparedStatement prepare;
     private ResultSet result;
+    private ResultSet result1;
     int update;
     String name,userName,password,email,numberphone,nationcode,address, cvv2,money,credit,cartNum,bankName,phoneNumberHome,passwordCard,yyengeza,MMengeza;
     File imageCard,imageData;
@@ -301,13 +303,16 @@ public class DataBase1 {
         result = prepare.executeQuery();
         return result.next();
     }
-    public boolean isdataimportvalid1(String dataimport,String table,String tableinfor) throws SQLException {
+    ArrayList<String> dataimport1 =new ArrayList<>();
+    public ArrayList<String> isdataimportvalid1(String dataimport,String table,String tableinfor) throws SQLException {
         String data = "SELECT * FROM "+table+" WHERE "+ tableinfor +" = ?";
+        if(result1==null){
         connect = connectDB();
         assert connect != null;
         prepare = connect.prepareStatement(data);
         prepare.setString(1, dataimport);
         result = prepare.executeQuery();
+        result1=result;}
         cartNum = result.getString("numbercard");
         yyengeza = result.getString("engeza");
         cvv2 = result.getString("cvv2");
