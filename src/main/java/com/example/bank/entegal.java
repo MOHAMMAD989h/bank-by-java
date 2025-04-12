@@ -109,8 +109,226 @@ public class entegal {
     public static boolean isupdatecredit;
     public static boolean is;
 
+    /*private void bindImageSizeToWindow() {
+        // بررسی null نبودن Scene و Window
+        if (backgroundImage.getScene() != null && backgroundImage.getScene().getWindow() != null) {
+            Stage stage = (Stage) backgroundImage.getScene().getWindow();
+
+            // اتصال fitHeight و fitWidth از ImageView به ارتفاع و عرض Stage
+            backgroundImage.fitHeightProperty().bind(stage.heightProperty());
+            backgroundImage.fitWidthProperty().bind(stage.widthProperty());
+            backgroundImage.setPreserveRatio(false); // این خط را اضافه کنید
+        } else {
+            System.err.println("Scene یا Window هنوز تنظیم نشده است.");
+        }
+    }*/
+
+    private void updateTime() {
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        timeLabel.setText(now.format(formatter));
+    }
+
+    /*private void setupGridPaneHoverBehavior() {
+
+        // تنظیم رویدادهای موس برای profile
+        profile.setOnMouseEntered(event -> {
+            profileoption.setVisible(true);
+            cancelPauseTransition();
+        });
+
+        profile.setOnMouseExited(event -> {
+            startPauseTransition(() -> profileoption.setVisible(false));
+        });
+
+    }*/
+
+    private void startPauseTransition(Runnable action) {
+        pauseTransition = new PauseTransition(Duration.seconds(0.5)); // تأخیر 0.5 ثانیه
+        pauseTransition.setOnFinished(event -> action.run());
+        pauseTransition.play();
+    }
+
+    private void cancelPauseTransition() {
+        if (pauseTransition != null) {
+            pauseTransition.stop();
+        }
+    }
+
+    public void openNewWindow(String fxmlFile, String title, ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
+            Scene scene = new Scene(loader.load(), 1535, 790);
+
+
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle(title);
+            stage.show();
+
+
+            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            currentStage.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public void handleServiceOption1(ActionEvent event) {
+        openNewWindow("entegal.fxml","انتقال وجه",event);
+    }
+    /*public void poya (ActionEvent event) {
+        PasswordPoya.setVisible(true);
+        Random rand = new Random();
+        randomnumber = rand.nextInt(100000,999999);
+        text5.setText(String.valueOf(randomnumber));
+        Timer timer = new Timer();
+
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                randomnumber =null;
+                Platform.runLater(() -> {
+                    text5.setText(String.valueOf(randomnumber));
+                    System.out.println(randomnumber);
+                    //PasswordPoya.setVisible(false);
+                    text5.setVisible(false);
+
+                });
+            }
+        };
+        timer.schedule(task, 10000);
+    }*/
+
+    public void Dargah (ActionEvent event) throws SQLException, IOException {
+        if(verifyCode1.equals(PasswordPoya.getText())) {
+            long resulttransfer = pro.transferMoney(text1.getText(), text3.getText(), Integer.parseInt(pool.getText()));
+            if (resulttransfer < 0) {
+                alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Information");
+                alert.setHeaderText(null);
+                alert.setContentText("موجودی کم است");
+                alert.showAndWait();
+            } else {
+                pro.fileTransfer(text1.getText(),text3.getText(), -Long.parseLong(pool.getText()),"کارت به کارت");
+                pro.fileTransfer(text3.getText(),text1.getText(), +Long.parseLong(pool.getText()),"کارت به کارت");
+                alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Information");
+                alert.setHeaderText(null);
+                alert.setContentText("موفقیت امیز بود");
+                alert.showAndWait();
+                openNewWindow("main.fxml", "Home", event);
+            }
+        }
+    }
+    String email;
+
+    public void backToHomeFromEntegal(ActionEvent actionEvent) {
+        openNewWindow("main.fxml","home",actionEvent);
+    }
+
+    public void sendPoyaPassword(ActionEvent actionEvent) throws SQLException {
+        text1.setEditable(false);
+        text3.setEditable(false);
+        cvv.setEditable(false);
+        year.setEditable(false);
+        month.setEditable(false);
+        connect = DataBase1.connectDB();
+        String selectEmailByCardNumber = "SELECT e.email, c.engeza, c.cvv2, c.numbercard FROM employee e JOIN cards c ON e.username = c.username WHERE c.numbercard = ?";
+
+        String time = "", cvv2 = "", numbercard = "", email = "";
+
+        assert connect != null;
+
+        PreparedStatement prepare = connect.prepareStatement(selectEmailByCardNumber);
+        prepare.setString(1, text1.getText().trim());
+        rs = prepare.executeQuery();
+        if (rs.next()) {
+            email = rs.getString("email");
+            time = rs.getString("engeza");
+            cvv2 = rs.getString("cvv2");
+            numbercard = rs.getString("numbercard");
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("اطلاعات کارت وارد شده معتبر نیست.");
+            alert.showAndWait();
+            return;
+        }
+
+        if (text3.getText().isEmpty() || !numbercard.equals(text1.getText().trim()) || !cvv2.equals(cvv.getText().trim())
+                || Integer.parseInt(time) != Integer.parseInt(String.valueOf(year.getText()).trim() + String.valueOf(month.getText()).trim())) {
+            System.out.println(String.valueOf(year.getText()).trim() + String.valueOf(month.getText()).trim());
+            System.out.println(time);
+            System.out.println(cvv.getText().trim());
+            System.out.println(cvv2);
+            System.out.println(numbercard);
+            System.out.println(text1.getText().trim());
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("اطلاعات همخوانی ندارد");
+            alert.showAndWait();
+        } else {
+            verifyCode1 = String.valueOf((int) (Math.random() * 900000) + 100000);
+            sendEmail(email, "رمز پویا :"+verifyCode1);
+            Dargah.setVisible(true);
+            sendPoyaPassword.setVisible(false);
+        }
+    }
+
     @FXML
-    public void initialize() {
+    private void backtoHesabFromEntegal(ActionEvent event) {
+        String method=text1.getText();
+        hessabView(method,event);
+    }public void hessabView(String hessabNum,ActionEvent event) {
+        openNewWindow2("hessabView.fxml","نمایش حساب",hessabNum,event);
+    }
+    public void openNewWindow2 (String fxmlFile, String title, String method, ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
+            Scene scene = new Scene(loader.load(), 1535, 790);
+
+            //ارسال متد
+
+            hessabView controller = loader.getController();
+            controller.setMethod(method);
+
+            // ایجاد و نمایش صفحه جدید
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle(title);
+            stage.show();
+
+            // بستن صفحه فعلی
+            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            currentStage.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    void applyHoverEffect(TextField text) {
+        Timeline hoverIn = new Timeline(
+                new KeyFrame(Duration.millis(200),
+                        new KeyValue(text.translateYProperty(), -5),
+                        new KeyValue(text.scaleXProperty(), 1.1),
+                        new KeyValue(text.scaleYProperty(), 1.1))
+        );
+
+        Timeline hoverOut = new Timeline(
+                new KeyFrame(Duration.millis(200),
+                        new KeyValue(text.translateYProperty(), 0),
+                        new KeyValue(text.scaleXProperty(), 1),
+                        new KeyValue(text.scaleYProperty(), 1))
+        );
+        //وقتی ماوس میره روش متد hoverIn اجرا میشه و وقتی خارج می شود متد hoverOut اجرا می شود
+        text.setOnMouseEntered(e -> hoverIn.play());
+        text.setOnMouseExited(e -> hoverOut.play());
+    }
+    public void setMethod(String method) {text1.setText(method);
         timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
@@ -293,200 +511,5 @@ public class entegal {
 
             }
         });
-    }
-
-    /*private void bindImageSizeToWindow() {
-        // بررسی null نبودن Scene و Window
-        if (backgroundImage.getScene() != null && backgroundImage.getScene().getWindow() != null) {
-            Stage stage = (Stage) backgroundImage.getScene().getWindow();
-
-            // اتصال fitHeight و fitWidth از ImageView به ارتفاع و عرض Stage
-            backgroundImage.fitHeightProperty().bind(stage.heightProperty());
-            backgroundImage.fitWidthProperty().bind(stage.widthProperty());
-            backgroundImage.setPreserveRatio(false); // این خط را اضافه کنید
-        } else {
-            System.err.println("Scene یا Window هنوز تنظیم نشده است.");
-        }
-    }*/
-
-    private void updateTime() {
-        LocalDateTime now = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        timeLabel.setText(now.format(formatter));
-    }
-
-    /*private void setupGridPaneHoverBehavior() {
-
-        // تنظیم رویدادهای موس برای profile
-        profile.setOnMouseEntered(event -> {
-            profileoption.setVisible(true);
-            cancelPauseTransition();
-        });
-
-        profile.setOnMouseExited(event -> {
-            startPauseTransition(() -> profileoption.setVisible(false));
-        });
-
-    }*/
-
-    private void startPauseTransition(Runnable action) {
-        pauseTransition = new PauseTransition(Duration.seconds(0.5)); // تأخیر 0.5 ثانیه
-        pauseTransition.setOnFinished(event -> action.run());
-        pauseTransition.play();
-    }
-
-    private void cancelPauseTransition() {
-        if (pauseTransition != null) {
-            pauseTransition.stop();
-        }
-    }
-
-    public void openNewWindow(String fxmlFile, String title, ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
-            Scene scene = new Scene(loader.load(), 1535, 790);
-
-
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.setTitle(title);
-            stage.show();
-
-
-            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            currentStage.close();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    public void handleServiceOption1(ActionEvent event) {
-        openNewWindow("entegal.fxml","انتقال وجه",event);
-    }
-    /*public void poya (ActionEvent event) {
-        PasswordPoya.setVisible(true);
-        Random rand = new Random();
-        randomnumber = rand.nextInt(100000,999999);
-        text5.setText(String.valueOf(randomnumber));
-        Timer timer = new Timer();
-
-        TimerTask task = new TimerTask() {
-            @Override
-            public void run() {
-                randomnumber =null;
-                Platform.runLater(() -> {
-                    text5.setText(String.valueOf(randomnumber));
-                    System.out.println(randomnumber);
-                    //PasswordPoya.setVisible(false);
-                    text5.setVisible(false);
-
-                });
-            }
-        };
-        timer.schedule(task, 10000);
-    }*/
-
-    public void Dargah (ActionEvent event) throws SQLException, IOException {
-        if(verifyCode1.equals(PasswordPoya.getText())) {
-            long resulttransfer = pro.transferMoney(text1.getText(), text3.getText(), Integer.parseInt(pool.getText()));
-            if (resulttransfer < 0) {
-                alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Information");
-                alert.setHeaderText(null);
-                alert.setContentText("موجودی کم است");
-                alert.showAndWait();
-            } else {
-                pro.fileTransfer(text1.getText(),text3.getText(), -Long.parseLong(pool.getText()),"کارت به کارت");
-                pro.fileTransfer(text3.getText(),text1.getText(), +Long.parseLong(pool.getText()),"کارت به کارت");
-                alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Information");
-                alert.setHeaderText(null);
-                alert.setContentText("موفقیت امیز بود");
-                alert.showAndWait();
-                openNewWindow("main.fxml", "Home", event);
-            }
-        }
-    }
-    String email;
-
-    public void backToHomeFromEntegal(ActionEvent actionEvent) {
-        openNewWindow("main.fxml","home",actionEvent);
-    }
-
-    public void sendPoyaPassword(ActionEvent actionEvent) throws SQLException {
-        text1.setEditable(false);
-        text3.setEditable(false);
-        cvv.setEditable(false);
-        year.setEditable(false);
-        month.setEditable(false);
-        connect = DataBase1.connectDB();
-        String selectEmailByCardNumber = "SELECT e.email, c.engeza, c.cvv2, c.numbercard FROM employee e JOIN cards c ON e.username = c.username WHERE c.numbercard = ?";
-
-        String time = "", cvv2 = "", numbercard = "", email = "";
-
-        assert connect != null;
-
-        PreparedStatement prepare = connect.prepareStatement(selectEmailByCardNumber);
-        prepare.setString(1, text1.getText().trim());
-        rs = prepare.executeQuery();
-        if (rs.next()) {
-            email = rs.getString("email");
-            time = rs.getString("engeza");
-            cvv2 = rs.getString("cvv2");
-            numbercard = rs.getString("numbercard");
-        } else {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText(null);
-            alert.setContentText("اطلاعات کارت وارد شده معتبر نیست.");
-            alert.showAndWait();
-            return;
-        }
-
-        if (text3.getText().isEmpty() || !numbercard.equals(text1.getText().trim()) || !cvv2.equals(cvv.getText().trim())
-                || Integer.parseInt(time) != Integer.parseInt(String.valueOf(year.getText()).trim() + String.valueOf(month.getText()).trim())) {
-            System.out.println(String.valueOf(year.getText()).trim() + String.valueOf(month.getText()).trim());
-            System.out.println(time);
-            System.out.println(cvv.getText().trim());
-            System.out.println(cvv2);
-            System.out.println(numbercard);
-            System.out.println(text1.getText().trim());
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText(null);
-            alert.setContentText("اطلاعات همخوانی ندارد");
-            alert.showAndWait();
-        } else {
-            verifyCode1 = String.valueOf((int) (Math.random() * 900000) + 100000);
-            sendEmail(email, "رمز پویا :"+verifyCode1);
-            Dargah.setVisible(true);
-            sendPoyaPassword.setVisible(false);
-        }
-    }
-
-    public void backtoHessabView(ActionEvent event) {
-        login.openNewWindow("hesab.fxml","نمایش حساب",event);
-    }
-
-    void applyHoverEffect(TextField text) {
-        Timeline hoverIn = new Timeline(
-                new KeyFrame(Duration.millis(200),
-                        new KeyValue(text.translateYProperty(), -5),
-                        new KeyValue(text.scaleXProperty(), 1.1),
-                        new KeyValue(text.scaleYProperty(), 1.1))
-        );
-
-        Timeline hoverOut = new Timeline(
-                new KeyFrame(Duration.millis(200),
-                        new KeyValue(text.translateYProperty(), 0),
-                        new KeyValue(text.scaleXProperty(), 1),
-                        new KeyValue(text.scaleYProperty(), 1))
-        );
-        //وقتی ماوس میره روش متد hoverIn اجرا میشه و وقتی خارج می شود متد hoverOut اجرا می شود
-        text.setOnMouseEntered(e -> hoverIn.play());
-        text.setOnMouseExited(e -> hoverOut.play());
-    }
-    public void setMethod(String method) {
-        text1.setText(method);
     }
 }

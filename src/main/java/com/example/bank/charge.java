@@ -2,12 +2,16 @@ package com.example.bank;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -53,9 +57,9 @@ public class charge {
 
 
     private List<productCharge> productcharges = new ArrayList<productCharge>();
-    profile pro = new profile();
-
-    public void initialize() throws IOException {
+    profile pro=new profile();
+    Hesab pro1 = new Hesab();
+    public void setMethod(String method) throws IOException{
         productcharges.add(new productCharge("همراه اول","5000"));
         productcharges.add(new productCharge("همراه اول","10000"));
         productcharges.add(new productCharge("همراه اول","20000"));
@@ -64,7 +68,7 @@ public class charge {
         productcharges.add(new productCharge("ایرانسل","10000"));
         productcharges.add(new productCharge("ایرانسل","20000"));
         productcharges.add(new productCharge("ایرانسل","50000"));
-
+        System.out.println("به ست وارد شد");
 
 
         for (productCharge p : productcharges) {
@@ -74,7 +78,10 @@ public class charge {
 
         input = Files.readString(file.toPath());
         inputs = input.split(",");
+        numberCharge.setText(method);
+        System.out.println(method);
     }
+
 
     private AnchorPane createproductpane(productCharge productcharge) {
         AnchorPane pane = null;
@@ -170,8 +177,35 @@ public class charge {
 
 
     @FXML
-    private void backtoHomeFromCharge(ActionEvent event) {
-        pro.openNewWindow("hesab.fxml","Account",event);
+    private void backtoHesabFromCharge(ActionEvent event) {
+        String method=numberCharge.getText();
+        hessabView(method,event);
     }
+    public void hessabView(String hessabNum,ActionEvent event) {
+        openNewWindow2("hessabView.fxml","نمایش حساب",hessabNum,event);
+    }
+    public void openNewWindow2 (String fxmlFile, String title, String method, ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
+            Scene scene = new Scene(loader.load(), 1535, 790);
 
+            //ارسال متد
+
+            hessabView controller = loader.getController();
+            controller.setMethod(method);
+
+            // ایجاد و نمایش صفحه جدید
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle(title);
+            stage.show();
+
+            // بستن صفحه فعلی
+            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            currentStage.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

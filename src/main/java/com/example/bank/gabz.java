@@ -2,7 +2,12 @@ package com.example.bank;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
+
 import java.io.*;
 import java.nio.file.Files;
 import java.sql.Connection;
@@ -46,17 +51,6 @@ public class gabz {
     Connection connect = null;
     PreparedStatement prepare = null;
 
-    public void initialize() throws IOException, SQLException {
-        input = Files.readString(file.toPath());
-        inputs = input.split(",|\\n");
-        for (int i=0;i<inputs.length;i++) {
-            inputs[i] = inputs[i].trim();
-        }
-        for (int i = 0; i < inputs.length; i++) {
-            System.out.println(inputs[i]+"*");
-        }
-    }
-
     @FXML
     void gabzPayment(ActionEvent event) throws SQLException, IOException, ClassNotFoundException {
         int result = pro.updateCredit(numbercardGetter.getText(), -payment);
@@ -81,7 +75,15 @@ public class gabz {
             login.openNewWindow("main.fxml", "Home", event);
         }
     }
-    public void setMethod(String method) {
+    public void setMethod(String method)throws SQLException, IOException {
+        input = Files.readString(file.toPath());
+        inputs = input.split(",|\\n");
+        for (int i=0;i<inputs.length;i++) {
+            inputs[i] = inputs[i].trim();
+        }
+        for (int i = 0; i < inputs.length; i++) {
+            System.out.println(inputs[i]+"*");
+        }
         numbercardGetter.setText(method);
     }
     @FXML
@@ -145,9 +147,37 @@ public class gabz {
         }
 
         writer.close();
-    }
+    }Hesab pro1 = new Hesab();
 
-    public void backtomainFromGabz(ActionEvent actionEvent) {
-        login.openNewWindow("hesab.fxml", "Account", actionEvent);
+    @FXML
+    private void backtoHesabFromGabz(ActionEvent event) {
+        String method=numbercardGetter.getText();
+        hessabView(method,event);
+    }public void hessabView(String hessabNum,ActionEvent event) {
+        openNewWindow2("hessabView.fxml","نمایش حساب",hessabNum,event);
+    }
+    public void openNewWindow2 (String fxmlFile, String title, String method, ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
+            Scene scene = new Scene(loader.load(), 1535, 790);
+
+            //ارسال متد
+
+            hessabView controller = loader.getController();
+            controller.setMethod(method);
+
+            // ایجاد و نمایش صفحه جدید
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle(title);
+            stage.show();
+
+            // بستن صفحه فعلی
+            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            currentStage.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
