@@ -105,7 +105,14 @@
             </HBox>
             <HBox alignment="CENTER_RIGHT" layoutX="59.0" layoutY="46.0" prefHeight="46.0" prefWidth="1478.0" style="-fx-background-color: #4d4d4d;" stylesheets="@styles.css">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="37.0" prefWidth="69.0" text="Button" />
+                  <Button mnemonicParsing="false" prefHeight="37.0" prefWidth="69.0" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../images/cpm_3316861.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
                   <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="44.0" style="-fx-background-color: transparrent;">
                      <graphic>
                         <ImageView fitHeight="32.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
@@ -115,18 +122,16 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button mnemonicParsing="false" style="-fx-background-color: transparent;">
+                  <HBox alignment="CENTER_LEFT" prefHeight="46.0" prefWidth="14.0" spacing="10" />
+                  <Button mnemonicParsing="false" onAction="#backtoHesab" style="-fx-background-color: transparent;">
                      <graphic>
-                        <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../images/email_561127.png" />
+                              <Image url="@../../../images/return-icon-png-21.jpg" />
                            </image>
                         </ImageView>
-                     </graphic>
-                  </Button>
-                  <HBox alignment="CENTER_LEFT" prefHeight="122.0" prefWidth="42.0" spacing="10" />
-                  <Button mnemonicParsing="false" onAction="#backtoHesab" text="بازگشت" />
-                  <Label prefHeight="20.0" prefWidth="324.0" styleClass="time-label" text="زمان" />
+                     </graphic></Button>
+                  <Label prefHeight="20.0" prefWidth="324.0" styleClass="time-label" text="زمان" textFill="WHITE" />
                   <Region HBox.hgrow="ALWAYS" />
                   <ImageView fitHeight="59.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -169,7 +174,7 @@
                <children>
                   <AnchorPane layoutX="149.0" layoutY="16.0" prefHeight="216.0" prefWidth="487.0" style="-fx-background-color: #4d4d4d; -fx-background-radius: 15;">
                      <children>
-                        <ImageView fx:id="imge" fitHeight="207.0" fitWidth="324.0" layoutX="101.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="imge" fitHeight="199.0" fitWidth="335.0" layoutX="76.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" />
                         <Button fx:id="change" layoutX="416.0" layoutY="154.0" mnemonicParsing="false" onAction="#changee" prefHeight="48.0" prefWidth="59.0" style="-fx-background-color: transparent;" styleClass="button3" stylesheets="@styles.css" visible="false">
                            <graphic>
                               <ImageView fx:id="imge2" fitHeight="40.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">

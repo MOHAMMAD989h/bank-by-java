@@ -48,8 +48,8 @@ public class Vam {
 
         pane = new AnchorPane();
         pane.setPrefHeight(300);
-        pane.setStyle("-fx-background-color: #f0f0f0; -fx-border-color: #ccc; -fx-padding: 10px;");
-        vboxVam.setStyle("-fx-max-height: Infinity;-fx-pref-height: USE_COMPUTED_SIZE;");
+        pane.setStyle("-fx-background-color: #f7dc84; -fx-background-radius: 10px;-fx-border-radius:10px;-fx-padding: 15px; -fx-margin: 15px;-fx-border-color: #fff;");
+        vboxVam.setStyle("-fx-max-height: Infinity;-fx-pref-height: USE_COMPUTED_SIZE;-fx-padding: 15px; -fx-margin: 15px");
 
         //name
         Label nameLabel = new Label( "  نام :  "+product.getName());
@@ -85,21 +85,11 @@ public class Vam {
         Button vambutton = new Button("دریافت وام");
         vambutton.setLayoutX(1200);
         vambutton.setLayoutY(20);
-        vambutton.setStyle("    -fx-font-family: \"B Nazanin\";\n" +
-                "    -fx-font-size: 18;\n" +
-                "    -fx-font-weight: bold;\n" +
-                "    -fx-text-fill: white;\n" +
-                "    -fx-background-color: transparrent;\n" +
-                "    -fx-background-radius: 15px;    -fx-background-color: linear-gradient(to bottom right, #1E8E73,  #1fa784);\n" +
-                "    -fx-text-fill:  #4d4d4d;\n" +
-                "    -fx-background-color: linear-gradient(to bottom right,#4A80D0 ,#70A0E0,  #90B0C8);\n" +
-                "    -fx-translate-y: -3px;\n" +
-                "    -fx-scale-x: 1.05;\n" +
-                "    -fx-scale-y: 1.05;    -fx-text-fill:  #fff;\n" +
-                "    -fx-background-color: linear-gradient(to bottom right,#4A80D0 ,#70A0E0,  #90B0C8);\n" +
-                "    -fx-translate-y: -3px;\n" +
-                "    -fx-scale-x: 1.05;\n" +
-                "    -fx-scale-y: 1.05;    -fx-cursor: hand;\n");
+        vambutton.setStyle("    -fx-background-color: linear-gradient(to bottom right, #1E8E73,  #1fa784);\n" +
+                "    -fx-background-radius: 10px;\n" +
+                "    -fx-cursor: hand;\n" +
+                "    -fx-text-fill: #fff;\n" +
+                "    -fx-font-size: 14px;"+"-fx-font-weight: bold;"+"-fx-font-family: 'B Nazanin';");
 
         pane.getChildren().addAll(nameLabel,soodLabel, priceLabel,timeLabel,monthlyPayment,vambutton,discriptionLbl);
 
