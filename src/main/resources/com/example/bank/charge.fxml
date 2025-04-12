@@ -37,7 +37,7 @@
       <children>
          <HBox alignment="CENTER_RIGHT" layoutX="59.0" layoutY="47.0" prefHeight="56.0" prefWidth="1478.0" style="-fx-background-color: #4d4d4d;" stylesheets="@styles.css">
             <children>
-               <Button mnemonicParsing="false" onAction="#backtoHomeFromCharge" style="-fx-background-color: transparent;">
+               <Button mnemonicParsing="false" onAction="#backtoHesabFromCharge" style="-fx-background-color: transparent;">
                   <graphic>
                      <ImageView fitHeight="55.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
                         <image>

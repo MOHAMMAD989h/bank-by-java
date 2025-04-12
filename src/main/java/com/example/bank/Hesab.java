@@ -103,7 +103,6 @@ public class Hesab {
                 numlabel.setText(data2.get(2));
                 nationcode = data2.get(1);
                 numberphone = data2.get(2);
-
             }
 
 

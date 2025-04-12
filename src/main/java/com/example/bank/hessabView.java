@@ -97,78 +97,6 @@ public class hessabView {
 
     File file1 = new File("charge.txt");
 
-    @FXML
-    public void initialize() throws IOException {
-        applyHoverEffect(btn1);
-        applyHoverEffect(btn2);
-        applyHoverEffect(btn3);
-        applyHoverEffect(btn4);
-        applyHoverEffect(btn5);
-        applyHoverEffect(btn6);
-        applyHoverEffect(btn7);
-        applyHoverEffect(btn8);
-
-        //charge
-        fileCharge();
-
-        //internet
-        productInternet.add(new productCharge("همراه اول یک گیگ اینترنت هفتگی","15000"+"قیمت (تومان) :  "));
-        productInternet.add(new productCharge("همراه اول دو گیگ اینترنت هفتگی","18000"+"قیمت (تومان) :  "));
-        productInternet.add(new productCharge("همراه اول سه گیگ اینترنت هفتگی","22000"+"قیمت (تومان) :  "));
-        productInternet.add(new productCharge("همراه اول پنچ گیگ اینترنت هفتگی","25000"+"قیمت (تومان) :  "));
-        productInternet.add(new productCharge("همراه اول یک گیگ اینترنت ماهانه","19000"+"قیمت (تومان) :  "));
-        productInternet.add(new productCharge("همراه اول سه گیگ اینترنت ماهانه","24000"+"قیمت (تومان) :  "));
-        productInternet.add(new productCharge("همراه اول پنج گیگ اینترنت ماهانه","28000"+"قیمت (تومان) :  "));
-        productInternet.add(new productCharge("همراه اول هفت گیگ اینترنت ماهانه","33000"+"قیمت (تومان) :  "));
-        productInternet.add(new productCharge("ایرانسل اول یک گیگ اینترنت هفتگی","15000"+"قیمت (تومان) :  "));
-        productInternet.add(new productCharge("ایرانسل  اول دو گیگ اینترنت هفتگی","18000"+"قیمت (تومان) :  "));
-        productInternet.add(new productCharge("ایرانسل  اول سه گیگ اینترنت هفتگی","22000"+"قیمت (تومان) :  "));
-        productInternet.add(new productCharge("ایرانسل  اول پنچ گیگ اینترنت هفتگی","25000"+"قیمت (تومان) :  "));
-        productInternet.add(new productCharge("ایرانسل  اول یک گیگ اینترنت ماهانه","19000"+"قیمت (تومان) :  "));
-        productInternet.add(new productCharge("ایرانسل  اول سه گیگ اینترنت ماهانه","24000"+"قیمت (تومان) :  "));
-        productInternet.add(new productCharge("ایرانسل  اول پنج گیگ اینترنت ماهانه","28000"+"قیمت (تومان) :  "));
-        productInternet.add(new productCharge("ایرانسل  اول هفت گیگ اینترنت ماهانه","33000"+"قیمت (تومان) :  "));
-
-        //gabz
-        filegabz();
-        input = Files.readString(file.toPath());
-        inputs = input.split(",|\\n");
-        int  k = random.nextInt(inputs.length - 5);
-        if(inputs[k].length() < 10) {
-            k++;
-        }
-        productGabz.add(new productCharge(inputs[k],inputs[k+1]+"قیمت (تومان) :  "));
-        productGabz.add(new productCharge(inputs[k+2],inputs[k+3]+"قیمت (تومان) :  "));
-        productGabz.add(new productCharge(inputs[k+4],inputs[k+5]+"قیمت (تومان) :  "));
-        productGabz.add(new productCharge(inputs[k+6],inputs[k+7]+"قیمت (تومان) :  "));
-        productGabz.add(new productCharge(inputs[k+8],inputs[k+9]+"قیمت (تومان) :  "));
-
-        input = Files.readString(file1.toPath());
-        inputs = input.split(",|\\n");
-        k = random.nextInt(inputs.length - 5);
-
-        productsimcard.add(new productCharge(inputs[k],"شماره : "));
-        productsimcard.add(new productCharge(inputs[k+1],"شماره : "));
-        productsimcard.add(new productCharge(inputs[k+2],"شماره : "));
-        productsimcard.add(new productCharge(inputs[k+3],"شماره : "));
-        productsimcard.add(new productCharge(inputs[k+4],"شماره : "));
-
-        for (productCharge p : productInternet) {
-            vboxInternet.getChildren().add(createproductpane(p));
-        }
-        for (productCharge p : productGabz) {
-            vboxGabz.getChildren().add(createproductpane(p));
-        }
-        for (productCharge p : productsimcard) {
-            vboxsimcard.getChildren().add(createproductpane(p));
-        }
-
-        btn6.setOnAction(event -> {
-            isTransferShort = true;
-            System.out.println(isTransferShort);
-            pro.openNewWindow("transferRec.fxml","Transfer",event);
-        });
-    }
 
     private AnchorPane createproductpane(productCharge p) {
         AnchorPane pane = null;
@@ -415,61 +343,114 @@ public class hessabView {
     }
     @FXML
     private void handleServiceOption1(ActionEvent event) {
-        openNewWindow2("entegal.fxml","انتقال وجه",numbercard,event);
+        hessabView1(numbercard,"entegal",event);
     }
     @FXML
     private void handleServiceOption3(ActionEvent actionEvent) {
-        openNewWindow2("charge.fxml","charge",numbercard,actionEvent);
+        hessabView1(numbercard,"charge",actionEvent);
     }
     @FXML
     private void handleServiceOption2(ActionEvent actionEvent) {
-        openNewWindow2("gabz.fxml","gabz",numbercard,actionEvent);}
+        hessabView1(numbercard,"gabz",actionEvent);
+    }
 
 
     String infor = null;
     private List<productVam> products = new ArrayList<>();
-    public void setMethod(String method) {
+    public void setMethod(String method)throws IOException {
+        applyHoverEffect(btn1);
+        applyHoverEffect(btn2);
+        applyHoverEffect(btn3);
+        applyHoverEffect(btn4);
+        applyHoverEffect(btn5);
+        applyHoverEffect(btn6);
+        applyHoverEffect(btn7);
+        applyHoverEffect(btn8);
+        System.out.println("33333");
+        //charge
+        fileCharge();
+
+        //internet
+        productInternet.add(new productCharge("همراه اول یک گیگ اینترنت هفتگی","15000"+"قیمت (تومان) :  "));
+        productInternet.add(new productCharge("همراه اول دو گیگ اینترنت هفتگی","18000"+"قیمت (تومان) :  "));
+        productInternet.add(new productCharge("همراه اول سه گیگ اینترنت هفتگی","22000"+"قیمت (تومان) :  "));
+        productInternet.add(new productCharge("همراه اول پنچ گیگ اینترنت هفتگی","25000"+"قیمت (تومان) :  "));
+        productInternet.add(new productCharge("همراه اول یک گیگ اینترنت ماهانه","19000"+"قیمت (تومان) :  "));
+        productInternet.add(new productCharge("همراه اول سه گیگ اینترنت ماهانه","24000"+"قیمت (تومان) :  "));
+        productInternet.add(new productCharge("همراه اول پنج گیگ اینترنت ماهانه","28000"+"قیمت (تومان) :  "));
+        productInternet.add(new productCharge("همراه اول هفت گیگ اینترنت ماهانه","33000"+"قیمت (تومان) :  "));
+        productInternet.add(new productCharge("ایرانسل اول یک گیگ اینترنت هفتگی","15000"+"قیمت (تومان) :  "));
+        productInternet.add(new productCharge("ایرانسل  اول دو گیگ اینترنت هفتگی","18000"+"قیمت (تومان) :  "));
+        productInternet.add(new productCharge("ایرانسل  اول سه گیگ اینترنت هفتگی","22000"+"قیمت (تومان) :  "));
+        productInternet.add(new productCharge("ایرانسل  اول پنچ گیگ اینترنت هفتگی","25000"+"قیمت (تومان) :  "));
+        productInternet.add(new productCharge("ایرانسل  اول یک گیگ اینترنت ماهانه","19000"+"قیمت (تومان) :  "));
+        productInternet.add(new productCharge("ایرانسل  اول سه گیگ اینترنت ماهانه","24000"+"قیمت (تومان) :  "));
+        productInternet.add(new productCharge("ایرانسل  اول پنج گیگ اینترنت ماهانه","28000"+"قیمت (تومان) :  "));
+        productInternet.add(new productCharge("ایرانسل  اول هفت گیگ اینترنت ماهانه","33000"+"قیمت (تومان) :  "));
+
+        //gabz
+        filegabz();
+        input = Files.readString(file.toPath());
+        inputs = input.split(",|\\n");
+        int  k = random.nextInt(inputs.length - 5);
+        if(inputs[k].length() < 10) {
+            k++;
+        }
+        productGabz.add(new productCharge(inputs[k],inputs[k+1]+"قیمت (تومان) :  "));
+        productGabz.add(new productCharge(inputs[k+2],inputs[k+3]+"قیمت (تومان) :  "));
+        productGabz.add(new productCharge(inputs[k+4],inputs[k+5]+"قیمت (تومان) :  "));
+        productGabz.add(new productCharge(inputs[k+6],inputs[k+7]+"قیمت (تومان) :  "));
+        productGabz.add(new productCharge(inputs[k+8],inputs[k+9]+"قیمت (تومان) :  "));
+
+        input = Files.readString(file1.toPath());
+        inputs = input.split(",|\\n");
+        k = random.nextInt(inputs.length - 5);
+
+        productsimcard.add(new productCharge(inputs[k],"شماره : "));
+        productsimcard.add(new productCharge(inputs[k+1],"شماره : "));
+        productsimcard.add(new productCharge(inputs[k+2],"شماره : "));
+        productsimcard.add(new productCharge(inputs[k+3],"شماره : "));
+        productsimcard.add(new productCharge(inputs[k+4],"شماره : "));
+
+        for (productCharge p : productInternet) {
+            vboxInternet.getChildren().add(createproductpane(p));
+        }
+        for (productCharge p : productGabz) {
+            vboxGabz.getChildren().add(createproductpane(p));
+        }
+        for (productCharge p : productsimcard) {
+            vboxsimcard.getChildren().add(createproductpane(p));
+        }
+
+        btn6.setOnAction(event -> {
+            isTransferShort = true;
+            System.out.println(isTransferShort);
+            pro.openNewWindow("transferRec.fxml","Transfer",event);
+        });
+        try{DataBase1 Select=new DataBase1();
+
+            System.out.println("(((((");
+            ArrayList<String> data2 =Select.isdataimportvalid2(username,"employee","username");
+            for (int c = 0; c < data2.size(); c+=3) {
+                name.setText(data2.get(0));
+                userlabel.setText(data2.get(0));
+                codelabel.setText(data2.get(1));
+                numlabel.setText(data2.get(2));
+            }
+        }catch(Exception e){e.printStackTrace();}
         try {DataBase1 Select=new DataBase1();
-            try (FileInputStream fileIn = new FileInputStream("userData.dat");
-                 ObjectInputStream in = new ObjectInputStream(fileIn)) {
 
-                Select = (DataBase1) in.readObject();
+            ArrayList<String> data2 =Select.isdataimportvalid3(method,"cards","numbercard");
+            for (int c = 0; c < data2.size();c+=5) {
+                numbercard=data2.get(0);
+                cart.setText(data2.get(0));
+                engeza.setText(data2.get(1));
+                cvv.setText(data2.get(2));
+                mojodi.setText(data2.get(4));
 
-                System.out.println("Object loaded successfully!");
-                // حالا می‌تونی با loadedObject کار کنی:
-                // مثلاً:
-                // System.out.println(loadedObject.getUserName());
-
-            } catch (IOException | ClassNotFoundException e) {
-                e.printStackTrace();
             }
-            String numberq = "";
-            String nationcode="";
-            String numberphone="";
-            while (Select.isdataimportvalid(username,"employee","username")) {
-                numberq = Select.getName();
-                userlabel.setText(numberq);
-                codelabel.setText(Select.getNationcode());
-                numlabel.setText(Select.getNumberphone());
-            }
-            DataBase1 getting=new DataBase1();
             products.clear();
-            ArrayList<String> data11 = new ArrayList<>();
-            for (int c=0;c < data11.size();c+=5) {
-                numbercard=getting.getCartNum();
-                String number =getting.getCartNum();
-                String time = getting.getYyengeza();
-                String cvv2 = getting.getCvv2();
-                String bankname = getting.getBankName();
-                String money = getting.getMoney();
-                if(number.trim().equals(method)){
-                    cart.setText(number);
-                    name.setText(numberq);
-                    cvv.setText(cvv2);
-                    engeza.setText(time);
-                    mojodi.setText(money);
-                }
-            }
+
         }
         catch (Exception e) {e.printStackTrace();
         }
@@ -535,15 +516,23 @@ public class hessabView {
 
 
     }
-    public void openNewWindow2 (String fxmlFile, String title, String method, ActionEvent event) {
+    public void hessabView1(String hessabNum,String noaSafhe,ActionEvent event) {
+        if(noaSafhe.equals("gabz")){openNewWindow2("gabz.fxml","نمایش حساب",hessabNum,noaSafhe,event);}
+        else if(noaSafhe.equals("entegal")){openNewWindow2("entegal.fxml","نمایش حساب",hessabNum,noaSafhe,event);}
+        else if(noaSafhe.equals("charge")){openNewWindow2("charge.fxml","نمایش حساب",hessabNum,noaSafhe,event);}
+    }
+    public void openNewWindow2 (String fxmlFile, String title, String method,String noaSafhe, ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
             Scene scene = new Scene(loader.load(), 1535, 790);
 
             //ارسال متد
-
-            hessabView controller = loader.getController();
-            controller.setMethod(method);
+            if(noaSafhe.equals("gabz")){gabz controller = loader.getController();
+                controller.setMethod(method);}
+            else if(noaSafhe.equals("entegal")){entegal controller = loader.getController();
+                controller.setMethod(method);}
+            else if(noaSafhe.equals("charge")){charge controller = loader.getController();
+                controller.setMethod(method);}
 
             // ایجاد و نمایش صفحه جدید
             Stage stage = new Stage();
