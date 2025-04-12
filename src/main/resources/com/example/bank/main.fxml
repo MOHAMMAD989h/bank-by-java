@@ -67,7 +67,7 @@
                   </ImageView>
                </children>
             </HBox>
-            <ScrollPane fx:id="scrol" layoutX="58.0" layoutY="98.0" prefHeight="690.0" prefWidth="1478.0" styleClass="scroll-bar" stylesheets="@styles.css">
+            <ScrollPane fx:id="scrol" layoutX="58.0" layoutY="98.0" prefHeight="691.0" prefWidth="1478.0" styleClass="scroll-bar" stylesheets="@styles.css">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="3766.0" prefWidth="1459.0" style="-fx-background-color: #E0DECF;">
                      <children>
@@ -100,7 +100,7 @@
                            <children>
                               <AnchorPane layoutX="75.0" layoutY="-2.0" prefHeight="654.0" prefWidth="907.0">
                                  <children>
-                                    <ListView fx:id="listTopics" layoutX="105.0" layoutY="188.0" opacity="0.8" prefHeight="466.0" prefWidth="722.0" styleClass="custom-list-view" stylesheets="@styles.css">
+                                    <ListView fx:id="listTopics" layoutX="105.0" layoutY="188.0" nodeOrientation="RIGHT_TO_LEFT" opacity="0.8" prefHeight="466.0" prefWidth="722.0" styleClass="custom-list-view" stylesheets="@styles.css">
                                        <opaqueInsets>
                                           <Insets />
                                        </opaqueInsets></ListView>
@@ -326,7 +326,7 @@
                                     </Button>
                                  </children>
                               </HBox>
-                              <Accordion fx:id="acc1" layoutX="110.0" layoutY="317.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="280.0" prefWidth="1274.0" stylesheets="@styles.css">
+                              <Accordion fx:id="acc1" layoutX="110.0" layoutY="317.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="280.0" prefWidth="1274.0" stylesheets="@styles.css" visible="false">
                                  <panes>
                                     <TitledPane text="چگونه می توانم حساب باز کنم">
                                        <content>
@@ -334,7 +334,7 @@
                                              <children>
                                                 <VBox layoutX="32.0" layoutY="35.0" prefHeight="48.0" prefWidth="984.0">
                                                    <children>
-                                                      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="با وارد شدن به سایت ما و با وارد شدن به بخش ورود می توانید با ارائه کد ملی و شماره همراه و همچنین عکس از کارت ملی حساب خود را باز کنید" wrappingWidth="972.0505981445312">
+                                                      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Text2" text="با وارد شدن به سایت ما و با وارد شدن به بخش ورود می توانید با ارائه کد ملی و شماره همراه و همچنین عکس از کارت ملی حساب خود را باز کنید" wrappingWidth="972.0505981445312">
                                                          <font>
                                                             <Font name="B Nazanin Bold" size="36.0" />
                                                          </font>
@@ -351,7 +351,7 @@
                                        <content>
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="344.0" prefWidth="1042.0">
                                              <children>
-                                                <Text fill="WHITE" layoutX="30.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ساخت حساب در سایت ما بسیار سریع و کم دردسر می باشد" wrappingWidth="735.2578125">
+                                                <Text fill="WHITE" layoutX="30.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Text2" text="ساخت حساب در سایت ما بسیار سریع و کم دردسر می باشد" wrappingWidth="735.2578125">
                                                    <font>
                                                       <Font name="B Nazanin Bold" size="36.0" />
                                                    </font>
@@ -368,7 +368,7 @@
                                              <children>
                                                 <VBox layoutX="38.0" layoutY="30.0" prefHeight="48.0" prefWidth="663.0">
                                                    <children>
-                                                      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="هزینه ساخت حساب در سایت ما کاملا رایگان می باشد">
+                                                      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Text2" text="هزینه ساخت حساب در سایت ما کاملا رایگان می باشد">
                                                          <font>
                                                             <Font name="B Nazanin Bold" size="36.0" />
                                                          </font>
@@ -385,19 +385,25 @@
                               </Accordion>
                               <Accordion fx:id="acc2" layoutX="110.0" layoutY="317.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="280.0" prefWidth="1274.0" stylesheets="@styles.css" visible="false">
                                  <panes>
-                                    <TitledPane text="باز کردن حساب">
+                                    <TitledPane text="برای باز کردن حساب چه مدارکی نیاز است">
                                        <content>
-                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             <children>
+                                                <Text fill="WHITE" layoutX="71.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Text2" text="اصل کارت ملی هوشمند برای ارسال تصاویر پشت و روی کارت و داشتن یک خط تلفن همراه فعال که به نام خودتان است." wrappingWidth="1058.1756591796875" />
+                                             </children></AnchorPane>
                                        </content>
                                        <font>
                                           <Font name="B Nazanin Bold" size="24.0" />
                                        </font>
                                     </TitledPane>
-                                    <TitledPane text="بازکردن حساب">
+                                    <TitledPane text="باز کردن حساب چقدر زمان می برد">
                                        <content>
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="82.0" prefWidth="1038.0">
                                              <children>
-                                                <VBox layoutX="32.0" layoutY="35.0" prefHeight="48.0" prefWidth="984.0" />
+                                                <VBox layoutX="32.0" layoutY="22.0" prefHeight="49.0" prefWidth="984.0">
+                                                   <children>
+                                                      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Text2" text="بسیار سریع و کم دردسر می باشد" />
+                                                   </children></VBox>
                                              </children>
                                           </AnchorPane>
                                        </content>
@@ -405,19 +411,25 @@
                                           <Font name="B Nazanin Bold" size="24.0" />
                                        </font>
                                     </TitledPane>
-                                    <TitledPane text="باز کردن حساب">
+                                    <TitledPane text="هزینه باز کردن حساب چقدر می باشد؟">
                                        <content>
-                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="344.0" prefWidth="1042.0" />
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="344.0" prefWidth="1042.0">
+                                             <children>
+                                                <Text fill="WHITE" layoutX="19.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Text2" text="کاملا رایگان می باشد" wrappingWidth="258.275390625" />
+                                             </children></AnchorPane>
                                        </content>
                                        <font>
                                           <Font name="B Nazanin Bold" size="24.0" />
                                        </font>
                                     </TitledPane>
-                                    <TitledPane text="باز کردن حساب">
+                                    <TitledPane text="کارت های Aureous بانک عضو شتاب می باشد؟">
                                        <content>
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                              <children>
-                                                <VBox layoutX="38.0" layoutY="30.0" prefHeight="48.0" prefWidth="663.0" />
+                                                <VBox layoutX="38.0" layoutY="30.0" prefHeight="48.0" prefWidth="663.0">
+                                                   <children>
+                                                      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Text2" text="بله کارت های Aureous بانک عشو شبکه ملی شتاب می باشند" />
+                                                   </children></VBox>
                                              </children>
                                           </AnchorPane>
                                        </content>
@@ -427,7 +439,7 @@
                                     </TitledPane>
                                  </panes>
                               </Accordion>
-                              <Accordion fx:id="acc3" layoutX="110.0" layoutY="317.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="280.0" prefWidth="1274.0" stylesheets="@styles.css" visible="false">
+                              <Accordion fx:id="acc3" layoutX="110.0" layoutY="317.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="280.0" prefWidth="1274.0" stylesheets="@styles.css">
                                  <panes>
                                     <TitledPane text="وام">
                                        <content>
