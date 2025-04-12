@@ -71,7 +71,7 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="3766.0" prefWidth="1459.0" style="-fx-background-color: #E0DECF;">
                      <children>
-                        <MediaView fx:id="mediaView" fitHeight="700.0" fitWidth="1478.0" layoutX="-5.5" layoutY="-8.0" />
+                        <MediaView fx:id="mediaView" fitHeight="700.0" fitWidth="1478.0" layoutX="-8.0" layoutY="-8.0" />
                         <StackPane fx:id="optionsStackPane" layoutX="756.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="362.0" prefWidth="715.0" stylesheets="@styles.css">
                            <children>
                               <GridPane fx:id="loanOptions" alignment="CENTER" hgap="30" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#keepLoanOptionsVisible" onMouseExited="#hideLoanOptions" prefHeight="355.0" prefWidth="229.0" styleClass="options-pane" vgap="30" visible="false" StackPane.alignment="CENTER_RIGHT">
