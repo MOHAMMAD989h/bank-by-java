@@ -178,7 +178,9 @@ public class account implements Initializable {
                 }
         );
 
-        deposidSodd.setText("سود :"+deposidMonth.getValue() + 3);
+        timeline = new Timeline(new KeyFrame(Duration.millis(50), event -> {
+            deposidSodd.setText("سود :"+deposidMonth.getValue() + 3);
+        }));
         try {
             connect = DataBase1.connectDB();
             String selectdata = "SELECT * FROM employee WHERE username = ?";

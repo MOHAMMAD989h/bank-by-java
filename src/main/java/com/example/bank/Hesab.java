@@ -26,6 +26,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import static com.example.bank.loginpage.username;
 
@@ -90,23 +91,11 @@ public class Hesab {
     private List<productVam> products = new ArrayList<>();
     public void initialize() {
         try {DataBase1 Select=new DataBase1();
-            try (FileInputStream fileIn = new FileInputStream("userData.dat");
-                  ObjectInputStream in = new ObjectInputStream(fileIn)) {
-
-            Select = (DataBase1) in.readObject();
-
-            System.out.println("Object loaded successfully!");
-            // حالا می‌تونی با loadedObject کار کنی:
-            // مثلاً:
-            // System.out.println(loadedObject.getUserName());
-
-            } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-            }
             String numberq = "";
             String nationcode="";
             String numberphone="";
-            while (Select.isdataimportvalid(username,"employee","username")) {
+            if (Select.isdataimportvalid(username,"employee","username")) {
+                System.out.println("(((((");
                 numberq = Select.getName();
                 userlabel.setText(numberq);
                 codelabel.setText(Select.getNationcode());
@@ -129,12 +118,14 @@ public class Hesab {
             int bankSepah=0;
             int bankShahr=0;
             int bankTejarat=0;
-            while (getting.isDataImportValid1(username,"cards","username")) {
-                String number =getting.getCartNum();
-                String time = getting.getYyengeza();
-                String cvv2 = getting.getCvv2();
-                String bankname = getting.getBankName();
-                String money = getting.getMoney();
+            System.out.println("8888");
+            ArrayList<String> data11 =getting.isdataimportvalid1(username,"cards","username");
+            for (int c = 0; c < data11.size(); c+=5) {
+                String number =data11.get(0);
+                String time = data11.get(1);
+                String cvv2 = data11.get(2);
+                String bankname = data11.get(3);
+                String money = data11.get(4);
                 products.add(new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone));
                 if(bankname.trim().equals("Aureous Bank")){String HboxName="#hbox_Aur";
                     if(bankAureous==0){productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
