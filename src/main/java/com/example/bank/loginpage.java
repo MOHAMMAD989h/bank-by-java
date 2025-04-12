@@ -541,12 +541,50 @@ public class loginpage{
 
     @FXML
     public void SignupBtn(ActionEvent event) {
-        if (su_address.getText().length() < 3 || !su_number.getText().matches("[0-9]{11}") || su_username.getText().length() < 3  || su_password.getText().length() < 8 || !su_nationcode.getText().matches("[0-9]{10}")
-            || !su_emailsign1.getText().matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")    || !(su_password.getText().equals(su_cpassword.getText())) || issendphoto ) {
+        if (su_address.getText().length() < 3 ) {
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
-            alert.setContentText("Name and username and Address and email must be at least 3 characters and password must be at least 8 characters");
+            alert.setContentText("address is incorrect ");
+            alert.showAndWait();
+        } else if ( !su_number.getText().matches("[0-9]{11}") ) {
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("phonenumber is incorrect ");
+            alert.showAndWait();
+
+        } else if (su_username.getText().length() < 3) {
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("username is incorrect ");
+            alert.showAndWait();
+        } else if (su_password.getText().length() < 8 || !(si_password.getText().matches(".*[A-Z].*")) || !(su_password.getText().equals(su_cpassword.getText()))) {
+            System.out.println(!(su_password.getText().equals(su_cpassword.getText())));
+            System.out.println(su_password.getText().length() < 8);
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("password is incorrect ");
+            alert.showAndWait();
+        } else if (!su_nationcode.getText().matches("[0-9]{10}")) {
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("nationcode is incorrect ");
+            alert.showAndWait();
+        } else if ( !su_emailsign1.getText().matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")) {
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("email is incorrect ");
+            alert.showAndWait();
+        } else if ( issendphoto ) {
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("photo is incorrect ");
             alert.showAndWait();
         } else {
 
