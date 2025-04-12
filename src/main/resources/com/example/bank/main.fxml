@@ -58,7 +58,7 @@
                   <Label fx:id="timeLabel" prefHeight="20.0" prefWidth="324.0" styleClass="time-label" text="زمان" />
                   <Region HBox.hgrow="ALWAYS" />
                   <Button onAction="#HomeToLoginpage" prefHeight="33.0" prefWidth="158.0" styleClass="menu-button" text="ورود / احراز هویت" />
-                  <Button onAction="#loanBtn" onMouseEntered="#showLoanOptions" onMouseExited="#hideLoanOptions" prefHeight="30.0" prefWidth="81.0" styleClass="menu-button" text="وام" textFill="GOLD" />
+                  <Button onAction="#loanBtn" prefHeight="30.0" prefWidth="81.0" styleClass="menu-button" text="وام" textFill="GOLD" />
                   <Button onAction="#FAQ" onMouseEntered="#hideAllOptions" prefHeight="30.0" prefWidth="152.0" styleClass="menu-button" text="سوالات متداول" />
                   <ImageView fitHeight="59.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -67,7 +67,7 @@
                   </ImageView>
                </children>
             </HBox>
-            <ScrollPane fx:id="scrol" layoutX="58.0" layoutY="98.0" prefHeight="691.0" prefWidth="1478.0" styleClass="scroll-bar" stylesheets="@styles.css">
+            <ScrollPane fx:id="scrol" layoutX="58.0" layoutY="98.0" prefHeight="689.0" prefWidth="1478.0" styleClass="scroll-bar" stylesheets="@styles.css">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="3766.0" prefWidth="1459.0" style="-fx-background-color: #E0DECF;">
                      <children>
@@ -326,7 +326,7 @@
                                     </Button>
                                  </children>
                               </HBox>
-                              <Accordion fx:id="acc1" layoutX="110.0" layoutY="317.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="280.0" prefWidth="1274.0" stylesheets="@styles.css" visible="false">
+                              <Accordion fx:id="acc1" layoutX="110.0" layoutY="317.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="280.0" prefWidth="1274.0" stylesheets="@styles.css">
                                  <panes>
                                     <TitledPane text="چگونه می توانم حساب باز کنم">
                                        <content>
@@ -439,41 +439,27 @@
                                     </TitledPane>
                                  </panes>
                               </Accordion>
-                              <Accordion fx:id="acc3" layoutX="110.0" layoutY="317.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="280.0" prefWidth="1274.0" stylesheets="@styles.css">
+                              <Accordion fx:id="acc3" layoutX="110.0" layoutY="317.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="280.0" prefWidth="1274.0" stylesheets="@styles.css" visible="false">
                                  <panes>
-                                    <TitledPane text="وام">
-                                       <content>
-                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                       </content>
-                                       <font>
-                                          <Font name="B Nazanin Bold" size="24.0" />
-                                       </font>
-                                    </TitledPane>
-                                    <TitledPane text="وام">
-                                       <content>
-                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="82.0" prefWidth="1038.0">
-                                             <children>
-                                                <VBox layoutX="32.0" layoutY="35.0" prefHeight="48.0" prefWidth="984.0" />
-                                             </children>
-                                          </AnchorPane>
-                                       </content>
-                                       <font>
-                                          <Font name="B Nazanin Bold" size="24.0" />
-                                       </font>
-                                    </TitledPane>
-                                    <TitledPane text="وام">
-                                       <content>
-                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="344.0" prefWidth="1042.0" />
-                                       </content>
-                                       <font>
-                                          <Font name="B Nazanin Bold" size="24.0" />
-                                       </font>
-                                    </TitledPane>
-                                    <TitledPane text="وام">
+                                    <TitledPane text="چند نوع طرح وام وجود دارد؟">
                                        <content>
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                              <children>
-                                                <VBox layoutX="38.0" layoutY="30.0" prefHeight="48.0" prefWidth="663.0" />
+                                                <Text fill="WHITE" layoutX="61.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Text2" text="در Aureous بانک چندین طرح وام وجود دارد که بسته به نیازتان میتوانید انتخاب کنید" wrappingWidth="630.533935546875" />
+                                             </children></AnchorPane>
+                                       </content>
+                                       <font>
+                                          <Font name="B Nazanin Bold" size="24.0" />
+                                       </font>
+                                    </TitledPane>
+                                    <TitledPane text="برای دریافت وام آیا نیاز به ضامن هست">
+                                       <content>
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="82.0" prefWidth="1038.0">
+                                             <children>
+                                                <VBox layoutX="32.0" layoutY="35.0" prefHeight="48.0" prefWidth="984.0">
+                                                   <children>
+                                                      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Text2" text="بله برای دریافت وام به یک ضامن نیاز هست " />
+                                                   </children></VBox>
                                              </children>
                                           </AnchorPane>
                                        </content>
@@ -485,41 +471,12 @@
                               </Accordion>
                               <Accordion fx:id="acc4" layoutX="110.0" layoutY="317.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="280.0" prefWidth="1274.0" stylesheets="@styles.css" visible="false">
                                  <panes>
-                                    <TitledPane text="کارت">
-                                       <content>
-                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                       </content>
-                                       <font>
-                                          <Font name="B Nazanin Bold" size="24.0" />
-                                       </font>
-                                    </TitledPane>
-                                    <TitledPane text="کارت">
-                                       <content>
-                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="82.0" prefWidth="1038.0">
-                                             <children>
-                                                <VBox layoutX="32.0" layoutY="35.0" prefHeight="48.0" prefWidth="984.0" />
-                                             </children>
-                                          </AnchorPane>
-                                       </content>
-                                       <font>
-                                          <Font name="B Nazanin Bold" size="24.0" />
-                                       </font>
-                                    </TitledPane>
-                                    <TitledPane text="کارت">
-                                       <content>
-                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="344.0" prefWidth="1042.0" />
-                                       </content>
-                                       <font>
-                                          <Font name="B Nazanin Bold" size="24.0" />
-                                       </font>
-                                    </TitledPane>
-                                    <TitledPane text="کارت">
+                                    <TitledPane text="ایا می توان کارت سفارش داد ؟">
                                        <content>
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                              <children>
-                                                <VBox layoutX="38.0" layoutY="30.0" prefHeight="48.0" prefWidth="663.0" />
-                                             </children>
-                                          </AnchorPane>
+                                                <Text fill="WHITE" layoutX="6.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Text2" text="خیر در ماه های آینده این امکان محیا خواهد شد" />
+                                             </children></AnchorPane>
                                        </content>
                                        <font>
                                           <Font name="B Nazanin Bold" size="24.0" />
@@ -529,41 +486,12 @@
                               </Accordion>
                               <Accordion fx:id="acc5" layoutX="110.0" layoutY="317.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="280.0" prefWidth="1274.0" stylesheets="@styles.css" visible="false">
                                  <panes>
-                                    <TitledPane text="تراکنش ها">
-                                       <content>
-                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                       </content>
-                                       <font>
-                                          <Font name="B Nazanin Bold" size="24.0" />
-                                       </font>
-                                    </TitledPane>
-                                    <TitledPane text="تراکنش ها">
-                                       <content>
-                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="82.0" prefWidth="1038.0">
-                                             <children>
-                                                <VBox layoutX="32.0" layoutY="35.0" prefHeight="48.0" prefWidth="984.0" />
-                                             </children>
-                                          </AnchorPane>
-                                       </content>
-                                       <font>
-                                          <Font name="B Nazanin Bold" size="24.0" />
-                                       </font>
-                                    </TitledPane>
-                                    <TitledPane text="تراکنش ها">
-                                       <content>
-                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="344.0" prefWidth="1042.0" />
-                                       </content>
-                                       <font>
-                                          <Font name="B Nazanin Bold" size="24.0" />
-                                       </font>
-                                    </TitledPane>
-                                    <TitledPane text="تراکنش ها">
+                                    <TitledPane text="آیا می توانیم به تاریخچه تراکنش ها دسترسی داشته باشیم؟">
                                        <content>
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                              <children>
-                                                <VBox layoutX="38.0" layoutY="30.0" prefHeight="48.0" prefWidth="663.0" />
-                                             </children>
-                                          </AnchorPane>
+                                                <Text fill="WHITE" layoutX="32.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Text2" text="بله در بخش تراکنش می توانید تراکنش های خود را ببینید" />
+                                             </children></AnchorPane>
                                        </content>
                                        <font>
                                           <Font name="B Nazanin Bold" size="24.0" />
@@ -573,39 +501,25 @@
                               </Accordion>
                               <Accordion fx:id="acc6" layoutX="110.0" layoutY="317.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="280.0" prefWidth="1274.0" stylesheets="@styles.css" visible="false">
                                  <panes>
-                                    <TitledPane text="کاربری">
-                                       <content>
-                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                       </content>
-                                       <font>
-                                          <Font name="B Nazanin Bold" size="24.0" />
-                                       </font>
-                                    </TitledPane>
-                                    <TitledPane text="کاربری">
-                                       <content>
-                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="82.0" prefWidth="1038.0">
-                                             <children>
-                                                <VBox layoutX="32.0" layoutY="35.0" prefHeight="48.0" prefWidth="984.0" />
-                                             </children>
-                                          </AnchorPane>
-                                       </content>
-                                       <font>
-                                          <Font name="B Nazanin Bold" size="24.0" />
-                                       </font>
-                                    </TitledPane>
-                                    <TitledPane text="کاربری">
-                                       <content>
-                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="344.0" prefWidth="1042.0" />
-                                       </content>
-                                       <font>
-                                          <Font name="B Nazanin Bold" size="24.0" />
-                                       </font>
-                                    </TitledPane>
-                                    <TitledPane text="کاربری">
+                                    <TitledPane text="آیا می توانیم اطلاعات خود را تغییر دهیم ؟">
                                        <content>
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                              <children>
-                                                <VBox layoutX="38.0" layoutY="30.0" prefHeight="48.0" prefWidth="663.0" />
+                                                <Text fill="WHITE" layoutX="22.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Text2" text="بله در حساب کاربری خود می توانید اطلاعات خود را تغییر دهید" />
+                                             </children></AnchorPane>
+                                       </content>
+                                       <font>
+                                          <Font name="B Nazanin Bold" size="24.0" />
+                                       </font>
+                                    </TitledPane>
+                                    <TitledPane text="رمز خود را فراموش کردم چطور می توانیم رمز را باز گردانی کنیم ؟">
+                                       <content>
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="82.0" prefWidth="1038.0">
+                                             <children>
+                                                <VBox layoutX="32.0" layoutY="35.0" prefHeight="48.0" prefWidth="984.0">
+                                                   <children>
+                                                      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Text2" text="با استفاده از فراموشی رمز می توانیم رمز را به ایمیل شما بفرستیم" />
+                                                   </children></VBox>
                                              </children>
                                           </AnchorPane>
                                        </content>

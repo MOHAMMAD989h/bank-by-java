@@ -127,7 +127,6 @@
                      </graphic>
                   </Button>
                   <HBox alignment="CENTER_LEFT" prefHeight="122.0" prefWidth="42.0" spacing="10" />
-                  <Label fx:id="timeLabel" prefHeight="20.0" prefWidth="324.0" styleClass="time-label" text="زمان" />
                   <Region HBox.hgrow="ALWAYS" />
                   <ImageView fitHeight="59.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
                      <image>

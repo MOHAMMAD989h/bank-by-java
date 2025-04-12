@@ -55,7 +55,6 @@ public class charge {
     PreparedStatement prepare;
     ResultSet rs;
 
-
     private List<productCharge> productcharges = new ArrayList<productCharge>();
     profile pro=new profile();
     Hesab pro1 = new Hesab();
