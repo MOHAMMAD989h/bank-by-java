@@ -327,6 +327,27 @@ public class DataBase1 {
         }
         return dataimport1;
     }
+    ArrayList<String> dataimport2 = new ArrayList<>();
+    public ArrayList<String> isdataimportvalid2(String dataimport,String table,String tableinfor) throws SQLException {
+        String data = "SELECT * FROM "+table+" WHERE "+ tableinfor +" = ?";
+        dataimport1.clear();
+        connect = connectDB();
+        assert connect != null;
+        prepare = connect.prepareStatement(data);
+        prepare.setString(1, dataimport);
+        result = prepare.executeQuery();
+        while (result.next()) {
+            System.out.println("****");
+            DataBase1 data1 = new DataBase1();
+            name = result.getString("name");
+            nationcode = result.getString("nationcode");
+            numberphone = result.getString("numberphone");
+            dataimport1.add(name);
+            dataimport1.add(nationcode);
+            dataimport1.add(numberphone);
+        }
+        return dataimport1;
+    }
     public String finddataimport(String dataimport,String table,String tableinfor,String Return) throws SQLException {
         String data = "SELECT * FROM "+table+" WHERE "+ tableinfor +" = ?";
         connect = connectDB();

@@ -94,15 +94,19 @@ public class Hesab {
             String numberq = "";
             String nationcode="";
             String numberphone="";
-            if (Select.isdataimportvalid(username,"employee","username")) {
-                System.out.println("(((((");
-                numberq = Select.getName();
+            System.out.println("(((((");
+            ArrayList<String> data2 =Select.isdataimportvalid2(username,"employee","username");
+            for (int c = 0; c < data2.size(); c+=3) {
+                numberq = data2.get(0);
                 userlabel.setText(numberq);
-                codelabel.setText(Select.getNationcode());
-                numlabel.setText(Select.getNumberphone());
-                nationcode = Select.getNationcode();
-                numberphone = Select.getNumberphone();
+                codelabel.setText(data2.get(1));
+                numlabel.setText(data2.get(2));
+                nationcode = data2.get(1);
+                numberphone = data2.get(2);
+
             }
+
+
             DataBase1 getting=new DataBase1();
             products.clear();
             int bankMaskan=0;
