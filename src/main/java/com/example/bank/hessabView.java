@@ -2,6 +2,7 @@ package com.example.bank;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
+import javafx.animation.PauseTransition;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -73,6 +74,9 @@ public class hessabView {
 
     @FXML
     private Label codelabel;
+
+    @FXML
+    private Label messagelabel;
 
     public static boolean isTransferShort;
     @FXML
@@ -454,6 +458,42 @@ public class hessabView {
         }
         catch (Exception e) {e.printStackTrace();
         }
+    }
+    @FXML
+    private void copyuser() {
+        messagelabel.setVisible(true);
+        PauseTransition delay = new PauseTransition(Duration.seconds(2));
+        delay.setOnFinished(event -> messagelabel.setVisible(false));
+        delay.play();
+        String username = userlabel.getText();
+        ClipboardContent content = new ClipboardContent();
+        content.putString(username);
+        Clipboard clipboard = Clipboard.getSystemClipboard();
+        clipboard.setContent(content);
+    }
+    @FXML
+    private void copycode() {
+        messagelabel.setVisible(true);
+        PauseTransition delay = new PauseTransition(Duration.seconds(2));
+        delay.setOnFinished(event -> messagelabel.setVisible(false));
+        delay.play();
+        String code = codelabel.getText();
+        ClipboardContent content = new ClipboardContent();
+        content.putString(code);
+        Clipboard clipboard = Clipboard.getSystemClipboard();
+        clipboard.setContent(content);
+    }
+    @FXML
+    private void copynum() {
+        messagelabel.setVisible(true);
+        PauseTransition delay = new PauseTransition(Duration.seconds(2));
+        delay.setOnFinished(event -> messagelabel.setVisible(false));
+        delay.play();
+        String num = numlabel.getText();
+        ClipboardContent content = new ClipboardContent();
+        content.putString(num);
+        Clipboard clipboard = Clipboard.getSystemClipboard();
+        clipboard.setContent(content);
     }
 
     public void backtoHesab(ActionEvent event) {

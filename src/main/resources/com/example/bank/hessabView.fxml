@@ -37,7 +37,7 @@
                <children>
                   <Label fx:id="userlabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="RIGHT_TO_LEFT" prefHeight="36.0" prefWidth="491.0" style="-fx-background-radius: 15;" styleClass="background-gradientt2" stylesheets="@styles.css" textFill="WHITE">
                      <graphic>
-                        <Button contentDisplay="RIGHT" mnemonicParsing="false" prefHeight="37.0" prefWidth="129.0" styleClass="Button" stylesheets="@styles.css" text=": نام کاربری" textFill="WHITE">
+                        <Button contentDisplay="RIGHT" mnemonicParsing="false" onAction="#copyuser" prefHeight="37.0" prefWidth="129.0" styleClass="Button" stylesheets="@styles.css" text=": نام کاربری" textFill="WHITE">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -60,7 +60,7 @@
                   <Pane prefHeight="59.0" prefWidth="25.0" />
                   <Label fx:id="codelabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="RIGHT_TO_LEFT" prefHeight="36.0" prefWidth="491.0" style="-fx-background-radius: 15;" styleClass="background-gradientt2" stylesheets="@styles.css" textFill="WHITE">
                      <graphic>
-                        <Button contentDisplay="RIGHT" mnemonicParsing="false" styleClass="Button" stylesheets="@styles.css" text=": کد ملی" textFill="WHITE">
+                        <Button contentDisplay="RIGHT" mnemonicParsing="false" onAction="#copycode" styleClass="Button" stylesheets="@styles.css" text=": کد ملی" textFill="WHITE">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -80,7 +80,7 @@
                   <Pane prefHeight="59.0" prefWidth="25.0" />
                   <Label fx:id="numlabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="RIGHT_TO_LEFT" prefHeight="39.0" prefWidth="453.0" style="-fx-background-radius: 15;" styleClass="background-gradientt2" stylesheets="@styles.css" textFill="WHITE">
                      <graphic>
-                        <Button contentDisplay="RIGHT" mnemonicParsing="false" prefHeight="39.0" prefWidth="164.0" styleClass="Button" stylesheets="@styles.css" text="  : شماره موبایل" textFill="WHITE">
+                        <Button contentDisplay="RIGHT" mnemonicParsing="false" onAction="#copynum" prefHeight="39.0" prefWidth="164.0" styleClass="Button" stylesheets="@styles.css" text="  : شماره موبایل" textFill="WHITE">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -278,6 +278,11 @@
                   </VBox>
                </children>
             </AnchorPane>
+            <Label fx:id="messagelabel" alignment="CENTER" layoutX="614.0" layoutY="7.0" prefHeight="21.0" prefWidth="289.0" style="-fx-background-radius: 5; -fx-background-color: #1fa784;" styleClass="Button" stylesheets="@styles.css" text="اطلاعات با موفقیت کپی شد" textFill="WHITE" visible="false">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
         </children>
     </AnchorPane>
 </children>
