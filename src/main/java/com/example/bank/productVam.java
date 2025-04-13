@@ -1,8 +1,8 @@
 package com.example.bank;
 
 public class productVam {
-    String name, price,sood,time,pagePath,discription,phoneNum;
-    public productVam(String name, String price, String sood, String time, String pagePath, String discription,String phoneNum) {
+    String name, price,sood,time,pagePath,discription,phoneNum,mojudi;
+    public productVam(String name, String price, String sood, String time, String pagePath, String discription,String phoneNum,String mojudi) {
         this.name = name;
         this.price = price;
         this.sood = sood;
@@ -10,6 +10,7 @@ public class productVam {
         this.pagePath = pagePath;
         this.discription = discription;
         this.phoneNum = phoneNum;
+        this.mojudi = mojudi;
     }
     public String getName() {
         return name;
@@ -52,5 +53,11 @@ public class productVam {
     }
     public void setPhoneNum(String phoneNum) {
         this.phoneNum = phoneNum;
+    }
+    public String getMojudi() {
+        return mojudi;
+    }
+    public void setMojudi(String mojudi) {
+        this.mojudi = mojudi;
     }
 }

@@ -59,10 +59,10 @@ public class transferRec {
                 for (int i = 0; i < inputs.length; i += 6) {
                     if (rs.getString("numbercard").trim().equals(inputs[i].trim())) {
                         if(!isTransferShort){
-                            productlist.add(new productVam(inputs[i], inputs[i + 1], inputs[i + 2], inputs[i + 3], inputs[i + 4], inputs[i + 5], ""));
+                            productlist.add(new productVam(inputs[i], inputs[i + 1], inputs[i + 2], inputs[i + 3], inputs[i + 4], inputs[i + 5], "",""));
                         }
                         else{
-                            productlist.add(new productVam("","","", inputs[i + 3],"","", ""));
+                            productlist.add(new productVam("","","", inputs[i + 3],"","", "",""));
                         }
                     }
                 }

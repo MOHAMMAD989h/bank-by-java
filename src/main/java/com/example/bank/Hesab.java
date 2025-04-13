@@ -129,9 +129,9 @@ public class Hesab {
                 String cvv2 = data11.get(c+2);
                 String bankname = data11.get(c+3);
                 String money = data11.get(c+4);
-                products.add(new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone));
+                products.add(new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone,money));
                 if(bankname.trim().equals("Aureous Bank")){String HboxName="#hbox_Aur";
-                    if(bankAureous==0){productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                    if(bankAureous==0){productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone,money);
                         bigV.getChildren().add(createHBox("Aur",product1,true));
                     }else if((bankAureous+1)%5==0){int shoaresatr=(bankAureous+1)/5;
                         ObservableList<Node> children = bigV.getChildren();
@@ -151,7 +151,7 @@ public class Hesab {
                                 break; // خروج از حلقه
                             }
                         }
-                        productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                        productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone,money);
                         String aur="Aur"+String.valueOf(shoaresatr);
                         bigV.getChildren().add(insertIndex,createHBox(aur,product1,false));
                         HboxName=HboxName+String.valueOf(shoaresatr);
@@ -160,7 +160,7 @@ public class Hesab {
                     }
                     HBox foundHBox = (HBox) bigV.lookup("#hbox_Aur");
                     HBox foundHBox1 = (HBox) bigV.lookup(HboxName);
-                    if (foundHBox != null) {productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                    if (foundHBox != null) {productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone,money);
                         bankAureous++;
                         foundHBox1.getChildren().add(createVBoxWithPane(product1));
                         Label foundlabel = (Label) foundHBox.lookup("#hbox_Aurlab");
@@ -171,7 +171,7 @@ public class Hesab {
                     }
                 }
                 if(bankname.trim().equals("بانک مسکن")){String HboxName="#hbox_Mas";
-                    if(bankMaskan==0){productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                    if(bankMaskan==0){productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone,money);
                         bigV.getChildren().add(createHBox("Mas",product1,true));
                     }else if((bankMaskan+1)%5==0){int shoaresatr=(bankMaskan+1)/5;
                         ObservableList<Node> children = bigV.getChildren();
@@ -188,7 +188,7 @@ public class Hesab {
                                 break; // خروج از حلقه
                             }
                         }
-                        productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                        productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone,money);
                         String aur="Mas"+String.valueOf(shoaresatr);
                         bigV.getChildren().add(insertIndex,createHBox(aur,product1,false));
                         HboxName=HboxName+String.valueOf(shoaresatr);
@@ -197,7 +197,7 @@ public class Hesab {
                     }
                     HBox foundHBox = (HBox) bigV.lookup("#hbox_Mas");
                     HBox foundHBox1 = (HBox) bigV.lookup(HboxName);
-                    if (foundHBox != null) {productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                    if (foundHBox != null) {productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone,money);
                         bankMaskan++;
                         foundHBox1.getChildren().add(createVBoxWithPane(product1));
                         Label foundlabel = (Label) foundHBox.lookup("#hbox_Maslab");
@@ -208,7 +208,7 @@ public class Hesab {
                     }
                 }
                 if(bankname.trim().equals("بانک دی")){String HboxName="#hbox_Dey";
-                    if(bankDey==0){productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                    if(bankDey==0){productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone,money);
                         bigV.getChildren().add(createHBox("Dey",product1,true));
                     }else if((bankDey+1)%5==0){int shoaresatr=(bankDey+1)/5;
                         ObservableList<Node> children = bigV.getChildren();
@@ -225,7 +225,7 @@ public class Hesab {
                                 break; // خروج از حلقه
                             }
                         }
-                        productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                        productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone,money);
                         String aur="Dey"+String.valueOf(shoaresatr);
                         bigV.getChildren().add(insertIndex,createHBox(aur,product1,false));
                         HboxName=HboxName+String.valueOf(shoaresatr);
@@ -234,7 +234,7 @@ public class Hesab {
                     }
                     HBox foundHBox = (HBox) bigV.lookup("#hbox_Dey");
                     HBox foundHBox1 = (HBox) bigV.lookup(HboxName);
-                    if (foundHBox != null) {productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                    if (foundHBox != null) {productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone,money);
                         bankDey++;
                         foundHBox1.getChildren().add(createVBoxWithPane(product1));
                         Label foundlabel = (Label) foundHBox.lookup("#hbox_Deylab");
@@ -245,7 +245,7 @@ public class Hesab {
                     }
                 }
                 if(bankname.trim().equals("بانک کشاورزی")){String HboxName="#hbox_Kesh";
-                    if(bankKesh==0){productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                    if(bankKesh==0){productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone,money);
                         bigV.getChildren().add(createHBox("Kesh",product1,true));
                     }else if((bankKesh+1)%5==0){int shoaresatr=(bankKesh+1)/5;
                         ObservableList<Node> children = bigV.getChildren();
@@ -262,7 +262,7 @@ public class Hesab {
                                 break; // خروج از حلقه
                             }
                         }
-                        productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                        productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone,money);
                         String aur="Kesh"+String.valueOf(shoaresatr);
                         bigV.getChildren().add(insertIndex,createHBox(aur,product1,false));
                         HboxName=HboxName+String.valueOf(shoaresatr);
@@ -271,7 +271,7 @@ public class Hesab {
                     }
                     HBox foundHBox = (HBox) bigV.lookup("#hbox_Kesh");
                     HBox foundHBox1 = (HBox) bigV.lookup(HboxName);
-                    if (foundHBox != null) {productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                    if (foundHBox != null) {productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone,money);
                         bankKesh++;
                         foundHBox1.getChildren().add(createVBoxWithPane(product1));
                         Label foundlabel = (Label) foundHBox.lookup("#hbox_Keshlab");
@@ -282,7 +282,7 @@ public class Hesab {
                     }
                 }
                 if(bankname.trim().equals("بانک رفاه")){String HboxName="#hbox_Ref";
-                    if(bankRefah==0){productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                    if(bankRefah==0){productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone,money);
                         bigV.getChildren().add(createHBox("Ref",product1,true));
                     }else if((bankRefah+1)%5==0){int shoaresatr=(bankRefah+1)/5;
                         ObservableList<Node> children = bigV.getChildren();
@@ -299,7 +299,7 @@ public class Hesab {
                                 break; // خروج از حلقه
                             }
                         }
-                        productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                        productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone,money);
                         String aur="Ref"+String.valueOf(shoaresatr);
                         bigV.getChildren().add(insertIndex,createHBox(aur,product1,false));
                         HboxName=HboxName+String.valueOf(shoaresatr);
@@ -308,7 +308,7 @@ public class Hesab {
                     }
                     HBox foundHBox = (HBox) bigV.lookup("#hbox_Ref");
                     HBox foundHBox1 = (HBox) bigV.lookup(HboxName);
-                    if (foundHBox != null) {productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                    if (foundHBox != null) {productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone,money);
                         bankRefah++;
                         foundHBox1.getChildren().add(createVBoxWithPane(product1));
                         Label foundlabel = (Label) foundHBox.lookup("#hbox_Reflab");
@@ -319,7 +319,7 @@ public class Hesab {
                     }
                 }
                 if(bankname.trim().equals("بانک آینده")){String HboxName="#hbox_Aya";
-                    if(bankAyandeh==0){productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                    if(bankAyandeh==0){productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone,money);
                         bigV.getChildren().add(createHBox("Aya",product1,true));
                     }else if((bankAyandeh+1)%5==0){int shoaresatr=(bankAyandeh+1)/5;
                         ObservableList<Node> children = bigV.getChildren();
@@ -336,7 +336,7 @@ public class Hesab {
                                 break; // خروج از حلقه
                             }
                         }
-                        productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                        productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone,money);
                         String aur="Aya"+String.valueOf(shoaresatr);
                         bigV.getChildren().add(insertIndex,createHBox(aur,product1,false));
                         HboxName=HboxName+String.valueOf(shoaresatr);
@@ -345,7 +345,7 @@ public class Hesab {
                     }
                     HBox foundHBox = (HBox) bigV.lookup("#hbox_Aya");
                     HBox foundHBox1 = (HBox) bigV.lookup(HboxName);
-                    if (foundHBox != null) {productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                    if (foundHBox != null) {productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone,money);
                         bankAyandeh++;
                         foundHBox1.getChildren().add(createVBoxWithPane(product1));
                         Label foundlabel = (Label) foundHBox.lookup("#hbox_Ayalab");
@@ -356,7 +356,7 @@ public class Hesab {
                     }
                 }
                 if(bankname.trim().equals("بانک ملی")){String HboxName="#hbox_Mli";
-                    if(bankMelli==0){productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                    if(bankMelli==0){productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone,money);
                         bigV.getChildren().add(createHBox("Mli",product1,true));
                     }else if((bankMelli+1)%5==0){int shoaresatr=(bankMelli+1)/5;
                         ObservableList<Node> children = bigV.getChildren();
@@ -376,7 +376,7 @@ public class Hesab {
                                 break; // خروج از حلقه
                             }
                         }
-                        productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                        productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone,money);
                         String aur="Mli"+String.valueOf(shoaresatr);
                         bigV.getChildren().add(insertIndex,createHBox(aur,product1,false));
                         HboxName=HboxName+String.valueOf(shoaresatr);
@@ -385,7 +385,7 @@ public class Hesab {
                     }
                     HBox foundHBox = (HBox) bigV.lookup("#hbox_Mli");
                     HBox foundHBox1 = (HBox) bigV.lookup(HboxName);
-                    if (foundHBox != null) {productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                    if (foundHBox != null) {productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone,money);
                         bankMelli++;
                         foundHBox1.getChildren().add(createVBoxWithPane(product1));
                         Label foundlabel = (Label) foundHBox.lookup("#hbox_Mlilab");
@@ -396,7 +396,7 @@ public class Hesab {
                     }
                 }
                 if(bankname.trim().equals("بانک ملت")){String HboxName="#hbox_Mlat";
-                    if(bankMellat==0){productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                    if(bankMellat==0){productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone,money);
                         bigV.getChildren().add(createHBox("Mlat",product1,true));
                     }else if((bankMellat+1)%5==0){int shoaresatr=(bankMellat+1)/5;
                         ObservableList<Node> children = bigV.getChildren();
@@ -413,7 +413,7 @@ public class Hesab {
                                 break; // خروج از حلقه
                             }
                         }
-                        productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                        productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone,money);
                         String aur="Mlat"+String.valueOf(shoaresatr);
                         bigV.getChildren().add(insertIndex,createHBox(aur,product1,false));
                         HboxName=HboxName+String.valueOf(shoaresatr);
@@ -422,7 +422,7 @@ public class Hesab {
                     }
                     HBox foundHBox = (HBox) bigV.lookup("#hbox_Mlat");
                     HBox foundHBox1 = (HBox) bigV.lookup(HboxName);
-                    if (foundHBox != null) {productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                    if (foundHBox != null) {productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone,money);
                         bankAureous++;
                         foundHBox1.getChildren().add(createVBoxWithPane(product1));
                         Label foundlabel = (Label) foundHBox.lookup("#hbox_Mlatlab");
@@ -433,7 +433,7 @@ public class Hesab {
                     }
                 }
                 if(bankname.trim().equals("بانک سامان")){String HboxName="#hbox_Sam";
-                    if(bankSaman==0){productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                    if(bankSaman==0){productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone,money);
                         bigV.getChildren().add(createHBox("Sam",product1,true));
                     }else if((bankSaman+1)%5==0){int shoaresatr=(bankSaman+1)/5;
                         ObservableList<Node> children = bigV.getChildren();
@@ -450,7 +450,7 @@ public class Hesab {
                                 break; // خروج از حلقه
                             }
                         }
-                        productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                        productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone,money);
                         String aur="Sam"+String.valueOf(shoaresatr);
                         bigV.getChildren().add(insertIndex,createHBox(aur,product1,false));
                         HboxName=HboxName+String.valueOf(shoaresatr);
@@ -459,7 +459,7 @@ public class Hesab {
                     }
                     HBox foundHBox = (HBox) bigV.lookup("#hbox_Sam");
                     HBox foundHBox1 = (HBox) bigV.lookup(HboxName);
-                    if (foundHBox != null) {productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                    if (foundHBox != null) {productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone,money);
                         bankSaman++;
                         foundHBox1.getChildren().add(createVBoxWithPane(product1));
                         Label foundlabel = (Label) foundHBox.lookup("#hbox_Samlab");
@@ -470,7 +470,7 @@ public class Hesab {
                     }
                 }
                 if(bankname.trim().equals("بانک سپه")){String HboxName="#hbox_Sep";
-                    if(bankSepah==0){productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                    if(bankSepah==0){productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone,money);
                         bigV.getChildren().add(createHBox("Sep",product1,true));
                     }else if((bankSepah+1)%5==0){int shoaresatr=(bankSepah+1)/5;
                         ObservableList<Node> children = bigV.getChildren();
@@ -487,7 +487,7 @@ public class Hesab {
                                 break; // خروج از حلقه
                             }
                         }
-                        productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                        productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone,money);
                         String aur="Sep"+String.valueOf(shoaresatr);
                         bigV.getChildren().add(insertIndex,createHBox(aur,product1,false));
                         HboxName=HboxName+String.valueOf(shoaresatr);
@@ -496,7 +496,7 @@ public class Hesab {
                     }
                     HBox foundHBox = (HBox) bigV.lookup("#hbox_Sep");
                     HBox foundHBox1 = (HBox) bigV.lookup(HboxName);
-                    if (foundHBox != null) {productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                    if (foundHBox != null) {productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone,money);
                         bankSepah++;
                         foundHBox1.getChildren().add(createVBoxWithPane(product1));
                         Label foundlabel = (Label) foundHBox.lookup("#hbox_Seplab");
@@ -507,7 +507,7 @@ public class Hesab {
                     }
                 }
                 if(bankname.trim().equals("بانک تجارت")){String HboxName="#hbox_Tej";
-                    if(bankTejarat==0){productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                    if(bankTejarat==0){productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone,money);
                         bigV.getChildren().add(createHBox("Tej",product1,true));
                     }else if((bankTejarat+1)%5==0){int shoaresatr=(bankTejarat+1)/5;
                         ObservableList<Node> children = bigV.getChildren();
@@ -524,7 +524,7 @@ public class Hesab {
                                 break; // خروج از حلقه
                             }
                         }
-                        productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                        productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone,money);
                         String aur="Tej"+String.valueOf(shoaresatr);
                         bigV.getChildren().add(insertIndex,createHBox(aur,product1,false));
                         HboxName=HboxName+String.valueOf(shoaresatr);
@@ -533,7 +533,7 @@ public class Hesab {
                     }
                     HBox foundHBox = (HBox) bigV.lookup("#hbox_Tej");
                     HBox foundHBox1 = (HBox) bigV.lookup(HboxName);
-                    if (foundHBox != null) {productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                    if (foundHBox != null) {productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone,money);
                         bankTejarat++;
                         foundHBox1.getChildren().add(createVBoxWithPane(product1));
                         Label foundlabel = (Label) foundHBox.lookup("#hbox_Tejlab");
@@ -544,7 +544,7 @@ public class Hesab {
                     }
                 }
                 if(bankname.trim().equals("بانک مهر")){String HboxName="#hbox_Meh";
-                    if(bankMehr==0){productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                    if(bankMehr==0){productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone,money);
                         bigV.getChildren().add(createHBox("Meh",product1,true));
                     }else if((bankMehr+1)%5==0){int shoaresatr=(bankMehr+1)/5;
                         ObservableList<Node> children = bigV.getChildren();
@@ -561,7 +561,7 @@ public class Hesab {
                                 break; // خروج از حلقه
                             }
                         }
-                        productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                        productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone,money);
                         String aur="Meh"+String.valueOf(shoaresatr);
                         bigV.getChildren().add(insertIndex,createHBox(aur,product1,false));
                         HboxName=HboxName+String.valueOf(shoaresatr);
@@ -570,7 +570,7 @@ public class Hesab {
                     }
                     HBox foundHBox = (HBox) bigV.lookup("#hbox_Meh");
                     HBox foundHBox1 = (HBox) bigV.lookup(HboxName);
-                    if (foundHBox != null) {productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                    if (foundHBox != null) {productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone,money);
                         bankMehr++;
                         foundHBox1.getChildren().add(createVBoxWithPane(product1));
                         Label foundlabel = (Label) foundHBox.lookup("#hbox_Mehlab");
@@ -581,7 +581,7 @@ public class Hesab {
                     }
                 }
                 if(bankname.trim().equals("بانک شهر")){String HboxName="#hbox_Shr";
-                    if(bankShahr==0){productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                    if(bankShahr==0){productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone,money);
                         bigV.getChildren().add(createHBox("Shr",product1,true));
                     }else if((bankShahr+1)%5==0){int shoaresatr=(bankShahr+1)/5;
                         ObservableList<Node> children = bigV.getChildren();
@@ -598,7 +598,7 @@ public class Hesab {
                                 break; // خروج از حلقه
                             }
                         }
-                        productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                        productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone,money);
                         String aur="Shr"+String.valueOf(shoaresatr);
                         bigV.getChildren().add(insertIndex,createHBox(aur,product1,false));
                         HboxName=HboxName+String.valueOf(shoaresatr);
@@ -607,7 +607,7 @@ public class Hesab {
                     }
                     HBox foundHBox = (HBox) bigV.lookup("#hbox_Shr");
                     HBox foundHBox1 = (HBox) bigV.lookup(HboxName);
-                    if (foundHBox != null) {productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone);
+                    if (foundHBox != null) {productVam product1 =new productVam(number,bankname , cvv2, time, numberq,nationcode,numberphone,money);
                         bankShahr++;
                         foundHBox1.getChildren().add(createVBoxWithPane(product1));
                         Label foundlabel = (Label) foundHBox.lookup("#hbox_Shrlab");
@@ -693,12 +693,6 @@ public class Hesab {
         labelCardNumber.setPrefHeight(28.0);
         labelCardNumber.setPrefWidth(188.0);
 
-        Label labelAccountNumber = new Label("شماره حساب");
-        labelAccountNumber.setLayoutX(24.0);
-        labelAccountNumber.setLayoutY(73.0);
-        labelAccountNumber.setPrefHeight(20.0);
-        labelAccountNumber.setPrefWidth(148.0);
-
         Label labelPersonName = new Label(product.getPagePath());
         labelPersonName.setAlignment(Pos.CENTER_RIGHT);
         labelPersonName.setLayoutX(98.0);
@@ -706,7 +700,7 @@ public class Hesab {
         labelPersonName.setPrefHeight(28.0);
         labelPersonName.setPrefWidth(121.0);
 
-        Label labelBalance = new Label("موجودی:");
+        Label labelBalance = new Label("موجودی:"+product.getMojudi());
         labelBalance.setAlignment(Pos.CENTER_RIGHT);
         labelBalance.setLayoutX(78.00);
         labelBalance.setLayoutY(158.0);
@@ -779,7 +773,7 @@ public class Hesab {
         button2.setGraphic(imageView2);
 
         // اضافه کردن لیبل‌ها به Pane
-        pane.getChildren().addAll(labelCardNumber, labelAccountNumber, labelPersonName, labelBalance, labelCvv2,button,button1,button2);
+        pane.getChildren().addAll(labelCardNumber, labelPersonName, labelBalance, labelCvv2,button,button1,button2);
         Button mainButton = new Button();
         mainButton.setPrefSize(256.0, 254.0);
         mainButton.setGraphic(pane);
