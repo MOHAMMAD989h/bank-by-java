@@ -215,7 +215,7 @@ public class entegal {
                 alert.setHeaderText(null);
                 alert.setContentText("موفقیت امیز بود");
                 alert.showAndWait();
-                openNewWindow("main.fxml", "Home", event);
+                openNewWindow("hesab.fxml", "حساب", event);
             }
         }
     }

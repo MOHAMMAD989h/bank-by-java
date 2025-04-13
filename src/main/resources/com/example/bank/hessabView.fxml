@@ -175,12 +175,12 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Label fx:id="mojodilabel" layoutX="249.0" layoutY="183.0" prefHeight="23.0" prefWidth="56.0" text="موجودی :" textFill="WHITE" visible="false">
+                        <Label fx:id="mojodilabel" layoutX="274.0" layoutY="183.0" prefHeight="23.0" prefWidth="95.0" text="موجودی :" textFill="WHITE" visible="false">
                            <font>
                               <Font name="Arial Bold" size="14.0" />
                            </font>
                         </Label>
-                        <Label fx:id="mojodi" layoutX="198.0" layoutY="183.0" prefHeight="23.0" prefWidth="42.0" text=".............." textFill="WHITE" visible="false" />
+                        <Label fx:id="mojodi" layoutX="124.0" layoutY="183.0" prefHeight="23.0" prefWidth="126.0" text=".............." textFill="WHITE" visible="false" />
                         <Label fx:id="name" layoutX="282.0" layoutY="77.0" prefHeight="23.0" prefWidth="110.0" text="نام و نام خانوادگی" textFill="WHITE" visible="false">
                            <font>
                               <Font name="Arial Bold" size="18.0" />

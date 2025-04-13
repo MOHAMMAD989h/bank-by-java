@@ -135,6 +135,7 @@ public class disVam {
                         alert.setHeaderText(null);
                         alert.setContentText("شما اعتبارات را با موفقیت قرض داده اید");
                         alert.showAndWait();
+                        pro.openNewWindow("hesab.fxml","حساب",event);
                     }
                 }
             }

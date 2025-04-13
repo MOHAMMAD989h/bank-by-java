@@ -560,7 +560,7 @@ public class loginpage{
             alert.setHeaderText(null);
             alert.setContentText("نام کاربری اشتباه است ");
             alert.showAndWait();
-        } else if (su_password.getText().length() < 8 || !(si_password.getText().matches(".*[A-Z].*")) || !(su_password.getText().equals(su_cpassword.getText()))) {
+        } else if (su_password.getText().length() < 8  || !(su_password.getText().equals(su_cpassword.getText()))) {
             System.out.println(!(su_password.getText().equals(su_cpassword.getText())));
             System.out.println(su_password.getText().length() < 8);
             alert = new Alert(Alert.AlertType.ERROR);

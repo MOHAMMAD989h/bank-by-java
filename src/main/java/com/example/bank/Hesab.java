@@ -682,7 +682,7 @@ public class Hesab {
         VBox vBox = new VBox();
         vBox.setPrefHeight(251.0);
         vBox.setPrefWidth(256.0);
-        vBox.setStyle("-fx-background-color: #4A80D0; -fx-border-color: #fff; -fx-padding: 15px; -fx-background-radius: 15px; -fx-border-radius: 15px");
+        vBox.setStyle("-fx-background-color: #4A80D0; -fx-border-color: #fff; -fx-padding: 15px; -fx-background-radius: 15px; -fx-border-radius: 15px;-fx-cursor: hand;");
 
         // ایجاد Pane
         Pane pane = new Pane();
@@ -723,10 +723,10 @@ public class Hesab {
                         "-fx-font-size: 15px;"
         );
         labelBalance.setAlignment(Pos.CENTER);
-        labelBalance.setLayoutX(85.00);
+        labelBalance.setLayoutX(60.00);
         labelBalance.setLayoutY(158.0);
         labelBalance.setPrefHeight(28.0);
-        labelBalance.setPrefWidth(120.00);
+        labelBalance.setPrefWidth(150.00);
 
         Label labelCvv2 = new Label("Cvv2:"+product.getSood());
         labelCvv2.setStyle(

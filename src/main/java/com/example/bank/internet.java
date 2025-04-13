@@ -78,8 +78,6 @@ public class internet {
             vboxInternet.getChildren().add(createproductpane(p));
         }
 
-        fileCharge();
-
         input = Files.readString(file.toPath());
         inputs = input.split(",");
     }private AnchorPane createproductpane(productCharge productcharge) {
@@ -172,17 +170,7 @@ public class internet {
 
         return pane;
     }
-    private void fileCharge() throws IOException {
-        FileWriter fw = new FileWriter(file);
-        for (int i = 0; i < 10000; i++) {
-            long numberCharge = random.nextLong(10000000, 99999999);
-            int pishnum = random.nextInt(1, 3);
-            long number = Long.parseLong("09"+String.valueOf(pishnum) + String.valueOf(numberCharge));
-            fw.write(String.valueOf(number) + ',');
-        }
 
-
-    }
 
     @FXML
     void backtoHomeFromCharge(ActionEvent event) {
