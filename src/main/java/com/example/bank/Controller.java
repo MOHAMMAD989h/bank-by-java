@@ -714,7 +714,7 @@ public class Controller {
             alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("INFORMATION");
             alert.setHeaderText(null);
-            alert.setContentText("please first login");
+            alert.setContentText("لطفا اول ورود کنید");
             alert.showAndWait();
             openNewWindow("loginpage.fxml", "loginpage", actionEvent);
         }
@@ -920,7 +920,7 @@ public class Controller {
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");
             alert.setHeaderText(null);
-            alert.setContentText("please login first");
+            alert.setContentText("لطفا اول وارد شوید");
             alert.showAndWait();
         }
     }

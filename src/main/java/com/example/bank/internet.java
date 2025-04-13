@@ -144,7 +144,7 @@ public class internet {
 
                     if (result == -1) {
                         alert = new Alert(Alert.AlertType.ERROR);
-                        alert.setContentText("Error");
+                        alert.setContentText("خطا");
                         alert.setTitle("ERROR");
                         alert.showAndWait();
                     } else {
@@ -158,13 +158,13 @@ public class internet {
                     }
                 } else {
                     alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setContentText("Phone number not registered.");
+                    alert.setContentText("شماره همراه ثبت نشده است");
                     alert.setTitle("ERROR");
                     alert.showAndWait();
                 }
             } else {
                 alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("Please log in first.");
+                alert.setContentText("لطفا اول وارد شوید");
                 alert.setTitle("ERROR");
                 alert.showAndWait();
             }

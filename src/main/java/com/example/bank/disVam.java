@@ -61,7 +61,7 @@ public class disVam {
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
-            alert.setContentText("Please enter a valid number");
+            alert.setContentText("لطفا یک عدد معتبر وارد کنید");
             alert.showAndWait();
         }
         else {
@@ -82,7 +82,7 @@ public class disVam {
                 alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error");
                 alert.setHeaderText(null);
-                alert.setContentText("Please enter a valid numbercardto");
+                alert.setContentText("لطفا شماره کارت معتبر وارد کنید");
                 alert.showAndWait();
             }
             else{
@@ -103,7 +103,7 @@ public class disVam {
                     alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Error");
                     alert.setHeaderText(null);
-                    alert.setContentText("Please enter a valid numbercardfrom");
+                    alert.setContentText("لطفا شماره کارت معتبر وارد کنید");
                     alert.showAndWait();
                 }
                 else{
@@ -125,7 +125,7 @@ public class disVam {
                         alert = new Alert(Alert.AlertType.ERROR);
                         alert.setTitle("Error");
                         alert.setHeaderText(null);
-                        alert.setContentText("Error");
+                        alert.setContentText("خطا");
                         alert.showAndWait();
                     }
                     else{
@@ -133,7 +133,7 @@ public class disVam {
                         alert = new Alert(Alert.AlertType.INFORMATION);
                         alert.setTitle("Information");
                         alert.setHeaderText(null);
-                        alert.setContentText("You have successfully loaned  credits");
+                        alert.setContentText("شما اعتبارات را با موفقیت قرض داده اید");
                         alert.showAndWait();
                     }
                 }
@@ -174,7 +174,7 @@ public class disVam {
                     alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Error");
                     alert.setHeaderText(null);
-                    alert.setContentText("Error");
+                    alert.setContentText("خطا");
                     alert.showAndWait();
 
                     int ress =pro.updateCreditblocked(numbercardfrom,-Integer.parseInt(amountmonth));

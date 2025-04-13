@@ -205,7 +205,7 @@ public class loginpage{
         alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information");
         alert.setHeaderText(null);
-        alert.setContentText("if you see any errors, please email us " +
+        alert.setContentText("اگر هر اروری میبینید به ایمیل ما ارسال کنید " +
                 " |@AuruseBank.gamil.com|");
         alert.showAndWait();
     }
@@ -328,7 +328,7 @@ public class loginpage{
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
-            alert.setContentText(" email  must be at least 3 characters ");
+            alert.setContentText(" ایمیل باید حداقل سه حرف داشته باشد ");
             alert.showAndWait();
 
         }
@@ -353,7 +353,7 @@ public class loginpage{
                     alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("INFORMATION");
                     alert.setHeaderText(null);
-                    alert.setContentText("Seccessfully");
+                    alert.setContentText("با موفقیت انجام شد");
                     alert.showAndWait();
 
                     TranslateTransition slider = new TranslateTransition();
@@ -373,7 +373,7 @@ public class loginpage{
                     alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("ERROR");
                     alert.setHeaderText(null);
-                    alert.setContentText("Incorrect username or password");
+                    alert.setContentText("نام کاربری یا رمز اشتباه است");
                     alert.showAndWait();
                 }
             }
@@ -392,7 +392,7 @@ public class loginpage{
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
-            alert.setContentText(" email  must be at least 3 characters ");
+            alert.setContentText(" ایمیل باید حداقل سه حرف داشته باشد ");
             alert.showAndWait();
 
         }
@@ -400,7 +400,7 @@ public class loginpage{
             alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information");
             alert.setHeaderText(null);
-            alert.setContentText("Seccesfully");
+            alert.setContentText("با موفقیت انجام شد");
             alert.showAndWait();
 
             TranslateTransition slider = new TranslateTransition();
@@ -425,7 +425,7 @@ public class loginpage{
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
-            alert.setContentText("Passwords do not match");
+            alert.setContentText("رمز مطابقت ندارد");
             alert.showAndWait();
         }
         else{DataBase1 UpdateTheInserted=new DataBase1();
@@ -447,28 +447,28 @@ public class loginpage{
                     alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("INFORMATION");
                     alert.setHeaderText(null);
-                    alert.setContentText("Please back and login Account");
+                    alert.setContentText("لطفا برگردید و وارد شوید");
                     alert.showAndWait();
 
                 }else{
                     alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("ERROR");
                     alert.setHeaderText(null);
-                    alert.setContentText("Incorrect  password");
+                    alert.setContentText("رمز اشتباه است");
                     alert.showAndWait();
                 }UpdateTheInserted.DataBase11(-3,si_emailforgot.getText());
                 if(UpdateTheInserted.getIsSuccessFul()){
                     alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("INFORMATION");
                     alert.setHeaderText(null);
-                    alert.setContentText("Please back and login Account");
+                    alert.setContentText("لطفا برگردید و وارد شوید");
                     alert.showAndWait();
 
                 }else{
                     alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("ERROR");
                     alert.setHeaderText(null);
-                    alert.setContentText("Incorrect  password");
+                    alert.setContentText("رمز اشتباه است");
                     alert.showAndWait();
                 }
                 try (FileOutputStream fileOut = new FileOutputStream("userData.dat");
@@ -494,7 +494,7 @@ public class loginpage{
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
-            alert.setContentText(" username must be at least 3 characters and password must be at least 8 characters");
+            alert.setContentText(" نام کاربری باید حداقل 3 کاراکتر و رمز عبور باید حداقل 8 کاراکتر باشد");
             alert.showAndWait();
         }
         else{ username=si_username.getText();
@@ -526,7 +526,7 @@ public class loginpage{
                     alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("ERROR");
                     alert.setHeaderText(null);
-                    alert.setContentText("Incorrect username or password");
+                    alert.setContentText("نام کاربری یا رمز اشتباه است");
                     alert.showAndWait();
                 }
             }
@@ -545,20 +545,20 @@ public class loginpage{
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
-            alert.setContentText("address is incorrect ");
+            alert.setContentText("آدرس نادرست است ");
             alert.showAndWait();
         } else if ( !su_number.getText().matches("[0-9]{11}") ) {
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
-            alert.setContentText("phonenumber is incorrect ");
+            alert.setContentText("شماره همراه نادرست است ");
             alert.showAndWait();
 
         } else if (su_username.getText().length() < 3) {
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
-            alert.setContentText("username is incorrect ");
+            alert.setContentText("نام کاربری اشتباه است ");
             alert.showAndWait();
         } else if (su_password.getText().length() < 8 || !(si_password.getText().matches(".*[A-Z].*")) || !(su_password.getText().equals(su_cpassword.getText()))) {
             System.out.println(!(su_password.getText().equals(su_cpassword.getText())));
@@ -566,25 +566,25 @@ public class loginpage{
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
-            alert.setContentText("password is incorrect ");
+            alert.setContentText("رمز نادرست است");
             alert.showAndWait();
         } else if (!su_nationcode.getText().matches("[0-9]{10}")) {
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
-            alert.setContentText("nationcode is incorrect ");
+            alert.setContentText("کد ملی نادرست است ");
             alert.showAndWait();
         } else if ( !su_emailsign1.getText().matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")) {
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
-            alert.setContentText("email is incorrect ");
+            alert.setContentText("ایمیل نادرست است ");
             alert.showAndWait();
         } else if ( issendphoto ) {
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
-            alert.setContentText("photo is incorrect ");
+            alert.setContentText("عکس نادرست است ");
             alert.showAndWait();
         } else {
 
@@ -595,7 +595,7 @@ public class loginpage{
                     alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Error");
                     alert.setHeaderText(null);
-                    alert.setContentText("please choose new username or new password");
+                    alert.setContentText("لطفا نام کاربری یا رمز جدید انتخاب کنید");
                     alert.showAndWait();
                 }
                 else {
@@ -647,7 +647,7 @@ public class loginpage{
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
-            alert.setContentText("code incorrect");
+            alert.setContentText("کد نادرست است");
             alert.showAndWait();
         }
         else {
@@ -663,7 +663,7 @@ public class loginpage{
                 alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Information");
                 alert.setHeaderText(null);
-                alert.setContentText("Seccessfully");
+                alert.setContentText("با موفقیت انجام شد");
                 alert.showAndWait();
 
                 su_number.setText("");

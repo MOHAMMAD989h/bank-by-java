@@ -279,7 +279,7 @@ public class account implements Initializable {
         alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information");
         alert.setHeaderText(null);
-        alert.setContentText("if you see any errors, please email us " +
+        alert.setContentText("اگر هر اروری مشاهده میکنید به ایمیل ما ارسال کنید " +
                 " |@AuruseBank.gamil.com|");
         alert.showAndWait();
     }
@@ -317,7 +317,7 @@ public class account implements Initializable {
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
-            alert.setContentText("please fill blanks");
+            alert.setContentText("کادر هارا پر کنید");
             alert.showAndWait();
 
         }else {
@@ -382,7 +382,7 @@ public class account implements Initializable {
                 alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Information");
                 alert.setHeaderText(null);
-                alert.setContentText("Seccessfully");
+                alert.setContentText("با موفقیت انجام شد");
                 alert.showAndWait();
 
                 login.openNewWindow("profile1.fxml", "Profile", actionEvent);
@@ -397,7 +397,7 @@ public class account implements Initializable {
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
-            alert.setContentText("please fill blanks");
+            alert.setContentText("لطفا کادر هارا پر کنید");
             alert.showAndWait();
         }
         else {
@@ -453,7 +453,7 @@ public class account implements Initializable {
                     alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Information");
                     alert.setHeaderText(null);
-                    alert.setContentText("Seccessfully");
+                    alert.setContentText("با موفقیت انجام شد");
                     alert.showAndWait();
                     login.openNewWindow("profile1.fxml", "Profile", actionEvent);
                 }
@@ -462,7 +462,7 @@ public class account implements Initializable {
                 alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error");
                 alert.setHeaderText(null);
-                alert.setContentText("You are already logged in");
+                alert.setContentText("شما قبلا وارد شده اید");
                 alert.showAndWait();
             }
         }
@@ -473,7 +473,7 @@ public class account implements Initializable {
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
-            alert.setContentText("please fill blanks");
+            alert.setContentText("لطفا کادر هارا پر کنید");
             alert.showAndWait();
         }
         else{
@@ -488,7 +488,7 @@ public class account implements Initializable {
                     alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Error");
                     alert.setHeaderText(null);
-                    alert.setContentText("numbercard doesn't match");
+                    alert.setContentText("شماره کارت مطابقت ندارد");
                     alert.showAndWait();
                     return;
                 }
@@ -529,7 +529,7 @@ public class account implements Initializable {
                     alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Information");
                     alert.setHeaderText(null);
-                    alert.setContentText("Seccessfully");
+                    alert.setContentText("با موفقیت انجام شد");
                     alert.showAndWait();
                     pro.fileTransfer(numbercardDeposid.getText(),"", -Long.valueOf(deposidMoney.getText()),"میزان انتقال به سپرده");
                     pro.openNewWindow("profile1.fxml", "Profile", actionEvent);
@@ -560,7 +560,7 @@ public class account implements Initializable {
                 alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Information");
                 alert.setHeaderText(null);
-                alert.setContentText("Seccessfully");
+                alert.setContentText("با موفقیت انجام شد");
                 alert.showAndWait();
                 pro.fileTransfer(numbercardDeposid.getText(),"", -Long.valueOf(deposidMoney.getText()),"میزان انتقال به سپرده");
                 pro.openNewWindow("profile1.fxml", "Profile", actionEvent);

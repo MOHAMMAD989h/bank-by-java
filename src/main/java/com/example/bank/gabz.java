@@ -61,7 +61,7 @@ public class gabz {
         } else {
             pro.fileTransfer(numbercardGetter.getText(),"", Long.valueOf(String.valueOf(-payment)),"قبض");
             alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("successfully");
+            alert.setContentText("با موفقیت انجام شد");
             alert.setTitle("INFORMATION");
             alert.showAndWait();
 
