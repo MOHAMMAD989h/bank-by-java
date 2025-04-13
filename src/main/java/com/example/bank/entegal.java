@@ -87,8 +87,6 @@ public class entegal {
     public Integer randomnumber;
     @FXML
     private TextField PasswordPoya;
-    @FXML
-    private Button profile;
 
     profile pro = new profile();
 

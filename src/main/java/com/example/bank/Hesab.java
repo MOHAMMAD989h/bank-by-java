@@ -15,6 +15,9 @@ import javafx.scene.input.ClipboardContent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -688,45 +691,68 @@ public class Hesab {
 
         // ایجاد لیبل‌ها
         Label labelCardNumber = new Label("شماره کارت : "+product.getName());
+        labelCardNumber.setStyle(
+                "-fx-text-fill: white; " +
+                        "-fx-font-weight: bold; " +
+                        "-fx-font-family: 'B Nazanin'; " +
+                        "-fx-font-size: 12px;"
+        );
         labelCardNumber.setLayoutX(23.0);
         labelCardNumber.setLayoutY(41.0);
         labelCardNumber.setPrefHeight(28.0);
-        labelCardNumber.setPrefWidth(188.0);
+        labelCardNumber.setPrefWidth(205.00);
 
         Label labelPersonName = new Label(product.getPagePath());
+        labelPersonName.setStyle(
+                "-fx-text-fill: white; " +
+                        "-fx-font-weight: bold; " +
+                        "-fx-font-family: 'B Nazanin'; " +
+                        "-fx-font-size: 15px;"
+        );
         labelPersonName.setAlignment(Pos.CENTER_RIGHT);
-        labelPersonName.setLayoutX(98.0);
+        labelPersonName.setLayoutX(85.00);
         labelPersonName.setLayoutY(96.0);
         labelPersonName.setPrefHeight(28.0);
         labelPersonName.setPrefWidth(121.0);
 
         Label labelBalance = new Label("موجودی:"+product.getMojudi());
-        labelBalance.setAlignment(Pos.CENTER_RIGHT);
-        labelBalance.setLayoutX(78.00);
+        labelBalance.setStyle(
+                "-fx-text-fill: white; " +
+                        "-fx-font-weight: bold; " +
+                        "-fx-font-family: 'B Nazanin'; " +
+                        "-fx-font-size: 15px;"
+        );
+        labelBalance.setAlignment(Pos.CENTER);
+        labelBalance.setLayoutX(85.00);
         labelBalance.setLayoutY(158.0);
         labelBalance.setPrefHeight(28.0);
-        labelBalance.setPrefWidth(95.0);
+        labelBalance.setPrefWidth(120.00);
 
         Label labelCvv2 = new Label("Cvv2:"+product.getSood());
-        labelCvv2.setLayoutX(33.0);
+        labelCvv2.setStyle(
+                "-fx-text-fill: white; " +
+                        "-fx-font-weight: bold; " +
+                        "-fx-font-family: 'B Nazanin'; " +
+                        "-fx-font-size: 15px;"
+        );
+        labelCvv2.setAlignment(Pos.CENTER);
+        labelCvv2.setLayoutX(10.00);
         labelCvv2.setLayoutY(148.0);
         labelCvv2.setPrefHeight(20.0);
-        labelCvv2.setPrefWidth(69.0);
+        labelCvv2.setPrefWidth(90.00);
 
         Label labelExpirationDate = new Label("تاریخ انقضاء:"+product.getTime());
+        labelExpirationDate.setStyle(
+                "-fx-text-fill: white; " +
+                        "-fx-font-weight: bold; " +
+                        "-fx-font-family: 'B Nazanin'; " +
+                        "-fx-font-size: 15px;"
+        );
         labelExpirationDate.setAlignment(Pos.CENTER_RIGHT);
-        labelExpirationDate.setLayoutX(38.0);
+        labelExpirationDate.setLayoutX(85.0);
         labelExpirationDate.setLayoutY(199.0);
         labelExpirationDate.setPrefHeight(28.0);
         labelExpirationDate.setPrefWidth(127.0);
-
-
-        Button button = new Button();
-        button.setLayoutX(202.0);
-        button.setLayoutY(0.0);
-        button.setMnemonicParsing(false);
-        button.setPrefHeight(20.0);
-        button.setPrefWidth(34.0);
 
         // ایجاد ImageView
         ImageView imageView = new ImageView();
@@ -736,14 +762,6 @@ public class Hesab {
         imageView.setPreserveRatio(true);
 
         // افزودن تصویر به دکمه
-        button.setGraphic(imageView);
-
-        Button button1 = new Button();
-        button.setLayoutX(183.0);
-        button.setLayoutY(43.0);
-        button.setMnemonicParsing(false);
-        button.setPrefHeight(20.0);
-        button.setPrefWidth(34.0);
 
         // ایجاد ImageView
         ImageView imageView1 = new ImageView();
@@ -753,14 +771,6 @@ public class Hesab {
         imageView.setPreserveRatio(true);
 
         // افزودن تصویر به دکمه
-        button1.setGraphic(imageView1);
-
-        Button button2 = new Button();
-        button.setLayoutX(160.0);
-        button.setLayoutY(70.0);
-        button.setMnemonicParsing(false);
-        button.setPrefHeight(20.0);
-        button.setPrefWidth(34.0);
 
         // ایجاد ImageView
         ImageView imageView2 = new ImageView();
@@ -770,10 +780,9 @@ public class Hesab {
         imageView.setPreserveRatio(true);
 
         // افزودن تصویر به دکمه
-        button2.setGraphic(imageView2);
 
         // اضافه کردن لیبل‌ها به Pane
-        pane.getChildren().addAll(labelCardNumber, labelPersonName, labelBalance, labelCvv2,button,button1,button2);
+        pane.getChildren().addAll(labelCardNumber, labelPersonName, labelBalance, labelCvv2);
         Button mainButton = new Button();
         mainButton.setPrefSize(256.0, 254.0);
         mainButton.setGraphic(pane);

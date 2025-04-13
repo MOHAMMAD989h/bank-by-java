@@ -53,7 +53,17 @@
             </Pane>
             <HBox alignment="CENTER_RIGHT" layoutX="57.0" layoutY="48.0" prefHeight="50.0" prefWidth="1482.0" style="-fx-background-color: #4d4d4d;" stylesheets="@styles.css">
                <children>
-                  <Button mnemonicParsing="false" onAction="#profile" prefHeight="37.0" prefWidth="62.0" text="Button" />
+                  <Button mnemonicParsing="false" onAction="#profile" prefHeight="37.0" prefWidth="62.0" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <ImageView fitHeight="29.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../images/cpm_3316861.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
                   <HBox alignment="CENTER_LEFT" prefHeight="122.0" prefWidth="42.0" spacing="10" />
                   <Label fx:id="timeLabel" prefHeight="20.0" prefWidth="324.0" styleClass="time-label" text="زمان" />
                   <Region HBox.hgrow="ALWAYS" />
